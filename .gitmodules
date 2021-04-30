@@ -1,0 +1,3 @@
+[submodule "tpdb/spiders"]
+	path = tpdb/spiders
+	url = git@github.com:ThePornDatabase/scrapers.git
