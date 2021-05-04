@@ -2,12 +2,17 @@
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
+
 import hashlib
+import re
+import time
+from pathlib import Path
 
 import dateparser
 import requests
 from pymongo import MongoClient
 
+from scrapy.exporters import JsonItemExporter, JsonLinesItemExporter
 
 class TpdbPipeline:
     def process_item(self, item, spider):
@@ -18,7 +23,27 @@ class TpdbApiScenePipeline:
     def __init__(self, crawler):
         # db = MongoClient('mongodb://localhost:27017/')
         # self.db = db['scrapy']
+        
         self.crawler = crawler
+        
+        if crawler.settings.get('path'):
+            path = crawler.settings.get('path')
+        else:
+            path = crawler.settings.get('DEFAULT_EXPORT_PATH')
+
+        if crawler.settings.get('file'):
+            filename = crawler.settings.get('file')
+            if "\\" not in filename and "/" not in filename:
+                filename = Path(path, filename)
+        else:
+            filename = Path(path, crawler.spidercls.name + "_" + time.strftime("%Y%m%d-%H%M") + ".json")
+        
+        if crawler.settings.get('export'):
+            if crawler.settings.get('export') == 'true':
+                print (f"*** Exporting to file: {filename}")
+                self.fp = open(filename, 'wb')
+                self.exporter = JsonLinesItemExporter(self.fp, ensure_ascii=False, encoding='utf-8')
+
 
     @classmethod
     def from_crawler(cls, crawler):
@@ -67,4 +92,21 @@ class TpdbApiScenePipeline:
         #     self.db.scenes.replace_one(
         #         {"_id": url_hash}, dict(item), upsert=True)
 
+        if spider.settings.get('display') and spider.settings.get('LOG_LEVEL') == "INFO":
+            if spider.settings.get('display')=="true":            
+                titlelength = 60 - len(item['title'])
+                if titlelength < 1:
+                    titlelength = 1
+                dispdate = re.search('(.*)T\d',item['date']).group(1)
+                print (f"Item: {item['title']}" + " "*titlelength + f"{item['id']}\t{dispdate}\t{item['url']}")
+        
+        if spider.settings.get('export'):
+            if spider.settings.get('export')=="true":
+                self.exporter.export_item(item)
         return item
+
+    def close_spider(self, spider):
+        if spider.settings.get('export'):
+            if spider.settings.get('export')=="true":
+                self.fp.close()
+        

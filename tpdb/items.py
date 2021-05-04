@@ -19,6 +19,5 @@ class SceneItem(scrapy.Item):
     trailer = scrapy.Field()
     network = scrapy.Field()
 
-
 class PerformerItem(scrapy.Item):
     name = scrapy.Field()
