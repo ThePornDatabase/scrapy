@@ -17,6 +17,7 @@ class SceneItem(scrapy.Item):
     url = scrapy.Field()
     id = scrapy.Field()
     trailer = scrapy.Field()
+    parent = scrapy.Field()
     network = scrapy.Field()
 
 class PerformerItem(scrapy.Item):

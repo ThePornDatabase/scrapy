@@ -23,6 +23,7 @@ class TpdbApiScenePipeline:
     def __init__(self, crawler):
         # db = MongoClient('mongodb://localhost:27017/')
         # self.db = db['scrapy']
+
         
         self.crawler = crawler
         
@@ -67,6 +68,7 @@ class TpdbApiScenePipeline:
             'external_id': str(item['id']),
             'site': item['site'],
             'trailer': item['trailer'],
+            'parent': item['parent'],
             'network': item['network']
         }
 
