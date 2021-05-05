@@ -7,6 +7,16 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
+#   Custom CLI Options:
+#   
+#   --loglevel=(DEBUG, INFO, WARNING, ERROR, CRITICAL) (loglevel = INFO by default)
+#   -a limit_pages=####  (Number of pages to stop after, limit_pages=all for no limit)
+#   -s display=true (Display a single line per entry scraped, DEBUG level will display entire Item object)
+#   -s export=true (Export to JsonLinesItemExporter file, each line is its own JSON structure.  Good for memory with large datasets)
+#   -s file=<filename> (works with '-s export' to set the filename.  Defaults to "<SpiderName><YYYYMMDD-HHMM>.json")
+#   -s path=<path> (works with '-s export' to set the file path.  Defaults to whatever "DEFAULT_EXPORT_PATH" is set to in this file)
+
+
 BOT_NAME = 'tpdb'
 
 SPIDER_MODULES = ['tpdb.spiders']
@@ -90,3 +100,6 @@ HTTPCACHE_DIR = 'httpcache'
 HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 # TWISTED_REACTOR = 'twisted.internet.asyncioreactor.AsyncioSelectorReactor'
 # DUPEFILTER_DEBUG = True
+
+LOG_LEVEL = 'INFO'
+DEFAULT_EXPORT_PATH = "./"

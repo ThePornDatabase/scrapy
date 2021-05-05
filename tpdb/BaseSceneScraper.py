@@ -134,6 +134,11 @@ class BaseSceneScraper(scrapy.Spider):
 
         item['url'] = self.get_url(response)
 
+        if hasattr(self, 'parent'):
+            item['parent'] = self.parent
+        else:
+            item['parent'] = self.get_parent(response)
+
         if hasattr(self, 'network'):
             item['network'] = self.network
         else:
@@ -160,6 +165,9 @@ class BaseSceneScraper(scrapy.Spider):
         return ""
 
     def get_site(self, response):
+        return tldextract.extract(response.url).domain
+
+    def get_parent(self, response):
         return tldextract.extract(response.url).domain
 
     def get_network(self, response):
