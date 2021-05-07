@@ -1,6 +1,6 @@
 import dpath.util
 
-class scrapy_dpath(): 
+class ScrapyDPath(): 
     def __init__(self, response, selector):
         self.result = []
 
