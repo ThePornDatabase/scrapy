@@ -9,3 +9,4 @@ autopep8
 yapf
 extruct
 chompjs
+dpath

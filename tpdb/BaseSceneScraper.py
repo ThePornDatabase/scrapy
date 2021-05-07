@@ -3,6 +3,7 @@ import scrapy
 from scrapy.utils.response import open_in_browser
 
 from tpdb.items import SceneItem
+from tpdb.scrapy_dpath import ScrapyDPath
 import tldextract
 import re
 from urllib.parse import urlparse
@@ -210,8 +211,10 @@ class BaseSceneScraper(scrapy.Spider):
         return ''
 
     def process_xpath(self, response, selector):
-        if selector.startswith('/'):
+        if selector.startswith('//'):
             return response.xpath(selector)
+        elif selector.startswith('/'):
+            return ScrapyDPath(response, selector)
         else:
             return response.css(selector)
 
