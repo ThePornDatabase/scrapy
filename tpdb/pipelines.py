@@ -112,3 +112,69 @@ class TpdbApiScenePipeline:
             if spider.settings.get('export')=="true":
                 self.fp.close()
         
+class TpdbApiPerformerPipeline:
+    def __init__(self, crawler):
+        # db = MongoClient('mongodb://localhost:27017/')
+        # self.db = db['scrapy']
+        self.crawler = crawler
+        # if os.environ.get('SCRAPY_CHECK'):
+        #     pass
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        return cls(crawler)
+
+    async def process_item(self, item, spider):
+        # if spider.debug is True:
+        #     return item
+        #
+        # if spider.force is not True:
+        #     result = self.db.performers.find_one({'url': item['url']})
+        #     if result is not None:
+        #         return
+
+        payload = {
+            'name': item['name'],
+            'site': item['network'],
+            'url': item['url'],
+            'image': item['image'],
+            'bio': item['bio'],
+            'gender': item['gender'],
+            'birthday': item['birthday'],
+            'astrology': item['astrology'],
+            'birthplace': item['birthplace'],
+            'ethnicity': item['ethnicity'],
+            'nationality': item['nationality'],
+            'haircolor': item['haircolor'],
+            'weight': item['weight'],
+            'height': item['height'],
+            'measurements': item['measurements'],
+            'tattoos': item['tattoos'],
+            'piercings': item['piercings'],
+            'cupsize': item['cupsize'],
+            'fakeboobs': item['fakeboobs'],
+        }
+
+        headers = {
+            "Authorization": "Bearer xxx",
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'User-Agent': 'tpdb-scraper/1.0.0'
+        }
+
+        # response = requests.post('https://api.metadataapi.net/performer_sites', json=payload, headers=headers,
+        #                          verify=False)
+        #
+        # url_hash = hashlib.sha1(str(item['url']).encode('utf-8')).hexdigest()
+        #
+        # if response.status_code != 200:
+        #     self.db.errors.replace_one({"_id": url_hash}, {
+        #         'url': item['url'],
+        #         'error': 1,
+        #         'when': dateparser.parse('today').isoformat(),
+        #         'response': response.json()
+        #     }, upsert=True)
+        # else:
+        #     self.db.performers.replace_one({"_id": url_hash}, dict(item), upsert=True)
+
+        return item
