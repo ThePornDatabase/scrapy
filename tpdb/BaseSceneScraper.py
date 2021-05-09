@@ -28,13 +28,15 @@ class BaseSceneScraper(scrapy.Spider):
     
     regex = {
         'external_id': None,
+        're_date': None,
     }
 
     def __init__(self, *args, **kwargs):
         super(BaseSceneScraper, self).__init__(*args, **kwargs)
 
-        if 'external_id' in self.get_selector_map() and self.get_selector_map('external_id'):
-            self.regex['external_id'] = re.compile(self.get_selector_map('external_id'), re.IGNORECASE)
+        for name in self.get_selector_map():
+            if (name == 'external_id' or name.startswith('re_')) and name in self.get_selector_map() and self.get_selector_map()[name]:
+                self.regex[name] = re.compile(self.get_selector_map(name), re.IGNORECASE)
 
         self.force = bool(self.force)
         self.debug = bool(self.debug)
@@ -187,7 +189,14 @@ class BaseSceneScraper(scrapy.Spider):
     def get_date(self, response):
         date = self.process_xpath(response, self.get_selector_map('date'))
         if date:
-            date = date.get().replace('Released:', '').replace('Added:', '').strip()
+            date = date.get()
+
+            regex = self.get_from_regex(date, 're_date')
+            date = regex if regex else date
+
+            if not regex:
+                date = date.replace('Released:', '').replace('Added:', '').strip()
+
             return dateparser.parse(date).isoformat()
 
         return None
@@ -257,3 +266,11 @@ class BaseSceneScraper(scrapy.Spider):
 
     def get_next_page_url(self, base, page):
         return self.format_url(base, self.get_selector_map('pagination') % page)
+
+    def get_from_regex(self, text, re_name, group=1):
+        if re_name in self.regex and self.regex[re_name]:
+            r = self.regex[re_name].search(text)
+            if r:
+                return r.group(group)
+
+        return None
