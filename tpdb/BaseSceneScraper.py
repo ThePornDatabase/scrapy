@@ -25,9 +25,20 @@ class BaseSceneScraper(scrapy.Spider):
             'tpdb.middlewares.TpdbSceneDownloaderMiddleware': 543,
         }
     }
+    
+    regex = {
+        'external_id': None,
+        're_title': None,
+        're_description': None,
+        're_date': None,
+    }
 
     def __init__(self, *args, **kwargs):
         super(BaseSceneScraper, self).__init__(*args, **kwargs)
+
+        for name in self.get_selector_map():
+            if (name == 'external_id' or name.startswith('re_')) and name in self.get_selector_map() and self.get_selector_map()[name]:
+                self.regex[name] = re.compile(self.get_selector_map(name), re.IGNORECASE)
 
         self.force = bool(self.force)
         self.debug = bool(self.debug)
@@ -150,19 +161,33 @@ class BaseSceneScraper(scrapy.Spider):
             yield item
 
     def get_title(self, response):
-        return self.process_xpath(
-            response, self.get_selector_map('title')).get().strip()
+        title = self.process_xpath(response, self.get_selector_map('title'))
+        if title:
+            title = title.get()
+            regex = self.get_from_regex(title, 're_title')
+            title = regex if regex else title
+                
+            return title.strip()
+
+        return None
 
     def get_description(self, response):
         if 'description' not in self.get_selector_map():
             return ''
 
-        description = self.process_xpath(
-            response, self.get_selector_map('description')).get()
+        description = self.process_xpath(response, self.get_selector_map('description'))
+        if description:
+            description = description.get()
 
-        if description is not None:
-            return description.replace('Description:', '').strip()
-        return ""
+            regex = self.get_from_regex(description, 're_description')
+            description = regex if regex else description
+
+            if not regex:
+                description = description.replace('Description:', '')
+
+            return description.strip()
+
+        return ''
 
     def get_site(self, response):
         return tldextract.extract(response.url).domain
@@ -174,38 +199,59 @@ class BaseSceneScraper(scrapy.Spider):
         return tldextract.extract(response.url).domain
 
     def get_date(self, response):
-        date = self.process_xpath(response, self.get_selector_map('date')).get()
-        date.replace('Released:', '').replace('Added:', '').strip()
-        return dateparser.parse(date.strip()).isoformat()
+        date = self.process_xpath(response, self.get_selector_map('date'))
+        if date:
+            date = date.get()
+
+            regex = self.get_from_regex(date, 're_date')
+            date = regex if regex else date
+
+            if not regex:
+                date = date.replace('Released:', '').replace('Added:', '').strip()
+
+            return dateparser.parse(date).isoformat()
+
+        return None
 
     def get_image(self, response):
-        image = self.process_xpath(response, self.get_selector_map('image')).get()
-        return self.format_link(response, image)
+        image = self.process_xpath(response, self.get_selector_map('image'))
+        if image:
+            return self.format_link(response, image.get())
+
+        return None
 
     def get_performers(self, response):
-        performers = self.process_xpath(
-            response, self.get_selector_map('performers')).getall()
-        return list(map(lambda x: x.strip(), performers))
+        performers = self.process_xpath(response, self.get_selector_map('performers'))
+        if performers:
+            return list(map(lambda x: x.strip(), performers.getall()))
+
+        return []
 
     def get_tags(self, response):
         if self.get_selector_map('tags'):
-            tags = self.process_xpath(
-                response, self.get_selector_map('tags')).getall()
-            return list(map(lambda x: x.strip(), tags))
+            tags = self.process_xpath(response, self.get_selector_map('tags'))
+            if tags:
+                return list(map(lambda x: x.strip(), tags.getall()))
+
         return []
 
     def get_url(self, response):
         return response.url
 
     def get_id(self, response):
-        search = re.search(self.get_selector_map(
-            'external_id'), response.url, re.IGNORECASE)
-        return search.group(1)
+        if 'external_id' in self.regex and self.regex['external_id']:
+            search = self.regex['external_id'].search(response.url)
+            if search:
+                return search.group(1)
+
+        return None
 
     def get_trailer(self, response):
         if 'trailer' in self.get_selector_map() and self.get_selector_map('trailer'):
-            return self.process_xpath(
-                response, self.get_selector_map('trailer')).get()
+            trailer = self.process_xpath(response, self.get_selector_map('trailer'))
+            if trailer:
+                return trailer.get()
+
         return ''
 
     def process_xpath(self, response, selector):
@@ -227,8 +273,16 @@ class BaseSceneScraper(scrapy.Spider):
         new_url = urlparse(path)
         url = urlparse(base)
         url = url._replace(path=new_url.path, query=new_url.query)
+
         return url.geturl()
 
     def get_next_page_url(self, base, page):
-        return self.format_url(
-            base, self.get_selector_map('pagination') % page)
+        return self.format_url(base, self.get_selector_map('pagination') % page)
+
+    def get_from_regex(self, text, re_name, group=1):
+        if re_name in self.regex and self.regex[re_name]:
+            r = self.regex[re_name].search(text)
+            if r:
+                return r.group(group)
+
+        return None
