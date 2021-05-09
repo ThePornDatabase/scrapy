@@ -1,11 +1,11 @@
-import dateparser
-import scrapy
-from scrapy.utils.response import open_in_browser
-
-from tpdb.items import SceneItem
-import tldextract
 import re
 from urllib.parse import urlparse
+
+import dateparser
+import scrapy
+import tldextract
+
+from tpdb.items import SceneItem
 
 
 class BaseSceneScraper(scrapy.Spider):
@@ -55,22 +55,22 @@ class BaseSceneScraper(scrapy.Spider):
                                  cookies=self.cookies)
 
     def parse(self, response, **kwargs):
-        if response.status == 200:
-            scenes = self.get_scenes(response)
-            count = 0
-            for scene in scenes:
-                count += 1
-                yield scene
+        scenes = self.get_scenes(response)
+        count = 0
+        for scene in scenes:
+            count += 1
+            yield scene
 
-            if count:
-                if 'page' in response.meta and response.meta['page'] < self.limit_pages:
-                    next_page = response.meta['page'] + 1
-                    print('NEXT PAGE: ' + str(next_page))
-                    yield scrapy.Request(url=self.get_next_page_url(response.url, next_page),
-                                         callback=self.parse,
-                                         meta={'page': next_page},
-                                         headers=self.headers,
-                                         cookies=self.cookies)
+        if count:
+            if 'page' in response.meta and response.meta['page'] < self.limit_pages:
+                meta = response.meta
+                meta['page'] = meta['page'] + 1
+                print('NEXT PAGE: ' + str(meta['page']))
+                yield scrapy.Request(url=self.get_next_page_url(response.url, meta['page']),
+                                     callback=self.parse,
+                                     meta=meta,
+                                     headers=self.headers,
+                                     cookies=self.cookies)
 
     def get_scenes(self, response):
         return []
@@ -134,20 +134,20 @@ class BaseSceneScraper(scrapy.Spider):
 
         item['url'] = self.get_url(response)
 
-        if hasattr(self, 'parent'):
-            item['parent'] = self.parent
-        else:
-            item['parent'] = self.get_parent(response)
-
         if hasattr(self, 'network'):
             item['network'] = self.network
         else:
             item['network'] = self.get_network(response)
 
+        if hasattr(self, 'parent'):
+            item['parent'] = self.parent
+        else:
+            item['parent'] = self.get_parent(response)
+
         if self.debug:
             print(item)
         else:
-            return item
+            yield item
 
     def get_title(self, response):
         return self.process_xpath(
@@ -167,10 +167,10 @@ class BaseSceneScraper(scrapy.Spider):
     def get_site(self, response):
         return tldextract.extract(response.url).domain
 
-    def get_parent(self, response):
+    def get_network(self, response):
         return tldextract.extract(response.url).domain
 
-    def get_network(self, response):
+    def get_parent(self, response):
         return tldextract.extract(response.url).domain
 
     def get_date(self, response):
@@ -179,8 +179,7 @@ class BaseSceneScraper(scrapy.Spider):
         return dateparser.parse(date.strip()).isoformat()
 
     def get_image(self, response):
-        image = self.process_xpath(
-            response, self.get_selector_map('image')).get()
+        image = self.process_xpath(response, self.get_selector_map('image')).get()
         return self.format_link(response, image)
 
     def get_performers(self, response):
@@ -210,7 +209,7 @@ class BaseSceneScraper(scrapy.Spider):
         return ''
 
     def process_xpath(self, response, selector):
-        if selector.startswith('/'):
+        if selector.startswith('/') or selector.startswith('./'):
             return response.xpath(selector)
         else:
             return response.css(selector)
@@ -221,6 +220,9 @@ class BaseSceneScraper(scrapy.Spider):
     def format_url(self, base, path):
         if path.startswith('http'):
             return path
+
+        if path.startswith('//'):
+            return 'https:' + path
 
         new_url = urlparse(path)
         url = urlparse(base)
