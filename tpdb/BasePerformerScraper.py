@@ -130,6 +130,11 @@ class BasePerformerScraper(scrapy.Spider):
         else:
             item['nationality'] = self.get_nationality(response)
 
+        if 'eyecolor' in response.meta and response.meta['eyecolor']:
+            item['eyecolor'] = response.meta['eyecolor']
+        else:
+            item['eyecolor'] = self.get_eyecolor(response)
+
         if 'haircolor' in response.meta and response.meta['haircolor']:
             item['haircolor'] = response.meta['haircolor']
         else:
@@ -221,6 +226,11 @@ class BasePerformerScraper(scrapy.Spider):
             return self.process_xpath(response, self.get_selector_map('nationality')).get().strip()
         return ''
 
+    def get_eyecolor(self, response):
+        if 'eyecolor' in self.selector_map:
+            return self.process_xpath(response, self.get_selector_map('eyecolor')).get().strip()
+        return ''
+        
     def get_haircolor(self, response):
         if 'haircolor' in self.selector_map:
             return self.process_xpath(response, self.get_selector_map('haircolor')).get().strip()
