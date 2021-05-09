@@ -183,7 +183,7 @@ class BaseSceneScraper(scrapy.Spider):
             description = regex if regex else description
 
             if not regex:
-                description = .replace('Description:', '')
+                description = description.replace('Description:', '')
 
             return description.strip()
 
