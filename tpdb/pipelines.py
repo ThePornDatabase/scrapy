@@ -165,7 +165,7 @@ class TpdbApiPerformerPipeline:
             'birthplace': item['birthplace'],
             'ethnicity': item['ethnicity'],
             'nationality': item['nationality'],
-            'eyecolor': item['haircolor'],
+            'eyecolor': item['eyecolor'],
             'haircolor': item['haircolor'],
             'weight': item['weight'],
             'height': item['height'],
