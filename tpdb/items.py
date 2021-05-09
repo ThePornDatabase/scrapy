@@ -40,3 +40,4 @@ class PerformerItem(scrapy.Item):
     piercings = scrapy.Field()
     cupsize = scrapy.Field()
     fakeboobs = scrapy.Field()
+    eyecolor = scrapy.Field()

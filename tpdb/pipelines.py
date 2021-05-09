@@ -120,6 +120,26 @@ class TpdbApiPerformerPipeline:
         # if os.environ.get('SCRAPY_CHECK'):
         #     pass
 
+        
+        if crawler.settings.get('path'):
+            path = crawler.settings.get('path')
+        else:
+            path = crawler.settings.get('DEFAULT_EXPORT_PATH')
+
+        if crawler.settings.get('file'):
+            filename = crawler.settings.get('file')
+            if "\\" not in filename and "/" not in filename:
+                filename = Path(path, filename)
+        else:
+            filename = Path(path, crawler.spidercls.name + "_" + time.strftime("%Y%m%d-%H%M") + "-performers.json")
+        
+        if crawler.settings.get('export'):
+            if crawler.settings.get('export') == 'true':
+                print (f"*** Exporting to file: {filename}")
+                self.fp = open(filename, 'wb')
+                self.exporter = JsonLinesItemExporter(self.fp, ensure_ascii=False, encoding='utf-8')
+
+
     @classmethod
     def from_crawler(cls, crawler):
         return cls(crawler)
@@ -145,6 +165,7 @@ class TpdbApiPerformerPipeline:
             'birthplace': item['birthplace'],
             'ethnicity': item['ethnicity'],
             'nationality': item['nationality'],
+            'eyecolor': item['eyecolor'],
             'haircolor': item['haircolor'],
             'weight': item['weight'],
             'height': item['height'],
@@ -177,4 +198,19 @@ class TpdbApiPerformerPipeline:
         # else:
         #     self.db.performers.replace_one({"_id": url_hash}, dict(item), upsert=True)
 
+        if spider.settings.get('display') and spider.settings.get('LOG_LEVEL') == "INFO":
+            if spider.settings.get('display')=="true":            
+                namelength = 50 - len(item['name'])
+                if namelength < 1:
+                    namelength = 1
+                print (f"Performer: {item['name']}" + " "*namelength + f"{item['network']}\t{item['url']}")
+        
+        if spider.settings.get('export'):
+            if spider.settings.get('export')=="true":
+                self.exporter.export_item(item)
         return item
+
+    def close_spider(self, spider):
+        if spider.settings.get('export'):
+            if spider.settings.get('export')=="true":
+                self.fp.close()
