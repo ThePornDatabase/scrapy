@@ -28,6 +28,8 @@ class BaseSceneScraper(scrapy.Spider):
     
     regex = {
         'external_id': None,
+        're_title': None,
+        're_description': None,
         're_date': None,
     }
 
@@ -159,9 +161,13 @@ class BaseSceneScraper(scrapy.Spider):
             yield item
 
     def get_title(self, response):
-        data = self.process_xpath(response, self.get_selector_map('title'))
-        if data:
-            return data.get().strip()
+        title = self.process_xpath(response, self.get_selector_map('title'))
+        if title:
+            title = title.get()
+            regex = self.get_from_regex(title, 're_title')
+            title = regex if regex else title
+                
+            return title.strip()
 
         return None
 
@@ -169,11 +175,17 @@ class BaseSceneScraper(scrapy.Spider):
         if 'description' not in self.get_selector_map():
             return ''
 
-        description = self.process_xpath(
-            response, self.get_selector_map('description')).get()
+        description = self.process_xpath(response, self.get_selector_map('description'))
+        if description:
+            description = description.get()
 
-        if description is not None:
-            return description.replace('Description:', '').strip()
+            regex = self.get_from_regex(description, 're_description')
+            description = regex if regex else description
+
+            if not regex:
+                description = .replace('Description:', '')
+
+            return description.strip()
 
         return ''
 
