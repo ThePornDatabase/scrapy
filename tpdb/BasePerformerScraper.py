@@ -188,87 +188,121 @@ class BasePerformerScraper(scrapy.Spider):
 
     def get_image(self, response):
         if 'image' in self.selector_map:
-            return self.process_xpath(response, self.get_selector_map('image')).get().strip()
+            image = self.process_xpath(response, self.get_selector_map('image')).get()
+            if image:
+                return image.strip()
         return ''
 
     def get_bio(self, response):
         if 'bio' in self.selector_map:
-            return self.process_xpath(response, self.get_selector_map('bio')).get().strip()
+            bio = self.process_xpath(response, self.get_selector_map('bio')).get()
+            if bio:
+                return bio.strip()
         return ''
 
     def get_gender(self, response):
         if 'gender' in self.selector_map:
-            return self.process_xpath(response, self.get_selector_map('gender')).get().strip()
+            gender = self.process_xpath(response, self.get_selector_map('gender')).get()
+            if gender:
+                return gender.strip()
         return ''
 
     def get_birthday(self, response):
         if 'birthday' in self.selector_map:
-            return self.process_xpath(response, self.get_selector_map('birthday')).get().strip()
+            birthday = self.process_xpath(response, self.get_selector_map('birthday')).get()
+            if birthday:
+                return birthday.strip()
         return ''
 
     def get_astrology(self, response):
         if 'astrology' in self.selector_map:
-            return self.process_xpath(response, self.get_selector_map('astrology')).get().strip()
+            astrology = self.process_xpath(response, self.get_selector_map('astrology')).get()
+            if astrology:
+                return astrology.strip()
         return ''
 
     def get_birthplace(self, response):
         if 'birthplace' in self.selector_map:
-            return self.process_xpath(response, self.get_selector_map('birthplace')).get().strip()
+            birthplace = self.process_xpath(response, self.get_selector_map('birthplace')).get()
+            if birthplace:
+                return birthplace.strip()
         return ''
 
     def get_ethnicity(self, response):
         if 'ethnicity' in self.selector_map:
-            return self.process_xpath(response, self.get_selector_map('ethnicity')).get().strip()
+            ethnicity = self.process_xpath(response, self.get_selector_map('ethnicity')).get()
+            if ethnicity:
+                return ethnicity.strip()
         return ''
 
     def get_nationality(self, response):
         if 'nationality' in self.selector_map:
-            return self.process_xpath(response, self.get_selector_map('nationality')).get().strip()
+            nationality = self.process_xpath(response, self.get_selector_map('nationality')).get()
+            if nationality:
+                return nationality.strip()
         return ''
 
     def get_eyecolor(self, response):
         if 'eyecolor' in self.selector_map:
-            return self.process_xpath(response, self.get_selector_map('eyecolor')).get().strip()
+            eyecolor = self.process_xpath(response, self.get_selector_map('eyecolor')).get()
+            if eyecolor:
+                return eyecolor.strip()
         return ''
         
     def get_haircolor(self, response):
         if 'haircolor' in self.selector_map:
-            return self.process_xpath(response, self.get_selector_map('haircolor')).get().strip()
+            haircolor = self.process_xpath(response, self.get_selector_map('haircolor')).get()
+            if haircolor:
+                return haircolor.strip()
         return ''
 
     def get_height(self, response):
         if 'height' in self.selector_map:
-            return self.process_xpath(response, self.get_selector_map('height')).get().strip()
+            height = self.process_xpath(response, self.get_selector_map('height')).get()
+            if height:
+                return height.strip()
         return ''
 
     def get_weight(self, response):
         if 'weight' in self.selector_map:
-            return self.process_xpath(response, self.get_selector_map('weight')).get().strip()
+            weight = self.process_xpath(response, self.get_selector_map('weight')).get()
+            if weight:
+                return weight.strip()
         return ''
 
     def get_measurements(self, response):
         if 'measurements' in self.selector_map:
-            return self.process_xpath(response, self.get_selector_map('measurements')).get().strip()
+            measurements = self.process_xpath(response, self.get_selector_map('measurements')).get()
+            if measurements:
+                return measurements.strip()
         return ''
 
     def get_tattoos(self, response):
         if 'tattoos' in self.selector_map:
-            return self.process_xpath(response, self.get_selector_map('tattoos')).get().strip()
+            tattoos = self.process_xpath(response, self.get_selector_map('tattoos')).get()
+            if tattoos:
+                return tattoos.strip()
         return ''
 
     def get_piercings(self, response):
         if 'piercings' in self.selector_map:
-            return self.process_xpath(response, self.get_selector_map('piercings')).get().strip()
+            piercings = self.process_xpath(response, self.get_selector_map('piercings')).get()
+            if piercings:
+                return piercings.strip()
         return ''
 
     def get_cupsize(self, response):
         if 'cupsize' in self.selector_map:
-            return self.process_xpath(response, self.get_selector_map('cupsize')).get().strip()
+            cupsize = self.process_xpath(response, self.get_selector_map('cupsize')).get()
+            if cupsize:
+                return cupsize.strip()
         return ''
 
     def get_fakeboobs(self, response):
         if 'fakeboobs' in self.selector_map:
-            return self.process_xpath(response, self.get_selector_map('fakeboobs')).get().strip()
+            fakeboobs = self.process_xpath(response, self.get_selector_map('fakeboobs')).get()
+            if fakeboobs:
+                return fakeboobs.strip()
         return ''
 
     def get_url(self, response):
