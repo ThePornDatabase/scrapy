@@ -225,12 +225,29 @@ Scraper Site List
 |Nomad Media|Aziani|https://www.gangbangcreampie.com|networkNomadMedia.py|
 |Nomad Media|Aziani|https://www.gloryholesecrets.com|networkNomadMedia.py|
 |Nubiles||https://anilos.com/video/gallery|networkNubiles.py|
-|Nubiles||https://badteenspunished.com/video/galleryhttps://bountyhunterporn.com/video/galleryhttps://brattysis.com/video/gallery|networkNubiles.py|
-|Nubiles||https://daddyslilangel.com/video/galleryhttps://deeplush.com/video/galleryhttps://detentiaongirls.com/video/galleryhttps://driverxxx.com/video/galleryhttps://familyswap.xxx/video/galleryhttps://momsteachsex.com/video/galleryhttps://myfamilypies.com/video/galleryhttps://nfbusty.com/video/gallery|networkNubiles.py|
+|Nubiles||https://badteenspunished.com/video/gallery|networkNubiles.py|
+|Nubiles||https://bountyhunterporn.com/video/gallery|networkNubiles.py|
+|Nubiles||https://brattysis.com/video/gallery|networkNubiles.py|
+|Nubiles||https://daddyslilangel.com/video/gallery|networkNubiles.py|
+|Nubiles||https://deeplush.com/video/gallery|networkNubiles.py|
+|Nubiles||https://detentiaongirls.com/video/gallery|networkNubiles.py|
+|Nubiles||https://driverxxx.com/video/gallery|networkNubiles.py|
+|Nubiles||https://familyswap.xxx/video/gallery|networkNubiles.py|
+|Nubiles||https://momsteachsex.com/video/gallery|networkNubiles.py|
+|Nubiles||https://myfamilypies.com/video/gallery|networkNubiles.py|
+|Nubiles||https://nfbusty.com/video/gallery|networkNubiles.py|
 |Nubiles||https://nubilefilms.com/video/gallery|networkNubiles.py|
-|Nubiles||https://nubiles-casting.com/video/galleryhttps://nubiles-porn.com/video/gallery|networkNubiles.py|
+|Nubiles||https://nubiles-casting.com/video/gallery|networkNubiles.py|
+|Nubiles||https://nubiles-porn.com/video/gallery|networkNubiles.py|
 |Nubiles||https://nubiles.net/video/gallery|networkNubiles.py|
-|Nubiles||https://nubileset.com/video/galleryhttps://nubilesunscripted.com/video/galleryhttps://petitdehdporn.com/video/galleryhttps://petiteballerinasfucked.com/video/galleryhttps://princesscum.com/video/galleryhttps://stepsiblingscaught.com/video/galleryhttps://teacherfucksteens.com/video/galleryhttps://thatsitcomshow.com/video/gallery|networkNubiles.py|
+|Nubiles||https://nubileset.com/video/gallery|networkNubiles.py|
+|Nubiles||https://nubilesunscripted.com/video/gallery|networkNubiles.py|
+|Nubiles||https://petitdehdporn.com/video/gallery|networkNubiles.py|
+|Nubiles||https://petiteballerinasfucked.com/video/gallery|networkNubiles.py|
+|Nubiles||https://princesscum.com/video/gallery|networkNubiles.py|
+|Nubiles||https://stepsiblingscaught.com/video/gallery|networkNubiles.py|
+|Nubiles||https://teacherfucksteens.com/video/gallery|networkNubiles.py|
+|Nubiles||https://thatsitcomshow.com/video/gallery|networkNubiles.py|
 |1 Pass For All Sites||https://www.1passforallsites.com|networkOnePassForAllSites.py|
 |Pornfidelity|Pornfidelity|https://www.pornfidelity.com|networkPornFidelity.py|
 |Pornpros||https://pornpros.com/|networkPornPros.py|
