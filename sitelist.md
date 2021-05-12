@@ -83,6 +83,10 @@ Scraper Site List
 |Bella Pass|Bella Pass|https://katiebanks.com|networkBellaPass.py|
 |Bella Pass|Bella Pass|https://monroelee.com|networkBellaPass.py|
 |Bella Pass|Bella Pass|https://taliashepard.com|networkBellaPass.py|
+|Cx Wow|Cx Wow|https://www.becomingfemme.com/|networkCXWow.py|
+|Cx Wow|Cx Wow|https://www.pure-bbw.com/|networkCXWow.py|
+|Cx Wow|Cx Wow|https://www.pure-ts.com/|networkCXWow.py|
+|Cx Wow|Cx Wow|https://www.tspov.com/|networkCXWow.py|
 |Cherry Pimps|Cherry Pimps|https://www.cherrypimps.com|networkCherryPimps.py|
 |Couplescinema|Couplescinema|https://www.couplescinema.com|networkCouplesCinema.py|
 |Czech Casting|Czech Casting|https://czechwifeswap.com|networkCzechAv.py|
@@ -446,7 +450,6 @@ Scraper Site List
 |Sinematica|Sinematica|https://www.sinematica.com/|siteSinematica.py|
 |Derangeddollars||https://www.slavemouth.com|siteSlavemouth.py|
 |Tonights Girlfriend|Tonights Girlfriend|https://www.tonightsgirlfriend.com|siteTonightsGirlfriend.py|
-|Tspov||https://www.tspov.com/|siteTspov.py|
 |Tugpass||https://www.tugpass.com|siteTugPass.py|
 |Radical Entertainment|Vrallure|https://vrallure.com/|siteVrAllure.py|
 |Wankz||https://www.wankz.com|siteWankz.py|
