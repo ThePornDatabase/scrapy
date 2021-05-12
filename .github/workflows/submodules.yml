@@ -21,6 +21,11 @@ jobs:
         with:
           submodules: 'recursive'
 
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+          architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
+
       # Update references
       - name: Git Sumbodule Update
         run: |
@@ -32,4 +37,6 @@ jobs:
           git config --global user.name 'Git bot'
           git config --global user.email 'bot@noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          pip3 install -r requirements.txt
+          python3 generate.py
           git commit -am "Auto updated submodule references" && git push || echo "No changes to commit"

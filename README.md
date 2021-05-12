@@ -4,9 +4,15 @@ This is the scrapy framework for TPDB's scraper.
 
 ### Installation
 
-``git clone https://github.com/ThePornDatabase/scrapers.git``
+Clone this repo
+
+``git clone --recurse-submodules https://github.com/ThePornDatabase/scrapy.git``
+
+Install the packages using pip
 
 ``pip install -r requirements.txt``
+
+You can then run a scraper using `scrapy crawl `**ScraperName**
 
 ``scrapy crawl Vixen``
 
@@ -14,3 +20,8 @@ This is the scrapy framework for TPDB's scraper.
 
 Each scraper is in it's own Python file, placed in the tpdb/spiders folder - they are stored in another repository so
 people can contribute.
+
+
+# Site Lists
+
+[sitelist.md](sitelist.md)
