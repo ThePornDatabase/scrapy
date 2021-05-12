@@ -57,8 +57,8 @@ Scraper Site List
 |Adultempirecash|Adultempirecash|https://pmggirls.com/|networkAdultEmpireCash.py|
 |Adultempirecash|Adultempirecash|https://www.lethalhardcore.com|networkAdultEmpireCash.py|
 |Adultempirecash|Adultempirecash|https://spankmonster.com|networkAdultEmpireCash.py|
-|All Her Luv|All Her Luv|https://www.allherluv.com|networkAllHerLuv.py|
-|All Her Luv|All Her Luv|https://www.missax.com|networkAllHerLuv.py|
+|All Her Luv||https://www.allherluv.com|networkAllHerLuv.py|
+|All Her Luv||https://www.missax.com|networkAllHerLuv.py|
 |Badoink Vr|Badoink Vr|https://badoinkvr.com|networkBadoinkVr.py|
 |Badoink Vr|Badoink Vr|https://babevr.com|networkBadoinkVr.py|
 |Badoink Vr|Badoink Vr|https://18vr.com|networkBadoinkVr.py|
