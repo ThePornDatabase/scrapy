@@ -167,7 +167,7 @@ class BaseSceneScraper(scrapy.Spider):
         if title:
             title = title.get()
             regex = self.get_from_regex(title, 're_title')
-            title = regex if regex else title
+            title = regex if regex else None if 're_title' in self.get_selector_map() else title
 
             return title.strip()
 
@@ -182,7 +182,7 @@ class BaseSceneScraper(scrapy.Spider):
             description = description.get()
 
             regex = self.get_from_regex(description, 're_description')
-            description = regex if regex else description
+            description = regex if regex else None if 're_description' in self.get_selector_map() else description
 
             if not regex:
                 description = description.replace('Description:', '')
@@ -206,7 +206,7 @@ class BaseSceneScraper(scrapy.Spider):
             date = date.get()
 
             regex = self.get_from_regex(date, 're_date')
-            date = regex if regex else date
+            date = regex if regex else None if 're_date' in self.get_selector_map() else date
 
             if not regex:
                 date = date.replace('Released:', '').replace('Added:', '').strip()
@@ -220,7 +220,7 @@ class BaseSceneScraper(scrapy.Spider):
         if image:
             image = image.get()
             regex = self.get_from_regex(image, 're_image')
-            image = regex if regex else image
+            image = regex if regex else None if 're_image' in self.get_selector_map() else image
 
             return self.format_link(response, image)
 
@@ -258,7 +258,7 @@ class BaseSceneScraper(scrapy.Spider):
             if trailer:
                 trailer = trailer.get()
                 regex = self.get_from_regex(trailer, 're_trailer')
-                trailer = regex if regex else trailer
+                trailer = regex if regex else None if 're_trailer' in self.get_selector_map() else trailer
 
                 return trailer
 
