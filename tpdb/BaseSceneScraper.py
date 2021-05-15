@@ -165,11 +165,10 @@ class BaseSceneScraper(scrapy.Spider):
     def get_title(self, response):
         title = self.process_xpath(response, self.get_selector_map('title'))
         if title:
-            title = title.get()
-            regex = self.get_from_regex(title, 're_title')
-            title = regex if regex else None if 're_title' in self.get_selector_map() else title
+            title = self.get_from_regex(title.get(), 're_title')
 
-            return title.strip()
+            if title:
+                return title.strip()
 
         return None
 
@@ -179,15 +178,12 @@ class BaseSceneScraper(scrapy.Spider):
 
         description = self.process_xpath(response, self.get_selector_map('description'))
         if description:
-            description = description.get()
+            description = self.get_from_regex(description.get(), 're_description')
 
-            regex = self.get_from_regex(description, 're_description')
-            description = regex if regex else None if 're_description' in self.get_selector_map() else description
-
-            if not regex:
+            if description:
                 description = description.replace('Description:', '')
 
-            return description.strip()
+                return description.strip()
 
         return ''
 
@@ -203,26 +199,22 @@ class BaseSceneScraper(scrapy.Spider):
     def get_date(self, response):
         date = self.process_xpath(response, self.get_selector_map('date'))
         if date:
-            date = date.get()
+            date = self.get_from_regex(date.get(), 're_date')
 
-            regex = self.get_from_regex(date, 're_date')
-            date = regex if regex else None if 're_date' in self.get_selector_map() else date
-
-            if not regex:
+            if date:
                 date = date.replace('Released:', '').replace('Added:', '').strip()
 
-            return dateparser.parse(date).isoformat()
+                return dateparser.parse(date).isoformat()
 
         return None
 
     def get_image(self, response):
         image = self.process_xpath(response, self.get_selector_map('image'))
         if image:
-            image = image.get()
-            regex = self.get_from_regex(image, 're_image')
-            image = regex if regex else None if 're_image' in self.get_selector_map() else image
+            image = self.get_from_regex(image.get(), 're_image')
 
-            return self.format_link(response, image)
+            if image:
+                return self.format_link(response, image)
 
         return None
 
@@ -256,11 +248,7 @@ class BaseSceneScraper(scrapy.Spider):
         if 'trailer' in self.get_selector_map() and self.get_selector_map('trailer'):
             trailer = self.process_xpath(response, self.get_selector_map('trailer'))
             if trailer:
-                trailer = trailer.get()
-                regex = self.get_from_regex(trailer, 're_trailer')
-                trailer = regex if regex else None if 're_trailer' in self.get_selector_map() else trailer
-
-                return trailer
+                return self.get_from_regex(trailer.get(), 're_trailer')
 
         return ''
 
@@ -294,5 +282,7 @@ class BaseSceneScraper(scrapy.Spider):
             r = self.regex[re_name].search(text)
             if r:
                 return r.group(group)
+            else:
+                return None
 
-        return None
+        return text
