@@ -25,12 +25,14 @@ class BaseSceneScraper(scrapy.Spider):
             'tpdb.middlewares.TpdbSceneDownloaderMiddleware': 543,
         }
     }
-    
+
     regex = {
         'external_id': None,
         're_title': None,
         're_description': None,
         're_date': None,
+        're_image': None,
+        're_trailer': None,
     }
 
     def __init__(self, *args, **kwargs):
@@ -166,7 +168,7 @@ class BaseSceneScraper(scrapy.Spider):
             title = title.get()
             regex = self.get_from_regex(title, 're_title')
             title = regex if regex else title
-                
+
             return title.strip()
 
         return None
@@ -216,7 +218,11 @@ class BaseSceneScraper(scrapy.Spider):
     def get_image(self, response):
         image = self.process_xpath(response, self.get_selector_map('image'))
         if image:
-            return self.format_link(response, image.get())
+            image = image.get()
+            regex = self.get_from_regex(image, 're_image')
+            image = regex if regex else image
+
+            return self.format_link(response, image)
 
         return None
 
@@ -250,7 +256,11 @@ class BaseSceneScraper(scrapy.Spider):
         if 'trailer' in self.get_selector_map() and self.get_selector_map('trailer'):
             trailer = self.process_xpath(response, self.get_selector_map('trailer'))
             if trailer:
-                return trailer.get()
+                trailer = trailer.get()
+                regex = self.get_from_regex(trailer, 're_trailer')
+                trailer = regex if regex else trailer
+
+                return trailer
 
         return ''
 
