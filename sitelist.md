@@ -35,9 +35,16 @@ Scraper Site List
 |Bella Pass|Bella Pass|https://monroelee.com|networkBellaPassPerformer.py|
 |Bella Pass|Bella Pass|https://taliashepard.com|networkBellaPassPerformer.py|
 |Nubiles|Nubiles|https://nubiles.net|networkNubilesPerformer.py|
+|Povr|Povr|https://povr.com|networkPOVRPerformer.py|
 |Puffy Network|Puffy Network|https://www.puffynetwork.com|networkPuffyPerformer.py|
+|Airerose|Airerose|http://airerose.com|sireAirerosePerformer.py|
+|Bam Visions|Bam Visions|https://tour.bamvisions.com|siteBAMVisionsPerformer.py|
+|Baberotica|Baberotica|https://baberotica.com|siteBaberoticaPerformer.py|
+|Broken Babes|Broken Babes|https://www.brokenbabes.com|siteBrokenBabesPerformer.py|
+|Fitting Room|Fitting Room|https://www.fitting-room.com|siteFittingRoomPerformers.py|
 |Free Ones|Free Ones|https://freeones.ru|siteFreeOnesPerformer.py|
 |Dev8 Entertainment|Dev8 Entertainment|https://www.perfectgonzo.com|sitePerfectGonzoPerformer.py|
+|Vogov|Vogov|https://vogov.com|siteVogovPerformer.py|
 |Clubseventeen|Clubseventeen|https://www.clubseventeen.com|ClubSeventeen.py|
 |Clubseventeen|Clubseventeen|https://www.clubsweethearts.com|ClubSeventeen.py|
 |Femdom Empire|Femdom Empire|https://femdomempire.com|FemdomEmpire.py|
@@ -243,6 +250,7 @@ Scraper Site List
 |Interracialpass|Interracialpass|https://exploitedcollegegirls.com|networkInterracialPass.py|
 |Interracialpass|Interracialpass|https://www.ikissgirls.com|networkInterracialPass.py|
 |Javbus|Javbus|https://www.javbus.com|networkJavBus.py|
+|Hoh Limited|Lethalpass|https://www.lethalpass.com|networkLethalPass.py|
 |Metart||https://www.sexart.com|networkMetArt.py|
 |Metart||https://www.metart.com|networkMetArt.py|
 |Metart||https://www.vivthomas.com|networkMetArt.py|
@@ -286,6 +294,7 @@ Scraper Site List
 |Nubiles||https://teacherfucksteens.com|networkNubiles.py|
 |Nubiles||https://thatsitcomshow.com|networkNubiles.py|
 |1 Pass For All Sites||https://www.1passforallsites.com|networkOnePassForAllSites.py|
+|Povr|Povr|https://povr.com|networkPOVR.py|
 |Pornfidelity|Pornfidelity|https://www.pornfidelity.com|networkPornFidelity.py|
 |Pornpros||https://pornpros.com|networkPornPros.py|
 |Pornpros||https://tiny4k.com|networkPornPros.py|
@@ -457,20 +466,27 @@ Scraper Site List
 |Vna||https://povmania.com|networkVna.py|
 |Vna||https://girlgirlmania.com|networkVna.py|
 |Vna||https://womenbyjuliaann.com|networkVna.py|
+|Hoh Limited|Wankz|https://www.wankz.com|networkWankz.py|
 |Wow Girls||https://www.wowpornblog.com|networkWowNetwork.py|
 |Wow Girls||https://www.wowgirlsblog.com|networkWowNetwork.py|
 |Wow Girls||https://www.ultrafilms.xxx|networkWowNetwork.py|
 |Radical Entertainment|Ad4X|https://tour.ad4x.com|siteAD4X.py|
 |Abby Winters|Abby Winters|https://www.abbywinters.com|siteAbbyWinters.py|
+|Airerose|Airerose|http://airerose.com|siteAirerose.py|
 |Amateur Allure|Amateur Allure|https://www.amateurallure.com|siteAmateurAllure.py|
 |Amateur Boxxx|Amateur Boxxx|https://tour.amateurboxxx.com|siteAmateurBoxxx.py|
 |Anna Claire Clouds|Anna Claire Clouds|https://annaclaireclouds.com|siteAnnaClaireClouds.py|
 |Derangeddollars||https://www.assylum.com|siteAssylum.py|
+|Av Revenue|Baberotica|https://baberotica.com|siteBaberotica.py|
+|Bam Visions|Bam Visions|https://tour.bamvisions.com|siteBamVisions.py|
+|Bam Visions|Bam Visions|https://tour.bamvisions.com|siteBamVisionsBTS.py|
 |Bang Bros||https://bangbros.com|siteBangBros.py|
+|Broken Babes|Broken Babes|https://www.brokenbabes.com|siteBrokenBabes.py|
 |Derangeddollars|Derangeddollars|https://www.domthenation.com|siteDomTheNation.py|
 |Dorcel Club|Dorcel Club|https://www.dorcelclub.com|siteDorcelClub.py|
 |Evolved Fights|Evolved Fights|https://www.evolvedfights.com|siteEvolvedFights.py|
 |Evolved Fights|Evolved Fights|https://www.evolvedfightslez.com|siteEvolvedFights.py|
+|Fitting Room|Fitting Room|https://www.fitting-room.com|siteFittingRoom.py|
 |Girlsoutwest|Girlsoutwest|https://tour.girlsoutwest.com|siteGirlsOutWest.py|
 |Radical Entertainment|Hitzefrei|https://tour.hitzefrei.com|siteHitzefrei.py|
 |Hot Milfs Fuck|Hot Milfs Fuck|https://www.hotmilfsfuck.com|siteHotMilfsFuck.py|
@@ -495,6 +511,7 @@ Scraper Site List
 |Montys Pov|Montys Pov|http://www.montyspov.com|siteMontysPOV.py|
 |Radical Entertainment|Myboobs|https://tour.myboobs.eu|siteMyBoobs.py|
 |Only3X|Only3X|https://only3x.com|siteOnly3X.py|
+|Orgasm Abuse|Orgasm Abuse|https://www.orgasmabuse.com|siteOrgasmAbuse.py|
 |Dev8 Entertainment||https://www.perfectgonzo.com|sitePefectGonzo.py|
 |Dev8 Entertainment||https://www.sapphix.com|sitePefectGonzo.py|
 |Private|Private|https://www.private.com|sitePrivate.py|
@@ -505,5 +522,5 @@ Scraper Site List
 |Derangeddollars||https://www.slavemouth.com|siteSlavemouth.py|
 |Tonights Girlfriend|Tonights Girlfriend|https://www.tonightsgirlfriend.com|siteTonightsGirlfriend.py|
 |Tugpass||https://www.tugpass.com|siteTugPass.py|
+|Vogov|Vogov|https://vogov.com|siteVogov.py|
 |Radical Entertainment|Vrallure|https://vrallure.com|siteVrAllure.py|
-|Wankz||https://www.wankz.com|siteWankz.py|
