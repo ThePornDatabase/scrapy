@@ -172,23 +172,24 @@ Scraper Site List
 |Eros Arts|Eros Arts|https://www.taboohandjobs.com|networkErosArts.py|
 |Eros Arts|Eros Arts|https://www.taboopov.com|networkErosArts.py|
 |Fa Kings|Fa Kings|https://www.fakings.com|networkFakings.py|
-|Fullpornnetwork|Fullpornnetwork|https://analized.com|networkFullPorn.py|
-|Fullpornnetwork|Fullpornnetwork|https://jamesdeen.com|networkFullPorn.py|
-|Fullpornnetwork|Fullpornnetwork|https://twistedvisual.com|networkFullPorn.py|
-|Fullpornnetwork|Fullpornnetwork|https://onlyprince.com|networkFullPorn.py|
-|Fullpornnetwork|Fullpornnetwork|https://baddaddypov.com|networkFullPorn.py|
-|Fullpornnetwork|Fullpornnetwork|https://povperverts.net|networkFullPorn.py|
-|Fullpornnetwork|Fullpornnetwork|https://yourmomdoesporn.com|networkFullPorn.py|
-|Fullpornnetwork|Fullpornnetwork|https://yourmomdoesanal.com|networkFullPorn.py|
-|Fullpornnetwork|Fullpornnetwork|https://dtfsluts.com|networkFullPorn.py|
-|Fullpornnetwork|Fullpornnetwork|https://twistedvisual.com|networkFullPorn.py|
-|Fullpornnetwork|Fullpornnetwork|https://teenageanalsluts.com|networkFullPorn.py|
-|Fullpornnetwork|Fullpornnetwork|https://pervertgallery.com|networkFullPorn.py|
-|Fullpornnetwork|Fullpornnetwork|https://homemadeanalwhores.com|networkFullPorn.py|
-|Fullpornnetwork|Fullpornnetwork|https://hergape.com|networkFullPorn.py|
-|Fullpornnetwork|Fullpornnetwork|https://analviolation.com|networkFullPorn.py|
-|Fullpornnetwork|Fullpornnetwork|https://analbbc.com|networkFullPorn.py|
-|Fullpornnetwork|Fullpornnetwork|https://girlfaction.com|networkFullPorn.py|
+|Full Porn Network|Full Porn Network|https://analbbc.com|networkFullPorn.py|
+|Full Porn Network|Full Porn Network|https://analized.com|networkFullPorn.py|
+|Full Porn Network|Full Porn Network|https://analviolation.com|networkFullPorn.py|
+|Full Porn Network|Full Porn Network|https://baddaddypov.com|networkFullPorn.py|
+|Full Porn Network|Full Porn Network|https://downtofuckdating.com|networkFullPorn.py|
+|Full Porn Network|Full Porn Network|https://dtfsluts.com|networkFullPorn.py|
+|Full Porn Network|Full Porn Network|https://girlfaction.com|networkFullPorn.py|
+|Full Porn Network|Full Porn Network|https://hergape.com|networkFullPorn.py|
+|Full Porn Network|Full Porn Network|https://homemadeanalwhores.com|networkFullPorn.py|
+|Full Porn Network|Full Porn Network|https://jamesdeen.com|networkFullPorn.py|
+|Full Porn Network|Full Porn Network|https://mugfucked.com|networkFullPorn.py|
+|Full Porn Network|Full Porn Network|https://onlyprince.com|networkFullPorn.py|
+|Full Porn Network|Full Porn Network|https://pervertgallery.com|networkFullPorn.py|
+|Full Porn Network|Full Porn Network|https://povperverts.net|networkFullPorn.py|
+|Full Porn Network|Full Porn Network|https://teenageanalsluts.com|networkFullPorn.py|
+|Full Porn Network|Full Porn Network|https://twistedvisual.com|networkFullPorn.py|
+|Full Porn Network|Full Porn Network|https://yourmomdoesanal.com|networkFullPorn.py|
+|Full Porn Network|Full Porn Network|https://yourmomdoesporn.com|networkFullPorn.py|
 |Gammaenterprises||https://www.21sextreme.com|networkGammaEnterprises.py|
 |Gammaenterprises||https://www.blowpass.com|networkGammaEnterprises.py|
 |Gammaenterprises||https://www.famedigital.com|networkGammaEnterprises.py|
