@@ -45,25 +45,17 @@ Scraper Site List
 |Free Ones|Free Ones|https://freeones.ru|siteFreeOnesPerformer.py|
 |Dev8 Entertainment|Dev8 Entertainment|https://www.perfectgonzo.com|sitePerfectGonzoPerformer.py|
 |Vogov|Vogov|https://vogov.com|siteVogovPerformer.py|
-|Clubseventeen|Clubseventeen|https://www.clubseventeen.com|ClubSeventeen.py|
-|Clubseventeen|Clubseventeen|https://www.clubsweethearts.com|ClubSeventeen.py|
-|Femdom Empire|Femdom Empire|https://femdomempire.com|FemdomEmpire.py|
-|Femdom Empire|Femdom Empire|http://feminized.com|FemdomEmpire.py|
-|Legal Porno|Legal Porno|https://www.analvids.com|LegalPorno.py|
-|Legal Porno|Legal Porno|https://pornworld.com|LegalPorno.py|
-|Mindcontroltheatre|Mindcontroltheatre|https://mindcontroltheatre.com|MindControlTheatre.py|
-|Pornhub|||ModelHub.py|
 |New Sensations||https://www.newsensations.com|NewSensations.py|
 |5Kporn|5Kporn|https://www.5kporn.com|network5kPorn.py|
-|Adultempirecash|Adultempirecash|https://www.mypervyfamily.com|networkAdultEmpireCash.py|
-|Adultempirecash|Adultempirecash|https://jayspov.net|networkAdultEmpireCash.py|
-|Adultempirecash|Adultempirecash|https://www.filthykings.com|networkAdultEmpireCash.py|
-|Adultempirecash|Adultempirecash|https://thirdworldxxx.com|networkAdultEmpireCash.py|
-|Adultempirecash|Adultempirecash|https://latinoguysporn.com|networkAdultEmpireCash.py|
-|Adultempirecash|Adultempirecash|https://cospimps.com|networkAdultEmpireCash.py|
-|Adultempirecash|Adultempirecash|https://pmggirls.com|networkAdultEmpireCash.py|
-|Adultempirecash|Adultempirecash|https://www.lethalhardcore.com|networkAdultEmpireCash.py|
-|Adultempirecash|Adultempirecash|https://spankmonster.com|networkAdultEmpireCash.py|
+|Adultempirecash||https://www.mypervyfamily.com|networkAdultEmpireCash.py|
+|Adultempirecash||https://jayspov.net|networkAdultEmpireCash.py|
+|Adultempirecash||https://www.filthykings.com|networkAdultEmpireCash.py|
+|Adultempirecash||https://thirdworldxxx.com|networkAdultEmpireCash.py|
+|Adultempirecash||https://latinoguysporn.com|networkAdultEmpireCash.py|
+|Adultempirecash||https://cospimps.com|networkAdultEmpireCash.py|
+|Adultempirecash||https://pmggirls.com|networkAdultEmpireCash.py|
+|Adultempirecash||https://www.lethalhardcore.com|networkAdultEmpireCash.py|
+|Adultempirecash||https://spankmonster.com|networkAdultEmpireCash.py|
 |All Her Luv||https://www.allherluv.com|networkAllHerLuv.py|
 |All Her Luv||https://www.missax.com|networkAllHerLuv.py|
 |Andomark||https://ariellynn.com|networkAndomark.py|
@@ -109,69 +101,71 @@ Scraper Site List
 |Badoink Vr|Badoink Vr|https://vrcosplayx.com|networkBadoinkVr.py|
 |Badoink Vr|Badoink Vr|https://realvr.com|networkBadoinkVr.py|
 |Bang|Bang||networkBang.py|
-|Bangbros|Bangbros|http://xxxpawn.com|networkBangBrosOther.py|
-|Bangbros|Bangbros|http://blackpatrol.com|networkBangBrosOther.py|
-|Bangbros|Bangbros|http://blacksonmoms.com|networkBangBrosOther.py|
-|Bangbros|Bangbros|https://filthyfamily.com|networkBangBrosOther.py|
-|Bella Pass|Bella Pass|https://alexismonroe.com|networkBellaPass.py|
-|Bella Pass|Bella Pass|https://avadawn.com|networkBellaPass.py|
-|Bella Pass|Bella Pass|https://bellahd.com|networkBellaPass.py|
-|Bella Pass|Bella Pass|https://bellanextdoor.com|networkBellaPass.py|
-|Bella Pass|Bella Pass|https://bryci.com|networkBellaPass.py|
-|Bella Pass|Bella Pass|https://calicarter.com|networkBellaPass.py|
-|Bella Pass|Bella Pass|https://hd19.com|networkBellaPass.py|
-|Bella Pass|Bella Pass|https://hunterleigh.com|networkBellaPass.py|
-|Bella Pass|Bella Pass|https://janafox.com|networkBellaPass.py|
-|Bella Pass|Bella Pass|https://joeperv.com|networkBellaPass.py|
-|Bella Pass|Bella Pass|https://katiebanks.com|networkBellaPass.py|
-|Bella Pass|Bella Pass|https://monroelee.com|networkBellaPass.py|
-|Bella Pass|Bella Pass|https://taliashepard.com|networkBellaPass.py|
-|Cx Wow|Cx Wow|https://www.becomingfemme.com|networkCXWow.py|
-|Cx Wow|Cx Wow|https://www.pure-bbw.com|networkCXWow.py|
-|Cx Wow|Cx Wow|https://www.pure-ts.com|networkCXWow.py|
-|Cx Wow|Cx Wow|https://www.tspov.com|networkCXWow.py|
-|Cherry Pimps|Cherry Pimps|https://www.cherrypimps.com|networkCherryPimps.py|
-|Couplescinema|Couplescinema|https://www.couplescinema.com|networkCouplesCinema.py|
-|Czech Casting|Czech Casting|https://czechwifeswap.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechstreets.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechfantasy.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechtantra.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechpawnshop.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechmegaswingers.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechamateurs.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechcouples.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechmassage.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechharem.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechtoilets.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechbitch.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechgangbang.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechhomeorgy.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechorgasm.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechtaxi.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechparties.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechlesbians.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechsauna.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechestrogenolit.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechtwins.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechcabins.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechsnooper.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechdungeon.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechgardenparty.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechsolarium.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechsupermodels.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechexperiment.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechpool.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechgame.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechfirstvideo.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechbangbus.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechspy.com|networkCzechAv.py|
-|Czech Casting|Czech Casting|https://czechsharking.com|networkCzechAv.py|
-|Eros Arts|Eros Arts|https://www.jerkoffinstructions.com|networkErosArts.py|
-|Eros Arts|Eros Arts|https://www.sexpov.com|networkErosArts.py|
-|Eros Arts|Eros Arts|https://www.stepmomfun.com|networkErosArts.py|
-|Eros Arts|Eros Arts|https://www.taboohandjobs.com|networkErosArts.py|
-|Eros Arts|Eros Arts|https://www.taboopov.com|networkErosArts.py|
-|Fa Kings|Fa Kings|https://www.fakings.com|networkFakings.py|
+|Bangbros||http://xxxpawn.com|networkBangBrosOther.py|
+|Bangbros||http://blackpatrol.com|networkBangBrosOther.py|
+|Bangbros||http://blacksonmoms.com|networkBangBrosOther.py|
+|Bangbros||https://filthyfamily.com|networkBangBrosOther.py|
+|Bella Pass||https://alexismonroe.com|networkBellaPass.py|
+|Bella Pass||https://avadawn.com|networkBellaPass.py|
+|Bella Pass||https://bellahd.com|networkBellaPass.py|
+|Bella Pass||https://bellanextdoor.com|networkBellaPass.py|
+|Bella Pass||https://bryci.com|networkBellaPass.py|
+|Bella Pass||https://calicarter.com|networkBellaPass.py|
+|Bella Pass||https://hd19.com|networkBellaPass.py|
+|Bella Pass||https://hunterleigh.com|networkBellaPass.py|
+|Bella Pass||https://janafox.com|networkBellaPass.py|
+|Bella Pass||https://joeperv.com|networkBellaPass.py|
+|Bella Pass||https://katiebanks.com|networkBellaPass.py|
+|Bella Pass||https://monroelee.com|networkBellaPass.py|
+|Bella Pass||https://taliashepard.com|networkBellaPass.py|
+|Cx Wow||https://www.becomingfemme.com|networkCXWow.py|
+|Cx Wow||https://www.pure-bbw.com|networkCXWow.py|
+|Cx Wow||https://www.pure-ts.com|networkCXWow.py|
+|Cx Wow||https://www.tspov.com|networkCXWow.py|
+|Cherry Pimps||https://www.cherrypimps.com|networkCherryPimps.py|
+|Couplescinema||https://www.couplescinema.com|networkCouplesCinema.py|
+|Czech Casting||https://czechwifeswap.com|networkCzechAv.py|
+|Czech Casting||https://czechstreets.com|networkCzechAv.py|
+|Czech Casting||https://czechfantasy.com|networkCzechAv.py|
+|Czech Casting||https://czechtantra.com|networkCzechAv.py|
+|Czech Casting||https://czechpawnshop.com|networkCzechAv.py|
+|Czech Casting||https://czechmegaswingers.com|networkCzechAv.py|
+|Czech Casting||https://czechamateurs.com|networkCzechAv.py|
+|Czech Casting||https://czechcouples.com|networkCzechAv.py|
+|Czech Casting||https://czechmassage.com|networkCzechAv.py|
+|Czech Casting||https://czechharem.com|networkCzechAv.py|
+|Czech Casting||https://czechtoilets.com|networkCzechAv.py|
+|Czech Casting||https://czechbitch.com|networkCzechAv.py|
+|Czech Casting||https://czechgangbang.com|networkCzechAv.py|
+|Czech Casting||https://czechhomeorgy.com|networkCzechAv.py|
+|Czech Casting||https://czechorgasm.com|networkCzechAv.py|
+|Czech Casting||https://czechtaxi.com|networkCzechAv.py|
+|Czech Casting||https://czechparties.com|networkCzechAv.py|
+|Czech Casting||https://czechlesbians.com|networkCzechAv.py|
+|Czech Casting||https://czechsauna.com|networkCzechAv.py|
+|Czech Casting||https://czechestrogenolit.com|networkCzechAv.py|
+|Czech Casting||https://czechtwins.com|networkCzechAv.py|
+|Czech Casting||https://czechcabins.com|networkCzechAv.py|
+|Czech Casting||https://czechsnooper.com|networkCzechAv.py|
+|Czech Casting||https://czechdungeon.com|networkCzechAv.py|
+|Czech Casting||https://czechgardenparty.com|networkCzechAv.py|
+|Czech Casting||https://czechsolarium.com|networkCzechAv.py|
+|Czech Casting||https://czechsupermodels.com|networkCzechAv.py|
+|Czech Casting||https://czechexperiment.com|networkCzechAv.py|
+|Czech Casting||https://czechpool.com|networkCzechAv.py|
+|Czech Casting||https://czechgame.com|networkCzechAv.py|
+|Czech Casting||https://czechfirstvideo.com|networkCzechAv.py|
+|Czech Casting||https://czechbangbus.com|networkCzechAv.py|
+|Czech Casting||https://czechspy.com|networkCzechAv.py|
+|Czech Casting||https://czechsharking.com|networkCzechAv.py|
+|Eros Arts||https://www.jerkoffinstructions.com|networkErosArts.py|
+|Eros Arts||https://www.sexpov.com|networkErosArts.py|
+|Eros Arts||https://www.stepmomfun.com|networkErosArts.py|
+|Eros Arts||https://www.taboohandjobs.com|networkErosArts.py|
+|Eros Arts||https://www.taboopov.com|networkErosArts.py|
+|Fa Kings||https://www.fakings.com|networkFakings.py|
+|Femdom Empire||https://femdomempire.com|networkFemdomEmpire.py|
+|Femdom Empire||http://feminized.com|networkFemdomEmpire.py|
 |Full Porn Network|Full Porn Network|https://analbbc.com|networkFullPorn.py|
 |Full Porn Network|Full Porn Network|https://analized.com|networkFullPorn.py|
 |Full Porn Network|Full Porn Network|https://analviolation.com|networkFullPorn.py|
@@ -245,12 +239,14 @@ Scraper Site List
 |Gammaenterprises||https://www.trickyspa.com|networkGammaEnterprises.py|
 |Gammaenterprises||https://www.tsfactor.com|networkGammaEnterprises.py|
 |Insex Network|Insex Network|https://www.insexondemand.com|networkInsex.py|
-|Interracialpass|Interracialpass|https://www.interracialpass.com|networkInterracialPass.py|
-|Interracialpass|Interracialpass|https://www.backroomcastingcouch.com|networkInterracialPass.py|
-|Interracialpass|Interracialpass|https://blackambush.com|networkInterracialPass.py|
-|Interracialpass|Interracialpass|https://exploitedcollegegirls.com|networkInterracialPass.py|
-|Interracialpass|Interracialpass|https://www.ikissgirls.com|networkInterracialPass.py|
+|Interracialpass||https://www.interracialpass.com|networkInterracialPass.py|
+|Interracialpass||https://www.backroomcastingcouch.com|networkInterracialPass.py|
+|Interracialpass||https://blackambush.com|networkInterracialPass.py|
+|Interracialpass||https://exploitedcollegegirls.com|networkInterracialPass.py|
+|Interracialpass||https://www.ikissgirls.com|networkInterracialPass.py|
 |Javbus|Javbus|https://www.javbus.com|networkJavBus.py|
+|Legal Porno||https://www.analvids.com|networkLegalPorno.py|
+|Legal Porno||https://pornworld.com|networkLegalPorno.py|
 |Hoh Limited|Lethalpass|https://www.lethalpass.com|networkLethalPass.py|
 |Metart||https://www.sexart.com|networkMetArt.py|
 |Metart||https://www.metart.com|networkMetArt.py|
@@ -266,10 +262,11 @@ Scraper Site List
 |Metart||https://www.stunning18.com|networkMetArt.py|
 |Metart||https://www.thelifeerotic.com|networkMetArt.py|
 |Metart||https://www.hustler.com|networkMetArt.py|
+|Pornhub|||networkModelHub.py|
 |Naughty America|Naughty America|https://www.naughtyamerica.com|networkNaughtyAmerica.py|
-|Nomad Media|Aziani|https://www.aziani.com|networkNomadMedia.py|
-|Nomad Media|Aziani|https://www.gangbangcreampie.com|networkNomadMedia.py|
-|Nomad Media|Aziani|https://www.gloryholesecrets.com|networkNomadMedia.py|
+|Nomad Media||https://www.aziani.com|networkNomadMedia.py|
+|Nomad Media||https://www.gangbangcreampie.com|networkNomadMedia.py|
+|Nomad Media||https://www.gloryholesecrets.com|networkNomadMedia.py|
 |Nubiles||https://anilos.com|networkNubiles.py|
 |Nubiles||https://badteenspunished.com|networkNubiles.py|
 |Nubiles||https://bountyhunterporn.com|networkNubiles.py|
@@ -296,7 +293,7 @@ Scraper Site List
 |Nubiles||https://thatsitcomshow.com|networkNubiles.py|
 |1 Pass For All Sites||https://www.1passforallsites.com|networkOnePassForAllSites.py|
 |Povr|Povr|https://povr.com|networkPOVR.py|
-|Pornfidelity|Pornfidelity|https://www.pornfidelity.com|networkPornFidelity.py|
+|Pornfidelity||https://www.pornfidelity.com|networkPornFidelity.py|
 |Pornpros||https://pornpros.com|networkPornPros.py|
 |Pornpros||https://tiny4k.com|networkPornPros.py|
 |Pornpros||https://povd.com|networkPornPros.py|
@@ -373,7 +370,7 @@ Scraper Site List
 |Mindgeek||https://www.twistys.com|networkProjectOneService.py|
 |Mindgeek||https://www.welivetogether.com|networkProjectOneService.py|
 |Mindgeek||https://www.whynotbi.com|networkProjectOneService.py|
-|Puffy Network|Puffy Network|https://www.puffynetwork.com|networkPuffy.py|
+|Puffy Network||https://www.puffynetwork.com|networkPuffy.py|
 |Scorepass||https://www.18eighteen.com|networkScorePass.py|
 |Scorepass||https://www.40somethingmag.com|networkScorePass.py|
 |Scorepass||https://www.50plusmilfs.com|networkScorePass.py|
@@ -398,39 +395,38 @@ Scraper Site List
 |Scorepass||https://www.desiraesworld.com|networkScorePass.py|
 |Scorepass||https://www.evanottyvideos.com|networkScorePass.py|
 |Scorepass||https://www.grannygetsafacial.com|networkScorePass.py|
-|Sexlikereal|Sexlikereal|https://www.sexlikereal.com|networkSexLikeReal.py|
-|Spizoo|Spizoo|https://firstclasspov.com|networkSpizoo.py|
-|Spizoo|Spizoo|https://mrluckypov.com|networkSpizoo.py|
-|Spizoo|Spizoo|https://rawattack.com|networkSpizoo.py|
-|Spizoo|Spizoo|https://realsensual.com|networkSpizoo.py|
-|Spizoo|Spizoo|https://www.spizoo.com|networkSpizoo.py|
-|Stepped Up|Stepped Up|https://tour.swallowed.com|networkSteppedUp.py|
-|Stepped Up|Stepped Up|https://tour.nympho.com|networkSteppedUp.py|
-|Stepped Up|Stepped Up|https://tour.trueanal.com|networkSteppedUp.py|
-|Stepped Up|Stepped Up|https://tour.allanal.com|networkSteppedUp.py|
-|Stepped Up|Stepped Up|https://tour.analonly.com|networkSteppedUp.py|
-|Teamskeet|Teamskeet||networkTeamSkeet.py|
-|Teenmegaworld|Teenmegaworld|https://teenmegaworld.net|networkTeenMegaWorld.py|
-|Teenmegaworld|Teenmegaworld|http://rawcouples.com|networkTeenMegaWorld.py|
-|Teenmegaworld|Teenmegaworld|http://anal-angels.com|networkTeenMegaWorld.py|
-|Teenmegaworld|Teenmegaworld|http://anal-beauty.com|networkTeenMegaWorld.py|
-|Teenmegaworld|Teenmegaworld|http://beauty4k.com|networkTeenMegaWorld.py|
-|Teenmegaworld|Teenmegaworld|http://beauty-angels.com|networkTeenMegaWorld.py|
-|Teenmegaworld|Teenmegaworld|http://creampie-angels.com|networkTeenMegaWorld.py|
-|Teenmegaworld|Teenmegaworld|http://dirty-coach.com|networkTeenMegaWorld.py|
-|Teenmegaworld|Teenmegaworld|http://dirty-doctor.com|networkTeenMegaWorld.py|
-|Teenmegaworld|Teenmegaworld|http://firstbgg.com|networkTeenMegaWorld.py|
-|Teenmegaworld|Teenmegaworld|http://fuckstudies.com|networkTeenMegaWorld.py|
-|Teenmegaworld|Teenmegaworld|http://gag-n-gape.com|networkTeenMegaWorld.py|
-|Teenmegaworld|Teenmegaworld|http://lollyhardcore.com|networkTeenMegaWorld.py|
-|Teenmegaworld|Teenmegaworld|http://noboring.com|networkTeenMegaWorld.py|
-|Teenmegaworld|Teenmegaworld|http://nubilegirlshd.com|networkTeenMegaWorld.py|
-|Teenmegaworld|Teenmegaworld|http://old-n-young.com|networkTeenMegaWorld.py|
-|Teenmegaworld|Teenmegaworld|http://soloteengirls.net|networkTeenMegaWorld.py|
-|Teenmegaworld|Teenmegaworld|http://teensexmania.com|networkTeenMegaWorld.py|
-|Teenmegaworld|Teenmegaworld|http://trickymasseur.com|networkTeenMegaWorld.py|
-|Teenmegaworld|Teenmegaworld|http://x-angels.com|networkTeenMegaWorld.py|
-|Teenmegaworld|Teenmegaworld|http://teensexmovs.com|networkTeenMegaWorld.py|
+|Spizoo||https://firstclasspov.com|networkSpizoo.py|
+|Spizoo||https://mrluckypov.com|networkSpizoo.py|
+|Spizoo||https://rawattack.com|networkSpizoo.py|
+|Spizoo||https://realsensual.com|networkSpizoo.py|
+|Spizoo||https://www.spizoo.com|networkSpizoo.py|
+|Stepped Up||https://tour.swallowed.com|networkSteppedUp.py|
+|Stepped Up||https://tour.nympho.com|networkSteppedUp.py|
+|Stepped Up||https://tour.trueanal.com|networkSteppedUp.py|
+|Stepped Up||https://tour.allanal.com|networkSteppedUp.py|
+|Stepped Up||https://tour.analonly.com|networkSteppedUp.py|
+|Teamskeet|||networkTeamSkeet.py|
+|Teenmegaworld||https://teenmegaworld.net|networkTeenMegaWorld.py|
+|Teenmegaworld||http://rawcouples.com|networkTeenMegaWorld.py|
+|Teenmegaworld||http://anal-angels.com|networkTeenMegaWorld.py|
+|Teenmegaworld||http://anal-beauty.com|networkTeenMegaWorld.py|
+|Teenmegaworld||http://beauty4k.com|networkTeenMegaWorld.py|
+|Teenmegaworld||http://beauty-angels.com|networkTeenMegaWorld.py|
+|Teenmegaworld||http://creampie-angels.com|networkTeenMegaWorld.py|
+|Teenmegaworld||http://dirty-coach.com|networkTeenMegaWorld.py|
+|Teenmegaworld||http://dirty-doctor.com|networkTeenMegaWorld.py|
+|Teenmegaworld||http://firstbgg.com|networkTeenMegaWorld.py|
+|Teenmegaworld||http://fuckstudies.com|networkTeenMegaWorld.py|
+|Teenmegaworld||http://gag-n-gape.com|networkTeenMegaWorld.py|
+|Teenmegaworld||http://lollyhardcore.com|networkTeenMegaWorld.py|
+|Teenmegaworld||http://noboring.com|networkTeenMegaWorld.py|
+|Teenmegaworld||http://nubilegirlshd.com|networkTeenMegaWorld.py|
+|Teenmegaworld||http://old-n-young.com|networkTeenMegaWorld.py|
+|Teenmegaworld||http://soloteengirls.net|networkTeenMegaWorld.py|
+|Teenmegaworld||http://teensexmania.com|networkTeenMegaWorld.py|
+|Teenmegaworld||http://trickymasseur.com|networkTeenMegaWorld.py|
+|Teenmegaworld||http://x-angels.com|networkTeenMegaWorld.py|
+|Teenmegaworld||http://teensexmovs.com|networkTeenMegaWorld.py|
 |Vixen||https://vixen.com|networkVixen.py|
 |Vixen||https://www.blacked.com|networkVixen.py|
 |Vixen||https://www.tushy.com|networkVixen.py|
@@ -467,12 +463,12 @@ Scraper Site List
 |Vna||https://povmania.com|networkVna.py|
 |Vna||https://girlgirlmania.com|networkVna.py|
 |Vna||https://womenbyjuliaann.com|networkVna.py|
-|Hoh Limited|Wankz|https://www.wankz.com|networkWankz.py|
+|Wankz||https://www.wankz.com|networkWankz.py|
 |Wow Girls||https://www.wowpornblog.com|networkWowNetwork.py|
 |Wow Girls||https://www.wowgirlsblog.com|networkWowNetwork.py|
 |Wow Girls||https://www.ultrafilms.xxx|networkWowNetwork.py|
-|Radical Entertainment|Ad4X|https://tour.ad4x.com|siteAD4X.py|
-|Abby Winters|Abby Winters|https://www.abbywinters.com|siteAbbyWinters.py|
+|Radical Entertainment||https://tour.ad4x.com|siteAD4X.py|
+|Abby Winters||https://www.abbywinters.com|siteAbbyWinters.py|
 |Airerose|Airerose|http://airerose.com|siteAirerose.py|
 |Amateur Allure|Amateur Allure|https://www.amateurallure.com|siteAmateurAllure.py|
 |Amateur Boxxx|Amateur Boxxx|https://tour.amateurboxxx.com|siteAmateurBoxxx.py|
@@ -483,39 +479,41 @@ Scraper Site List
 |Bam Visions|Bam Visions|https://tour.bamvisions.com|siteBamVisionsBTS.py|
 |Bang Bros||https://bangbros.com|siteBangBros.py|
 |Broken Babes|Broken Babes|https://www.brokenbabes.com|siteBrokenBabes.py|
+|Clubseventeen|Clubseventeen|https://www.clubseventeen.com|siteClubSeventeen.py|
 |Derangeddollars|Derangeddollars|https://www.domthenation.com|siteDomTheNation.py|
 |Dorcel Club|Dorcel Club|https://www.dorcelclub.com|siteDorcelClub.py|
-|Evolved Fights|Evolved Fights|https://www.evolvedfights.com|siteEvolvedFights.py|
-|Evolved Fights|Evolved Fights|https://www.evolvedfightslez.com|siteEvolvedFights.py|
+|Evolved Fights||https://www.evolvedfights.com|siteEvolvedFights.py|
+|Evolved Fights||https://www.evolvedfightslez.com|siteEvolvedFights.py|
 |Fitting Room|Fitting Room|https://www.fitting-room.com|siteFittingRoom.py|
 |Girlsoutwest|Girlsoutwest|https://tour.girlsoutwest.com|siteGirlsOutWest.py|
 |Radical Entertainment|Hitzefrei|https://tour.hitzefrei.com|siteHitzefrei.py|
 |Hot Milfs Fuck|Hot Milfs Fuck|https://www.hotmilfsfuck.com|siteHotMilfsFuck.py|
 |Hucows|Hucows|https://www.hucows.com|siteHucows.py|
 |Hushpass|Hushpass|https://hushpass.com|siteHushpass.py|
-|Hussiepass|Hussiepass|https://www.hussiepass.com|siteHussiepass.py|
-|Hussiepass|Hussiepass|https://povpornstars.com|siteHussiepass.py|
-|Hussiepass|Hussiepass|https://seehimfuck.com|siteHussiepass.py|
+|Hussiepass||https://www.hussiepass.com|siteHussiepass.py|
+|Hussiepass||https://povpornstars.com|siteHussiepass.py|
+|Hussiepass||https://seehimfuck.com|siteHussiepass.py|
 |Jimslip||https://www.jimslip.com|siteJimSlip.py|
 |Joymii|Joymii|https://joymii.com|siteJoymii.py|
-|Julesjordan|Julesjordan|https://www.julesjordan.com|siteJulesJordan.py|
-|Julesjordan|Julesjordan|https://www.manuelferrara.com|siteJulesJordan.py|
-|Julesjordan|Julesjordan|https://www.theassfactory.com|siteJulesJordan.py|
-|Julesjordan|Julesjordan|https://www.spermswallowers.com|siteJulesJordan.py|
-|Julesjordan|Julesjordan|https://www.girlgirl.com|siteJulesJordan.py|
-|Karups|Karups|https://www.karups.com|siteKarups.py|
-|Kink|Kink||siteKink.py|
+|Julesjordan||https://www.julesjordan.com|siteJulesJordan.py|
+|Julesjordan||https://www.manuelferrara.com|siteJulesJordan.py|
+|Julesjordan||https://www.theassfactory.com|siteJulesJordan.py|
+|Julesjordan||https://www.spermswallowers.com|siteJulesJordan.py|
+|Julesjordan||https://www.girlgirl.com|siteJulesJordan.py|
+|Karups||https://www.karups.com|siteKarups.py|
+|Kink|||siteKink.py|
 |Letsdoeit||https://www.letsdoeit.com|siteLetsDoeIt.py|
 |Little Caprice Dreams||https://www.littlecaprice-dreams.com|siteLittleCaprice.py|
 |Radical Entertainment|Madeincanada|http://tour.madeincanada.xxx|siteMadeInCanada.py|
 |||http://www.magmafilm.tv|siteMagmaFilm.py|
+|Mindcontroltheatre|Mindcontroltheatre|https://mindcontroltheatre.com|siteMindControlTheatre.py|
 |Montys Pov|Montys Pov|http://www.montyspov.com|siteMontysPOV.py|
 |Radical Entertainment|Myboobs|https://tour.myboobs.eu|siteMyBoobs.py|
 |Only3X|Only3X|https://only3x.com|siteOnly3X.py|
 |Orgasm Abuse|Orgasm Abuse|https://www.orgasmabuse.com|siteOrgasmAbuse.py|
 |Dev8 Entertainment||https://www.perfectgonzo.com|sitePefectGonzo.py|
 |Dev8 Entertainment||https://www.sapphix.com|sitePefectGonzo.py|
-|Private|Private|https://www.private.com|sitePrivate.py|
+|Private||https://www.private.com|sitePrivate.py|
 |Producers Fun|Producers Fun|https://producersfun.com|siteProducersFun.py|
 |Radical Entertainment|Purgatoryx|https://tour.purgatoryx.com|sitePurgatoryX.py|
 |Sexmex|Sexmex|https://sexmex.xxx|siteSexMex.py|
