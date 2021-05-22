@@ -386,6 +386,7 @@ Scraper Site List
 |Scorepass||https://www.bigboobbundle.com|networkScorePass.py|
 |Scorepass||https://www.milfbundle.com|networkScorePass.py|
 |Scorepass||https://www.pornmegaload.com|networkScorePass.py|
+|Sexlikereal||https://www.sexlikereal.com|networkSexLikeRealAlt.py|
 |Spizoo||https://firstclasspov.com|networkSpizoo.py|
 |Spizoo||https://mrluckypov.com|networkSpizoo.py|
 |Spizoo||https://rawattack.com|networkSpizoo.py|
