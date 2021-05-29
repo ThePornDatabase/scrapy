@@ -5,6 +5,8 @@ from pathlib import Path
 import requests
 
 from scrapy.http import HtmlResponse
+from scrapy import spiderloader
+from scrapy.utils import project
 from PySide2.QtUiTools import QUiLoader
 from PySide2.QtWidgets import QApplication, QStyleFactory, QTreeWidgetItem
 from PySide2.QtCore import QFile, QIODevice
@@ -15,9 +17,7 @@ from tpdb.BaseSceneScraper import BaseSceneScraper
 class GUI():
     request = None
     response = None
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36',
-    }
+    headers = {}
 
     def __init__(self):
         app = QApplication(sys.argv)
@@ -37,6 +37,7 @@ class GUI():
             sys.exit(-1)
 
         self.connect()
+        self.setting()
 
         self.window.show()
 
@@ -45,6 +46,10 @@ class GUI():
     def connect(self):
         self.window.pushButton.pressed.connect(self.load)
         self.window.lineEdit_2.editingFinished.connect(self.get)
+
+    def setting(self):
+        settings = project.get_project_settings()
+        self.headers['User-Agent'] = settings.get('USER_AGENT', default='Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36')
 
     def load(self):
         self.response = None
