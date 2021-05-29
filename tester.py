@@ -5,7 +5,6 @@ from pathlib import Path
 import requests
 
 from scrapy.http import HtmlResponse
-from scrapy import spiderloader
 from scrapy.utils import project
 from PySide2.QtUiTools import QUiLoader
 from PySide2.QtWidgets import QApplication, QStyleFactory, QTreeWidgetItem
@@ -67,11 +66,15 @@ class GUI():
             self.window.plainTextEdit.setPlainText(self.request.text)
 
     def get(self):
+        result = None
         self.window.treeWidget.clear()
 
         selector = self.window.lineEdit_2.text().strip()
         if self.response:
-            result = BaseSceneScraper.process_xpath(self, self.response, selector)
+            try:
+                result = BaseSceneScraper.process_xpath(self, self.response, selector)
+            except:
+                pass
 
         if result:
             self.window.lineEdit_3.setText(result.get().strip())
