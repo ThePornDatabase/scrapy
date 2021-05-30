@@ -510,6 +510,7 @@ Scraper Site List
 |Producers Fun|Producers Fun|https://producersfun.com|siteProducersFun.py|
 |Radical Entertainment|Purgatoryx|https://tour.purgatoryx.com|sitePurgatoryX.py|
 |Sexmex|Sexmex|https://sexmex.xxx|siteSexMex.py|
+|She Loves Black||https://www.shelovesblack.com|siteSheLovesBlack.py|
 |Sinematica|Sinematica|https://www.sinematica.com|siteSinematica.py|
 |Derangeddollars||https://www.slavemouth.com|siteSlavemouth.py|
 |Tonights Girlfriend|Tonights Girlfriend|https://www.tonightsgirlfriend.com|siteTonightsGirlfriend.py|
