@@ -46,6 +46,7 @@ Scraper Site List
 |Dev8 Entertainment|Dev8 Entertainment|https://www.perfectgonzo.com|sitePerfectGonzoPerformer.py|
 |Vogov|Vogov|https://vogov.com|siteVogovPerformer.py|
 |New Sensations||https://www.newsensations.com|NewSensations.py|
+|Adult Dvd Empire||https://www.adultdvdempire.com|moviesAdultDVDEmpire.py|
 |5Kporn|5Kporn|https://www.5kporn.com|network5kPorn.py|
 |Adultempirecash||https://www.mypervyfamily.com|networkAdultEmpireCash.py|
 |Adultempirecash||https://jayspov.net|networkAdultEmpireCash.py|
@@ -517,3 +518,4 @@ Scraper Site List
 |Tugpass||https://www.tugpass.com|siteTugPass.py|
 |Vogov|Vogov|https://vogov.com|siteVogov.py|
 |Radical Entertainment|Vrallure|https://vrallure.com|siteVrAllure.py|
+|Watch4Beauty||https://watch4beauty.com|siteWatch4Beauty.py|
