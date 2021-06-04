@@ -44,6 +44,7 @@ Scraper Site List
 |Fitting Room|Fitting Room|https://www.fitting-room.com|siteFittingRoomPerformers.py|
 |Free Ones|Free Ones|https://freeones.ru|siteFreeOnesPerformer.py|
 |Dev8 Entertainment|Dev8 Entertainment|https://www.perfectgonzo.com|sitePerfectGonzoPerformer.py|
+|Spankmonster|Spankmonster|https://spankmonster.com|siteSpankmonsterPerformer.py|
 |Vogov|Vogov|https://vogov.com|siteVogovPerformer.py|
 |New Sensations||https://www.newsensations.com|NewSensations.py|
 |Adult Dvd Empire||https://www.adultdvdempire.com|moviesAdultDVDEmpire.py|
@@ -514,6 +515,7 @@ Scraper Site List
 |She Loves Black||https://www.shelovesblack.com|siteSheLovesBlack.py|
 |Sinematica|Sinematica|https://www.sinematica.com|siteSinematica.py|
 |Derangeddollars||https://www.slavemouth.com|siteSlavemouth.py|
+|Spankmonster|Spankmonster|https://spankmonster.com|siteSpankmonster.py|
 |Tonights Girlfriend|Tonights Girlfriend|https://www.tonightsgirlfriend.com|siteTonightsGirlfriend.py|
 |Tugpass||https://www.tugpass.com|siteTugPass.py|
 |Vogov|Vogov|https://vogov.com|siteVogov.py|
