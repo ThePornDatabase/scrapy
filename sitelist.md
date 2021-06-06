@@ -422,12 +422,12 @@ Scraper Site List
 |Teenmegaworld||http://trickymasseur.com|networkTeenMegaWorld.py|
 |Teenmegaworld||http://x-angels.com|networkTeenMegaWorld.py|
 |Teenmegaworld||http://teensexmovs.com|networkTeenMegaWorld.py|
-|Vixen||https://vixen.com|networkVixen.py|
+|Vixen||https://www.vixen.com|networkVixen.py|
 |Vixen||https://www.blacked.com|networkVixen.py|
 |Vixen||https://www.tushy.com|networkVixen.py|
 |Vixen||https://www.blackedraw.com|networkVixen.py|
 |Vixen||https://www.tushyraw.com|networkVixen.py|
-|Vixen||https://deeper.com|networkVixen.py|
+|Vixen||https://www.deeper.com|networkVixen.py|
 |Vna||https://www.allanalallthetime.com|networkVna.py|
 |Vna||https://kimberleelive.com|networkVna.py|
 |Vna||https://shandafay.com|networkVna.py|
