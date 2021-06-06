@@ -37,13 +37,17 @@ Scraper Site List
 |Nubiles|Nubiles|https://nubiles.net|networkNubilesPerformer.py|
 |Povr|Povr|https://povr.com|networkPOVRPerformer.py|
 |Puffy Network|Puffy Network|https://www.puffynetwork.com|networkPuffyPerformer.py|
+|Topwebmodels||https://tour.topwebmodels.com|networkTopWebModelsPerformer.py|
 |Airerose|Airerose|http://airerose.com|sireAirerosePerformer.py|
 |Bam Visions|Bam Visions|https://tour.bamvisions.com|siteBAMVisionsPerformer.py|
+|Babe Archive|Babe Archive|https://www.babearchive.com|siteBabeArchivePerformer.py|
 |Baberotica|Baberotica|https://baberotica.com|siteBaberoticaPerformer.py|
 |Broken Babes|Broken Babes|https://www.brokenbabes.com|siteBrokenBabesPerformer.py|
+|Exposed Whores|Exposed Whores|https://exposedwhores.com|siteExposedWhoresPerformer.py|
 |Fitting Room|Fitting Room|https://www.fitting-room.com|siteFittingRoomPerformers.py|
 |Free Ones|Free Ones|https://freeones.ru|siteFreeOnesPerformer.py|
 |Dev8 Entertainment|Dev8 Entertainment|https://www.perfectgonzo.com|sitePerfectGonzoPerformer.py|
+|||https://philavise.com|sitePhilavisePerformer.py|
 |Spankmonster|Spankmonster|https://spankmonster.com|siteSpankmonsterPerformer.py|
 |Vogov|Vogov|https://vogov.com|siteVogovPerformer.py|
 |New Sensations||https://www.newsensations.com|NewSensations.py|
@@ -75,6 +79,7 @@ Scraper Site List
 |Andomark||https://www.houseofyre.com|networkAndomark.py|
 |Andomark||https://internationalnudes.com|networkAndomark.py|
 |Andomark||https://johnnygoodluck.com|networkAndomark.py|
+|Andomark||https://laurenphillips.com|networkAndomark.py|
 |Andomark||https://www.meanawolf.com|networkAndomark.py|
 |Andomark||https://www.minkaxxx.com|networkAndomark.py|
 |Andomark||https://oldsexygrannies.com|networkAndomark.py|
@@ -296,21 +301,21 @@ Scraper Site List
 |1 Pass For All Sites||https://www.1passforallsites.com|networkOnePassForAllSites.py|
 |Povr|Povr|https://povr.com|networkPOVR.py|
 |Pornfidelity||https://www.pornfidelity.com|networkPornFidelity.py|
-|Pornpros||https://pornpros.com|networkPornPros.py|
-|Pornpros||https://tiny4k.com|networkPornPros.py|
-|Pornpros||https://povd.com|networkPornPros.py|
-|Pornpros||https://passion-hd.com|networkPornPros.py|
+|Pornpros||https://anal4k.com|networkPornPros.py|
 |Pornpros||https://castingcouch-x.com|networkPornPros.py|
-|Pornpros||https://exotic4k.com|networkPornPros.py|
-|Pornpros||https://puremature.com|networkPornPros.py|
-|Pornpros||https://fantasyhd.com|networkPornPros.py|
-|Pornpros||https://holed.com|networkPornPros.py|
 |Pornpros||https://cum4k.com|networkPornPros.py|
+|Pornpros||https://exotic4k.com|networkPornPros.py|
+|Pornpros||https://fantasyhd.com|networkPornPros.py|
+|Pornpros||https://girlcum.com|networkPornPros.py|
+|Pornpros||https://holed.com|networkPornPros.py|
 |Pornpros||https://lubed.com|networkPornPros.py|
 |Pornpros||https://myveryfirsttime.com|networkPornPros.py|
-|Pornpros||https://girlcum.com|networkPornPros.py|
-|Pornpros||https://spyfam.com|networkPornPros.py|
 |Pornpros||https://nannyspy.com|networkPornPros.py|
+|Pornpros||https://pornpros.com|networkPornPros.py|
+|Pornpros||https://povd.com|networkPornPros.py|
+|Pornpros||https://puremature.com|networkPornPros.py|
+|Pornpros||https://spyfam.com|networkPornPros.py|
+|Pornpros||https://tiny4k.com|networkPornPros.py|
 |Ddfnetwork||https://1by-day.com|networkPornWorld.py|
 |Ddfnetwork||https://ddfbusty.com|networkPornWorld.py|
 |Ddfnetwork||https://eurogirlsongirls.com|networkPornWorld.py|
@@ -422,41 +427,45 @@ Scraper Site List
 |Teenmegaworld||http://trickymasseur.com|networkTeenMegaWorld.py|
 |Teenmegaworld||http://x-angels.com|networkTeenMegaWorld.py|
 |Teenmegaworld||http://teensexmovs.com|networkTeenMegaWorld.py|
+|Topwebmodels||https://tour.topwebmodels.com|networkTopWebModels.py|
 |Vixen||https://www.vixen.com|networkVixen.py|
 |Vixen||https://www.blacked.com|networkVixen.py|
 |Vixen||https://www.tushy.com|networkVixen.py|
 |Vixen||https://www.blackedraw.com|networkVixen.py|
 |Vixen||https://www.tushyraw.com|networkVixen.py|
 |Vixen||https://www.deeper.com|networkVixen.py|
+|Vna||https://alexlegend.com|networkVna.py|
 |Vna||https://www.allanalallthetime.com|networkVna.py|
-|Vna||https://kimberleelive.com|networkVna.py|
-|Vna||https://shandafay.com|networkVna.py|
-|Vna||https://sarajay.com|networkVna.py|
+|Vna||https://angelinacastrolive.com|networkVna.py|
 |Vna||https://carmenvalentina.com|networkVna.py|
 |Vna||https://charleechaselive.com|networkVna.py|
-|Vna||https://gabbyquinteros.com|networkVna.py|
-|Vna||https://angelinacastrolive.com|networkVna.py|
-|Vna||https://juliaannlive.com|networkVna.py|
-|Vna||https://sunnylanelive.com|networkVna.py|
-|Vna||https://pumaswedexxx.com|networkVna.py|
-|Vna||https://sophiedeelive.com|networkVna.py|
-|Vna||https://itscleolive.com|networkVna.py|
-|Vna||https://maggiegreenlive.com|networkVna.py|
-|Vna||https://tashareign.com|networkVna.py|
-|Vna||https://jelenajensen.com|networkVna.py|
-|Vna||https://pennypaxlive.com|networkVna.py|
-|Vna||https://alexlegend.com|networkVna.py|
-|Vna||https://sexmywife.com|networkVna.py|
-|Vna||https://rubberdoll.net|networkVna.py|
-|Vna||https://fuckedfeet.com|networkVna.py|
-|Vna||https://ninakayy.com|networkVna.py|
-|Vna||https://romemajor.com|networkVna.py|
-|Vna||https://siripornstar.com|networkVna.py|
-|Vna||https://kink305.com|networkVna.py|
 |Vna||https://foxxedup.com|networkVna.py|
-|Vna||https://kendrajames.com|networkVna.py|
-|Vna||https://povmania.com|networkVna.py|
+|Vna||https://fuckedfeet.com|networkVna.py|
+|Vna||https://gabbyquinteros.com|networkVna.py|
 |Vna||https://girlgirlmania.com|networkVna.py|
+|Vna||https://itscleolive.com|networkVna.py|
+|Vna||https://jelenajensen.com|networkVna.py|
+|Vna||https://juliaannlive.com|networkVna.py|
+|Vna||https://kaylapaigelive.com|networkVna.py|
+|Vna||https://kendrajames.com|networkVna.py|
+|Vna||https://kimberleelive.com|networkVna.py|
+|Vna||https://kink305.com|networkVna.py|
+|Vna||https://maggiegreenlive.com|networkVna.py|
+|Vna||https://maxinex.com|networkVna.py|
+|Vna||https://ninakayy.com|networkVna.py|
+|Vna||https://pennypaxlive.com|networkVna.py|
+|Vna||https://povmania.com|networkVna.py|
+|Vna||https://pumaswedexxx.com|networkVna.py|
+|Vna||https://romemajor.com|networkVna.py|
+|Vna||https://rubberdoll.net|networkVna.py|
+|Vna||https://sarajay.com|networkVna.py|
+|Vna||https://sexmywife.com|networkVna.py|
+|Vna||https://shandafay.com|networkVna.py|
+|Vna||https://siripornstar.com|networkVna.py|
+|Vna||https://sophiedeelive.com|networkVna.py|
+|Vna||https://sunnylanelive.com|networkVna.py|
+|Vna||https://tashareign.com|networkVna.py|
+|Vna||https://vickyathome.com|networkVna.py|
 |Vna||https://womenbyjuliaann.com|networkVna.py|
 |Wankz||https://www.wankz.com|networkWankz.py|
 |Wow Girls||https://www.wowpornblog.com|networkWowNetwork.py|
@@ -469,6 +478,7 @@ Scraper Site List
 |Amateur Boxxx|Amateur Boxxx|https://tour.amateurboxxx.com|siteAmateurBoxxx.py|
 |Anna Claire Clouds|Anna Claire Clouds|https://annaclaireclouds.com|siteAnnaClaireClouds.py|
 |Derangeddollars||https://www.assylum.com|siteAssylum.py|
+|Babe Archives|Babe Archives|https://babearchives.com|siteBabeArchives.py|
 |Av Revenue|Baberotica|https://baberotica.com|siteBaberotica.py|
 |Bam Visions|Bam Visions|https://tour.bamvisions.com|siteBamVisions.py|
 |Bam Visions|Bam Visions|https://tour.bamvisions.com|siteBamVisionsBTS.py|
@@ -479,6 +489,8 @@ Scraper Site List
 |Dorcel Club|Dorcel Club|https://www.dorcelclub.com|siteDorcelClub.py|
 |Evolved Fights||https://www.evolvedfights.com|siteEvolvedFights.py|
 |Evolved Fights||https://www.evolvedfightslez.com|siteEvolvedFights.py|
+|Exposed Whores|Exposed Whores|https://exposedwhores.com|siteExposedWhores.py|
+|Familytherapyxxx|Familytherapyxxx|https://familytherapyxxx.com|siteFamilyTherapyXXX.py|
 |Fitting Room|Fitting Room|https://www.fitting-room.com|siteFittingRoom.py|
 |Girlsoutwest|Girlsoutwest|https://tour.girlsoutwest.com|siteGirlsOutWest.py|
 |Radical Entertainment|Hitzefrei|https://tour.hitzefrei.com|siteHitzefrei.py|
@@ -508,6 +520,7 @@ Scraper Site List
 |Orgasm Abuse|Orgasm Abuse|https://www.orgasmabuse.com|siteOrgasmAbuse.py|
 |Dev8 Entertainment||https://www.perfectgonzo.com|sitePefectGonzo.py|
 |Dev8 Entertainment||https://www.sapphix.com|sitePefectGonzo.py|
+|Philavise|Philavise|https://www.philavise.com|sitePhilavise.py|
 |Private||https://www.private.com|sitePrivate.py|
 |Producers Fun|Producers Fun|https://producersfun.com|siteProducersFun.py|
 |Radical Entertainment|Purgatoryx|https://tour.purgatoryx.com|sitePurgatoryX.py|
