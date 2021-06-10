@@ -492,6 +492,7 @@ Scraper Site List
 |Evolved Fights||https://www.evolvedfights.com|siteEvolvedFights.py|
 |Evolved Fights||https://www.evolvedfightslez.com|siteEvolvedFights.py|
 |Exposed Whores|Exposed Whores|https://exposedwhores.com|siteExposedWhores.py|
+|Tugpass||https://www.familylust.com|siteFamilyLust.py|
 |Familytherapyxxx|Familytherapyxxx|https://familytherapyxxx.com|siteFamilyTherapyXXX.py|
 |Fitting Room|Fitting Room|https://www.fitting-room.com|siteFittingRoom.py|
 |Girlsoutwest|Girlsoutwest|https://tour.girlsoutwest.com|siteGirlsOutWest.py|
