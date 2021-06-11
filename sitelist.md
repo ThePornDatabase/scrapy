@@ -497,6 +497,7 @@ Scraper Site List
 |Fitting Room|Fitting Room|https://www.fitting-room.com|siteFittingRoom.py|
 |Girlsoutwest|Girlsoutwest|https://tour.girlsoutwest.com|siteGirlsOutWest.py|
 |Radical Entertainment|Hitzefrei|https://tour.hitzefrei.com|siteHitzefrei.py|
+|Hot Guys Fuck|Hot Guys Fuck|https://www.hotguysfuck.com|siteHotGuysFuck.py|
 |Hot Milfs Fuck|Hot Milfs Fuck|https://www.hotmilfsfuck.com|siteHotMilfsFuck.py|
 |Hucows|Hucows|https://www.hucows.com|siteHucows.py|
 |Hushpass|Hushpass|https://hushpass.com|siteHushpass.py|
