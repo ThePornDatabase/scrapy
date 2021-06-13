@@ -281,7 +281,7 @@ Scraper Site List
 |Nubiles||https://brattysis.com|networkNubiles.py|
 |Nubiles||https://daddyslilangel.com|networkNubiles.py|
 |Nubiles||https://deeplush.com|networkNubiles.py|
-|Nubiles||https://detentiaongirls.com|networkNubiles.py|
+|Nubiles||https://detentiongirls.com|networkNubiles.py|
 |Nubiles||https://driverxxx.com|networkNubiles.py|
 |Nubiles||https://familyswap.xxx|networkNubiles.py|
 |Nubiles||https://momsteachsex.com|networkNubiles.py|
@@ -332,53 +332,32 @@ Scraper Site List
 |Ddfnetwork||https://sexvideocasting.com|networkPornWorldAlt.py|
 |Ddfnetwork||https://hairytwatter.net|networkPornWorldAlt.py|
 |Porncz|Porncz|https://www.porncz.com|networkPorncz.py|
-|Mindgeek||https://www.8thstreetlatinas.com|networkProjectOneService.py|
 |Mindgeek||https://www.babes.com|networkProjectOneService.py|
 |Mindgeek||https://www.bellesafilms.com|networkProjectOneService.py|
 |Mindgeek||https://www.biempire.com|networkProjectOneService.py|
 |Mindgeek||https://www.brazzers.com|networkProjectOneService.py|
 |Mindgeek||https://www.bromo.com|networkProjectOneService.py|
 |Mindgeek||https://www.deviante.com|networkProjectOneService.py|
-|Mindgeek||https://www.devianthardcore.com|networkProjectOneService.py|
 |Mindgeek||https://www.digitalplayground.com|networkProjectOneService.py|
-|Mindgeek||https://www.doghousedigital.com|networkProjectOneService.py|
-|Mindgeek||https://www.dontbreakme.com|networkProjectOneService.py|
 |Mindgeek||https://www.erito.com|networkProjectOneService.py|
 |Mindgeek||https://www.fakehub.com|networkProjectOneService.py|
-|Mindgeek||https://www.familyhookups.com|networkProjectOneService.py|
-|Mindgeek||https://www.familysinners.com|networkProjectOneService.py|
-|Mindgeek||https://www.girlgrind.com|networkProjectOneService.py|
 |Mindgeek||https://www.iconmale.com|networkProjectOneService.py|
-|Mindgeek||https://www.iknowthatgirl.com|networkProjectOneService.py|
-|Mindgeek||https://www.lesbea.com|networkProjectOneService.py|
-|Mindgeek||https://www.letstryanal.com|networkProjectOneService.py|
-|Mindgeek||https://www.lilhumpers.com|networkProjectOneService.py|
-|Mindgeek||https://www.lookathernow.com|networkProjectOneService.py|
 |Mindgeek||https://www.men.com|networkProjectOneService.py|
 |Mindgeek||https://www.metrohd.com|networkProjectOneService.py|
 |Mindgeek||https://www.milehighmedia.com|networkProjectOneService.py|
 |Mindgeek||https://www.milfed.com|networkProjectOneService.py|
-|Mindgeek||https://www.milfhunter.com|networkProjectOneService.py|
 |Mindgeek||https://www.mofos.com|networkProjectOneService.py|
 |Mindgeek||https://www.propertysex.com|networkProjectOneService.py|
-|Mindgeek||https://www.publicagent.com|networkProjectOneService.py|
-|Mindgeek||https://www.publicpickups.com|networkProjectOneService.py|
-|Mindgeek||https://www.realityjunkies.com|networkProjectOneService.py|
 |Mindgeek||https://www.realitykings.com|networkProjectOneService.py|
 |Mindgeek||https://www.sexyhub.com|networkProjectOneService.py|
-|Mindgeek||https://www.sneakysex.com|networkProjectOneService.py|
 |Mindgeek||https://www.squirted.com|networkProjectOneService.py|
-|Mindgeek||https://www.sweetheartvideo.com|networkProjectOneService.py|
-|Mindgeek||https://www.sweetsinner.com|networkProjectOneService.py|
 |Mindgeek||https://www.thegayoffice.com|networkProjectOneService.py|
-|Mindgeek||https://www.transangels.com|networkProjectOneService.py|
 |Mindgeek||https://www.transangelsnetwork.com|networkProjectOneService.py|
 |Mindgeek||https://www.transharder.com|networkProjectOneService.py|
 |Mindgeek||https://www.transsensual.com|networkProjectOneService.py|
 |Mindgeek||https://www.trueamateurs.com|networkProjectOneService.py|
 |Mindgeek||https://www.tube8vip.com|networkProjectOneService.py|
 |Mindgeek||https://www.twistys.com|networkProjectOneService.py|
-|Mindgeek||https://www.welivetogether.com|networkProjectOneService.py|
 |Mindgeek||https://www.whynotbi.com|networkProjectOneService.py|
 |Puffy Network||https://www.puffynetwork.com|networkPuffy.py|
 |Scorepass||https://www.bigboobspov.com|networkScorePass.py|
@@ -486,6 +465,7 @@ Scraper Site List
 |Bam Visions|Bam Visions|https://tour.bamvisions.com|siteBamVisionsBTS.py|
 |Bang Bros||https://bangbros.com|siteBangBros.py|
 |Broken Babes|Broken Babes|https://www.brokenbabes.com|siteBrokenBabes.py|
+|Chastity Babes|Chastity Babes|https://www.chastitybabes.com|siteChastityBabes.py|
 |Clubseventeen|Clubseventeen|https://www.clubseventeen.com|siteClubSeventeen.py|
 |Derangeddollars|Derangeddollars|https://www.domthenation.com|siteDomTheNation.py|
 |Dorcel Club|Dorcel Club|https://www.dorcelclub.com|siteDorcelClub.py|
