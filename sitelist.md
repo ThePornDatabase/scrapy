@@ -63,6 +63,17 @@ Scraper Site List
 |Adultempirecash||https://pmggirls.com|networkAdultEmpireCash.py|
 |Adultempirecash||https://www.lethalhardcore.com|networkAdultEmpireCash.py|
 |Adultempirecash||https://spankmonster.com|networkAdultEmpireCash.py|
+|Gamma Enterprises||https://www.21sextury.com|networkAdulttimeAPI.py|
+|Gamma Enterprises||https://www.clubinfernodungeon.com|networkAdulttimeAPI.py|
+|Gamma Enterprises||https://www.evilangel.com|networkAdulttimeAPI.py|
+|Gamma Enterprises||https://www.genderx.com|networkAdulttimeAPI.py|
+|Gamma Enterprises||https://www.girlsway.com|networkAdulttimeAPI.py|
+|Gamma Enterprises||https://www.modeltime.com|networkAdulttimeAPI.py|
+|Gamma Enterprises||https://www.nextdoorstudios.com|networkAdulttimeAPI.py|
+|Gamma Enterprises||https://www.puretaboo.com|networkAdulttimeAPI.py|
+|Gamma Enterprises||https://www.transfixed.com|networkAdulttimeAPI.py|
+|Gamma Enterprises||https://www.wicked.com|networkAdulttimeAPI.py|
+|Gamma Enterprises||https://www.zerotolerance.com|networkAdulttimeAPI.py|
 |All Her Luv||https://www.allherluv.com|networkAllHerLuv.py|
 |All Her Luv||https://www.missax.com|networkAllHerLuv.py|
 |Andomark||https://ariellynn.com|networkAndomark.py|
@@ -293,7 +304,7 @@ Scraper Site List
 |Nubiles||https://nubiles.net|networkNubiles.py|
 |Nubiles||https://nubileset.com|networkNubiles.py|
 |Nubiles||https://nubilesunscripted.com|networkNubiles.py|
-|Nubiles||https://petitdehdporn.com|networkNubiles.py|
+|Nubiles||https://petitehdporn.com|networkNubiles.py|
 |Nubiles||https://petiteballerinasfucked.com|networkNubiles.py|
 |Nubiles||https://princesscum.com|networkNubiles.py|
 |Nubiles||https://stepsiblingscaught.com|networkNubiles.py|
