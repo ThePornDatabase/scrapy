@@ -29,7 +29,7 @@ class Generator():
 
             start_urls = ['']
             if hasattr(spider_class, 'start_urls'):
-                start_urls = [urlparse(url) for url in spider_class.start_urls]
+                start_urls = [urlparse(url) for url in spider_class.start_urls if isinstance(url, str)]
                 start_urls = ['%s://%s' % (url.scheme, url.hostname) for url in start_urls]
 
             for url in start_urls:
