@@ -47,6 +47,7 @@ Scraper Site List
 |Exposed Whores|Exposed Whores|https://exposedwhores.com|siteExposedWhoresPerformer.py|
 |Fitting Room|Fitting Room|https://www.fitting-room.com|siteFittingRoomPerformers.py|
 |Free Ones|Free Ones|https://freeones.ru|siteFreeOnesPerformer.py|
+|Penthouse|Penthouse|https://penthousegold.com|sitePenthousePerformer.py|
 |Dev8 Entertainment|Dev8 Entertainment|https://www.perfectgonzo.com|sitePerfectGonzoPerformer.py|
 |||https://philavise.com|sitePhilavisePerformer.py|
 |Spankmonster|Spankmonster|https://spankmonster.com|siteSpankmonsterPerformer.py|
@@ -185,6 +186,8 @@ Scraper Site List
 |Fa Kings||https://www.fakings.com|networkFakings.py|
 |Femdom Empire||https://femdomempire.com|networkFemdomEmpire.py|
 |Femdom Empire||http://feminized.com|networkFemdomEmpire.py|
+|Fetish Network|Fetish Network|http://www.fetishnetwork.com|networkFetishNetwork.py|
+|Fetish Network|Fetish Network|http://www.brutalpov.com|networkFetishNetworkAlt.py|
 |Full Porn Network||https://analbbc.com|networkFullPorn.py|
 |Full Porn Network||https://analized.com|networkFullPorn.py|
 |Full Porn Network||https://analviolation.com|networkFullPorn.py|
@@ -257,7 +260,7 @@ Scraper Site List
 |Gammaenterprises||https://www.transsexualroadtrip.com|networkGammaEnterprises.py|
 |Gammaenterprises||https://www.trickyspa.com|networkGammaEnterprises.py|
 |Gammaenterprises||https://www.tsfactor.com|networkGammaEnterprises.py|
-|Insex Network|Insex Network|https://www.insexondemand.com|networkInsex.py|
+|Insex Network|Insex Network||networkInsexSites.py|
 |Interracialpass||https://www.interracialpass.com|networkInterracialPass.py|
 |Interracialpass||https://www.backroomcastingcouch.com|networkInterracialPass.py|
 |Interracialpass||https://blackambush.com|networkInterracialPass.py|
@@ -420,6 +423,18 @@ Scraper Site List
 |Teenmegaworld||http://x-angels.com|networkTeenMegaWorld.py|
 |Teenmegaworld||http://teensexmovs.com|networkTeenMegaWorld.py|
 |Topwebmodels||https://tour.topwebmodels.com|networkTopWebModels.py|
+|Vip 4K|Vip 4K|https://black4k.com|networkVIP4K.py|
+|Vip 4K|Vip 4K|https://daddy4k.com|networkVIP4K.py|
+|Vip 4K|Vip 4K|https://fist4k.com|networkVIP4K.py|
+|Vip 4K|Vip 4K|https://mature4k.com|networkVIP4K.py|
+|Vip 4K|Vip 4K|https://old4k.com|networkVIP4K.py|
+|Vip 4K|Vip 4K|https://debt4k.com|networkVIP4KPaged.py|
+|Vip 4K|Vip 4K|https://hunt4k.com|networkVIP4KPaged.py|
+|Vip 4K|Vip 4K|https://law4k.com|networkVIP4KPaged.py|
+|Vip 4K|Vip 4K|https://loan4k.com|networkVIP4KPaged.py|
+|Vip 4K|Vip 4K|https://shame4k.com|networkVIP4KPaged.py|
+|Vip 4K|Vip 4K|https://stuck4k.com|networkVIP4KPaged.py|
+|Vip 4K|Vip 4K|https://tutor4k.com|networkVIP4KPaged.py|
 |Vixen||https://www.vixen.com|networkVixen.py|
 |Vixen||https://www.blacked.com|networkVixen.py|
 |Vixen||https://www.tushy.com|networkVixen.py|
@@ -465,11 +480,13 @@ Scraper Site List
 |Wow Girls||https://www.ultrafilms.xxx|networkWowNetwork.py|
 |Radical Entertainment||https://tour.ad4x.com|siteAD4X.py|
 |Abby Winters||https://www.abbywinters.com|siteAbbyWinters.py|
+|Abuse Me|Abuse Me|http://abuseme.com|siteAbuseMe.py|
 |Airerose|Airerose|http://airerose.com|siteAirerose.py|
 |Amateur Allure|Amateur Allure|https://www.amateurallure.com|siteAmateurAllure.py|
 |Amateur Boxxx|Amateur Boxxx|https://tour.amateurboxxx.com|siteAmateurBoxxx.py|
 |Anna Claire Clouds|Anna Claire Clouds|https://annaclaireclouds.com|siteAnnaClaireClouds.py|
 |Derangeddollars||https://www.assylum.com|siteAssylum.py|
+|Bj Raw|Bj Raw|https://www.bjraw.com|siteBJRaw.py|
 |Babe Archives|Babe Archives|https://babearchives.com|siteBabeArchives.py|
 |Av Revenue|Baberotica|https://baberotica.com|siteBaberotica.py|
 |Bam Visions|Bam Visions|https://tour.bamvisions.com|siteBamVisions.py|
@@ -483,9 +500,12 @@ Scraper Site List
 |Evolved Fights||https://www.evolvedfights.com|siteEvolvedFights.py|
 |Evolved Fights||https://www.evolvedfightslez.com|siteEvolvedFights.py|
 |Exposed Whores|Exposed Whores|https://exposedwhores.com|siteExposedWhores.py|
+|Rhs Photography|Rhs Photography|https://www.ftvgirls.com|siteFTVGirls.py|
+|Rhs Photography|Rhs Photography|https://www.ftvmilfs.com|siteFTVGirls.py|
 |Tugpass||https://www.familylust.com|siteFamilyLust.py|
 |Familytherapyxxx|Familytherapyxxx|https://familytherapyxxx.com|siteFamilyTherapyXXX.py|
 |Fitting Room|Fitting Room|https://www.fitting-room.com|siteFittingRoom.py|
+|Frolic Me|Frolic Me|https://www.frolicme.com|siteFrolicMe.py|
 |Girlsoutwest|Girlsoutwest|https://tour.girlsoutwest.com|siteGirlsOutWest.py|
 |Radical Entertainment|Hitzefrei|https://tour.hitzefrei.com|siteHitzefrei.py|
 |Hot Guys Fuck|Hot Guys Fuck|https://www.hotguysfuck.com|siteHotGuysFuck.py|
@@ -515,15 +535,18 @@ Scraper Site List
 |Orgasm Abuse|Orgasm Abuse|https://www.orgasmabuse.com|siteOrgasmAbuse.py|
 |Dev8 Entertainment||https://www.perfectgonzo.com|sitePefectGonzo.py|
 |Dev8 Entertainment||https://www.sapphix.com|sitePefectGonzo.py|
+|Penthouse|Penthouse|https://penthousegold.com|sitePenthouse.py|
 |Philavise|Philavise|https://www.philavise.com|sitePhilavise.py|
 |Private||https://www.private.com|sitePrivate.py|
 |Producers Fun|Producers Fun|https://producersfun.com|siteProducersFun.py|
 |Radical Entertainment|Purgatoryx|https://tour.purgatoryx.com|sitePurgatoryX.py|
+|Puta Locura|Puta Locura|https://www.putalocura.com|sitePutaLocura.py|
 |Sexmex|Sexmex|https://sexmex.xxx|siteSexMex.py|
 |She Loves Black||https://www.shelovesblack.com|siteSheLovesBlack.py|
 |Sinematica|Sinematica|https://www.sinematica.com|siteSinematica.py|
 |Derangeddollars||https://www.slavemouth.com|siteSlavemouth.py|
 |Spankmonster|Spankmonster|https://spankmonster.com|siteSpankmonster.py|
+|Submissive X|Submissive X|https://submissivex.com|siteSubmissiveX.py|
 |Tonights Girlfriend|Tonights Girlfriend|https://www.tonightsgirlfriend.com|siteTonightsGirlfriend.py|
 |Tugpass||https://www.tugpass.com|siteTugPass.py|
 |Vogov|Vogov|https://vogov.com|siteVogov.py|
