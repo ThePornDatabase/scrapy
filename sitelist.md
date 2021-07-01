@@ -179,6 +179,7 @@ Scraper Site List
 |Czech Casting||https://czechtoilets.com|networkCzechAv.py|
 |Czech Casting||https://czechtwins.com|networkCzechAv.py|
 |Czech Casting||https://czechwifeswap.com|networkCzechAv.py|
+|Dogfart Network|Dogfart Network|https://www.dogfartnetwork.com|networkDogfart.py|
 |Eros Arts||https://www.jerkoffinstructions.com|networkErosArts.py|
 |Eros Arts||https://www.sexpov.com|networkErosArts.py|
 |Eros Arts||https://www.stepmomfun.com|networkErosArts.py|
@@ -510,6 +511,7 @@ Scraper Site List
 |Frolic Me|Frolic Me|https://www.frolicme.com|siteFrolicMe.py|
 |Girlsoutwest|Girlsoutwest|https://tour.girlsoutwest.com|siteGirlsOutWest.py|
 |Radical Entertainment|Hitzefrei|https://tour.hitzefrei.com|siteHitzefrei.py|
+|Hoby Buchanon|Hoby Buchanon|https://hobybuchanon.com|siteHobyBuchanon.py|
 |Hot Guys Fuck|Hot Guys Fuck|https://www.hotguysfuck.com|siteHotGuysFuck.py|
 |Hot Milfs Fuck|Hot Milfs Fuck|https://www.hotmilfsfuck.com|siteHotMilfsFuck.py|
 |Hucows|Hucows|https://www.hucows.com|siteHucows.py|
@@ -539,6 +541,7 @@ Scraper Site List
 |Dev8 Entertainment||https://www.sapphix.com|sitePefectGonzo.py|
 |Penthouse|Penthouse|https://penthousegold.com|sitePenthouse.py|
 |Philavise|Philavise|https://www.philavise.com|sitePhilavise.py|
+|Pornstar Platinum|Pornstar Platinum|https://www.pornstarplatinum.com|sitePornstarPlatinum.py|
 |Private||https://www.private.com|sitePrivate.py|
 |Producers Fun|Producers Fun|https://producersfun.com|siteProducersFun.py|
 |Radical Entertainment|Purgatoryx|https://tour.purgatoryx.com|sitePurgatoryX.py|
@@ -554,3 +557,6 @@ Scraper Site List
 |Vogov|Vogov|https://vogov.com|siteVogov.py|
 |Radical Entertainment|Vrallure|https://vrallure.com|siteVrAllure.py|
 |Watch4Beauty||https://watch4beauty.com|siteWatch4Beauty.py|
+|Karak Ltd|Woodman Casting X|https://www.woodmancastingx.com|siteWoodmanCastingX.py|
+|Bc Media|X-Art|https://www.x-art.com|siteXArt.py|
+|Xxx Horror|Xxx Horror|https://xxxhorror.com|siteXXXHorror.py|
