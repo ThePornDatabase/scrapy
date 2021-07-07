@@ -44,6 +44,7 @@ Scraper Site List
 |Babe Archive|Babe Archive|https://www.babearchive.com|siteBabeArchivePerformer.py|
 |Baberotica|Baberotica|https://baberotica.com|siteBaberoticaPerformer.py|
 |Broken Babes|Broken Babes|https://www.brokenbabes.com|siteBrokenBabesPerformer.py|
+|Cosmid|Cosmid|https://cosmid.net|siteCosmidPerformer.py|
 |Dick Drainers|Dick Drainers|http://www.dickdrainers.com|siteDickDrainersPerformer.py|
 |Exposed Whores|Exposed Whores|https://exposedwhores.com|siteExposedWhoresPerformer.py|
 |Fitting Room|Fitting Room|https://www.fitting-room.com|siteFittingRoomPerformers.py|
@@ -497,6 +498,7 @@ Scraper Site List
 |Broken Babes|Broken Babes|https://www.brokenbabes.com|siteBrokenBabes.py|
 |Chastity Babes|Chastity Babes|https://www.chastitybabes.com|siteChastityBabes.py|
 |Clubseventeen|Clubseventeen|https://www.clubseventeen.com|siteClubSeventeen.py|
+|Cosmid|Cosmid|https://cosmid.net|siteCosmid.py|
 |Cum Louder|Cum Louder|https://www.cumlouder.com|siteCumLouder.py|
 |Dick Drainers|Dick Drainers|http://www.dickdrainers.com|siteDickDrainers.py|
 |Derangeddollars|Derangeddollars|https://www.domthenation.com|siteDomTheNation.py|
