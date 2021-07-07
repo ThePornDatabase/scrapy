@@ -497,6 +497,7 @@ Scraper Site List
 |Broken Babes|Broken Babes|https://www.brokenbabes.com|siteBrokenBabes.py|
 |Chastity Babes|Chastity Babes|https://www.chastitybabes.com|siteChastityBabes.py|
 |Clubseventeen|Clubseventeen|https://www.clubseventeen.com|siteClubSeventeen.py|
+|Cum Louder|Cum Louder|https://www.cumlouder.com|siteCumLouder.py|
 |Dick Drainers|Dick Drainers|http://www.dickdrainers.com|siteDickDrainers.py|
 |Derangeddollars|Derangeddollars|https://www.domthenation.com|siteDomTheNation.py|
 |Dorcel Club|Dorcel Club|https://www.dorcelclub.com|siteDorcelClub.py|
