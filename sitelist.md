@@ -549,6 +549,7 @@ Scraper Site List
 |Producers Fun|Producers Fun|https://producersfun.com|siteProducersFun.py|
 |Radical Entertainment|Purgatoryx|https://tour.purgatoryx.com|sitePurgatoryX.py|
 |Puta Locura|Puta Locura|https://www.putalocura.com|sitePutaLocura.py|
+||||siteSecretFriends.py|
 |Sexmex|Sexmex|https://sexmex.xxx|siteSexMex.py|
 |She Loves Black||https://www.shelovesblack.com|siteSheLovesBlack.py|
 |Sinematica|Sinematica|https://www.sinematica.com|siteSinematica.py|
