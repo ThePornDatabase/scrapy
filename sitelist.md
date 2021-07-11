@@ -40,6 +40,7 @@ Scraper Site List
 |Puffy Network|Puffy Network|https://www.puffynetwork.com|networkPuffyPerformer.py|
 |Topwebmodels||https://tour.topwebmodels.com|networkTopWebModelsPerformer.py|
 |Airerose|Airerose|http://airerose.com|sireAirerosePerformer.py|
+|Arch Angel|Arch Angel|https://www.archangelvideo.com|siteArchangelVideoPerformer.py|
 |Bam Visions|Bam Visions|https://tour.bamvisions.com|siteBAMVisionsPerformer.py|
 |Babe Archive|Babe Archive|https://www.babearchive.com|siteBabeArchivePerformer.py|
 |Baberotica|Baberotica|https://baberotica.com|siteBaberoticaPerformer.py|
@@ -55,6 +56,7 @@ Scraper Site List
 |Spankmonster|Spankmonster|https://spankmonster.com|siteSpankmonsterPerformer.py|
 |Vogov|Vogov|https://vogov.com|siteVogovPerformer.py|
 |New Sensations||https://www.newsensations.com|NewSensations.py|
+|Eurostunners|||fillerEuroStunners.py|
 |Adult Dvd Empire||https://www.adultdvdempire.com|moviesAdultDVDEmpire.py|
 |Pink Label|Pink Label||moviesPinkLabel.py|
 |5Kporn|5Kporn|https://www.5kporn.com|network5kPorn.py|
@@ -489,7 +491,10 @@ Scraper Site List
 |Amateur Allure|Amateur Allure|https://www.amateurallure.com|siteAmateurAllure.py|
 |Amateur Boxxx|Amateur Boxxx|https://tour.amateurboxxx.com|siteAmateurBoxxx.py|
 |Anna Claire Clouds|Anna Claire Clouds|https://annaclaireclouds.com|siteAnnaClaireClouds.py|
+|Archangel|Archangel|https://www.archangelvideo.com|siteArchangelVideo.py|
 |Derangeddollars||https://www.assylum.com|siteAssylum.py|
+|Aussieass||https://aussieass.com|siteAussieAss.py|
+|Aussieass||https://aussiepov.com|siteAussieAss.py|
 |Bj Raw|Bj Raw|https://www.bjraw.com|siteBJRaw.py|
 |Babe Archives|Babe Archives|https://babearchives.com|siteBabeArchives.py|
 |Av Revenue|Baberotica|https://baberotica.com|siteBaberotica.py|
