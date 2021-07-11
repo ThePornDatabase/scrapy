@@ -56,6 +56,7 @@ Scraper Site List
 |Vogov|Vogov|https://vogov.com|siteVogovPerformer.py|
 |New Sensations||https://www.newsensations.com|NewSensations.py|
 |Adult Dvd Empire||https://www.adultdvdempire.com|moviesAdultDVDEmpire.py|
+|Pink Label|Pink Label||moviesPinkLabel.py|
 |5Kporn|5Kporn|https://www.5kporn.com|network5kPorn.py|
 |Adultempirecash||https://www.mypervyfamily.com|networkAdultEmpireCash.py|
 |Adultempirecash||https://jayspov.net|networkAdultEmpireCash.py|
