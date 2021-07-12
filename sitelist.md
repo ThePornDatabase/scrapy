@@ -46,6 +46,7 @@ Scraper Site List
 |Baberotica|Baberotica|https://baberotica.com|siteBaberoticaPerformer.py|
 |Broken Babes|Broken Babes|https://www.brokenbabes.com|siteBrokenBabesPerformer.py|
 |Cosmid|Cosmid|https://cosmid.net|siteCosmidPerformer.py|
+|Cum Perfection|Cum Perfection|https://www.cumperfection.com|siteCumPerfectionPerformer.py|
 |Dick Drainers|Dick Drainers|http://www.dickdrainers.com|siteDickDrainersPerformer.py|
 |Exposed Whores|Exposed Whores|https://exposedwhores.com|siteExposedWhoresPerformer.py|
 |Fitting Room|Fitting Room|https://www.fitting-room.com|siteFittingRoomPerformers.py|
@@ -58,7 +59,7 @@ Scraper Site List
 |New Sensations||https://www.newsensations.com|NewSensations.py|
 |Eurostunners|||fillerEuroStunners.py|
 |Adult Dvd Empire||https://www.adultdvdempire.com|moviesAdultDVDEmpire.py|
-|Pink Label|Pink Label||moviesPinkLabel.py|
+|Pinklabel|Pinklabel||moviesPinkLabel.py|
 |5Kporn|5Kporn|https://www.5kporn.com|network5kPorn.py|
 |Adultempirecash||https://www.mypervyfamily.com|networkAdultEmpireCash.py|
 |Adultempirecash||https://jayspov.net|networkAdultEmpireCash.py|
@@ -488,6 +489,7 @@ Scraper Site List
 |Abby Winters||https://www.abbywinters.com|siteAbbyWinters.py|
 |Abuse Me|Abuse Me|http://abuseme.com|siteAbuseMe.py|
 |Airerose|Airerose|http://airerose.com|siteAirerose.py|
+|Aletta Ocean Live|Aletta Ocean Live|https://alettaoceanlive.com|siteAlettaOceanLive.py|
 |Amateur Allure|Amateur Allure|https://www.amateurallure.com|siteAmateurAllure.py|
 |Amateur Boxxx|Amateur Boxxx|https://tour.amateurboxxx.com|siteAmateurBoxxx.py|
 |Anna Claire Clouds|Anna Claire Clouds|https://annaclaireclouds.com|siteAnnaClaireClouds.py|
@@ -498,6 +500,7 @@ Scraper Site List
 |Bj Raw|Bj Raw|https://www.bjraw.com|siteBJRaw.py|
 |Babe Archives|Babe Archives|https://babearchives.com|siteBabeArchives.py|
 |Av Revenue|Baberotica|https://baberotica.com|siteBaberotica.py|
+|Babes In Trouble|Babes In Trouble|https://www.clips4sale.com|siteBabesInTrouble.py|
 |Bam Visions|Bam Visions|https://tour.bamvisions.com|siteBamVisions.py|
 |Bam Visions|Bam Visions|https://tour.bamvisions.com|siteBamVisionsBTS.py|
 |Bang Bros||https://bangbros.com|siteBangBros.py|
@@ -506,6 +509,7 @@ Scraper Site List
 |Clubseventeen|Clubseventeen|https://www.clubseventeen.com|siteClubSeventeen.py|
 |Cosmid|Cosmid|https://cosmid.net|siteCosmid.py|
 |Cum Louder|Cum Louder|https://www.cumlouder.com|siteCumLouder.py|
+|Cum Perfection|Cum Perfection|http://cum-fun.com|siteCumPerfection.py|
 |Dick Drainers|Dick Drainers|http://www.dickdrainers.com|siteDickDrainers.py|
 |Derangeddollars|Derangeddollars|https://www.domthenation.com|siteDomTheNation.py|
 |Dorcel Club|Dorcel Club|https://www.dorcelclub.com|siteDorcelClub.py|
@@ -528,6 +532,7 @@ Scraper Site List
 |Hussiepass||https://www.hussiepass.com|siteHussiepass.py|
 |Hussiepass||https://povpornstars.com|siteHussiepass.py|
 |Hussiepass||https://seehimfuck.com|siteHussiepass.py|
+|Feck Erotica|I Feel Myself|https://ifeelmyself.com|siteIFeelMyself.py|
 |Jimslip||https://www.jimslip.com|siteJimSlip.py|
 |Joymii|Joymii|https://joymii.com|siteJoymii.py|
 |Julesjordan||https://www.julesjordan.com|siteJulesJordan.py|
