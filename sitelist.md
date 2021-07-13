@@ -51,6 +51,7 @@ Scraper Site List
 |Exposed Whores|Exposed Whores|https://exposedwhores.com|siteExposedWhoresPerformer.py|
 |Fitting Room|Fitting Room|https://www.fitting-room.com|siteFittingRoomPerformers.py|
 |Free Ones|Free Ones|https://freeones.ru|siteFreeOnesPerformer.py|
+|Hookup Hotshot|Hookup Hotshot|https://hookuphotshot.com|siteHookupHotshotPerformer.py|
 |Penthouse|Penthouse|https://penthousegold.com|sitePenthousePerformer.py|
 |Dev8 Entertainment|Dev8 Entertainment|https://www.perfectgonzo.com|sitePerfectGonzoPerformer.py|
 |||https://philavise.com|sitePhilavisePerformer.py|
@@ -525,6 +526,7 @@ Scraper Site List
 |Girlsoutwest|Girlsoutwest|https://tour.girlsoutwest.com|siteGirlsOutWest.py|
 |Radical Entertainment|Hitzefrei|https://tour.hitzefrei.com|siteHitzefrei.py|
 |Hoby Buchanon|Hoby Buchanon|https://hobybuchanon.com|siteHobyBuchanon.py|
+|Hookup Hotshot|Hookup Hotshot|https://hookuphotshot.com|siteHookupHotshot.py|
 |Hot Guys Fuck|Hot Guys Fuck|https://www.hotguysfuck.com|siteHotGuysFuck.py|
 |Hot Milfs Fuck|Hot Milfs Fuck|https://www.hotmilfsfuck.com|siteHotMilfsFuck.py|
 |Hucows|Hucows|https://www.hucows.com|siteHucows.py|
