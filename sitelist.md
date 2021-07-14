@@ -15,6 +15,7 @@ Scraper Site List
 |Adultempirecash|Adultempirecash|https://thirdworldxxx.com|networkAdultEmpireCashPerformer.py|
 |Adultempirecash|Adultempirecash|https://latinoguysporn.com|networkAdultEmpireCashPerformer.py|
 |Adultempirecash|Adultempirecash|https://www.lethalhardcore.com|networkAdultEmpireCashPerformer.py|
+|All Japanese Pass|All Japanese Pass|https://alljapanesepass.com|networkAllJapanesePassPerformer.py|
 |Badoink Vr|Badoink Vr|https://badoinkvr.com|networkBadoinkVrPerformer.py|
 |Badoink Vr|Badoink Vr|https://babevr.com|networkBadoinkVrPerformer.py|
 |Badoink Vr|Badoink Vr|https://18vr.com|networkBadoinkVrPerformer.py|
@@ -40,6 +41,7 @@ Scraper Site List
 |Puffy Network|Puffy Network|https://www.puffynetwork.com|networkPuffyPerformer.py|
 |Topwebmodels||https://tour.topwebmodels.com|networkTopWebModelsPerformer.py|
 |Airerose|Airerose|http://airerose.com|sireAirerosePerformer.py|
+|5Dollah|5Dollah|https://www.5dollah.com|site5DollahPerformer.py|
 |Arch Angel|Arch Angel|https://www.archangelvideo.com|siteArchangelVideoPerformer.py|
 |Bam Visions|Bam Visions|https://tour.bamvisions.com|siteBAMVisionsPerformer.py|
 |Babe Archive|Babe Archive|https://www.babearchive.com|siteBabeArchivePerformer.py|
@@ -84,6 +86,25 @@ Scraper Site List
 |Gamma Enterprises||https://www.zerotolerance.com|networkAdulttimeAPI.py|
 |All Her Luv||https://www.allherluv.com|networkAllHerLuv.py|
 |All Her Luv||https://www.missax.com|networkAllHerLuv.py|
+|All Japanese Pass|All Japanese Pass|https://18tokyo.com|networkAllJapanesePass.py|
+|All Japanese Pass|All Japanese Pass|https://analnippon.com|networkAllJapanesePass.py|
+|All Japanese Pass|All Japanese Pass|https://bigtitstokyo.com|networkAllJapanesePass.py|
+|All Japanese Pass|All Japanese Pass|https://bukkakenow.com|networkAllJapanesePass.py|
+|All Japanese Pass|All Japanese Pass|https://japaneseflashers.com|networkAllJapanesePass.py|
+|All Japanese Pass|All Japanese Pass|https://japanesematures.com|networkAllJapanesePass.py|
+|All Japanese Pass|All Japanese Pass|https://japaneseslurp.com|networkAllJapanesePass.py|
+|All Japanese Pass|All Japanese Pass|https://jcosplay.com|networkAllJapanesePass.py|
+|All Japanese Pass|All Japanese Pass|https://jpmilfs.com|networkAllJapanesePass.py|
+|All Japanese Pass|All Japanese Pass|https://jpnurse.com|networkAllJapanesePass.py|
+|All Japanese Pass|All Japanese Pass|https://jpshavers.com|networkAllJapanesePass.py|
+|All Japanese Pass|All Japanese Pass|https://jpteacher.com|networkAllJapanesePass.py|
+|All Japanese Pass|All Japanese Pass|https://jschoolgirls.com|networkAllJapanesePass.py|
+|All Japanese Pass|All Japanese Pass|https://myracequeens.com|networkAllJapanesePass.py|
+|All Japanese Pass|All Japanese Pass|https://ocreampies.com|networkAllJapanesePass.py|
+|All Japanese Pass|All Japanese Pass|https://officesexjp.com|networkAllJapanesePass.py|
+|All Japanese Pass|All Japanese Pass|https://outdoorjp.com|networkAllJapanesePass.py|
+|All Japanese Pass|All Japanese Pass|https://povjp.com|networkAllJapanesePass.py|
+|All Japanese Pass|All Japanese Pass|https://tokyobang.com|networkAllJapanesePass.py|
 |Andomark||https://ariellynn.com|networkAndomark.py|
 |Andomark||https://behindtheporno.com|networkAndomark.py|
 |Andomark||https://bigboobiesclub.com|networkAndomark.py|
@@ -486,6 +507,7 @@ Scraper Site List
 |Wow Girls||https://www.wowpornblog.com|networkWowNetwork.py|
 |Wow Girls||https://www.wowgirlsblog.com|networkWowNetwork.py|
 |Wow Girls||https://www.ultrafilms.xxx|networkWowNetwork.py|
+|5Dollah|5Dollah|https://www.5dollah.com|site5Dollah.py|
 |Radical Entertainment||https://tour.ad4x.com|siteAD4X.py|
 |Abby Winters||https://www.abbywinters.com|siteAbbyWinters.py|
 |Abuse Me|Abuse Me|http://abuseme.com|siteAbuseMe.py|
