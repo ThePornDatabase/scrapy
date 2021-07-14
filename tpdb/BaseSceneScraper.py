@@ -203,7 +203,7 @@ class BaseSceneScraper(scrapy.Spider):
 
             if date:
                 date = date.replace('Released:', '').replace('Added:', '').strip()
-                date_formats = self.get_selector_map('date_formats')
+                date_formats = self.get_selector_map('date_formats') if 'date_formats' in self.get_selector_map() else None
 
                 return dateparser.parse(date, date_formats=date_formats).isoformat()
 
