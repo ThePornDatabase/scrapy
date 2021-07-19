@@ -39,25 +39,34 @@ Scraper Site List
 |Povr|Povr|https://povr.com|networkPOVRPerformer.py|
 |Porncz||https://www.porncz.com|networkPornczPerformer.py|
 |Puffy Network|Puffy Network|https://www.puffynetwork.com|networkPuffyPerformer.py|
+|Siren Xxx Studios|Siren Xxx Studios|https://realnaughtynymphos.com|networkSirenXXXStudiosPerformer.py|
+|Siren Xxx Studios|Siren Xxx Studios|https://myfirsttimesluts.com|networkSirenXXXStudiosPerformer.py|
 |Topwebmodels||https://tour.topwebmodels.com|networkTopWebModelsPerformer.py|
 |Airerose|Airerose|http://airerose.com|sireAirerosePerformer.py|
 |5Dollah|5Dollah|https://www.5dollah.com|site5DollahPerformer.py|
+|Als Angels|Als Angels|http://www.alsangels.com|siteALSAngelsPerformer.py|
 |Arch Angel|Arch Angel|https://www.archangelvideo.com|siteArchangelVideoPerformer.py|
 |Bam Visions|Bam Visions|https://tour.bamvisions.com|siteBAMVisionsPerformer.py|
 |Babe Archive|Babe Archive|https://www.babearchive.com|siteBabeArchivePerformer.py|
 |Baberotica|Baberotica|https://baberotica.com|siteBaberoticaPerformer.py|
+|Bi Guys Fuck|Bi Guys Fuck||siteBiGuysFuckPerformer.py|
 |Broken Babes|Broken Babes|https://www.brokenbabes.com|siteBrokenBabesPerformer.py|
+|Claudia Marie|Claudia Marie|https://www.claudiamarie.com|siteClaudiaMariePerformer.py|
 |Cosmid|Cosmid|https://cosmid.net|siteCosmidPerformer.py|
 |Cum Perfection|Cum Perfection|https://www.cumperfection.com|siteCumPerfectionPerformer.py|
 |Dick Drainers|Dick Drainers|http://www.dickdrainers.com|siteDickDrainersPerformer.py|
 |Exposed Whores|Exposed Whores|https://exposedwhores.com|siteExposedWhoresPerformer.py|
+|Vipissy Cash|Fister Twister|https://www.fistertwister.com|siteFisterTwisterPerformer.py|
 |Fitting Room|Fitting Room|https://www.fitting-room.com|siteFittingRoomPerformers.py|
 |Free Ones|Free Ones|https://freeones.ru|siteFreeOnesPerformer.py|
 |Hookup Hotshot|Hookup Hotshot|https://hookuphotshot.com|siteHookupHotshotPerformer.py|
+|Vipissy Cash|Pee On Her|https://www.peeonher.com|sitePeeOnHerPerformer.py|
 |Penthouse|Penthouse|https://penthousegold.com|sitePenthousePerformer.py|
 |Dev8 Entertainment|Dev8 Entertainment|https://www.perfectgonzo.com|sitePerfectGonzoPerformer.py|
 |||https://philavise.com|sitePhilavisePerformer.py|
 |Spankmonster|Spankmonster|https://spankmonster.com|siteSpankmonsterPerformer.py|
+|Sugar Daddy Porn|Sugar Daddy Porn|https://www.sugardaddyporn.com|siteSugarDaddyPornPerformer.py|
+|Vipissy Cash|Vipissy|https://www.vipissy.com|siteVIPissyPerformer.py|
 |Vogov|Vogov|https://vogov.com|siteVogovPerformer.py|
 |New Sensations||https://www.newsensations.com|NewSensations.py|
 |Eurostunners|||fillerEuroStunners.py|
@@ -105,6 +114,7 @@ Scraper Site List
 |All Japanese Pass|All Japanese Pass|https://outdoorjp.com|networkAllJapanesePass.py|
 |All Japanese Pass|All Japanese Pass|https://povjp.com|networkAllJapanesePass.py|
 |All Japanese Pass|All Japanese Pass|https://tokyobang.com|networkAllJapanesePass.py|
+|Andomark||http://sexykarenxxx.com|networkAndomark.py|
 |Andomark||https://ariellynn.com|networkAndomark.py|
 |Andomark||https://behindtheporno.com|networkAndomark.py|
 |Andomark||https://bigboobiesclub.com|networkAndomark.py|
@@ -117,24 +127,24 @@ Scraper Site List
 |Andomark||https://chocolatepov.com|networkAndomark.py|
 |Andomark||https://furrychicks.elxcomplete.com|networkAndomark.py|
 |Andomark||https://hollyhotwife.elxcomplete.com|networkAndomark.py|
-|Andomark||https://www.houseofyre.com|networkAndomark.py|
 |Andomark||https://internationalnudes.com|networkAndomark.py|
 |Andomark||https://johnnygoodluck.com|networkAndomark.py|
 |Andomark||https://laurenphillips.com|networkAndomark.py|
-|Andomark||https://www.meanawolf.com|networkAndomark.py|
-|Andomark||https://www.minkaxxx.com|networkAndomark.py|
 |Andomark||https://oldsexygrannies.com|networkAndomark.py|
 |Andomark||https://ravenswallowzxxx.com|networkAndomark.py|
 |Andomark||https://reidmylips.elxcomplete.com|networkAndomark.py|
 |Andomark||https://rionkingxxx.com|networkAndomark.py|
 |Andomark||https://seanmichaelsxxx.com|networkAndomark.py|
 |Andomark||https://secretsusan.com|networkAndomark.py|
-|Andomark||http://sexykarenxxx.com|networkAndomark.py|
 |Andomark||https://sheseducedme.com|networkAndomark.py|
 |Andomark||https://sofiemariexxx.com|networkAndomark.py|
 |Andomark||https://tabooadventures.elxcomplete.com|networkAndomark.py|
 |Andomark||https://vanillapov.com|networkAndomark.py|
 |Andomark||https://willtilexxx.com|networkAndomark.py|
+|Andomark||https://www.houseofyre.com|networkAndomark.py|
+|Andomark||https://www.meanawolf.com|networkAndomark.py|
+|Andomark||https://www.minkaxxx.com|networkAndomark.py|
+|Andomark||https://www.thejerkoffmembers.com|networkAndomark.py|
 |Andomark||https://xxxcellentadventures.com|networkAndomark.py|
 |Andomark||https://younggunsxxx.com|networkAndomark.py|
 |Andomark||https://yummybikinimodel.com|networkAndomark.py|
@@ -419,6 +429,8 @@ Scraper Site List
 |Scorepass||https://www.milfbundle.com|networkScorePass.py|
 |Scorepass||https://www.pornmegaload.com|networkScorePass.py|
 |Sexlikereal||https://www.sexlikereal.com|networkSexLikeRealAlt.py|
+|Siren Xxx Studios|Siren Xxx Studios|https://myfirsttimesluts.com|networkSirenXXXStudios.py|
+|Siren Xxx Studios|Siren Xxx Studios|https://realnaughtynymphos.com|networkSirenXXXStudios.py|
 |Spizoo||https://firstclasspov.com|networkSpizoo.py|
 |Spizoo||https://mrluckypov.com|networkSpizoo.py|
 |Spizoo||https://rawattack.com|networkSpizoo.py|
@@ -509,6 +521,8 @@ Scraper Site List
 |Wow Girls||https://www.ultrafilms.xxx|networkWowNetwork.py|
 |5Dollah|5Dollah|https://www.5dollah.com|site5Dollah.py|
 |Radical Entertainment||https://tour.ad4x.com|siteAD4X.py|
+|Als Angels|Als Angels|http://www.alsangels.com|siteALSAngels.py|
+|Abbie Maley|Abbie Maley|https://www.sexyhub.org|siteAbbeyMaley.py|
 |Abby Winters||https://www.abbywinters.com|siteAbbyWinters.py|
 |Abuse Me|Abuse Me|http://abuseme.com|siteAbuseMe.py|
 |Airerose|Airerose|http://airerose.com|siteAirerose.py|
@@ -527,8 +541,10 @@ Scraper Site List
 |Bam Visions|Bam Visions|https://tour.bamvisions.com|siteBamVisions.py|
 |Bam Visions|Bam Visions|https://tour.bamvisions.com|siteBamVisionsBTS.py|
 |Bang Bros||https://bangbros.com|siteBangBros.py|
+|Bi Guys Fuck|Bi Guys Fuck|https://www.biguysfuck.com|siteBiGuysFuck.py|
 |Broken Babes|Broken Babes|https://www.brokenbabes.com|siteBrokenBabes.py|
 |Chastity Babes|Chastity Babes|https://www.chastitybabes.com|siteChastityBabes.py|
+|Claudia Marie|Claudia Marie|https://claudiamarie.com|siteClaudiaMarie.py|
 |Clubseventeen|Clubseventeen|https://www.clubseventeen.com|siteClubSeventeen.py|
 |Cosmid|Cosmid|https://cosmid.net|siteCosmid.py|
 |Cum Louder|Cum Louder|https://www.cumlouder.com|siteCumLouder.py|
@@ -543,6 +559,7 @@ Scraper Site List
 |Rhs Photography|Rhs Photography|https://www.ftvmilfs.com|siteFTVGirls.py|
 |Tugpass||https://www.familylust.com|siteFamilyLust.py|
 |Familytherapyxxx|Familytherapyxxx|https://familytherapyxxx.com|siteFamilyTherapyXXX.py|
+|Vipissy Cash|Fister Twister|https://www.fistertwister.com|siteFisterTwister.py|
 |Fitting Room|Fitting Room|https://www.fitting-room.com|siteFittingRoom.py|
 |Frolic Me|Frolic Me|https://www.frolicme.com|siteFrolicMe.py|
 |Girlsoutwest|Girlsoutwest|https://tour.girlsoutwest.com|siteGirlsOutWest.py|
@@ -573,12 +590,15 @@ Scraper Site List
 |Mindcontroltheatre|Mindcontroltheatre|https://mindcontroltheatre.com|siteMindControlTheatre.py|
 |Montys Pov|Montys Pov|http://www.montyspov.com|siteMontysPOV.py|
 |Radical Entertainment|Myboobs|https://tour.myboobs.eu|siteMyBoobs.py|
+|My Life In Miami|My Life In Miami|https://www.mylifeinmiami.com|siteMyLifeInMiami.py|
 |Only3X|Only3X|https://only3x.com|siteOnly3X.py|
 |Orgasm Abuse|Orgasm Abuse|https://www.orgasmabuse.com|siteOrgasmAbuse.py|
+|Vipissy Cash|Pee On Her|https://www.peeonher.com|sitePeeOnHer.py|
 |Dev8 Entertainment||https://www.perfectgonzo.com|sitePefectGonzo.py|
 |Dev8 Entertainment||https://www.sapphix.com|sitePefectGonzo.py|
 |Penthouse|Penthouse|https://penthousegold.com|sitePenthouse.py|
 |Philavise|Philavise|https://www.philavise.com|sitePhilavise.py|
+|Playboy|Playboy|https://www.playboyplus.com|sitePlayboyPlus.py|
 |Pornstar Platinum|Pornstar Platinum|https://www.pornstarplatinum.com|sitePornstarPlatinum.py|
 |Private||https://www.private.com|sitePrivate.py|
 |Producers Fun|Producers Fun|https://producersfun.com|siteProducersFun.py|
@@ -591,8 +611,10 @@ Scraper Site List
 |Derangeddollars||https://www.slavemouth.com|siteSlavemouth.py|
 |Spankmonster|Spankmonster|https://spankmonster.com|siteSpankmonster.py|
 |Submissive X|Submissive X|https://submissivex.com|siteSubmissiveX.py|
+|Sugar Daddy Porn|Sugar Daddy Porn|https://www.sugardaddyporn.com|siteSugarDaddyPorn.py|
 |Tonights Girlfriend|Tonights Girlfriend|https://www.tonightsgirlfriend.com|siteTonightsGirlfriend.py|
 |Tugpass||https://www.tugpass.com|siteTugPass.py|
+|Vipissy Cash|Vipissy|https://www.vipissy.com|siteVIPissy.py|
 |Vogov|Vogov|https://vogov.com|siteVogov.py|
 |Radical Entertainment|Vrallure|https://vrallure.com|siteVrAllure.py|
 |Watch4Beauty||https://watch4beauty.com|siteWatch4Beauty.py|
