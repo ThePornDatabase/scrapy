@@ -4,6 +4,8 @@ from urllib.parse import urlparse
 import dateparser
 import scrapy
 import tldextract
+import string
+import html
 
 from tpdb.items import SceneItem
 
@@ -168,7 +170,7 @@ class BaseSceneScraper(scrapy.Spider):
             title = self.get_from_regex(title.get(), 're_title')
 
             if title:
-                return title.strip()
+                return string.capwords(html.unescape(title.strip()))
 
         return None
 
@@ -183,7 +185,7 @@ class BaseSceneScraper(scrapy.Spider):
             if description:
                 description = description.replace('Description:', '')
 
-                return description.strip()
+                return html.unescape(description.strip())
 
         return ''
 
@@ -215,7 +217,8 @@ class BaseSceneScraper(scrapy.Spider):
             image = self.get_from_regex(image.get(), 're_image')
 
             if image:
-                return self.format_link(response, image)
+                image = self.format_link(response, image)
+                return image.replace(" ", "%20")
 
         return None
 
@@ -230,7 +233,7 @@ class BaseSceneScraper(scrapy.Spider):
         if self.get_selector_map('tags'):
             tags = self.process_xpath(response, self.get_selector_map('tags'))
             if tags:
-                return list(map(lambda x: x.strip(), tags.getall()))
+                return list(map(lambda x: x.strip().title(), tags.getall()))
 
         return []
 
@@ -249,7 +252,8 @@ class BaseSceneScraper(scrapy.Spider):
         if 'trailer' in self.get_selector_map() and self.get_selector_map('trailer'):
             trailer = self.process_xpath(response, self.get_selector_map('trailer'))
             if trailer:
-                return self.get_from_regex(trailer.get(), 're_trailer')
+                trailer = self.get_from_regex(trailer.get(), 're_trailer')
+                return trailer.replace(" ", "%20")
 
         return ''
 
