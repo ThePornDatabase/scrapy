@@ -35,15 +35,41 @@ Scraper Site List
 |Bella Pass|Bella Pass|https://katiebanks.com|networkBellaPassPerformer.py|
 |Bella Pass|Bella Pass|https://monroelee.com|networkBellaPassPerformer.py|
 |Bella Pass|Bella Pass|https://taliashepard.com|networkBellaPassPerformer.py|
+|Dagfs||https://bustygfsexposed.com|networkDagfsPerformer.py|
+|Dagfs||https://dagfs.com|networkDagfsPerformer.py|
+|Dagfs||https://frenchgfs.com|networkDagfsPerformer.py|
+|Dagfs||https://realasianexposed.com|networkDagfsPerformer.py|
+|Dagfs||https://realblackexposed.com|networkDagfsPerformer.py|
+|Dagfs||https://realemoexposed.com|networkDagfsPerformer.py|
+|Dagfs||https://realgfsexposed.com|networkDagfsPerformer.py|
+|Dagfs||https://reallatinaexposed.com|networkDagfsPerformer.py|
+|Dagfs||https://reallesbianexposed.com|networkDagfsPerformer.py|
+|Dagfs||https://realmomexposed.com|networkDagfsPerformer.py|
+|Josh Stone Productions||https://www.trans500.com|networkJoshStoneProductionsPerformer.py|
+|Manojob||https://www.finishesthejob.com|networkManojobPerformer.py|
+|Nebraska Coeds||https://tour.nebraskacoeds.com|networkNebraskaCoedsPerformer.py|
+|Nebraska Coeds||https://www.springbreaklife.com|networkNebraskaCoedsPerformer.py|
+|Nebraska Coeds||https://tour.southbeachcoeds.com|networkNebraskaCoedsPerformer.py|
+|Nebraska Coeds||https://tour.afterhoursexposed.com|networkNebraskaCoedsPerformer.py|
+|Nebraska Coeds||https://tour.eurocoeds.com|networkNebraskaCoedsPerformer.py|
 |Nubiles|Nubiles|https://nubiles.net|networkNubilesPerformer.py|
 |Oktogon Media|Oktogon Media|https://www.shelovesblack.com|networkOktogonMedia.py|
 |Oktogon Media|Oktogon Media|https://www.loveherfeet.com|networkOktogonMedia.py|
 |Povr|Povr|https://povr.com|networkPOVRPerformer.py|
 |Porncz||https://www.porncz.com|networkPornczPerformer.py|
 |Puffy Network|Puffy Network|https://www.puffynetwork.com|networkPuffyPerformer.py|
+|Pure Cfnm||https://www.purecfnm.com|networkPureCFNMPerformer.py|
+|Pure Cfnm||https://www.ladyvoyeurs.com|networkPureCFNMPerformer.py|
+|Pure Cfnm||https://www.amateurcfnm.com|networkPureCFNMPerformer.py|
+|Pure Cfnm||https://www.cfnmgames.com|networkPureCFNMPerformer.py|
+|Pure Cfnm||https://www.girlsabuseguys.com|networkPureCFNMPerformer.py|
+|Pure Cfnm||https://littledick.club|networkPureCFNMPerformer.py|
 |Siren Xxx Studios|Siren Xxx Studios|https://realnaughtynymphos.com|networkSirenXXXStudiosPerformer.py|
 |Siren Xxx Studios|Siren Xxx Studios|https://myfirsttimesluts.com|networkSirenXXXStudiosPerformer.py|
 |Topwebmodels||https://tour.topwebmodels.com|networkTopWebModelsPerformer.py|
+|Uk Xxx Pass||https://ukpornparty.xxx|networkUKXXXPassPerformer.py|
+|Uk Xxx Pass||https://sexyukpornstars.xxx|networkUKXXXPassPerformer.py|
+|Uk Xxx Pass||https://splatbukkake.xxx|networkUKXXXPassPerformer.py|
 |Wow Network||https://www.18onlygirlsblog.com|networkWowNetworkPerformer.py|
 |Wow Network||https://www.ultrafilms.xxx|networkWowNetworkPerformer.py|
 |Wow Network||https://www.wowgirlsblog.com|networkWowNetworkPerformer.py|
@@ -52,13 +78,17 @@ Scraper Site List
 |5Dollah|5Dollah|https://www.5dollah.com|site5DollahPerformer.py|
 |Als Angels|Als Angels|http://www.alsangels.com|siteALSAngelsPerformer.py|
 |Digital J Media|After School.Jp|https://www.afterschool.jp|siteAfterSchooljpPerformer.py|
+|American Pornstar||http://american-pornstar.com|siteAmericanPornstarPerformer.py|
 |Arch Angel|Arch Angel|https://www.archangelvideo.com|siteArchangelVideoPerformer.py|
 |Bam Visions|Bam Visions|https://tour.bamvisions.com|siteBAMVisionsPerformer.py|
 |Babe Archive|Babe Archive|https://www.babearchive.com|siteBabeArchivePerformer.py|
 |Baberotica|Baberotica|https://baberotica.com|siteBaberoticaPerformer.py|
 |Bi Guys Fuck|Bi Guys Fuck||siteBiGuysFuckPerformer.py|
+|Box Truck Sex||https://www.boxtrucksex.com|siteBoxTruckSexPerformer.py|
+|Brick Yates|||siteBrickYatesPerformer.py|
 |Broken Babes|Broken Babes|https://www.brokenbabes.com|siteBrokenBabesPerformer.py|
 |Claudia Marie|Claudia Marie|https://www.claudiamarie.com|siteClaudiaMariePerformer.py|
+|Bc Media||https://www.colette.com|siteColettePerformer.py|
 |Cosmid|Cosmid|https://cosmid.net|siteCosmidPerformer.py|
 |Cum Perfection|Cum Perfection|https://www.cumperfection.com|siteCumPerfectionPerformer.py|
 |Desperate Amateurs|Desperate Amateurs|https://www.desperateamateurs.com|siteDesperateAmateursPerformer.py|
@@ -69,15 +99,22 @@ Scraper Site List
 |Fitting Room|Fitting Room|https://www.fitting-room.com|siteFittingRoomPerformers.py|
 |Free Ones|Free Ones|https://freeones.ru|siteFreeOnesPerformer.py|
 |Girls Rimming|Girls Rimming|https://www.girlsrimming.com|siteGirlsRimmingPerformer.py|
+|Holly Randall||https://www.hollyrandall.com|siteHollyRandallPerformer.py|
 |Hookup Hotshot|Hookup Hotshot|https://hookuphotshot.com|siteHookupHotshotPerformer.py|
 |Av Revenue|Japanhdv|https://japanhdv.com|siteJapanHDVPerformer.py|
 |Digital J Media|Legsjapan|https://www.legsjapan.com|siteLegsJapanPerformer.py|
+|Letsdoeit|||siteLetsDoeItPerformer.py|
+|Lukes Pov||https://lukespov.com|siteLukesPOV.py|
+|Mrbigfatdick|||siteMrBigDickPerformer.py|
 |Vipissy Cash|Pee On Her|https://www.peeonher.com|sitePeeOnHerPerformer.py|
 |Penthouse|Penthouse|https://penthousegold.com|sitePenthousePerformer.py|
 |Dev8 Entertainment|Dev8 Entertainment|https://www.perfectgonzo.com|sitePerfectGonzoPerformer.py|
 |||https://philavise.com|sitePhilavisePerformer.py|
+|Sapphix|Sapphix|https://www.sapphix.com|siteSapphixPerformer.py|
 |Spankmonster|Spankmonster|https://spankmonster.com|siteSpankmonsterPerformer.py|
+|Strap Lezz|Strap Lezz|https://straplezz.com|siteStrapLezzPerformer.py|
 |Sugar Daddy Porn|Sugar Daddy Porn|https://www.sugardaddyporn.com|siteSugarDaddyPornPerformer.py|
+|Toughlovex||https://tour.toughlovex.com|siteToughLoveXPerformer.py|
 |Digital J Media|Ura Lesbian|https://www.uralesbian.com|siteUraLesbianPerformer.py|
 |Vipissy Cash|Vipissy|https://www.vipissy.com|siteVIPissyPerformer.py|
 |Vogov|Vogov|https://vogov.com|siteVogovPerformer.py|
@@ -231,6 +268,16 @@ Scraper Site List
 |Czech Casting||https://czechtoilets.com|networkCzechAv.py|
 |Czech Casting||https://czechtwins.com|networkCzechAv.py|
 |Czech Casting||https://czechwifeswap.com|networkCzechAv.py|
+|Dagfs||https://bustygfsexposed.com|networkDagfs.py|
+|Dagfs||https://dagfs.com|networkDagfs.py|
+|Dagfs||https://frenchgfs.com|networkDagfs.py|
+|Dagfs||https://realasianexposed.com|networkDagfs.py|
+|Dagfs||https://realblackexposed.com|networkDagfs.py|
+|Dagfs||https://realemoexposed.com|networkDagfs.py|
+|Dagfs||https://realgfsexposed.com|networkDagfs.py|
+|Dagfs||https://reallatinaexposed.com|networkDagfs.py|
+|Dagfs||https://reallesbianexposed.com|networkDagfs.py|
+|Dagfs||https://realmomexposed.com|networkDagfs.py|
 |Dogfart Network|Dogfart Network|https://www.dogfartnetwork.com|networkDogfart.py|
 |Eros Arts||https://www.jerkoffinstructions.com|networkErosArts.py|
 |Eros Arts||https://www.sexpov.com|networkErosArts.py|
@@ -321,9 +368,11 @@ Scraper Site List
 |Interracialpass||https://exploitedcollegegirls.com|networkInterracialPass.py|
 |Interracialpass||https://www.ikissgirls.com|networkInterracialPass.py|
 |Javbus|Javbus|https://www.javbus.com|networkJavBus.py|
+|Josh Stone Productions||https://www.trans500.com|networkJoshStoneProductions.py|
 |Legal Porno||https://www.analvids.com|networkLegalPorno.py|
 |Legal Porno||https://pornworld.com|networkLegalPorno.py|
 |Hoh Limited|Lethalpass|https://www.lethalpass.com|networkLethalPass.py|
+|Mental Pass|||networkMentalPass.py|
 |Metart||https://www.sexart.com|networkMetArt.py|
 |Metart||https://www.metart.com|networkMetArt.py|
 |Metart||https://www.vivthomas.com|networkMetArt.py|
@@ -482,6 +531,9 @@ Scraper Site List
 |Teenmegaworld||http://x-angels.com|networkTeenMegaWorld.py|
 |Teenmegaworld||http://teensexmovs.com|networkTeenMegaWorld.py|
 |Topwebmodels||https://tour.topwebmodels.com|networkTopWebModels.py|
+|Uk Xxx Pass||https://ukpornparty.xxx|networkUKXXXPass.py|
+|Uk Xxx Pass||https://sexyukpornstars.xxx|networkUKXXXPass.py|
+|Uk Xxx Pass||https://splatbukkake.xxx|networkUKXXXPass.py|
 |Vip 4K|Vip 4K|https://black4k.com|networkVIP4K.py|
 |Vip 4K|Vip 4K|https://daddy4k.com|networkVIP4K.py|
 |Vip 4K|Vip 4K|https://fist4k.com|networkVIP4K.py|
@@ -549,6 +601,7 @@ Scraper Site List
 |Aletta Ocean Live|Aletta Ocean Live|https://alettaoceanlive.com|siteAlettaOceanLive.py|
 |Amateur Allure|Amateur Allure|https://www.amateurallure.com|siteAmateurAllure.py|
 |Amateur Boxxx|Amateur Boxxx|https://tour.amateurboxxx.com|siteAmateurBoxxx.py|
+|American Pornstar|American Pornstar|http://american-pornstar.com|siteAmericanPornstar.py|
 |Anna Claire Clouds|Anna Claire Clouds|https://annaclaireclouds.com|siteAnnaClaireClouds.py|
 |Archangel|Archangel|https://www.archangelvideo.com|siteArchangelVideo.py|
 |Derangeddollars||https://www.assylum.com|siteAssylum.py|
@@ -562,10 +615,14 @@ Scraper Site List
 |Bam Visions|Bam Visions|https://tour.bamvisions.com|siteBamVisionsBTS.py|
 |Bang Bros||https://bangbros.com|siteBangBros.py|
 |Bi Guys Fuck|Bi Guys Fuck|https://www.biguysfuck.com|siteBiGuysFuck.py|
+|Box Truck Sex|Box Truck Sex|https://www.boxtrucksex.com|siteBoxTruckSex.py|
+|Brand New Amateurs|Brand New Amateurs|https://www.brandnewamateurs.com|siteBrandNewAmateurs.py|
+|Brick Yates|Brick Yates|https://www.brickyates.com|siteBrickYates.py|
 |Broken Babes|Broken Babes|https://www.brokenbabes.com|siteBrokenBabes.py|
 |Chastity Babes|Chastity Babes|https://www.chastitybabes.com|siteChastityBabes.py|
 |Claudia Marie|Claudia Marie|https://claudiamarie.com|siteClaudiaMarie.py|
 |Clubseventeen|Clubseventeen|https://www.clubseventeen.com|siteClubSeventeen.py|
+|Bc Media|Colette|https://www.colette.com|siteColette.py|
 |Cosmid|Cosmid|https://cosmid.net|siteCosmid.py|
 |Cum Louder|Cum Louder|https://www.cumlouder.com|siteCumLouder.py|
 |Cum Perfection|Cum Perfection|http://cum-fun.com|siteCumPerfection.py|
@@ -588,6 +645,7 @@ Scraper Site List
 |Girls Rimming|Girls Rimming|https://www.girlsrimming.com|siteGirlsRimming.py|
 |Radical Entertainment|Hitzefrei|https://tour.hitzefrei.com|siteHitzefrei.py|
 |Hoby Buchanon|Hoby Buchanon|https://hobybuchanon.com|siteHobyBuchanon.py|
+|Holly Randall|Holly Randall|https://www.hollyrandall.com|siteHollyRandall.py|
 |Hookup Hotshot|Hookup Hotshot|https://hookuphotshot.com|siteHookupHotshot.py|
 |Hot Guys Fuck|Hot Guys Fuck|https://www.hotguysfuck.com|siteHotGuysFuck.py|
 |Hot Milfs Fuck|Hot Milfs Fuck|https://www.hotmilfsfuck.com|siteHotMilfsFuck.py|
@@ -609,11 +667,18 @@ Scraper Site List
 |Kink|||siteKink.py|
 |Digital J Media|Legs Japan|https://www.legsjapan.com|siteLegsJapan.py|
 |Letsdoeit||https://www.letsdoeit.com|siteLetsDoeIt.py|
+|Letsdoeit||https://amateureuro.com|siteLetsDoeIt.py|
+|Letsdoeit||https://mamacitaz.com|siteLetsDoeIt.py|
+|Letsdoeit||https://dirtycosplay.com|siteLetsDoeIt.py|
+|Letsdoeit||https://transbella.com|siteLetsDoeIt.py|
+|Letsdoeit||https://vipsexvault.com|siteLetsDoeIt.py|
 |Little Caprice Dreams||https://www.littlecaprice-dreams.com|siteLittleCaprice.py|
+|Lukes Pov|Lukes Pov|https://lukespov.com|siteLukesPOV.py|
 |Radical Entertainment|Madeincanada|http://tour.madeincanada.xxx|siteMadeInCanada.py|
 |||http://www.magmafilm.tv|siteMagmaFilm.py|
 |Mindcontroltheatre|Mindcontroltheatre|https://mindcontroltheatre.com|siteMindControlTheatre.py|
 |Montys Pov|Montys Pov|http://www.montyspov.com|siteMontysPOV.py|
+|Mrbigfatdick||https://backend.mrbigfatdick.com|siteMrBigDick.py|
 |Radical Entertainment|Myboobs|https://tour.myboobs.eu|siteMyBoobs.py|
 |Only3X|Only3X|https://only3x.com|siteOnly3X.py|
 |Orgasm Abuse|Orgasm Abuse|https://www.orgasmabuse.com|siteOrgasmAbuse.py|
@@ -628,14 +693,17 @@ Scraper Site List
 |Producers Fun|Producers Fun|https://producersfun.com|siteProducersFun.py|
 |Radical Entertainment|Purgatoryx|https://tour.purgatoryx.com|sitePurgatoryX.py|
 |Puta Locura|Puta Locura|https://www.putalocura.com|sitePutaLocura.py|
+|Sapphix|Sapphix|https://www.sapphix.com|siteSapphix.py|
 ||||siteSecretFriends.py|
 |Sexmex|Sexmex|https://sexmex.xxx|siteSexMex.py|
 |Sinematica|Sinematica|https://www.sinematica.com|siteSinematica.py|
 |Derangeddollars||https://www.slavemouth.com|siteSlavemouth.py|
 |Spankmonster|Spankmonster|https://spankmonster.com|siteSpankmonster.py|
+|Strap Lezz|Strap Lezz|https://straplezz.com|siteStrapLezz.py|
 |Submissive X|Submissive X|https://submissivex.com|siteSubmissiveX.py|
 |Sugar Daddy Porn|Sugar Daddy Porn|https://www.sugardaddyporn.com|siteSugarDaddyPorn.py|
 |Tonights Girlfriend|Tonights Girlfriend|https://www.tonightsgirlfriend.com|siteTonightsGirlfriend.py|
+|Radical Entertainment|Toughlovex|https://tour.toughlovex.com|siteToughLoveX.py|
 |Tugpass||https://www.tugpass.com|siteTugPass.py|
 |Digital J Media|Ura Lesbian|https://www.uralesbian.com|siteUraLesbian.py|
 |Vipissy Cash|Vipissy|https://www.vipissy.com|siteVIPissy.py|
