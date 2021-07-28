@@ -80,6 +80,7 @@ Scraper Site List
 |Digital J Media|After School.Jp|https://www.afterschool.jp|siteAfterSchooljpPerformer.py|
 |American Pornstar||http://american-pornstar.com|siteAmericanPornstarPerformer.py|
 |Arch Angel|Arch Angel|https://www.archangelvideo.com|siteArchangelVideoPerformer.py|
+|Aunt Judys||https://www.auntjudys.com|siteAuntJudys.py|
 |Bam Visions|Bam Visions|https://tour.bamvisions.com|siteBAMVisionsPerformer.py|
 |Babe Archive|Babe Archive|https://www.babearchive.com|siteBabeArchivePerformer.py|
 |Baberotica|Baberotica|https://baberotica.com|siteBaberoticaPerformer.py|
@@ -90,11 +91,13 @@ Scraper Site List
 |Claudia Marie|Claudia Marie|https://www.claudiamarie.com|siteClaudiaMariePerformer.py|
 |Bc Media||https://www.colette.com|siteColettePerformer.py|
 |Cosmid|Cosmid|https://cosmid.net|siteCosmidPerformer.py|
+|Cospuri||https://www.cospuri.com|siteCospuriPerformer.py|
 |Cum Perfection|Cum Perfection|https://www.cumperfection.com|siteCumPerfectionPerformer.py|
 |Desperate Amateurs|Desperate Amateurs|https://www.desperateamateurs.com|siteDesperateAmateursPerformer.py|
 |Dick Drainers|Dick Drainers|http://www.dickdrainers.com|siteDickDrainersPerformer.py|
 |Exposed Whores|Exposed Whores|https://exposedwhores.com|siteExposedWhoresPerformer.py|
 |Digital J Media|Fellatio Japan|https://www.fellatiojapan.com|siteFellatioJapanPerformer.py|
+|Femjoy||https://femjoy.com|siteFemjoyPerformer.py|
 |Vipissy Cash|Fister Twister|https://www.fistertwister.com|siteFisterTwisterPerformer.py|
 |Fitting Room|Fitting Room|https://www.fitting-room.com|siteFittingRoomPerformers.py|
 |Free Ones|Free Ones|https://freeones.ru|siteFreeOnesPerformer.py|
@@ -117,6 +120,7 @@ Scraper Site List
 |Toughlovex||https://tour.toughlovex.com|siteToughLoveXPerformer.py|
 |Digital J Media|Ura Lesbian|https://www.uralesbian.com|siteUraLesbianPerformer.py|
 |Vipissy Cash|Vipissy|https://www.vipissy.com|siteVIPissyPerformer.py|
+|Vlogxxx||https://vlogxxx.com|siteVlogXXXPerformer.py|
 |Vogov|Vogov|https://vogov.com|siteVogovPerformer.py|
 |Xconfessions|Xconfessions|https://xconfessions.com|siteXConfessionsPerformer.py|
 |New Sensations||https://www.newsensations.com|NewSensations.py|
@@ -423,6 +427,7 @@ Scraper Site List
 |Panorama Pacific|This Is Glamour|https://www.thisisglamour.com|networkPanoramaPacific.py|
 |Pornfidelity||https://www.pornfidelity.com|networkPornFidelity.py|
 |Pornpros||https://anal4k.com|networkPornPros.py|
+|Pornpros||https://bbcpie.com|networkPornPros.py|
 |Pornpros||https://castingcouch-x.com|networkPornPros.py|
 |Pornpros||https://cum4k.com|networkPornPros.py|
 |Pornpros||https://exotic4k.com|networkPornPros.py|
@@ -605,6 +610,7 @@ Scraper Site List
 |Anna Claire Clouds|Anna Claire Clouds|https://annaclaireclouds.com|siteAnnaClaireClouds.py|
 |Archangel|Archangel|https://www.archangelvideo.com|siteArchangelVideo.py|
 |Derangeddollars||https://www.assylum.com|siteAssylum.py|
+|Aunt Judys|Aunt Judys|https://www.auntjudys.com|siteAuntJudys.py|
 |Aussieass||https://aussieass.com|siteAussieAss.py|
 |Aussieass||https://aussiepov.com|siteAussieAss.py|
 |Bj Raw|Bj Raw|https://www.bjraw.com|siteBJRaw.py|
@@ -624,6 +630,7 @@ Scraper Site List
 |Clubseventeen|Clubseventeen|https://www.clubseventeen.com|siteClubSeventeen.py|
 |Bc Media|Colette|https://www.colette.com|siteColette.py|
 |Cosmid|Cosmid|https://cosmid.net|siteCosmid.py|
+|Cospuri|Cospuri||siteCospuri.py|
 |Cum Louder|Cum Louder|https://www.cumlouder.com|siteCumLouder.py|
 |Cum Perfection|Cum Perfection|http://cum-fun.com|siteCumPerfection.py|
 |Desperate Amateurs|Desperate Amateurs|https://www.desperateamateurs.com|siteDesperateAmateurs.py|
@@ -638,9 +645,11 @@ Scraper Site List
 |Tugpass||https://www.familylust.com|siteFamilyLust.py|
 |Familytherapyxxx|Familytherapyxxx|https://familytherapyxxx.com|siteFamilyTherapyXXX.py|
 |Digital J Media|Fellatio Japan|https://www.fellatiojapan.com|siteFellatioJapan.py|
+|Femjoy|Femjoy|https://femjoy.com|siteFemjoy.py|
 |Vipissy Cash|Fister Twister|https://www.fistertwister.com|siteFisterTwister.py|
 |Fitting Room|Fitting Room|https://www.fitting-room.com|siteFittingRoom.py|
 |Frolic Me|Frolic Me|https://www.frolicme.com|siteFrolicMe.py|
+|Girls Fuck Girls||https://girlsfuckgirls.com|siteGirlsFuckGirls.py|
 |Girlsoutwest|Girlsoutwest|https://tour.girlsoutwest.com|siteGirlsOutWest.py|
 |Girls Rimming|Girls Rimming|https://www.girlsrimming.com|siteGirlsRimming.py|
 |Radical Entertainment|Hitzefrei|https://tour.hitzefrei.com|siteHitzefrei.py|
@@ -707,6 +716,7 @@ Scraper Site List
 |Tugpass||https://www.tugpass.com|siteTugPass.py|
 |Digital J Media|Ura Lesbian|https://www.uralesbian.com|siteUraLesbian.py|
 |Vipissy Cash|Vipissy|https://www.vipissy.com|siteVIPissy.py|
+|Vlogxxx|Vlogxxx|https://vlogxxx.com|siteVlogXXX.py|
 |Vogov|Vogov|https://vogov.com|siteVogov.py|
 |Radical Entertainment|Vrallure|https://vrallure.com|siteVrAllure.py|
 |Watch4Beauty||https://watch4beauty.com|siteWatch4Beauty.py|
