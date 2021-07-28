@@ -101,6 +101,7 @@ Scraper Site List
 |Vipissy Cash|Fister Twister|https://www.fistertwister.com|siteFisterTwisterPerformer.py|
 |Fitting Room|Fitting Room|https://www.fitting-room.com|siteFittingRoomPerformers.py|
 |Free Ones|Free Ones|https://freeones.ru|siteFreeOnesPerformer.py|
+|Girls Fuck Girls||http://girlsfuckgirls.com|siteGirlsFuckGirlsPerformer.py|
 |Girls Rimming|Girls Rimming|https://www.girlsrimming.com|siteGirlsRimmingPerformer.py|
 |Holly Randall||https://www.hollyrandall.com|siteHollyRandallPerformer.py|
 |Hookup Hotshot|Hookup Hotshot|https://hookuphotshot.com|siteHookupHotshotPerformer.py|
@@ -108,6 +109,7 @@ Scraper Site List
 |Digital J Media|Legsjapan|https://www.legsjapan.com|siteLegsJapanPerformer.py|
 |Letsdoeit|||siteLetsDoeItPerformer.py|
 |Lukes Pov||https://lukespov.com|siteLukesPOV.py|
+|Mixed X|||siteMixedXPerformer.py|
 |Mrbigfatdick|||siteMrBigDickPerformer.py|
 |Vipissy Cash|Pee On Her|https://www.peeonher.com|sitePeeOnHerPerformer.py|
 |Penthouse|Penthouse|https://penthousegold.com|sitePenthousePerformer.py|
@@ -686,6 +688,7 @@ Scraper Site List
 |Radical Entertainment|Madeincanada|http://tour.madeincanada.xxx|siteMadeInCanada.py|
 |||http://www.magmafilm.tv|siteMagmaFilm.py|
 |Mindcontroltheatre|Mindcontroltheatre|https://mindcontroltheatre.com|siteMindControlTheatre.py|
+|Mixed X||https://mixedx.com|siteMixedX.py|
 |Montys Pov|Montys Pov|http://www.montyspov.com|siteMontysPOV.py|
 |Mrbigfatdick||https://backend.mrbigfatdick.com|siteMrBigDick.py|
 |Radical Entertainment|Myboobs|https://tour.myboobs.eu|siteMyBoobs.py|
