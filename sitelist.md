@@ -105,6 +105,7 @@ Scraper Site List
 |Genuine Sin|||siteGenuineSinPerformer.py|
 |Girls Fuck Girls||http://girlsfuckgirls.com|siteGirlsFuckGirlsPerformer.py|
 |Girls Rimming|Girls Rimming|https://www.girlsrimming.com|siteGirlsRimmingPerformer.py|
+|Heavy On Hotties||https://www.heavyonhotties.com|siteHeavyOnHottiesPerformer.py|
 |Holly Randall||https://www.hollyrandall.com|siteHollyRandallPerformer.py|
 |Hookup Hotshot|Hookup Hotshot|https://hookuphotshot.com|siteHookupHotshotPerformer.py|
 |Av Revenue|Japanhdv|https://japanhdv.com|siteJapanHDVPerformer.py|
@@ -376,6 +377,7 @@ Scraper Site List
 |Interracialpass||https://blackambush.com|networkInterracialPass.py|
 |Interracialpass||https://exploitedcollegegirls.com|networkInterracialPass.py|
 |Interracialpass||https://www.ikissgirls.com|networkInterracialPass.py|
+|Its Pov|||networkItsPOV.py|
 |Javbus|Javbus|https://www.javbus.com|networkJavBus.py|
 |Josh Stone Productions||https://www.trans500.com|networkJoshStoneProductions.py|
 |Legal Porno||https://www.analvids.com|networkLegalPorno.py|
@@ -661,6 +663,7 @@ Scraper Site List
 |Girls Fuck Girls||https://girlsfuckgirls.com|siteGirlsFuckGirls.py|
 |Girlsoutwest|Girlsoutwest|https://tour.girlsoutwest.com|siteGirlsOutWest.py|
 |Girls Rimming|Girls Rimming|https://www.girlsrimming.com|siteGirlsRimming.py|
+|Heavy On Hotties|Heavy On Hotties|https://www.heavyonhotties.com|siteHeavyOnHotties.py|
 |Radical Entertainment|Hitzefrei|https://tour.hitzefrei.com|siteHitzefrei.py|
 |Hoby Buchanon|Hoby Buchanon|https://hobybuchanon.com|siteHobyBuchanon.py|
 |Holly Randall|Holly Randall|https://www.hollyrandall.com|siteHollyRandall.py|
