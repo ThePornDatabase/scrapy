@@ -95,12 +95,14 @@ Scraper Site List
 |Cum Perfection|Cum Perfection|https://www.cumperfection.com|siteCumPerfectionPerformer.py|
 |Desperate Amateurs|Desperate Amateurs|https://www.desperateamateurs.com|siteDesperateAmateursPerformer.py|
 |Dick Drainers|Dick Drainers|http://www.dickdrainers.com|siteDickDrainersPerformer.py|
+|Erotiquetvlive||https://erotiquetvlive.com|siteErotiqueTVLivePerformer.py|
 |Exposed Whores|Exposed Whores|https://exposedwhores.com|siteExposedWhoresPerformer.py|
 |Digital J Media|Fellatio Japan|https://www.fellatiojapan.com|siteFellatioJapanPerformer.py|
 |Femjoy||https://femjoy.com|siteFemjoyPerformer.py|
 |Vipissy Cash|Fister Twister|https://www.fistertwister.com|siteFisterTwisterPerformer.py|
 |Fitting Room|Fitting Room|https://www.fitting-room.com|siteFittingRoomPerformers.py|
 |Free Ones|Free Ones|https://freeones.ru|siteFreeOnesPerformer.py|
+|Genuine Sin|||siteGenuineSinPerformer.py|
 |Girls Fuck Girls||http://girlsfuckgirls.com|siteGirlsFuckGirlsPerformer.py|
 |Girls Rimming|Girls Rimming|https://www.girlsrimming.com|siteGirlsRimmingPerformer.py|
 |Holly Randall||https://www.hollyrandall.com|siteHollyRandallPerformer.py|
@@ -141,6 +143,7 @@ Scraper Site List
 |Adultempirecash||https://www.lethalhardcore.com|networkAdultEmpireCash.py|
 |Adultempirecash||https://spankmonster.com|networkAdultEmpireCash.py|
 |Gamma Enterprises||https://www.21sextury.com|networkAdulttimeAPI.py|
+|Gamma Enterprises||https://www.addicted2girls.com|networkAdulttimeAPI.py|
 |Gamma Enterprises||https://www.clubinfernodungeon.com|networkAdulttimeAPI.py|
 |Gamma Enterprises||https://www.evilangel.com|networkAdulttimeAPI.py|
 |Gamma Enterprises||https://www.genderx.com|networkAdulttimeAPI.py|
@@ -486,6 +489,7 @@ Scraper Site List
 |Mindgeek||https://www.tube8vip.com|networkProjectOneService.py|
 |Mindgeek||https://www.twistys.com|networkProjectOneService.py|
 |Mindgeek||https://www.whynotbi.com|networkProjectOneService.py|
+|Puba Network|||networkPubaNetwork.py|
 |Puffy Network||https://www.puffynetwork.com|networkPuffy.py|
 |Scorepass||https://www.bigboobspov.com|networkScorePass.py|
 |Scorepass||https://www.bigtithooker.com|networkScorePass.py|
@@ -633,12 +637,14 @@ Scraper Site List
 |Bc Media|Colette|https://www.colette.com|siteColette.py|
 |Cosmid|Cosmid|https://cosmid.net|siteCosmid.py|
 |Cospuri|Cospuri||siteCospuri.py|
+|Cruel Furies||https://www.cruel-furies.com|siteCruelFuries.py|
 |Cum Louder|Cum Louder|https://www.cumlouder.com|siteCumLouder.py|
 |Cum Perfection|Cum Perfection|http://cum-fun.com|siteCumPerfection.py|
 |Desperate Amateurs|Desperate Amateurs|https://www.desperateamateurs.com|siteDesperateAmateurs.py|
 |Dick Drainers|Dick Drainers|http://www.dickdrainers.com|siteDickDrainers.py|
 |Derangeddollars|Derangeddollars|https://www.domthenation.com|siteDomTheNation.py|
 |Dorcel Club|Dorcel Club|https://www.dorcelclub.com|siteDorcelClub.py|
+|Erotiquetvlive|Erotiquetvlive|https://erotiquetvlive.com|siteErotiqueTVLive.py|
 |Evolved Fights||https://www.evolvedfights.com|siteEvolvedFights.py|
 |Evolved Fights||https://www.evolvedfightslez.com|siteEvolvedFights.py|
 |Exposed Whores|Exposed Whores|https://exposedwhores.com|siteExposedWhores.py|
@@ -651,6 +657,7 @@ Scraper Site List
 |Vipissy Cash|Fister Twister|https://www.fistertwister.com|siteFisterTwister.py|
 |Fitting Room|Fitting Room|https://www.fitting-room.com|siteFittingRoom.py|
 |Frolic Me|Frolic Me|https://www.frolicme.com|siteFrolicMe.py|
+|Genuine Sin||https://genuinesin.com|siteGenuineSin.py|
 |Girls Fuck Girls||https://girlsfuckgirls.com|siteGirlsFuckGirls.py|
 |Girlsoutwest|Girlsoutwest|https://tour.girlsoutwest.com|siteGirlsOutWest.py|
 |Girls Rimming|Girls Rimming|https://www.girlsrimming.com|siteGirlsRimming.py|
