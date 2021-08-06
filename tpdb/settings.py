@@ -8,7 +8,7 @@
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
 #   Custom CLI Options:
-#   
+#
 #   --loglevel=(DEBUG, INFO, WARNING, ERROR, CRITICAL) (loglevel = INFO by default)
 #   -a limit_pages=####  (Number of pages to stop after, limit_pages=all for no limit)
 #   -s display=true (Display a single line per entry scraped, DEBUG level will display entire Item object)

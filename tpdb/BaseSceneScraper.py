@@ -19,7 +19,7 @@ class BaseSceneScraper(scrapy.Spider):
     headers = {}
     page = 1
 
-    custom_settings = {
+    custom_tpdb_settings = {
         'ITEM_PIPELINES': {
             'tpdb.pipelines.TpdbApiScenePipeline': 400,
         },
@@ -27,6 +27,8 @@ class BaseSceneScraper(scrapy.Spider):
             'tpdb.middlewares.TpdbSceneDownloaderMiddleware': 543,
         }
     }
+
+    custom_scraper_settings = {}
 
     regex = {
         'external_id': None,
@@ -54,6 +56,12 @@ class BaseSceneScraper(scrapy.Spider):
             if self.limit_pages == 'all':
                 self.limit_pages = 9999
             self.limit_pages = int(self.limit_pages)
+
+    @classmethod
+    def update_settings(self, settings):
+        self.custom_tpdb_settings.update(self.custom_scraper_settings)
+        settings.update(self.custom_tpdb_settings)
+        super(BaseSceneScraper, self).update_settings(settings)
 
     def start_requests(self):
         if not hasattr(self, 'start_urls'):
