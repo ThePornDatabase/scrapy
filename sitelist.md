@@ -255,6 +255,7 @@ Scraper Site List
 |Cx Wow||https://www.pure-ts.com|networkCXWow.py|
 |Cx Wow||https://www.tspov.com|networkCXWow.py|
 |Cherry Pimps||https://www.cherrypimps.com|networkCherryPimps.py|
+||||networkClips4Sale.py|
 |Couplescinema||https://www.couplescinema.com|networkCouplesCinema.py|
 |Czech Casting||https://czechamateurs.com|networkCzechAv.py|
 |Czech Casting||https://czechbangbus.com|networkCzechAv.py|
@@ -459,6 +460,7 @@ Scraper Site List
 |Pornpros||https://puremature.com|networkPornPros.py|
 |Pornpros||https://spyfam.com|networkPornPros.py|
 |Pornpros||https://tiny4k.com|networkPornPros.py|
+||||networkPornRoleplay.py|
 |Ddfnetwork||https://1by-day.com|networkPornWorld.py|
 |Ddfnetwork||https://ddfbusty.com|networkPornWorld.py|
 |Ddfnetwork||https://eurogirlsongirls.com|networkPornWorld.py|
@@ -608,6 +610,7 @@ Scraper Site List
 |Vna||https://tashareign.com|networkVna.py|
 |Vna||https://vickyathome.com|networkVna.py|
 |Vna||https://womenbyjuliaann.com|networkVna.py|
+|Wtf Pass||https://wtfpass.com|networkWTFPass.py|
 |Wankz||https://www.wankz.com|networkWankz.py|
 |Wow Girls||https://www.wowpornblog.com|networkWowNetwork.py|
 |Wow Girls||https://www.wowgirlsblog.com|networkWowNetwork.py|
@@ -713,6 +716,7 @@ Scraper Site List
 |Letsdoeit||https://transbella.com|siteLetsDoeIt.py|
 |Letsdoeit||https://vipsexvault.com|siteLetsDoeIt.py|
 |Little Caprice Dreams||https://www.littlecaprice-dreams.com|siteLittleCaprice.py|
+|Load My Mouth||http://www.loadmymouth.com|siteLoadMyMouth.py|
 |Lukes Pov|Lukes Pov|https://lukespov.com|siteLukesPOV.py|
 |Radical Entertainment|Madeincanada|http://tour.madeincanada.xxx|siteMadeInCanada.py|
 |||http://www.magmafilm.tv|siteMagmaFilm.py|
@@ -724,7 +728,7 @@ Scraper Site List
 |Mrbigfatdick||https://backend.mrbigfatdick.com|siteMrBigDick.py|
 |Radical Entertainment|Myboobs|https://tour.myboobs.eu|siteMyBoobs.py|
 |Only3X|Only3X|https://only3x.com|siteOnly3X.py|
-|Orgasm Abuse|Orgasm Abuse|https://www.orgasmabuse.com|siteOrgasmAbuse.py|
+|Orgasm Abuse||https://www.orgasmabuse.com|siteOrgasmAbuse.py|
 |Vipissy Cash|Pee On Her|https://www.peeonher.com|sitePeeOnHer.py|
 |Dev8 Entertainment||https://www.perfectgonzo.com|sitePefectGonzo.py|
 |Dev8 Entertainment||https://www.sapphix.com|sitePefectGonzo.py|
@@ -747,6 +751,7 @@ Scraper Site List
 |Strap Lezz|Strap Lezz|https://straplezz.com|siteStrapLezz.py|
 |Submissive X||https://submissivex.com|siteSubmissiveX.py|
 |Sugar Daddy Porn|Sugar Daddy Porn|https://www.sugardaddyporn.com|siteSugarDaddyPorn.py|
+|Sweetyx|||siteSweetyX.py|
 |Terror Xxx|Terror Xxx|https://terrorxxx.com|siteTerrorXXX.py|
 |Tonights Girlfriend|Tonights Girlfriend|https://www.tonightsgirlfriend.com|siteTonightsGirlfriend.py|
 |Radical Entertainment|Toughlovex|https://tour.toughlovex.com|siteToughLoveX.py|
