@@ -117,6 +117,7 @@ Scraper Site List
 |Mixed X|||siteMixedXPerformer.py|
 |Monger In Asia||https://www.mongerinasia.com|siteMongerInAsiaPerformer.py|
 |Mrbigfatdick|||siteMrBigDickPerformer.py|
+|Pawged||https://pawged.com|sitePAWGED.py|
 |Vipissy Cash|Pee On Her|https://www.peeonher.com|sitePeeOnHerPerformer.py|
 |Penthouse|Penthouse|https://penthousegold.com|sitePenthousePerformer.py|
 |Dev8 Entertainment|Dev8 Entertainment|https://www.perfectgonzo.com|sitePerfectGonzoPerformer.py|
@@ -134,6 +135,7 @@ Scraper Site List
 |Xconfessions|Xconfessions|https://xconfessions.com|siteXConfessionsPerformer.py|
 |New Sensations||https://www.newsensations.com|NewSensations.py|
 |Eurostunners|||fillerEuroStunners.py|
+|Dirtyflix||https://members.dirtyflix.com|memberDirtyFlix.py|
 |Adult Dvd Empire||https://www.adultdvdempire.com|moviesAdultDVDEmpire.py|
 |Pinklabel|Pinklabel||moviesPinkLabel.py|
 |5Kporn|5Kporn|https://www.5kporn.com|network5kPorn.py|
@@ -159,6 +161,7 @@ Scraper Site List
 |Gamma Enterprises||https://www.mommysgirl.com|networkAdulttimeAPI.py|
 |Gamma Enterprises||https://www.nextdoorstudios.com|networkAdulttimeAPI.py|
 |Gamma Enterprises||https://www.puretaboo.com|networkAdulttimeAPI.py|
+|Gamma Enterprises||https://www.tabooheat.com|networkAdulttimeAPI.py|
 |Gamma Enterprises||https://www.transfixed.com|networkAdulttimeAPI.py|
 |Gamma Enterprises||https://www.wicked.com|networkAdulttimeAPI.py|
 |Gamma Enterprises||https://www.zerotolerance.com|networkAdulttimeAPI.py|
@@ -318,7 +321,7 @@ Scraper Site List
 |Fetish Network|Fetish Network|http://www.fetishnetwork.com|networkFetishNetwork.py|
 |Fetish Network|Fetish Network|http://www.brutalpov.com|networkFetishNetworkAlt.py|
 |Full Porn Network||https://analized.com|networkFullPorn.py|
-|Full Porn Network||https://baddaddypov.com|networkFullPorn.py|
+|Full Porn Network||https://badfamilypov.com|networkFullPorn.py|
 |Full Porn Network||https://downtofuckdating.com|networkFullPorn.py|
 |Full Porn Network||https://dtfsluts.com|networkFullPorn.py|
 |Full Porn Network||https://girlfaction.com|networkFullPorn.py|
@@ -445,6 +448,7 @@ Scraper Site List
 |Panorama Pacific|This Is Glamour|https://www.thisisglamour.com|networkPanoramaPacific.py|
 |Pornfidelity||https://www.pornfidelity.com|networkPornFidelity.py|
 |Pornpros||https://anal4k.com|networkPornPros.py|
+|Pornpros||https://baeb.com|networkPornPros.py|
 |Pornpros||https://bbcpie.com|networkPornPros.py|
 |Pornpros||https://castingcouch-x.com|networkPornPros.py|
 |Pornpros||https://cum4k.com|networkPornPros.py|
@@ -460,6 +464,7 @@ Scraper Site List
 |Pornpros||https://puremature.com|networkPornPros.py|
 |Pornpros||https://spyfam.com|networkPornPros.py|
 |Pornpros||https://tiny4k.com|networkPornPros.py|
+|Pornpros||https://wetvr.com|networkPornPros.py|
 ||||networkPornRoleplay.py|
 |Ddfnetwork||https://1by-day.com|networkPornWorld.py|
 |Ddfnetwork||https://ddfbusty.com|networkPornWorld.py|
@@ -675,6 +680,7 @@ Scraper Site List
 |Vipissy Cash|Fister Twister|https://www.fistertwister.com|siteFisterTwister.py|
 |Fit18|Fit18|https://www.fit18.com|siteFit18.py|
 |Fitting Room|Fitting Room|https://www.fitting-room.com|siteFittingRoom.py|
+|Freak Mob Media||https://www.freakmobmedia.com|siteFreakMobMedia.py|
 |Frolic Me|Frolic Me|https://www.frolicme.com|siteFrolicMe.py|
 |Genuine Sin||https://genuinesin.com|siteGenuineSin.py|
 |Girls Fuck Girls||https://girlsfuckgirls.com|siteGirlsFuckGirls.py|
@@ -729,6 +735,7 @@ Scraper Site List
 |Radical Entertainment|Myboobs|https://tour.myboobs.eu|siteMyBoobs.py|
 |Only3X|Only3X|https://only3x.com|siteOnly3X.py|
 |Orgasm Abuse||https://www.orgasmabuse.com|siteOrgasmAbuse.py|
+|Pawged||https://pawged.com|sitePawged.py|
 |Vipissy Cash|Pee On Her|https://www.peeonher.com|sitePeeOnHer.py|
 |Dev8 Entertainment||https://www.perfectgonzo.com|sitePefectGonzo.py|
 |Dev8 Entertainment||https://www.sapphix.com|sitePefectGonzo.py|
