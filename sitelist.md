@@ -45,6 +45,7 @@ Scraper Site List
 |Dagfs||https://reallatinaexposed.com|networkDagfsPerformer.py|
 |Dagfs||https://reallesbianexposed.com|networkDagfsPerformer.py|
 |Dagfs||https://realmomexposed.com|networkDagfsPerformer.py|
+|Dungeon Corp||http://dungeoncorp.com|networkDungeonCorpPerformer.py|
 |Josh Stone Productions||https://www.trans500.com|networkJoshStoneProductionsPerformer.py|
 |Manojob||https://www.finishesthejob.com|networkManojobPerformer.py|
 |Nebraska Coeds||https://tour.nebraskacoeds.com|networkNebraskaCoedsPerformer.py|
@@ -309,6 +310,7 @@ Scraper Site List
 |Dagfs||https://reallesbianexposed.com|networkDagfs.py|
 |Dagfs||https://realmomexposed.com|networkDagfs.py|
 |Dogfart Network|Dogfart Network|https://www.dogfartnetwork.com|networkDogfart.py|
+|Dungeon Corp||http://dungeoncorp.com|networkDungeonCorp.py|
 |Eros Arts||https://www.jerkoffinstructions.com|networkErosArts.py|
 |Eros Arts||https://www.sexpov.com|networkErosArts.py|
 |Eros Arts||https://www.stepmomfun.com|networkErosArts.py|
@@ -682,6 +684,7 @@ Scraper Site List
 |Fitting Room|Fitting Room|https://www.fitting-room.com|siteFittingRoom.py|
 |Freak Mob Media||https://www.freakmobmedia.com|siteFreakMobMedia.py|
 |Frolic Me|Frolic Me|https://www.frolicme.com|siteFrolicMe.py|
+|Futile Struggles||http://www.futilestruggles.com|siteFutileStruggles.py|
 |Genuine Sin||https://genuinesin.com|siteGenuineSin.py|
 |Girls Fuck Girls||https://girlsfuckgirls.com|siteGirlsFuckGirls.py|
 |Girlsoutwest|Girlsoutwest|https://tour.girlsoutwest.com|siteGirlsOutWest.py|
