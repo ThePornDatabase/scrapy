@@ -261,6 +261,7 @@ class BaseSceneScraper(scrapy.Spider):
             trailer = self.process_xpath(response, self.get_selector_map('trailer'))
             if trailer:
                 trailer = self.get_from_regex(trailer.get(), 're_trailer')
+                trailer = self.format_link(response, trailer)
                 return trailer.replace(" ", "%20")
 
         return ''
