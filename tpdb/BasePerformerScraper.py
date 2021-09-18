@@ -200,6 +200,8 @@ class BasePerformerScraper(scrapy.Spider):
         return None
 
     def get_image(self, response):
+        if 'image' not in self.selector_map:
+            return ''
         image = self.process_xpath(response, self.get_selector_map('image'))
         if image:
             image = self.get_from_regex(image.get(), 're_image')
