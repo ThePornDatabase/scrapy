@@ -1,4 +1,6 @@
 import re
+import string
+import html
 from urllib.parse import urlparse
 
 import scrapy
@@ -22,6 +24,12 @@ class BasePerformerScraper(scrapy.Spider):
         'DOWNLOADER_MIDDLEWARES': {
             'tpdb.middlewares.TpdbPerformerDownloaderMiddleware': 543,
         }
+    }
+
+    regex = {
+        're_name': None,
+        're_bio': None,
+        're_image': None,
     }
 
     def __init__(self, *args, **kwargs):
@@ -184,20 +192,32 @@ class BasePerformerScraper(scrapy.Spider):
             yield item
 
     def get_name(self, response):
-        return self.process_xpath(response, self.get_selector_map('name')).get().strip()
+        name = self.process_xpath(response, self.get_selector_map('name'))
+        if name:
+            name = self.get_from_regex(name.get(), 're_name')
+            if name:
+                return string.capwords(html.unescape(name.strip()))
+        return None
 
     def get_image(self, response):
-        if 'image' in self.selector_map:
-            image = self.process_xpath(response, self.get_selector_map('image')).get()
+        if 'image' not in self.selector_map:
+            return ''
+        image = self.process_xpath(response, self.get_selector_map('image'))
+        if image:
+            image = self.get_from_regex(image.get(), 're_image')
             if image:
-                return image.strip()
-        return ''
+                image = self.format_link(response, image)
+                return image.replace(" ", "%20")
+        return None
 
     def get_bio(self, response):
-        if 'bio' in self.selector_map:
-            bio = self.process_xpath(response, self.get_selector_map('bio')).get()
+        if 'bio' not in self.get_selector_map():
+            return ''
+        bio = self.process_xpath(response, self.get_selector_map('bio'))
+        if bio:
+            bio = self.get_from_regex(bio.get(), 're_bio')
             if bio:
-                return bio.strip()
+                return html.unescape(bio.strip())
         return ''
 
     def get_gender(self, response):
@@ -248,7 +268,7 @@ class BasePerformerScraper(scrapy.Spider):
             if eyecolor:
                 return eyecolor.strip()
         return ''
-        
+
     def get_haircolor(self, response):
         if 'haircolor' in self.selector_map:
             haircolor = self.process_xpath(response, self.get_selector_map('haircolor')).get()
@@ -315,8 +335,7 @@ class BasePerformerScraper(scrapy.Spider):
     def process_xpath(self, response, selector):
         if selector.startswith('/') or selector.startswith('./'):
             return response.xpath(selector)
-        else:
-            return response.css(selector)
+        return response.css(selector)
 
     def format_link(self, response, link):
         return self.format_url(response.url, link)
@@ -335,3 +354,11 @@ class BasePerformerScraper(scrapy.Spider):
 
     def get_next_page_url(self, base, page):
         return self.format_url(base, self.get_selector_map('pagination') % page)
+
+    def get_from_regex(self, text, re_name, group=1):
+        if re_name in self.regex and self.regex[re_name]:
+            r = self.regex[re_name].search(text)
+            if r:
+                return r.group(group)
+            return None
+        return text
