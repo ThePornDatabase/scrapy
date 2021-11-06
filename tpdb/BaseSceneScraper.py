@@ -1,13 +1,12 @@
 import re
 from urllib.parse import urlparse
-
-import dateparser
-import scrapy
-import tldextract
 import string
 import html
-import requests
 import base64
+import requests
+import dateparser
+import tldextract
+import scrapy
 
 from tpdb.items import SceneItem
 
@@ -244,17 +243,22 @@ class BaseSceneScraper(scrapy.Spider):
         return None
 
     def get_image_blob(self, response):
-        if self.get_selector_map('image_blob'):
-            image = self.process_xpath(response, self.get_selector_map('image_blob'))
-            if image:
-                image = self.get_from_regex(image.get(), 're_image_blob')
+        if 'image_blob' not in self.get_selector_map():
+            return ''
 
-                if image:
-                    image = self.format_link(response, image)
-                    return base64.b64encode(requests.get(image).content).decode('utf-8')
+        image = self.process_xpath(response, self.get_selector_map('image_blob'))
+        if image:
+            image = self.get_from_regex(image.get(), 're_image_blob')
+
+            if image:
+                image = self.format_link(response, image)
+                return base64.b64encode(requests.get(image).content).decode('utf-8')
         return None
 
     def get_performers(self, response):
+        if 'performers' not in self.get_selector_map():
+            return []
+
         performers = self.process_xpath(response, self.get_selector_map('performers'))
         if performers:
             return list(map(lambda x: x.strip(), performers.getall()))
@@ -262,6 +266,9 @@ class BaseSceneScraper(scrapy.Spider):
         return []
 
     def get_tags(self, response):
+        if 'tags' not in self.get_selector_map():
+            return []
+
         if self.get_selector_map('tags'):
             tags = self.process_xpath(response, self.get_selector_map('tags'))
             if tags:
@@ -293,8 +300,7 @@ class BaseSceneScraper(scrapy.Spider):
     def process_xpath(self, response, selector):
         if selector.startswith('/') or selector.startswith('./'):
             return response.xpath(selector)
-        else:
-            return response.css(selector)
+        return response.css(selector)
 
     def format_link(self, response, link):
         return self.format_url(response.url, link)
@@ -320,7 +326,6 @@ class BaseSceneScraper(scrapy.Spider):
             r = self.regex[re_name].search(text)
             if r:
                 return r.group(group)
-            else:
-                return None
+            return None
 
         return text
