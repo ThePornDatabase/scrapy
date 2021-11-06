@@ -62,6 +62,7 @@ class TpdbApiScenePipeline:
             'description': item['description'],
             'date': item['date'],
             'image': item['image'],
+            'image_blob': item['image_blob'],
             'url': item['url'],
             'performers': item['performers'],
             'tags': item['tags'],
