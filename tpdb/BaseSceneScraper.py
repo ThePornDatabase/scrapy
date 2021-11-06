@@ -6,6 +6,8 @@ import scrapy
 import tldextract
 import string
 import html
+import requests
+import base64
 
 from tpdb.items import SceneItem
 
@@ -120,7 +122,9 @@ class BaseSceneScraper(scrapy.Spider):
         else:
             item['description'] = self.get_description(response)
 
-        if 'site' in response.meta:
+        if hasattr(self, 'site'):
+            item['site'] = self.site
+        elif 'site' in response.meta:
             item['site'] = response.meta['site']
         else:
             item['site'] = self.get_site(response)
@@ -134,6 +138,11 @@ class BaseSceneScraper(scrapy.Spider):
             item['image'] = response.meta['image']
         else:
             item['image'] = self.get_image(response)
+
+        if 'image_blob' in response.meta:
+            item['image_blob'] = response.meta['image_blob']
+        else:
+            item['image_blob'] = self.get_image_blob(response)
 
         if 'performers' in response.meta:
             item['performers'] = response.meta['performers']
@@ -228,6 +237,17 @@ class BaseSceneScraper(scrapy.Spider):
                 image = self.format_link(response, image)
                 return image.replace(" ", "%20")
 
+        return None
+
+    def get_image_blob(self, response):
+        if self.get_selector_map('image_blob'):
+            image = self.process_xpath(response, self.get_selector_map('image_blob'))
+            if image:
+                image = self.get_from_regex(image.get(), 're_image_blob')
+
+                if image:
+                    image = self.format_link(response, image)
+                    return base64.b64encode(requests.get(image).content).decode('utf-8')
         return None
 
     def get_performers(self, response):

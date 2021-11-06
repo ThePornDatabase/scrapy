@@ -12,6 +12,7 @@ class SceneItem(scrapy.Item):
     site = scrapy.Field()
     date = scrapy.Field()
     image = scrapy.Field()
+    image_blob = scrapy.Field()
     performers = scrapy.Field()
     tags = scrapy.Field()
     url = scrapy.Field()
