@@ -168,11 +168,15 @@ class BaseSceneScraper(scrapy.Spider):
 
         if hasattr(self, 'network'):
             item['network'] = self.network
+        elif 'network' in response.meta:
+            item['network'] = response.meta['network']
         else:
             item['network'] = self.get_network(response)
 
         if hasattr(self, 'parent'):
             item['parent'] = self.parent
+        elif 'parent' in response.meta:
+            item['parent'] = response.meta['parent']
         else:
             item['parent'] = self.get_parent(response)
 
