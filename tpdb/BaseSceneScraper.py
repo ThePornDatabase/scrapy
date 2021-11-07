@@ -138,12 +138,15 @@ class BaseSceneScraper(scrapy.Spider):
         else:
             item['image'] = self.get_image(response)
 
+        if 'image' not in item or not item['image']:
+            item['image'] = None
+
         if 'image_blob' in response.meta:
             item['image_blob'] = response.meta['image_blob']
         else:
             item['image_blob'] = self.get_image_blob(response)
 
-        if 'image_blob' not in item:
+        if 'image_blob' not in item or not item['image_blob']:
             item['image_blob'] = None
 
         if 'performers' in response.meta:
