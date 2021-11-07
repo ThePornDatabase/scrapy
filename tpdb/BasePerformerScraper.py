@@ -220,14 +220,16 @@ class BasePerformerScraper(scrapy.Spider):
         return None
 
     def get_image_blob(self, response):
-        if self.get_selector_map('image_blob'):
-            image = self.process_xpath(response, self.get_selector_map('image_blob'))
-            if image:
-                image = self.get_from_regex(image.get(), 're_image_blob')
+        if 'image_blob' not in self.get_selector_map():
+            return ''
 
-                if image:
-                    image = self.format_link(response, image)
-                    return base64.b64encode(requests.get(image).content).decode('utf-8')
+        image = self.process_xpath(response, self.get_selector_map('image_blob'))
+        if image:
+            image = self.get_from_regex(image.get(), 're_image_blob')
+
+            if image:
+                image = self.format_link(response, image)
+                return base64.b64encode(requests.get(image).content).decode('utf-8')
         return None
 
     def get_bio(self, response):
