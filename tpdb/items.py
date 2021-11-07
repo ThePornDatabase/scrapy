@@ -26,6 +26,7 @@ class PerformerItem(scrapy.Item):
     network = scrapy.Field()
     url = scrapy.Field()
     image = scrapy.Field()
+    image_blob = scrapy.Field()
     bio = scrapy.Field()
     gender = scrapy.Field()
     birthday = scrapy.Field()
