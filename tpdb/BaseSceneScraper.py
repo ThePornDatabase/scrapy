@@ -1,11 +1,12 @@
 import re
 from urllib.parse import urlparse
-
-import dateparser
-import scrapy
-import tldextract
 import string
 import html
+import base64
+import requests
+import dateparser
+import tldextract
+import scrapy
 
 from tpdb.items import SceneItem
 
@@ -120,7 +121,9 @@ class BaseSceneScraper(scrapy.Spider):
         else:
             item['description'] = self.get_description(response)
 
-        if 'site' in response.meta:
+        if hasattr(self, 'site'):
+            item['site'] = self.site
+        elif 'site' in response.meta:
             item['site'] = response.meta['site']
         else:
             item['site'] = self.get_site(response)
@@ -134,6 +137,17 @@ class BaseSceneScraper(scrapy.Spider):
             item['image'] = response.meta['image']
         else:
             item['image'] = self.get_image(response)
+
+        if 'image' not in item or not item['image']:
+            item['image'] = None
+
+        if 'image_blob' in response.meta:
+            item['image_blob'] = response.meta['image_blob']
+        else:
+            item['image_blob'] = self.get_image_blob(response)
+
+        if 'image_blob' not in item or not item['image_blob']:
+            item['image_blob'] = None
 
         if 'performers' in response.meta:
             item['performers'] = response.meta['performers']
@@ -159,11 +173,15 @@ class BaseSceneScraper(scrapy.Spider):
 
         if hasattr(self, 'network'):
             item['network'] = self.network
+        elif 'network' in response.meta:
+            item['network'] = response.meta['network']
         else:
             item['network'] = self.get_network(response)
 
         if hasattr(self, 'parent'):
             item['parent'] = self.parent
+        elif 'parent' in response.meta:
+            item['parent'] = response.meta['parent']
         else:
             item['parent'] = self.get_parent(response)
 
@@ -230,7 +248,23 @@ class BaseSceneScraper(scrapy.Spider):
 
         return None
 
+    def get_image_blob(self, response):
+        if 'image_blob' not in self.get_selector_map():
+            return ''
+
+        image = self.process_xpath(response, self.get_selector_map('image_blob'))
+        if image:
+            image = self.get_from_regex(image.get(), 're_image_blob')
+
+            if image:
+                image = self.format_link(response, image)
+                return base64.b64encode(requests.get(image).content).decode('utf-8')
+        return None
+
     def get_performers(self, response):
+        if 'performers' not in self.get_selector_map():
+            return []
+
         performers = self.process_xpath(response, self.get_selector_map('performers'))
         if performers:
             return list(map(lambda x: x.strip(), performers.getall()))
@@ -238,6 +272,9 @@ class BaseSceneScraper(scrapy.Spider):
         return []
 
     def get_tags(self, response):
+        if 'tags' not in self.get_selector_map():
+            return []
+
         if self.get_selector_map('tags'):
             tags = self.process_xpath(response, self.get_selector_map('tags'))
             if tags:
@@ -269,8 +306,7 @@ class BaseSceneScraper(scrapy.Spider):
     def process_xpath(self, response, selector):
         if selector.startswith('/') or selector.startswith('./'):
             return response.xpath(selector)
-        else:
-            return response.css(selector)
+        return response.css(selector)
 
     def format_link(self, response, link):
         return self.format_url(response.url, link)
@@ -296,7 +332,6 @@ class BaseSceneScraper(scrapy.Spider):
             r = self.regex[re_name].search(text)
             if r:
                 return r.group(group)
-            else:
-                return None
+            return None
 
         return text

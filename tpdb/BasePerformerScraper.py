@@ -1,8 +1,9 @@
 import re
 import string
 import html
+import requests
+import base64
 from urllib.parse import urlparse
-
 import scrapy
 
 from tpdb.items import PerformerItem
@@ -102,6 +103,17 @@ class BasePerformerScraper(scrapy.Spider):
             item['image'] = response.meta['image']
         else:
             item['image'] = self.get_image(response)
+
+        if 'image' not in item or not item['image']:
+            item['image'] = None
+
+        if 'image_blob' in response.meta:
+            item['image_blob'] = response.meta['image_blob']
+        else:
+            item['image_blob'] = self.get_image_blob(response)
+
+        if 'image_blob' not in item or not item['image_blob']:
+            item['image_blob'] = None
 
         if 'bio' in response.meta and response.meta['bio']:
             item['bio'] = response.meta['bio']
@@ -208,6 +220,19 @@ class BasePerformerScraper(scrapy.Spider):
             if image:
                 image = self.format_link(response, image)
                 return image.replace(" ", "%20")
+        return None
+
+    def get_image_blob(self, response):
+        if 'image_blob' not in self.get_selector_map():
+            return ''
+
+        image = self.process_xpath(response, self.get_selector_map('image_blob'))
+        if image:
+            image = self.get_from_regex(image.get(), 're_image_blob')
+
+            if image:
+                image = self.format_link(response, image)
+                return base64.b64encode(requests.get(image).content).decode('utf-8')
         return None
 
     def get_bio(self, response):

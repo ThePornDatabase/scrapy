@@ -62,6 +62,7 @@ class TpdbApiScenePipeline:
             'description': item['description'],
             'date': item['date'],
             'image': item['image'],
+            'image_blob': item['image_blob'],
             'url': item['url'],
             'performers': item['performers'],
             'tags': item['tags'],
@@ -114,7 +115,11 @@ class TpdbApiScenePipeline:
 
         if spider.settings.get('export'):
             if spider.settings.get('export') == "true":
-                self.exporter.export_item(item)
+                item2 = item.copy()
+                if not spider.settings.get('showblob'):
+                    if "image_blob" in item2:
+                        item2.pop('image_blob', None)
+                self.exporter.export_item(item2)
         return item
 
     def close_spider(self, spider):
@@ -169,6 +174,7 @@ class TpdbApiPerformerPipeline:
             'site': item['network'],
             'url': item['url'],
             'image': item['image'],
+            'image_blob': item['image_blob'],
             'bio': item['bio'],
             'gender': item['gender'],
             'birthday': item['birthday'],
@@ -218,7 +224,11 @@ class TpdbApiPerformerPipeline:
 
         if spider.settings.get('export'):
             if spider.settings.get('export') == "true":
-                self.exporter.export_item(item)
+                item2 = item.copy()
+                if not spider.settings.get('showblob'):
+                    if "image_blob" in item2:
+                        item2.pop('image_blob', None)
+                self.exporter.export_item(item2)
         return item
 
     def close_spider(self, spider):
