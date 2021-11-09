@@ -10,4 +10,4 @@ yapf
 extruct
 chompjs
 mdutils
-PySide2
+PySide6

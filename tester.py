@@ -6,9 +6,9 @@ import requests
 
 from scrapy.http import HtmlResponse
 from scrapy.utils import project
-from PySide2.QtUiTools import QUiLoader
-from PySide2.QtWidgets import QApplication, QStyleFactory, QTreeWidgetItem
-from PySide2.QtCore import QFile, QIODevice
+from PySide6.QtUiTools import QUiLoader
+from PySide6.QtWidgets import QApplication, QStyleFactory, QTreeWidgetItem
+from PySide6.QtCore import QFile, QIODevice, QCoreApplication, Qt
 
 from tpdb.BaseSceneScraper import BaseSceneScraper
 
@@ -19,6 +19,7 @@ class GUI():
     headers = {}
 
     def __init__(self):
+        QCoreApplication.setAttribute(Qt.AA_ShareOpenGLContexts)
         app = QApplication(sys.argv)
         app.setStyle(QStyleFactory.create('Fusion'))
 
@@ -40,7 +41,7 @@ class GUI():
 
         self.window.show()
 
-        sys.exit(app.exec_())
+        sys.exit(app.exec())
 
     def connect(self):
         self.window.pushButton.pressed.connect(self.load)
