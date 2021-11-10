@@ -21,9 +21,11 @@ class TpdbPipeline:
 
 
 class TpdbApiScenePipeline:
+
     def __init__(self, crawler):
-        # db = MongoClient('mongodb://localhost:27017/')
-        # self.db = db['scrapy']
+        if crawler.settings['ENABLE_MONGODB']:
+            db = MongoClient(crawler.settings['MONGODB_URL'])
+            self.db = db['scrapy']
 
         self.crawler = crawler
 
@@ -51,11 +53,15 @@ class TpdbApiScenePipeline:
         return cls(crawler)
 
     async def process_item(self, item, spider):
+        if spider.debug is True:
+            return item
+
         # So we don't re-send scenes that have already been scraped
-        # if spider.force is not True:
-        #     result = self.db.scenes.find_one({'url': item['url']})
-        #     if result is not None:
-        #         return
+        if self.crawler.settings['ENABLE_MONGODB']:
+            if spider.force is not True:
+                result = self.db.scenes.find_one({'url': item['url']})
+                if result is not None:
+                    return
 
         payload = {
             'title': item['title'],
@@ -73,27 +79,32 @@ class TpdbApiScenePipeline:
             'network': item['network']
         }
 
-        headers = {
-            "Authorization": "Bearer xxxx",
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'User-Agent': 'tpdb-scraper/1.0.0'
-        }
+    
         # Post the scene to the API - requires auth with permissions
-        # response = requests.post('https://api.metadataapi.net/scenes', json=payload, headers=headers)
+        if self.crawler.settings['TPDB_API_KEY']:
 
-        # url_hash = hashlib.sha1(str(item['url']).encode('utf-8')).hexdigest()
+            headers = {
+                "Authorization": "Bearer " + self.crawler.settings['TPDB_API_KEY'],
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'User-Agent': 'tpdb-scraper/1.0.0'
+            }
 
-        # if response.status_code != 200:
-        #     self.db.errors.replace_one({"_id": url_hash}, {
-        #         'url': item['url'],
-        #         'error': 1,
-        #         'when': dateparser.parse('today').isoformat(),
-        #         'response': response.json()
-        #     }, upsert=True)
-        # else:
-        #     self.db.scenes.replace_one(
-        #         {"_id": url_hash}, dict(item), upsert=True)
+            response = requests.post('https://api.metadataapi.net/scenes', json=payload, headers=headers)
+
+            url_hash = hashlib.sha1(str(item['url']).encode('utf-8')).hexdigest()
+
+            if self.crawler.settings['MONGODB_ENABLE']:
+                if response.status_code != 200:
+                    self.db.errors.replace_one({"_id": url_hash}, {
+                        'url': item['url'],
+                        'error': 1,
+                        'when': dateparser.parse('today').isoformat(),
+                        'response': response.json()
+                    }, upsert=True)
+                else:
+                    self.db.scenes.replace_one(
+                        {"_id": url_hash}, dict(item), upsert=True)
 
         if spider.settings.get('display') and spider.settings.get('LOG_LEVEL') == "INFO":
             if spider.settings.get('display') == "true":
@@ -131,9 +142,12 @@ class TpdbApiScenePipeline:
 
 class TpdbApiPerformerPipeline:
     def __init__(self, crawler):
-        # db = MongoClient('mongodb://localhost:27017/')
-        # self.db = db['scrapy']
+        if self.crawler.settings['ENABLE_MONGODB']:
+            db = MongoClient('mongodb://localhost:27017/')
+            self.db = db['scrapy']
+
         self.crawler = crawler
+
         # if os.environ.get('SCRAPY_CHECK'):
         #     pass
 
@@ -161,13 +175,12 @@ class TpdbApiPerformerPipeline:
         return cls(crawler)
 
     async def process_item(self, item, spider):
-        # if spider.debug is True:
-        #     return item
-        #
-        # if spider.force is not True:
-        #     result = self.db.performers.find_one({'url': item['url']})
-        #     if result is not None:
-        #         return
+        
+        if self.crawler.settings['ENABLE_MONGODB']:
+            if spider.force is not True:
+                result = self.db.performers.find_one({'url': item['url']})
+                if result is not None:
+                    return
 
         payload = {
             'name': item['name'],
@@ -193,27 +206,30 @@ class TpdbApiPerformerPipeline:
             'fakeboobs': item['fakeboobs'],
         }
 
-        headers = {
-            "Authorization": "Bearer xxx",
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'User-Agent': 'tpdb-scraper/1.0.0'
-        }
+        if self.crawler.settings['TPDB_API_KEY']:
 
-        # response = requests.post('https://api.metadataapi.net/performer_sites', json=payload, headers=headers,
-        #                          verify=False)
-        #
-        # url_hash = hashlib.sha1(str(item['url']).encode('utf-8')).hexdigest()
-        #
-        # if response.status_code != 200:
-        #     self.db.errors.replace_one({"_id": url_hash}, {
-        #         'url': item['url'],
-        #         'error': 1,
-        #         'when': dateparser.parse('today').isoformat(),
-        #         'response': response.json()
-        #     }, upsert=True)
-        # else:
-        #     self.db.performers.replace_one({"_id": url_hash}, dict(item), upsert=True)
+            headers = {
+                "Authorization": "Bearer " + self.crawler.settings['TPDB_API_KEY'],
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'User-Agent': 'tpdb-scraper/1.0.0'
+            }
+
+            response = requests.post('https://api.metadataapi.net/performer_sites', json=payload, headers=headers,
+                                    verify=False)
+            
+            if self.crawler.settings['MONGODB_ENABLE']:
+                url_hash = hashlib.sha1(str(item['url']).encode('utf-8')).hexdigest()
+                
+                if response.status_code != 200:
+                    self.db.errors.replace_one({"_id": url_hash}, {
+                        'url': item['url'],
+                        'error': 1,
+                        'when': dateparser.parse('today').isoformat(),
+                        'response': response.json()
+                    }, upsert=True)
+                else:
+                    self.db.performers.replace_one({"_id": url_hash}, dict(item), upsert=True)
 
         if spider.settings.get('display') and spider.settings.get('LOG_LEVEL') == "INFO":
             if spider.settings.get('display') == "true":
