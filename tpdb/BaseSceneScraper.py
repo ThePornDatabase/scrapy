@@ -337,14 +337,14 @@ class BaseSceneScraper(scrapy.Spider):
 
         return text
 
-    def cleanup_date(date):
+    def cleanup_date(self, date):
         date = date.lower()
         for trash in self.date_trash:
             date = date.replace(trash, '')
 
         return date.strip()
 
-    def parse_date(date, date_formats=None):
+    def parse_date(self, date, date_formats=None):
         date = self.cleanup_date(date)
         settings = {'TIMEZONE': 'UTC'}
 
