@@ -40,6 +40,8 @@ class BaseSceneScraper(scrapy.Spider):
         're_trailer': None,
     }
 
+    date_trash = ['released:', 'added:', 'published:']
+
     def __init__(self, *args, **kwargs):
         super(BaseSceneScraper, self).__init__(*args, **kwargs)
 
@@ -230,10 +232,9 @@ class BaseSceneScraper(scrapy.Spider):
             date = self.get_from_regex(date.get(), 're_date')
 
             if date:
-                date = date.replace('Released:', '').replace('Added:', '').strip()
                 date_formats = self.get_selector_map('date_formats') if 'date_formats' in self.get_selector_map() else None
 
-                return dateparser.parse(date, date_formats=date_formats).isoformat()
+                return self.parse_date(date, date_formats=date_formats).isoformat()
 
         return None
 
@@ -335,3 +336,16 @@ class BaseSceneScraper(scrapy.Spider):
             return None
 
         return text
+
+    def cleanup_date(date):
+        date = date.lower()
+        for trash in self.date_trash:
+            date = date.replace(trash, '')
+
+        return date.strip()
+
+    def parse_date(date, date_formats=None):
+        date = self.cleanup_date(date)
+        settings = {'TIMEZONE': 'UTC'}
+
+        return dateparser.parse(date, date_formats=date_formats, settings=settings)
