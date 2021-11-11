@@ -61,10 +61,10 @@ class BaseSceneScraper(scrapy.Spider):
             self.limit_pages = int(self.limit_pages)
 
     @classmethod
-    def update_settings(self, settings):
-        self.custom_tpdb_settings.update(self.custom_scraper_settings)
-        settings.update(self.custom_tpdb_settings)
-        super(BaseSceneScraper, self).update_settings(settings)
+    def update_settings(cls, settings):
+        cls.custom_tpdb_settings.update(cls.custom_scraper_settings)
+        settings.update(cls.custom_tpdb_settings)
+        super(BaseSceneScraper, cls).update_settings(settings)
 
     def start_requests(self):
         if not hasattr(self, 'start_urls'):
