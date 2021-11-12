@@ -40,7 +40,9 @@ class BaseSceneScraper(scrapy.Spider):
         're_trailer': None,
     }
 
-    date_trash = ['released:', 'added:', 'published:']
+    title_trash = []
+    description_trash = ['Description:']
+    date_trash = ['Released:', 'Added:', 'Published:']
 
     def __init__(self, *args, **kwargs):
         super(BaseSceneScraper, self).__init__(*args, **kwargs)
@@ -198,7 +200,8 @@ class BaseSceneScraper(scrapy.Spider):
             title = self.get_from_regex(title.get(), 're_title')
 
             if title:
-                return string.capwords(html.unescape(title.strip()))
+                title = self.cleanup_title(title)
+                return string.capwords(title)
 
         return None
 
@@ -211,9 +214,9 @@ class BaseSceneScraper(scrapy.Spider):
             description = self.get_from_regex(description.get(), 're_description')
 
             if description:
-                description = description.replace('Description:', '')
+                description = self.cleanup_description(description)
 
-                return html.unescape(description.strip())
+                return description
 
         return ''
 
@@ -337,12 +340,20 @@ class BaseSceneScraper(scrapy.Spider):
 
         return text
 
-    def cleanup_date(self, date):
-        date = date.lower()
-        for trash in self.date_trash:
-            date = date.replace(trash, '')
+    def cleanup_text(self, text, trash_words):
+        for trash in trash_words:
+            text = text.replace(trash, '')
 
-        return date.strip()
+        return text.strip()
+
+    def cleanup_title(self, title):
+        return self.cleanup_text(html.unescape(title), self.title_trash)
+
+    def cleanup_description(self, description):
+        return self.cleanup_text(html.unescape(description), self.description_trash)
+
+    def cleanup_date(self, date):
+        return self.cleanup_text(date, self.date_trash)
 
     def parse_date(self, date, date_formats=None):
         date = self.cleanup_date(date)
