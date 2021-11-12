@@ -49,7 +49,8 @@ class BaseSceneScraper(scrapy.Spider):
 
         for name in self.get_selector_map():
             if (name == 'external_id' or name.startswith('re_')) and name in self.get_selector_map() and self.get_selector_map()[name]:
-                self.regex[name] = re.compile(self.get_selector_map(name), re.IGNORECASE)
+                regexp, group = self.get_regex(self.get_selector_map(name))
+                self.regex[name] = (re.compile(regexp, re.IGNORECASE), group)
 
         self.force = bool(self.force)
         self.debug = bool(self.debug)
@@ -290,12 +291,7 @@ class BaseSceneScraper(scrapy.Spider):
         return response.url
 
     def get_id(self, response):
-        if 'external_id' in self.regex and self.regex['external_id']:
-            search = self.regex['external_id'].search(response.url)
-            if search:
-                return search.group(1)
-
-        return None
+        return self.get_from_regex(response.url, 'external_id')
 
     def get_trailer(self, response):
         if 'trailer' in self.get_selector_map() and self.get_selector_map('trailer'):
@@ -331,14 +327,23 @@ class BaseSceneScraper(scrapy.Spider):
     def get_next_page_url(self, base, page):
         return self.format_url(base, self.get_selector_map('pagination') % page)
 
-    def get_from_regex(self, text, re_name, group=1):
+    def get_from_regex(self, text, re_name):
         if re_name in self.regex and self.regex[re_name]:
-            r = self.regex[re_name].search(text)
+            regexp, group = self.get_regex(self.regex[re_name])
+
+            r = regexp.search(text)
             if r:
                 return r.group(group)
             return None
 
         return text
+
+    def get_regex(self, regexp, group=1):
+        if isinstance(regexp, tuple):
+            group = regexp[1] if len(regexp) > 1 else group
+            regexp = regexp[0]
+
+        return regexp, group
 
     def cleanup_text(self, text, trash_words):
         for trash in trash_words:
