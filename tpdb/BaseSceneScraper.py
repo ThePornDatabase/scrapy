@@ -1,3 +1,4 @@
+import sys
 import re
 from urllib.parse import urlparse
 import string
@@ -60,7 +61,7 @@ class BaseSceneScraper(scrapy.Spider):
             self.limit_pages = 1
         else:
             if self.limit_pages == 'all':
-                self.limit_pages = 9999
+                self.limit_pages = sys.maxsize
             self.limit_pages = int(self.limit_pages)
 
     @classmethod
