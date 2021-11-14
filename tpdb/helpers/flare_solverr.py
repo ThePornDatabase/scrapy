@@ -17,6 +17,10 @@ class FlareSolverr():
 
         self._session = self._set_session()
 
+    def __del__(self):
+        if self._session:
+            requests.post(self._API_URL, json={'cmd': 'sessions.destroy', 'session': self._session})
+
     def _is_available(self):
         req = None
         try:
@@ -37,10 +41,6 @@ class FlareSolverr():
             session = self._create_session()
 
         return session
-
-    def __del__(self):
-        if self._session:
-            requests.post(self._API_URL, json={'cmd': 'sessions.destroy', 'session': self._session})
 
     def _create_session(self):
         req = requests.post(self._API_URL, json={'cmd': 'sessions.create'})
