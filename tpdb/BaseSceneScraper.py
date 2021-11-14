@@ -50,8 +50,8 @@ class BaseSceneScraper(scrapy.Spider):
 
         for name in self.get_selector_map():
             if (name == 'external_id' or name.startswith('re_')) and name in self.get_selector_map() and self.get_selector_map()[name]:
-                regexp, group = self.get_regex(self.get_selector_map(name))
-                self.regex[name] = (re.compile(regexp, re.IGNORECASE), group)
+                regexp, group, mod = self.get_regex(self.get_selector_map(name))
+                self.regex[name] = (re.compile(regexp, mod), group)
 
         self.force = bool(self.force)
         self.debug = bool(self.debug)
@@ -330,7 +330,7 @@ class BaseSceneScraper(scrapy.Spider):
 
     def get_from_regex(self, text, re_name):
         if re_name in self.regex and self.regex[re_name]:
-            regexp, group = self.get_regex(self.regex[re_name])
+            regexp, group, mod = self.get_regex(self.regex[re_name])
 
             r = regexp.search(text)
             if r:
@@ -339,12 +339,13 @@ class BaseSceneScraper(scrapy.Spider):
 
         return text
 
-    def get_regex(self, regexp, group=1):
+    def get_regex(self, regexp, group=1, mod=re.IGNORECASE):
         if isinstance(regexp, tuple):
+            mod = regexp[2] if len(regexp) > 2 else mod
             group = regexp[1] if len(regexp) > 1 else group
             regexp = regexp[0]
 
-        return regexp, group
+        return regexp, group, mod
 
     def cleanup_text(self, text, trash_words):
         for trash in trash_words:
