@@ -31,15 +31,7 @@ class BaseSceneScraper(scrapy.Spider):
     }
 
     custom_scraper_settings = {}
-
-    regex = {
-        'external_id': None,
-        're_title': None,
-        're_description': None,
-        're_date': None,
-        're_image': None,
-        're_trailer': None,
-    }
+    regex = {}
 
     title_trash = []
     description_trash = ['Description:']
@@ -217,7 +209,6 @@ class BaseSceneScraper(scrapy.Spider):
 
             if description:
                 description = self.cleanup_description(description)
-
                 return description
 
         return ''
