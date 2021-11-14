@@ -16,6 +16,9 @@ class FlareSolverr():
         else:
             self._session = self._create_session()
 
+    def __del__(self):
+        requests.post(self._API_URL, json={'cmd': 'sessions.destroy', 'session': self._session})
+
     def _create_session(self):
         req = requests.post(self._API_URL, json={'cmd': 'sessions.create'})
 
@@ -67,6 +70,3 @@ class FlareSolverr():
 
     def post(self, url, **kwargs):
         return self._request(url, 'post', **kwargs)
-
-    def destroy(self):
-        requests.post(self._API_URL, json={'cmd': 'sessions.destroy', 'session': self._session})
