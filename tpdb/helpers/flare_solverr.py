@@ -6,18 +6,41 @@ from .requests_response import fake_response
 
 
 class FlareSolverr():
+    _session = None
+
     def __init__(self, base_url: str):
         self._BASE_URL = base_url
         self._API_URL = f'{self._BASE_URL}/v1'
 
+        if not self._is_available():
+            return
+
+        self._session = self._set_session()
+
+    def _is_available(self):
+        req = None
+        try:
+            req = requests.head(self._BASE_URL)
+        except:
+            pass
+
+        if req:
+            return req.ok
+
+        return False
+
+    def _set_session(self):
         sessions = self._get_sessions()
         if sessions:
-            self._session = sessions[0]
+            session = sessions[0]
         else:
-            self._session = self._create_session()
+            session = self._create_session()
+
+        return session
 
     def __del__(self):
-        requests.post(self._API_URL, json={'cmd': 'sessions.destroy', 'session': self._session})
+        if self._session:
+            requests.post(self._API_URL, json={'cmd': 'sessions.destroy', 'session': self._session})
 
     def _create_session(self):
         req = requests.post(self._API_URL, json={'cmd': 'sessions.create'})
@@ -34,6 +57,9 @@ class FlareSolverr():
         post_data = kwargs.pop('post_data', {})
 
         method = method.lower()
+
+        if not self._session:
+            return
 
         if method not in ['get', 'post']:
             return
