@@ -44,7 +44,7 @@ class FlareSolverr:
 
     def _request(self, url, method, **kwargs):
         cookies = kwargs.pop('cookies', {})
-        post_data = kwargs.pop('post_data', {})
+        post_data = kwargs.pop('data', {})
 
         method = method.lower()
 
@@ -64,6 +64,8 @@ class FlareSolverr:
             data['postData'] = json.dumps(post_data)
 
         if cookies:
+            if isinstance(cookies, dict):
+                cookies = [{'name': name, 'value': value} for name, value in cookies.items()]
             data['cookies'] = json.dumps(cookies)
 
         req = Http.post(self._API_URL, json=data)
