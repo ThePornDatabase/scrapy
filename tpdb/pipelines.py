@@ -80,7 +80,7 @@ class TpdbApiScenePipeline:
         }
 
         # Post the scene to the API - requires auth with permissions
-        if self.crawler.settings['TPDB_API_KEY']:
+        if self.crawler.settings['TPDB_API_KEY'] and not spider.settings.get('local'):
 
             headers = {
                 "Authorization": "Bearer " + self.crawler.settings['TPDB_API_KEY'],
@@ -214,7 +214,7 @@ class TpdbApiPerformerPipeline:
             'fakeboobs': item['fakeboobs'],
         }
 
-        if self.crawler.settings['TPDB_API_KEY']:
+        if self.crawler.settings['TPDB_API_KEY'] and not spider.settings.get('local'):
 
             headers = {
                 "Authorization": "Bearer " + self.crawler.settings['TPDB_API_KEY'],
