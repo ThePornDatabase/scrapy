@@ -202,15 +202,16 @@ class BaseSceneScraper(scrapy.Spider):
     def get_description(self, response):
         if 'description' not in self.get_selector_map():
             return ''
-
-        description = self.process_xpath(response, self.get_selector_map('description'))
-        if description:
-            description = self.get_from_regex(description.get(), 're_description')
-
-            if description:
-                description = self.cleanup_description(description)
-                return description
-
+        if self.get_selector_map('description'):
+            descriptionxpath = self.process_xpath(response, self.get_selector_map('description'))
+            if descriptionxpath:
+                if len(descriptionxpath) == 1:
+                    description = self.get_from_regex(descriptionxpath.get(), 're_description')
+                if len(descriptionxpath) > 1:
+                    description = list(map(lambda x: x.strip(), descriptionxpath.getall()))
+                    description = " ".join(description)
+                if description:
+                    return self.cleanup_description(description)
         return ''
 
     def get_site(self, response):
