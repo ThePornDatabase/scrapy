@@ -223,16 +223,16 @@ class BaseSceneScraper(scrapy.Spider):
         return tldextract.extract(response.url).domain
 
     def get_date(self, response):
-        date = self.process_xpath(response, self.get_selector_map('date'))
-        if date:
-            date = self.get_from_regex(date.get(), 're_date')
-
+        if self.get_selector_map('date'):
+            date = self.process_xpath(response, self.get_selector_map('date'))
             if date:
-                date_formats = self.get_selector_map('date_formats') if 'date_formats' in self.get_selector_map() else None
+                date = self.get_from_regex(date.get(), 're_date')
 
-                return self.parse_date(date, date_formats=date_formats).isoformat()
+                if date:
+                    date_formats = self.get_selector_map('date_formats') if 'date_formats' in self.get_selector_map() else None
+                    return self.parse_date(date, date_formats=date_formats).isoformat()
 
-        return None
+        return self.parse_date('today').isoformat()
 
     def get_image(self, response):
         image = self.process_xpath(response, self.get_selector_map('image'))
@@ -345,7 +345,7 @@ class BaseSceneScraper(scrapy.Spider):
         return text.strip()
 
     def cleanup_title(self, title):
-        return self.cleanup_text(html.unescape(title), self.title_trash)
+        return string.capwords(self.cleanup_text(html.unescape(title.strip()), self.title_trash))
 
     def cleanup_description(self, description):
         return self.cleanup_text(html.unescape(description), self.description_trash)
