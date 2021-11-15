@@ -1,37 +1,20 @@
 import json
 
-import requests
-
-from .requests_response import fake_response
+from .http import Http
 
 
-class FlareSolverr():
+class FlareSolverr:
     _session = None
 
     def __init__(self, base_url: str):
         self._BASE_URL = base_url
         self._API_URL = f'{self._BASE_URL}/v1'
 
-        if not self._is_available():
-            return
-
         self._session = self._set_session()
 
     def __del__(self):
         if self._session:
-            requests.post(self._API_URL, json={'cmd': 'sessions.destroy', 'session': self._session})
-
-    def _is_available(self):
-        req = None
-        try:
-            req = requests.head(self._BASE_URL)
-        except:
-            pass
-
-        if req:
-            return req.ok
-
-        return False
+            Http.post(self._API_URL, json={'cmd': 'sessions.destroy', 'session': self._session})
 
     def _set_session(self):
         sessions = self._get_sessions()
@@ -43,14 +26,21 @@ class FlareSolverr():
         return session
 
     def _create_session(self):
-        req = requests.post(self._API_URL, json={'cmd': 'sessions.create'})
+        req = Http.post(self._API_URL, json={'cmd': 'sessions.create'})
 
-        return req.json()['session']
+        session = None
+        if req and req.ok:
+            session = req.json()['session']
+
+        return session
 
     def _get_sessions(self):
-        req = requests.post(self._API_URL, json={'cmd': 'sessions.list'})
+        req = Http.post(self._API_URL, json={'cmd': 'sessions.list'})
+        sessions = None
+        if req and req.ok:
+            sessions = req.json()['sessions']
 
-        return req.json()['sessions']
+        return sessions
 
     def _request(self, url, method, **kwargs):
         cookies = kwargs.pop('cookies', {})
@@ -76,23 +66,19 @@ class FlareSolverr():
         if cookies:
             data['cookies'] = json.dumps(cookies)
 
-        req = None
-        try:
-            req = requests.post(self._API_URL, json=data)
-        except:
-            pass
+        req = Http.post(self._API_URL, json=data)
 
         if req and req.ok:
             data = req.json()['solution']
             headers = data['headers']
             cookies = {cookie['name']: cookie['value'] for cookie in data['cookies']}
 
-            return fake_response(req, url, int(data['headers']['status']), data['response'], headers, cookies)
+            return Http.fake_response(req, url, int(data['headers']['status']), data['response'], headers, cookies)
 
         return None
 
     def get(self, url, **kwargs):
-        return self._request(url, 'get', **kwargs)
+        return self._request(url, 'GET', **kwargs)
 
     def post(self, url, **kwargs):
-        return self._request(url, 'post', **kwargs)
+        return self._request(url, 'POST', **kwargs)
