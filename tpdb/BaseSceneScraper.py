@@ -1,3 +1,4 @@
+import sys
 import re
 from urllib.parse import urlparse
 import string
@@ -30,22 +31,19 @@ class BaseSceneScraper(scrapy.Spider):
     }
 
     custom_scraper_settings = {}
+    regex = {}
 
-    regex = {
-        'external_id': None,
-        're_title': None,
-        're_description': None,
-        're_date': None,
-        're_image': None,
-        're_trailer': None,
-    }
+    title_trash = []
+    description_trash = ['Description:']
+    date_trash = ['Released:', 'Added:', 'Published:']
 
     def __init__(self, *args, **kwargs):
         super(BaseSceneScraper, self).__init__(*args, **kwargs)
 
         for name in self.get_selector_map():
             if (name == 'external_id' or name.startswith('re_')) and name in self.get_selector_map() and self.get_selector_map()[name]:
-                self.regex[name] = re.compile(self.get_selector_map(name), re.IGNORECASE)
+                regexp, group, mod = self.get_regex(self.get_selector_map(name))
+                self.regex[name] = (re.compile(regexp, mod), group)
 
         self.force = bool(self.force)
         self.debug = bool(self.debug)
@@ -55,14 +53,14 @@ class BaseSceneScraper(scrapy.Spider):
             self.limit_pages = 1
         else:
             if self.limit_pages == 'all':
-                self.limit_pages = 9999
+                self.limit_pages = sys.maxsize
             self.limit_pages = int(self.limit_pages)
 
     @classmethod
-    def update_settings(self, settings):
-        self.custom_tpdb_settings.update(self.custom_scraper_settings)
-        settings.update(self.custom_tpdb_settings)
-        super(BaseSceneScraper, self).update_settings(settings)
+    def update_settings(cls, settings):
+        cls.custom_tpdb_settings.update(cls.custom_scraper_settings)
+        settings.update(cls.custom_tpdb_settings)
+        super(BaseSceneScraper, cls).update_settings(settings)
 
     def start_requests(self):
         if not hasattr(self, 'start_urls'):
@@ -196,7 +194,8 @@ class BaseSceneScraper(scrapy.Spider):
             title = self.get_from_regex(title.get(), 're_title')
 
             if title:
-                return string.capwords(html.unescape(title.strip()))
+                title = self.cleanup_title(title)
+                return string.capwords(title)
 
         return None
 
@@ -209,9 +208,8 @@ class BaseSceneScraper(scrapy.Spider):
             description = self.get_from_regex(description.get(), 're_description')
 
             if description:
-                description = description.replace('Description:', '')
-
-                return html.unescape(description.strip())
+                description = self.cleanup_description(description)
+                return description
 
         return ''
 
@@ -230,10 +228,9 @@ class BaseSceneScraper(scrapy.Spider):
             date = self.get_from_regex(date.get(), 're_date')
 
             if date:
-                date = date.replace('Released:', '').replace('Added:', '').strip()
                 date_formats = self.get_selector_map('date_formats') if 'date_formats' in self.get_selector_map() else None
 
-                return dateparser.parse(date, date_formats=date_formats).isoformat()
+                return self.parse_date(date, date_formats=date_formats).isoformat()
 
         return None
 
@@ -286,12 +283,7 @@ class BaseSceneScraper(scrapy.Spider):
         return response.url
 
     def get_id(self, response):
-        if 'external_id' in self.regex and self.regex['external_id']:
-            search = self.regex['external_id'].search(response.url)
-            if search:
-                return search.group(1)
-
-        return None
+        return self.get_from_regex(response.url, 'external_id')
 
     def get_trailer(self, response):
         if 'trailer' in self.get_selector_map() and self.get_selector_map('trailer'):
@@ -327,11 +319,42 @@ class BaseSceneScraper(scrapy.Spider):
     def get_next_page_url(self, base, page):
         return self.format_url(base, self.get_selector_map('pagination') % page)
 
-    def get_from_regex(self, text, re_name, group=1):
+    def get_from_regex(self, text, re_name):
         if re_name in self.regex and self.regex[re_name]:
-            r = self.regex[re_name].search(text)
+            regexp, group, mod = self.get_regex(self.regex[re_name])
+
+            r = regexp.search(text)
             if r:
                 return r.group(group)
             return None
 
         return text
+
+    def get_regex(self, regexp, group=1, mod=re.IGNORECASE):
+        if isinstance(regexp, tuple):
+            mod = regexp[2] if len(regexp) > 2 else mod
+            group = regexp[1] if len(regexp) > 1 else group
+            regexp = regexp[0]
+
+        return regexp, group, mod
+
+    def cleanup_text(self, text, trash_words):
+        for trash in trash_words:
+            text = text.replace(trash, '')
+
+        return text.strip()
+
+    def cleanup_title(self, title):
+        return self.cleanup_text(html.unescape(title), self.title_trash)
+
+    def cleanup_description(self, description):
+        return self.cleanup_text(html.unescape(description), self.description_trash)
+
+    def cleanup_date(self, date):
+        return self.cleanup_text(date, self.date_trash)
+
+    def parse_date(self, date, date_formats=None):
+        date = self.cleanup_date(date)
+        settings = {'TIMEZONE': 'UTC'}
+
+        return dateparser.parse(date, date_formats=date_formats, settings=settings)
