@@ -228,7 +228,7 @@ class BaseSceneScraper(scrapy.Spider):
             if self.get_selector_map('date'):
                 date = self.process_xpath(response, self.get_selector_map('date'))
                 if date:
-                    date = self.get_from_regex(date.get(), 're_date')
+                    date = self.get_from_regex(date.get().strip(), 're_date')
                     if date:
                         date_formats = self.get_selector_map('date_formats') if 'date_formats' in self.get_selector_map() else None
                         return self.parse_date(date, date_formats=date_formats).isoformat()
