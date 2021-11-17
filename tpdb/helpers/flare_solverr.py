@@ -1,5 +1,6 @@
 import json
 
+from requests.models import Response
 from .http import Http
 
 
@@ -16,7 +17,7 @@ class FlareSolverr:
         if self._session:
             Http.post(self._API_URL, json={'cmd': 'sessions.destroy', 'session': self._session})
 
-    def _set_session(self):
+    def _set_session(self) -> str:
         sessions = self._get_sessions()
         if sessions:
             session = sessions[0]
@@ -25,7 +26,7 @@ class FlareSolverr:
 
         return session
 
-    def _create_session(self):
+    def _create_session(self) -> str:
         req = Http.post(self._API_URL, json={'cmd': 'sessions.create'})
 
         session = None
@@ -34,7 +35,7 @@ class FlareSolverr:
 
         return session
 
-    def _get_sessions(self):
+    def _get_sessions(self) -> list:
         req = Http.post(self._API_URL, json={'cmd': 'sessions.list'})
         sessions = None
         if req and req.ok:
@@ -42,7 +43,7 @@ class FlareSolverr:
 
         return sessions
 
-    def _request(self, url, method, **kwargs):
+    def _request(self, url: str, method: str, **kwargs) -> Response | None:
         cookies = kwargs.pop('cookies', {})
         post_data = kwargs.pop('data', {})
 
@@ -75,12 +76,12 @@ class FlareSolverr:
             headers = data['headers']
             cookies = {cookie['name']: cookie['value'] for cookie in data['cookies']}
 
-            return Http.fake_response(req, url, int(data['headers']['status']), data['response'], headers, cookies)
+            return Http.fake_response(url, int(data['headers']['status']), data['response'], headers, cookies)
 
-        return None
+        return
 
-    def get(self, url, **kwargs):
+    def get(self, url: str, **kwargs):
         return self._request(url, 'GET', **kwargs)
 
-    def post(self, url, **kwargs):
+    def post(self, url: str, **kwargs):
         return self._request(url, 'POST', **kwargs)
