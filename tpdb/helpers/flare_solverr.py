@@ -5,29 +5,28 @@ from .http import Http
 
 
 class FlareSolverr:
-    _session = None
+    __session = None
 
     def __init__(self, base_url: str):
-        self._BASE_URL = base_url
-        self._API_URL = f'{self._BASE_URL}/v1'
-
-        self._session = self._set_session()
+        self.__BASE_URL = base_url
+        self.__API_URL = f'{self.__BASE_URL}/v1'
+        self.__session = self.__set_session()
 
     def __del__(self):
-        if self._session:
-            Http.post(self._API_URL, json={'cmd': 'sessions.destroy', 'session': self._session})
+        if self.__session:
+            Http.post(self.__API_URL, json={'cmd': 'sessions.destroy', 'session': self.__session})
 
-    def _set_session(self) -> str:
-        sessions = self._get_sessions()
+    def __set_session(self) -> str:
+        sessions = self.__get_sessions()
         if sessions:
             session = sessions[0]
         else:
-            session = self._create_session()
+            session = self.__create_session()
 
         return session
 
-    def _create_session(self) -> str:
-        req = Http.post(self._API_URL, json={'cmd': 'sessions.create'})
+    def __create_session(self) -> str:
+        req = Http.post(self.__API_URL, json={'cmd': 'sessions.create'})
 
         session = None
         if req and req.ok:
@@ -35,20 +34,20 @@ class FlareSolverr:
 
         return session
 
-    def _get_sessions(self) -> list:
-        req = Http.post(self._API_URL, json={'cmd': 'sessions.list'})
+    def __get_sessions(self) -> list:
+        req = Http.post(self.__API_URL, json={'cmd': 'sessions.list'})
         sessions = None
         if req and req.ok:
             sessions = req.json()['sessions']
 
         return sessions
 
-    def _request(self, url: str, method: str, **kwargs) -> Response | None:
+    def __request(self, url: str, method: str, **kwargs) -> Response | None:
         cookies = kwargs.pop('cookies', {})
         data = kwargs.pop('data', {})
         method = method.lower()
 
-        if not self._session:
+        if not self.__session:
             return
 
         if method not in ['get', 'post']:
@@ -56,7 +55,7 @@ class FlareSolverr:
 
         params = {
             'cmd': f'request.{method}',
-            'session': self._session,
+            'session': self.__session,
             'url': url,
         }
 
@@ -68,7 +67,7 @@ class FlareSolverr:
                 cookies = [{'name': name, 'value': value} for name, value in cookies.items()]
             params['cookies'] = json.dumps(cookies)
 
-        req = Http.post(self._API_URL, json=params)
+        req = Http.post(self.__API_URL, json=params)
         if req and req.ok:
             resp = req.json()['solution']
             headers = resp['headers']
@@ -79,7 +78,7 @@ class FlareSolverr:
         return
 
     def get(self, url: str, **kwargs):
-        return self._request(url, 'GET', **kwargs)
+        return self.__request(url, 'GET', **kwargs)
 
     def post(self, url: str, **kwargs):
-        return self._request(url, 'POST', **kwargs)
+        return self.__request(url, 'POST', **kwargs)
