@@ -45,8 +45,7 @@ class FlareSolverr:
 
     def _request(self, url: str, method: str, **kwargs) -> Response | None:
         cookies = kwargs.pop('cookies', {})
-        post_data = kwargs.pop('data', {})
-
+        data = kwargs.pop('data', {})
         method = method.lower()
 
         if not self._session:
@@ -55,28 +54,27 @@ class FlareSolverr:
         if method not in ['get', 'post']:
             return
 
-        data = {
+        params = {
             'cmd': f'request.{method}',
             'session': self._session,
             'url': url,
         }
 
         if method == 'post':
-            data['postData'] = json.dumps(post_data)
+            params['postData'] = data
 
         if cookies:
             if isinstance(cookies, dict):
                 cookies = [{'name': name, 'value': value} for name, value in cookies.items()]
-            data['cookies'] = json.dumps(cookies)
+            params['cookies'] = json.dumps(cookies)
 
-        req = Http.post(self._API_URL, json=data)
-
+        req = Http.post(self._API_URL, json=params)
         if req and req.ok:
-            data = req.json()['solution']
-            headers = data['headers']
-            cookies = {cookie['name']: cookie['value'] for cookie in data['cookies']}
+            resp = req.json()['solution']
+            headers = resp['headers']
+            cookies = {cookie['name']: cookie['value'] for cookie in resp['cookies']}
 
-            return Http.fake_response(url, int(data['headers']['status']), data['response'], headers, cookies)
+            return Http.fake_response(url, int(resp['headers']['status']), resp['response'], headers, cookies)
 
         return
 
