@@ -4,12 +4,12 @@ from urllib.parse import urlparse
 import string
 import html
 import base64
-import requests
 import dateparser
 import tldextract
 import scrapy
 
 from tpdb.items import SceneItem
+from tpdb.helpers.http import Http
 
 
 class BaseSceneScraper(scrapy.Spider):
@@ -60,6 +60,7 @@ class BaseSceneScraper(scrapy.Spider):
     def update_settings(cls, settings):
         cls.custom_tpdb_settings.update(cls.custom_scraper_settings)
         settings.update(cls.custom_tpdb_settings)
+        cls.headers['User-Agent'] = settings['USER_AGENT']
         super(BaseSceneScraper, cls).update_settings(settings)
 
     def start_requests(self):
@@ -255,7 +256,9 @@ class BaseSceneScraper(scrapy.Spider):
 
             if image:
                 image = self.format_link(response, image)
-                return base64.b64encode(requests.get(image).content).decode('utf-8')
+                req = Http.get(image, headers=self.headers, cookies=self.cookies)
+                if req and req.ok:
+                    return base64.b64encode(req.content).decode('utf-8')
         return None
 
     def get_performers(self, response):
