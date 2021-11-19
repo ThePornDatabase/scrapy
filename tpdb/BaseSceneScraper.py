@@ -303,7 +303,8 @@ class BaseSceneScraper(scrapy.Spider):
 
         return ''
 
-    def process_xpath(self, response, selector):
+    @staticmethod
+    def process_xpath(response, selector):
         if selector.startswith('/') or selector.startswith('./'):
             return response.xpath(selector)
         return response.css(selector)
@@ -338,7 +339,8 @@ class BaseSceneScraper(scrapy.Spider):
 
         return text
 
-    def get_regex(self, regexp, group=1, mod=re.IGNORECASE):
+    @staticmethod
+    def get_regex(regexp, group=1, mod=re.IGNORECASE):
         if isinstance(regexp, tuple):
             mod = regexp[2] if len(regexp) > 2 else mod
             group = regexp[1] if len(regexp) > 1 else group
@@ -346,7 +348,8 @@ class BaseSceneScraper(scrapy.Spider):
 
         return regexp, group, mod
 
-    def cleanup_text(self, text, trash_words):
+    @staticmethod
+    def cleanup_text(text, trash_words):
         for trash in trash_words:
             text = text.replace(trash, '')
 
