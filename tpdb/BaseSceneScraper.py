@@ -242,18 +242,16 @@ class BaseSceneScraper(scrapy.Spider):
 
             if image:
                 image = self.format_link(response, image)
-                return image.replace(" ", "%20")
+                return image.strip()
 
         return None
 
     def get_image_blob(self, response):
         if 'image_blob' not in self.get_selector_map():
-            return ''
+            return None
 
-        image = self.process_xpath(response, self.get_selector_map('image_blob'))
-        if image:
-            image = self.get_from_regex(image.get(), 're_image_blob')
-
+        if self.get_selector_map('image_blob'):
+            image = self.get_image(response)
             if image:
                 image = self.format_link(response, image)
                 req = Http.get(image, headers=self.headers, cookies=self.cookies)
@@ -278,7 +276,14 @@ class BaseSceneScraper(scrapy.Spider):
         if self.get_selector_map('tags'):
             tags = self.process_xpath(response, self.get_selector_map('tags'))
             if tags:
-                return list(map(lambda x: x.strip().title(), tags.getall()))
+                new_tags = []
+                for tag in tags.getall():
+                    if ',' in tag:
+                        new_tags.extend(tag.split(','))
+                    else:
+                        new_tags.append(tag)
+
+                return list(map(lambda x: x.strip().title(), set(new_tags)))
 
         return []
 
