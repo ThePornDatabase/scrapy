@@ -28,7 +28,7 @@ class Http:
         return Http.request('HEAD', url, **kwargs)
 
     @staticmethod
-    def fake_response(url: str, status_code: int, content: str | bytes, headers: dict, cookies: dict) -> Response:
+    def fake_response(url: str, status_code: int, content, headers: dict, cookies: dict) -> Response:
         content = content if isinstance(content, bytes) else content.encode('UTF-8')
         cookies = {} if cookies is None else cookies
         headers = {} if headers is None else headers
