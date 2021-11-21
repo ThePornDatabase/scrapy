@@ -242,7 +242,7 @@ class BaseSceneScraper(scrapy.Spider):
 
             if image:
                 image = self.format_link(response, image)
-                return image.strip()
+                return image.strip().replace(' ', '%20')
 
         return None
 
