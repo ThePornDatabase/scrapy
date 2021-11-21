@@ -6,7 +6,7 @@ from requests.cookies import cookiejar_from_dict
 
 class Http:
     @staticmethod
-    def request(method: str, url: str, **kwargs) -> Response | None:
+    def request(method: str, url: str, **kwargs):
         req = None
         try:
             req = requests.request(method, url, **kwargs)

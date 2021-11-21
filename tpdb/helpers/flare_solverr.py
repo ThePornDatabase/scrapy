@@ -42,7 +42,7 @@ class FlareSolverr:
 
         return sessions
 
-    def __request(self, url: str, method: str, **kwargs) -> Response | None:
+    def __request(self, url: str, method: str, **kwargs):
         cookies = kwargs.pop('cookies', {})
         data = kwargs.pop('data', {})
         method = method.lower()
