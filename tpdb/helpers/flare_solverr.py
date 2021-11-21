@@ -73,7 +73,7 @@ class FlareSolverr:
             headers = resp['headers']
             cookies = {cookie['name']: cookie['value'] for cookie in resp['cookies']}
 
-            return Http.fake_response(url, int(resp['headers']['status']), resp['response'], headers, cookies)
+            return Http.fake_response(url, int(resp['status']), resp['response'], headers, cookies)
 
         return
 
