@@ -1,6 +1,5 @@
-import json
+from urllib.parse import urlparse
 
-from requests.models import Response
 from .http import Http
 
 
@@ -63,9 +62,10 @@ class FlareSolverr:
             params['postData'] = data
 
         if cookies:
+            domain = urlparse(url).hostname
             if isinstance(cookies, dict):
-                cookies = [{'name': name, 'value': value} for name, value in cookies.items()]
-            params['cookies'] = json.dumps(cookies)
+                cookies = [{'name': name, 'value': value, 'domain': domain} for name, value in cookies.items()]
+            params['cookies'] = cookies
 
         req = Http.post(self.__API_URL, json=params)
         if req and req.ok:
@@ -82,3 +82,9 @@ class FlareSolverr:
 
     def post(self, url: str, **kwargs):
         return self.__request(url, 'POST', **kwargs)
+
+    def get_api_url(self):
+        return self.__API_URL
+
+    def get_session(self):
+        return self.__session
