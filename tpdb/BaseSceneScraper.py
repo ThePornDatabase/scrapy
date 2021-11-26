@@ -17,6 +17,7 @@ class BaseSceneScraper(scrapy.Spider):
     limit_pages = 1
     force = False
     debug = False
+    days = 99999
     max_pages = 100
     cookies = {}
     headers = {}
@@ -46,6 +47,7 @@ class BaseSceneScraper(scrapy.Spider):
                 regexp, group, mod = self.get_regex(self.get_selector_map(name))
                 self.regex[name] = (re.compile(regexp, mod), group)
 
+        self.days = int(self.days)
         self.force = bool(self.force)
         self.debug = bool(self.debug)
         self.page = int(self.page)
@@ -184,12 +186,12 @@ class BaseSceneScraper(scrapy.Spider):
         else:
             item['parent'] = self.get_parent(response)
 
-        if "days" in self.settings:
-            days = int(self.settings['days'])
-            filterdate = date.today() - timedelta(days)
-            filterdate = filterdate.isoformat()
-        else:
+        if self.days > 27375:
             filterdate = "0000-00-00"
+        else:
+            days = self.days
+            filterdate = date.today() - timedelta(days)
+            filterdate = filterdate.strftime('%Y-%m-%d')
 
         if self.debug:
             if not item['date'] > filterdate:
