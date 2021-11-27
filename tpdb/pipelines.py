@@ -76,10 +76,10 @@ class TpdbApiScenePipeline:
             'site': item['site'],
             'trailer': item['trailer'],
             'parent': item['parent'],
-            'network': item['network']
+            'network': item['network'],
+            'force_update': self.crawler.settings.getbool('FORCE_UPDATE'),
         }
 
-    
         # Post the scene to the API - requires auth with permissions
         if self.crawler.settings['TPDB_API_KEY']:
 
@@ -175,7 +175,7 @@ class TpdbApiPerformerPipeline:
         return cls(crawler)
 
     async def process_item(self, item, spider):
-        
+
         if self.crawler.settings['ENABLE_MONGODB']:
             if spider.force is not True:
                 result = self.db.performers.find_one({'url': item['url']})
@@ -217,10 +217,10 @@ class TpdbApiPerformerPipeline:
 
             response = requests.post('https://api.metadataapi.net/performer_sites', json=payload, headers=headers,
                                     verify=False)
-            
+
             if self.crawler.settings['MONGODB_ENABLE']:
                 url_hash = hashlib.sha1(str(item['url']).encode('utf-8')).hexdigest()
-                
+
                 if response.status_code != 200:
                     self.db.errors.replace_one({"_id": url_hash}, {
                         'url': item['url'],
