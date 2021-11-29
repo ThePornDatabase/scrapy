@@ -4,12 +4,12 @@ from urllib.parse import urlparse
 import string
 import html
 import base64
-import requests
 import dateparser
 import tldextract
 import scrapy
 
 from tpdb.items import SceneItem
+from tpdb.helpers.http import Http
 
 
 class BaseSceneScraper(scrapy.Spider):
@@ -60,6 +60,7 @@ class BaseSceneScraper(scrapy.Spider):
     def update_settings(cls, settings):
         cls.custom_tpdb_settings.update(cls.custom_scraper_settings)
         settings.update(cls.custom_tpdb_settings)
+        cls.headers['User-Agent'] = settings['USER_AGENT']
         super(BaseSceneScraper, cls).update_settings(settings)
 
     def start_requests(self):
@@ -241,21 +242,21 @@ class BaseSceneScraper(scrapy.Spider):
 
             if image:
                 image = self.format_link(response, image)
-                return image.replace(" ", "%20")
+                return image.strip().replace(' ', '%20')
 
         return None
 
     def get_image_blob(self, response):
         if 'image_blob' not in self.get_selector_map():
-            return ''
+            return None
 
-        image = self.process_xpath(response, self.get_selector_map('image_blob'))
-        if image:
-            image = self.get_from_regex(image.get(), 're_image_blob')
-
+        if self.get_selector_map('image_blob'):
+            image = self.get_image(response)
             if image:
                 image = self.format_link(response, image)
-                return base64.b64encode(requests.get(image).content).decode('utf-8')
+                req = Http.get(image, headers=self.headers, cookies=self.cookies)
+                if req and req.ok:
+                    return base64.b64encode(req.content).decode('utf-8')
         return None
 
     def get_performers(self, response):
@@ -275,7 +276,14 @@ class BaseSceneScraper(scrapy.Spider):
         if self.get_selector_map('tags'):
             tags = self.process_xpath(response, self.get_selector_map('tags'))
             if tags:
-                return list(map(lambda x: x.strip().title(), tags.getall()))
+                new_tags = []
+                for tag in tags.getall():
+                    if ',' in tag:
+                        new_tags.extend(tag.split(','))
+                    else:
+                        new_tags.append(tag)
+
+                return list(map(lambda x: x.strip().title(), set(new_tags)))
 
         return []
 
@@ -295,7 +303,8 @@ class BaseSceneScraper(scrapy.Spider):
 
         return ''
 
-    def process_xpath(self, response, selector):
+    @staticmethod
+    def process_xpath(response, selector):
         if selector.startswith('/') or selector.startswith('./'):
             return response.xpath(selector)
         return response.css(selector)
@@ -330,7 +339,8 @@ class BaseSceneScraper(scrapy.Spider):
 
         return text
 
-    def get_regex(self, regexp, group=1, mod=re.IGNORECASE):
+    @staticmethod
+    def get_regex(regexp, group=1, mod=re.IGNORECASE):
         if isinstance(regexp, tuple):
             mod = regexp[2] if len(regexp) > 2 else mod
             group = regexp[1] if len(regexp) > 1 else group
@@ -338,7 +348,8 @@ class BaseSceneScraper(scrapy.Spider):
 
         return regexp, group, mod
 
-    def cleanup_text(self, text, trash_words):
+    @staticmethod
+    def cleanup_text(text, trash_words):
         for trash in trash_words:
             text = text.replace(trash, '')
 
