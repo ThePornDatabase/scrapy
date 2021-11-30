@@ -79,7 +79,8 @@ class TpdbApiScenePipeline:
             'site': item['site'],
             'trailer': item['trailer'],
             'parent': item['parent'],
-            'network': item['network']
+            'network': item['network'],
+            'force_update': self.crawler.settings.getbool('FORCE_UPDATE'),
         }
 
         # Post the scene to the API - requires auth with permissions
@@ -189,10 +190,6 @@ class TpdbApiPerformerPipeline:
         return cls(crawler)
 
     async def process_item(self, item, spider):
-        if spider.debug is True:
-            return item
-
-        # So we don't re-send scenes that have already been scraped
         if self.crawler.settings['ENABLE_MONGODB']:
             if spider.force is not True:
                 result = self.db.performers.find_one({'url': item['url']})
@@ -242,9 +239,8 @@ class TpdbApiPerformerPipeline:
             else:
                 dispresult = "Submission Error: No Response Code"
 
-            url_hash = hashlib.sha1(str(item['url']).encode('utf-8')).hexdigest()
-
             if self.crawler.settings['MONGODB_ENABLE']:
+                url_hash = hashlib.sha1(str(item['url']).encode('utf-8')).hexdigest()
                 if response.status_code != 200:
                     self.db.errors.replace_one({"_id": url_hash}, {
                         'url': item['url'],
