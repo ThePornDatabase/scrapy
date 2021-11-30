@@ -11,6 +11,8 @@
 #
 #   --loglevel=(DEBUG, INFO, WARNING, ERROR, CRITICAL) (loglevel = INFO by default)
 #   -a limit_pages=####  (Number of pages to stop after, limit_pages=all for no limit)
+#   -a page=### (Page number to being scrape with.  Defaults to 1)
+#   -a days=### (Filters results to only return results within the past ### days.  Without flag will return all results found on page)
 #   -s display=true (Display a single line per entry scraped, DEBUG level will display entire Item object)
 #   -s export=true (Export to JsonLinesItemExporter file, each line is its own JSON structure.  Good for memory with large datasets)
 #   -s file=<filename> (works with '-s export' to set the filename.  Defaults to "<SpiderName><YYYYMMDD-HHMM>.json")

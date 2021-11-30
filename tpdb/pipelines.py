@@ -13,6 +13,7 @@ import requests
 from pymongo import MongoClient
 
 from scrapy.exporters import JsonItemExporter
+from scrapy.exporters import JsonLinesItemExporter
 
 
 class TpdbPipeline:
@@ -46,8 +47,10 @@ class TpdbApiScenePipeline:
                 print(f"*** Exporting to file: {filename}")
                 self.fp = open(filename, 'wb')
                 self.fp.write('{"scenes":['.encode())
-                self.exporter = JsonItemExporter(self.fp, ensure_ascii=False, encoding='utf-8', sort_keys=True, indent=2)
-
+                if crawler.settings.get('oneline') == 'true':
+                    self.exporter = JsonLinesItemExporter(self.fp, ensure_ascii=False, encoding='utf-8')
+                else:
+                    self.exporter = JsonItemExporter(self.fp, ensure_ascii=False, encoding='utf-8', sort_keys=True, indent=2)
     @classmethod
     def from_crawler(cls, crawler):
         return cls(crawler)
@@ -81,7 +84,7 @@ class TpdbApiScenePipeline:
         }
 
         # Post the scene to the API - requires auth with permissions
-        if self.crawler.settings['TPDB_API_KEY']:
+        if self.crawler.settings['TPDB_API_KEY'] and not spider.settings.get('local'):
 
             headers = {
                 "Authorization": "Bearer " + self.crawler.settings['TPDB_API_KEY'],
@@ -91,6 +94,13 @@ class TpdbApiScenePipeline:
             }
 
             response = requests.post('https://api.metadataapi.net/scenes', json=payload, headers=headers)
+            if response:
+                if response.status_code == 200:
+                    dispresult = "Submitted OK"
+                else:
+                    dispresult = "Submission Error: Code #" + str(response.status_code)
+            else:
+                dispresult = "Submission Error: No Response Code"
 
             url_hash = hashlib.sha1(str(item['url']).encode('utf-8')).hexdigest()
 
@@ -105,6 +115,8 @@ class TpdbApiScenePipeline:
                 else:
                     self.db.scenes.replace_one(
                         {"_id": url_hash}, dict(item), upsert=True)
+        else:
+            dispresult = "Local Run, Not Submitted"
 
         if spider.settings.get('display') and spider.settings.get('LOG_LEVEL') == "INFO":
             if spider.settings.get('display') == "true":
@@ -122,7 +134,8 @@ class TpdbApiScenePipeline:
                     dispdate = re.search(r'(.*)T\d', item['date']).group(1)
                 else:
                     dispdate = item['date']
-                print(f"Item: {item['title'][0:50]}" + " " * titlelength + f"{item['site'][0:15]}" + " " * sitelength + f"\t{str(item['id'])[0:15]}\t{dispdate}\t{item['url']}")
+
+                print(f"Item: {item['title'][0:50]}" + " " * titlelength + f"{item['site'][0:15]}" + " " * sitelength + f"\t{str(item['id'])[0:15]}\t{dispdate}\t{item['url']}\t{dispresult}")
 
         if spider.settings.get('export'):
             if spider.settings.get('export') == "true":
@@ -141,15 +154,13 @@ class TpdbApiScenePipeline:
 
 
 class TpdbApiPerformerPipeline:
+
     def __init__(self, crawler):
-        if self.crawler.settings['ENABLE_MONGODB']:
-            db = MongoClient('mongodb://localhost:27017/')
+        if crawler.settings['ENABLE_MONGODB']:
+            db = MongoClient(crawler.settings['MONGODB_URL'])
             self.db = db['scrapy']
 
         self.crawler = crawler
-
-        # if os.environ.get('SCRAPY_CHECK'):
-        #     pass
 
         if crawler.settings.get('path'):
             path = crawler.settings.get('path')
@@ -168,14 +179,17 @@ class TpdbApiPerformerPipeline:
                 print(f"*** Exporting to file: {filename}")
                 self.fp = open(filename, 'wb')
                 self.fp.write('{"scenes":['.encode())
-                self.exporter = JsonItemExporter(self.fp, ensure_ascii=False, encoding='utf-8', sort_keys=True, indent=2)
+                if crawler.settings.get('oneline') == 'true':
+                    self.exporter = JsonLinesItemExporter(self.fp, ensure_ascii=False, encoding='utf-8')
+                else:
+                    self.exporter = JsonItemExporter(self.fp, ensure_ascii=False, encoding='utf-8', sort_keys=True, indent=2)
+
 
     @classmethod
     def from_crawler(cls, crawler):
         return cls(crawler)
 
     async def process_item(self, item, spider):
-
         if self.crawler.settings['ENABLE_MONGODB']:
             if spider.force is not True:
                 result = self.db.performers.find_one({'url': item['url']})
@@ -206,7 +220,8 @@ class TpdbApiPerformerPipeline:
             'fakeboobs': item['fakeboobs'],
         }
 
-        if self.crawler.settings['TPDB_API_KEY']:
+        # Post the scene to the API - requires auth with permissions
+        if self.crawler.settings['TPDB_API_KEY'] and not spider.settings.get('local'):
 
             headers = {
                 "Authorization": "Bearer " + self.crawler.settings['TPDB_API_KEY'],
@@ -215,12 +230,17 @@ class TpdbApiPerformerPipeline:
                 'User-Agent': 'tpdb-scraper/1.0.0'
             }
 
-            response = requests.post('https://api.metadataapi.net/performer_sites', json=payload, headers=headers,
-                                    verify=False)
+            response = requests.post('https://api.metadataapi.net/performer_sites', json=payload, headers=headers, verify=False)
+            if response:
+                if response.status_code == 200:
+                    dispresult = "Submitted OK"
+                else:
+                    dispresult = "Submission Error: Code #" + str(response.status_code)
+            else:
+                dispresult = "Submission Error: No Response Code"
 
             if self.crawler.settings['MONGODB_ENABLE']:
                 url_hash = hashlib.sha1(str(item['url']).encode('utf-8')).hexdigest()
-
                 if response.status_code != 200:
                     self.db.errors.replace_one({"_id": url_hash}, {
                         'url': item['url'],
@@ -230,13 +250,16 @@ class TpdbApiPerformerPipeline:
                     }, upsert=True)
                 else:
                     self.db.performers.replace_one({"_id": url_hash}, dict(item), upsert=True)
+        else:
+            dispresult = "Local Run, Not Submitted"
 
         if spider.settings.get('display') and spider.settings.get('LOG_LEVEL') == "INFO":
             if spider.settings.get('display') == "true":
                 namelength = 50 - len(item['name'])
                 if namelength < 1:
                     namelength = 1
-                print(f"Performer: {item['name']}" + " " * namelength + f"{item['network']}\t{item['url']}")
+
+                print(f"Performer: {item['name']}" + " " * namelength + f"{item['network']}\t{item['url']}\t{dispresult}")
 
         if spider.settings.get('export'):
             if spider.settings.get('export') == "true":
