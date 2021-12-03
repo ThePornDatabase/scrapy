@@ -27,14 +27,15 @@ class BasePerformerScraper(scrapy.Spider):
         }
     }
 
-    regex = {
-        're_name': None,
-        're_bio': None,
-        're_image': None,
-    }
+    regex = {}
 
     def __init__(self, *args, **kwargs):
         super(BasePerformerScraper, self).__init__(*args, **kwargs)
+
+        for name in self.get_selector_map():
+            if (name == 'external_id' or name.startswith('re_')) and name in self.get_selector_map() and self.get_selector_map()[name]:
+                regexp, group, mod = self.get_regex(self.get_selector_map(name))
+                self.regex[name] = (re.compile(regexp, mod), group)
 
         self.force = bool(self.force)
         self.debug = bool(self.debug)
@@ -354,8 +355,7 @@ class BasePerformerScraper(scrapy.Spider):
         return response.url
 
     def get_id(self, response):
-        search = re.search(self.get_selector_map('external_id'), response.url, re.IGNORECASE)
-        return search.group(1)
+        return self.get_from_regex(response.url, 'external_id')
 
     def process_xpath(self, response, selector):
         if selector.startswith('/') or selector.startswith('./'):
@@ -380,10 +380,22 @@ class BasePerformerScraper(scrapy.Spider):
     def get_next_page_url(self, base, page):
         return self.format_url(base, self.get_selector_map('pagination') % page)
 
-    def get_from_regex(self, text, re_name, group=1):
+    def get_from_regex(self, text, re_name):
         if re_name in self.regex and self.regex[re_name]:
-            r = self.regex[re_name].search(text)
+            regexp, group, mod = self.get_regex(self.regex[re_name])
+
+            r = regexp.search(text)
             if r:
                 return r.group(group)
             return None
+
         return text
+
+    @staticmethod
+    def get_regex(regexp, group=1, mod=re.IGNORECASE):
+        if isinstance(regexp, tuple):
+            mod = regexp[2] if len(regexp) > 2 else mod
+            group = regexp[1] if len(regexp) > 1 else group
+            regexp = regexp[0]
+
+        return regexp, group, mod
