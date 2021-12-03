@@ -1,12 +1,12 @@
 import re
 import string
 import html
-import requests
 import base64
 from urllib.parse import urlparse
 import scrapy
 
 from tpdb.items import PerformerItem
+from tpdb.helpers.http import Http
 
 
 class BasePerformerScraper(scrapy.Spider):
@@ -224,15 +224,15 @@ class BasePerformerScraper(scrapy.Spider):
 
     def get_image_blob(self, response):
         if 'image_blob' not in self.get_selector_map():
-            return ''
+            return None
 
-        image = self.process_xpath(response, self.get_selector_map('image_blob'))
-        if image:
-            image = self.get_from_regex(image.get(), 're_image_blob')
-
+        if self.get_selector_map('image_blob'):
+            image = self.get_image(response)
             if image:
                 image = self.format_link(response, image)
-                return base64.b64encode(requests.get(image).content).decode('utf-8')
+                req = Http.get(image, headers=self.headers, cookies=self.cookies)
+                if req and req.ok:
+                    return base64.b64encode(req.content).decode('utf-8')
         return None
 
     def get_bio(self, response):
