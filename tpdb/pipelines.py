@@ -6,13 +6,12 @@
 import hashlib
 import re
 import time
+
 from pathlib import Path
+from datetime import datetime
 
-import dateparser
 from pymongo import MongoClient
-
-from scrapy.exporters import JsonItemExporter
-from scrapy.exporters import JsonLinesItemExporter
+from scrapy.exporters import JsonItemExporter, JsonLinesItemExporter
 
 from tpdb.helpers.http import Http
 
@@ -111,7 +110,7 @@ class TpdbApiScenePipeline:
                     self.db.errors.replace_one({"_id": url_hash}, {
                         'url': item['url'],
                         'error': 1,
-                        'when': dateparser.parse('today').isoformat(),
+                        'when': datetime.now().isoformat(),
                         'response': response.json()
                     }, upsert=True)
                 else:
@@ -246,7 +245,7 @@ class TpdbApiPerformerPipeline:
                     self.db.errors.replace_one({"_id": url_hash}, {
                         'url': item['url'],
                         'error': 1,
-                        'when': dateparser.parse('today').isoformat(),
+                        'when': datetime.now().isoformat(),
                         'response': response.json()
                     }, upsert=True)
                 else:
