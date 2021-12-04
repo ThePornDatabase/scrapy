@@ -9,11 +9,12 @@ import time
 from pathlib import Path
 
 import dateparser
-import requests
 from pymongo import MongoClient
 
 from scrapy.exporters import JsonItemExporter
 from scrapy.exporters import JsonLinesItemExporter
+
+from tpdb.helpers.http import Http
 
 
 class TpdbPipeline:
@@ -51,6 +52,7 @@ class TpdbApiScenePipeline:
                     self.exporter = JsonLinesItemExporter(self.fp, ensure_ascii=False, encoding='utf-8')
                 else:
                     self.exporter = JsonItemExporter(self.fp, ensure_ascii=False, encoding='utf-8', sort_keys=True, indent=2)
+
     @classmethod
     def from_crawler(cls, crawler):
         return cls(crawler)
@@ -93,9 +95,9 @@ class TpdbApiScenePipeline:
                 'User-Agent': 'tpdb-scraper/1.0.0'
             }
 
-            response = requests.post('https://api.metadataapi.net/scenes', json=payload, headers=headers)
+            response = Http.post('https://api.metadataapi.net/scenes', json=payload, headers=headers)
             if response:
-                if response.status_code == 200:
+                if response.ok:
                     dispresult = "Submitted OK"
                 else:
                     dispresult = "Submission Error: Code #" + str(response.status_code)
@@ -105,7 +107,7 @@ class TpdbApiScenePipeline:
             url_hash = hashlib.sha1(str(item['url']).encode('utf-8')).hexdigest()
 
             if self.crawler.settings['MONGODB_ENABLE']:
-                if response.status_code != 200:
+                if not response.ok:
                     self.db.errors.replace_one({"_id": url_hash}, {
                         'url': item['url'],
                         'error': 1,
@@ -184,7 +186,6 @@ class TpdbApiPerformerPipeline:
                 else:
                     self.exporter = JsonItemExporter(self.fp, ensure_ascii=False, encoding='utf-8', sort_keys=True, indent=2)
 
-
     @classmethod
     def from_crawler(cls, crawler):
         return cls(crawler)
@@ -230,9 +231,9 @@ class TpdbApiPerformerPipeline:
                 'User-Agent': 'tpdb-scraper/1.0.0'
             }
 
-            response = requests.post('https://api.metadataapi.net/performer_sites', json=payload, headers=headers, verify=False)
+            response = Http.post('https://api.metadataapi.net/performer_sites', json=payload, headers=headers, verify=False)
             if response:
-                if response.status_code == 200:
+                if response.ok:
                     dispresult = "Submitted OK"
                 else:
                     dispresult = "Submission Error: Code #" + str(response.status_code)
@@ -241,7 +242,7 @@ class TpdbApiPerformerPipeline:
 
             if self.crawler.settings['MONGODB_ENABLE']:
                 url_hash = hashlib.sha1(str(item['url']).encode('utf-8')).hexdigest()
-                if response.status_code != 200:
+                if not response.ok:
                     self.db.errors.replace_one({"_id": url_hash}, {
                         'url': item['url'],
                         'error': 1,
