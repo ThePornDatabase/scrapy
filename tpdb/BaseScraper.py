@@ -169,7 +169,7 @@ class BaseScraper(scrapy.Spider):
         return regexp, group, mod
 
     @staticmethod
-    def cleanup_text(text, trash_words):
+    def cleanup_text(text, trash_words=[]):
         text = html.unescape(text)
         for trash in trash_words:
             text = text.replace(trash, '')

@@ -1,6 +1,3 @@
-import string
-import html
-
 import scrapy
 
 from tpdb.BaseScraper import BaseScraper
@@ -168,7 +165,7 @@ class BasePerformerScraper(BaseScraper):
         if name:
             name = self.get_from_regex(name.get(), 're_name')
             if name:
-                return string.capwords(html.unescape(name.strip()))
+                return self.cleanup_text(name).title()
 
         return None
 
@@ -179,7 +176,7 @@ class BasePerformerScraper(BaseScraper):
         if bio:
             bio = self.get_from_regex(bio.get(), 're_bio')
             if bio:
-                return html.unescape(bio.strip())
+                return self.cleanup_text(bio)
 
         return ''
 
