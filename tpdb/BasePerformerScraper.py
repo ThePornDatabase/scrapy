@@ -1,23 +1,13 @@
-import re
 import string
 import html
-import base64
-from urllib.parse import urlparse
+
 import scrapy
 
+from tpdb.BaseScraper import BaseScraper
 from tpdb.items import PerformerItem
-from tpdb.helpers.http import Http
 
 
-class BasePerformerScraper(scrapy.Spider):
-    limit_pages = 1
-    force = False
-    debug = False
-    max_pages = 100
-    cookies = {}
-    headers = {}
-    page = 1
-
+class BasePerformerScraper(BaseScraper):
     custom_settings = {
         'ITEM_PIPELINES': {
             'tpdb.pipelines.TpdbApiPerformerPipeline': 400,
@@ -27,45 +17,7 @@ class BasePerformerScraper(scrapy.Spider):
         }
     }
 
-    regex = {}
-
-    def __init__(self, *args, **kwargs):
-        super(BasePerformerScraper, self).__init__(*args, **kwargs)
-
-        for name in self.get_selector_map():
-            if (name == 'external_id' or name.startswith('re_')) and name in self.get_selector_map() and self.get_selector_map()[name]:
-                regexp, group, mod = self.get_regex(self.get_selector_map(name))
-                self.regex[name] = (re.compile(regexp, mod), group)
-
-        self.force = bool(self.force)
-        self.debug = bool(self.debug)
-        self.page = int(self.page)
-
-        if self.limit_pages is None:
-            self.limit_pages = 1
-        else:
-            if self.limit_pages == 'all':
-                self.limit_pages = 9999
-            self.limit_pages = int(self.limit_pages)
-
-    def start_requests(self):
-        if not hasattr(self, 'start_urls'):
-            raise AttributeError('start_urls missing')
-
-        if not self.start_urls:
-            raise AttributeError('start_urls selector missing')
-
-        for link in self.start_urls:
-            yield scrapy.Request(url=self.get_next_page_url(link, self.page),
-                                 callback=self.parse,
-                                 meta={'page': self.page},
-                                 headers=self.headers,
-                                 cookies=self.cookies)
-
     def parse(self, response, **kwargs):
-        if not hasattr(self, 'get_performers'):
-            raise AttributeError('get_performers function missing')
-
         performers = self.get_performers(response)
         count = 0
         for performer in performers:
@@ -83,14 +35,8 @@ class BasePerformerScraper(scrapy.Spider):
                                      headers=self.headers,
                                      cookies=self.cookies)
 
-    def get_selector_map(self, attr=None):
-        if hasattr(self, 'selector_map'):
-            if attr is None:
-                return self.selector_map
-            if attr not in self.selector_map:
-                raise AttributeError(attr + ' missing from selector map')
-            return self.selector_map[attr]
-        raise NotImplementedError('selector map missing')
+    def get_performers(self, response):
+        return []
 
     def parse_performer(self, response):
         item = PerformerItem()
@@ -196,8 +142,21 @@ class BasePerformerScraper(scrapy.Spider):
         else:
             item['fakeboobs'] = self.get_fakeboobs(response)
 
-        item['network'] = self.network
         item['url'] = self.get_url(response)
+
+        if hasattr(self, 'network'):
+            item['network'] = self.network
+        elif 'network' in response.meta:
+            item['network'] = response.meta['network']
+        else:
+            item['network'] = self.get_network(response)
+
+        if hasattr(self, 'parent'):
+            item['parent'] = self.parent
+        elif 'parent' in response.meta:
+            item['parent'] = response.meta['parent']
+        else:
+            item['parent'] = self.get_parent(response)
 
         if self.debug:
             print(item)
@@ -210,30 +169,7 @@ class BasePerformerScraper(scrapy.Spider):
             name = self.get_from_regex(name.get(), 're_name')
             if name:
                 return string.capwords(html.unescape(name.strip()))
-        return None
 
-    def get_image(self, response):
-        if 'image' not in self.selector_map:
-            return ''
-        image = self.process_xpath(response, self.get_selector_map('image'))
-        if image:
-            image = self.get_from_regex(image.get(), 're_image')
-            if image:
-                image = self.format_link(response, image)
-                return image.replace(" ", "%20")
-        return None
-
-    def get_image_blob(self, response):
-        if 'image_blob' not in self.get_selector_map():
-            return None
-
-        if self.get_selector_map('image_blob'):
-            image = self.get_image(response)
-            if image:
-                image = self.format_link(response, image)
-                req = Http.get(image, headers=self.headers, cookies=self.cookies)
-                if req and req.ok:
-                    return base64.b64encode(req.content).decode('utf-8')
         return None
 
     def get_bio(self, response):
@@ -244,6 +180,7 @@ class BasePerformerScraper(scrapy.Spider):
             bio = self.get_from_regex(bio.get(), 're_bio')
             if bio:
                 return html.unescape(bio.strip())
+
         return ''
 
     def get_gender(self, response):
@@ -251,6 +188,7 @@ class BasePerformerScraper(scrapy.Spider):
             gender = self.process_xpath(response, self.get_selector_map('gender')).get()
             if gender:
                 return gender.strip()
+
         return ''
 
     def get_birthday(self, response):
@@ -258,6 +196,7 @@ class BasePerformerScraper(scrapy.Spider):
             birthday = self.process_xpath(response, self.get_selector_map('birthday')).get()
             if birthday:
                 return birthday.strip()
+
         return ''
 
     def get_astrology(self, response):
@@ -265,6 +204,7 @@ class BasePerformerScraper(scrapy.Spider):
             astrology = self.process_xpath(response, self.get_selector_map('astrology')).get()
             if astrology:
                 return astrology.strip()
+
         return ''
 
     def get_birthplace(self, response):
@@ -272,6 +212,7 @@ class BasePerformerScraper(scrapy.Spider):
             birthplace = self.process_xpath(response, self.get_selector_map('birthplace')).get()
             if birthplace:
                 return birthplace.strip()
+
         return ''
 
     def get_ethnicity(self, response):
@@ -279,6 +220,7 @@ class BasePerformerScraper(scrapy.Spider):
             ethnicity = self.process_xpath(response, self.get_selector_map('ethnicity')).get()
             if ethnicity:
                 return ethnicity.strip()
+
         return ''
 
     def get_nationality(self, response):
@@ -286,6 +228,7 @@ class BasePerformerScraper(scrapy.Spider):
             nationality = self.process_xpath(response, self.get_selector_map('nationality')).get()
             if nationality:
                 return nationality.strip()
+
         return ''
 
     def get_eyecolor(self, response):
@@ -293,6 +236,7 @@ class BasePerformerScraper(scrapy.Spider):
             eyecolor = self.process_xpath(response, self.get_selector_map('eyecolor')).get()
             if eyecolor:
                 return eyecolor.strip()
+
         return ''
 
     def get_haircolor(self, response):
@@ -300,6 +244,7 @@ class BasePerformerScraper(scrapy.Spider):
             haircolor = self.process_xpath(response, self.get_selector_map('haircolor')).get()
             if haircolor:
                 return haircolor.strip()
+
         return ''
 
     def get_height(self, response):
@@ -307,6 +252,7 @@ class BasePerformerScraper(scrapy.Spider):
             height = self.process_xpath(response, self.get_selector_map('height')).get()
             if height:
                 return height.strip()
+
         return ''
 
     def get_weight(self, response):
@@ -314,6 +260,7 @@ class BasePerformerScraper(scrapy.Spider):
             weight = self.process_xpath(response, self.get_selector_map('weight')).get()
             if weight:
                 return weight.strip()
+
         return ''
 
     def get_measurements(self, response):
@@ -321,6 +268,7 @@ class BasePerformerScraper(scrapy.Spider):
             measurements = self.process_xpath(response, self.get_selector_map('measurements')).get()
             if measurements:
                 return measurements.strip()
+
         return ''
 
     def get_tattoos(self, response):
@@ -328,6 +276,7 @@ class BasePerformerScraper(scrapy.Spider):
             tattoos = self.process_xpath(response, self.get_selector_map('tattoos')).get()
             if tattoos:
                 return tattoos.strip()
+
         return ''
 
     def get_piercings(self, response):
@@ -335,6 +284,7 @@ class BasePerformerScraper(scrapy.Spider):
             piercings = self.process_xpath(response, self.get_selector_map('piercings')).get()
             if piercings:
                 return piercings.strip()
+
         return ''
 
     def get_cupsize(self, response):
@@ -342,6 +292,7 @@ class BasePerformerScraper(scrapy.Spider):
             cupsize = self.process_xpath(response, self.get_selector_map('cupsize')).get()
             if cupsize:
                 return cupsize.strip()
+
         return ''
 
     def get_fakeboobs(self, response):
@@ -349,53 +300,5 @@ class BasePerformerScraper(scrapy.Spider):
             fakeboobs = self.process_xpath(response, self.get_selector_map('fakeboobs')).get()
             if fakeboobs:
                 return fakeboobs.strip()
+
         return ''
-
-    def get_url(self, response):
-        return response.url
-
-    def get_id(self, response):
-        return self.get_from_regex(response.url, 'external_id')
-
-    def process_xpath(self, response, selector):
-        if selector.startswith('/') or selector.startswith('./'):
-            return response.xpath(selector)
-        return response.css(selector)
-
-    def format_link(self, response, link):
-        return self.format_url(response.url, link)
-
-    def format_url(self, base, path):
-        if path.startswith('http'):
-            return path
-
-        if path.startswith('//'):
-            return 'https:' + path
-
-        new_url = urlparse(path)
-        url = urlparse(base)
-        url = url._replace(path=new_url.path, query=new_url.query)
-        return url.geturl()
-
-    def get_next_page_url(self, base, page):
-        return self.format_url(base, self.get_selector_map('pagination') % page)
-
-    def get_from_regex(self, text, re_name):
-        if re_name in self.regex and self.regex[re_name]:
-            regexp, group, mod = self.get_regex(self.regex[re_name])
-
-            r = regexp.search(text)
-            if r:
-                return r.group(group)
-            return None
-
-        return text
-
-    @staticmethod
-    def get_regex(regexp, group=1, mod=re.IGNORECASE):
-        if isinstance(regexp, tuple):
-            mod = regexp[2] if len(regexp) > 2 else mod
-            group = regexp[1] if len(regexp) > 1 else group
-            regexp = regexp[0]
-
-        return regexp, group, mod
