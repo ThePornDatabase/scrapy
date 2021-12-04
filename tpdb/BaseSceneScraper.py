@@ -210,6 +210,6 @@ class BaseSceneScraper(BaseScraper):
                     trailer = self.get_from_regex(trailer.get(), 're_trailer')
                     if trailer:
                         trailer = self.format_link(response, trailer)
-                        return trailer.replace(" ", "%20")
+                        return trailer.strip().replace(' ', '%20')
 
         return ''

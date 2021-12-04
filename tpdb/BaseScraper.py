@@ -22,15 +22,7 @@ class BaseScraper(scrapy.Spider):
     headers = {}
     page = 1
 
-    custom_tpdb_settings = {
-        'ITEM_PIPELINES': {
-            'tpdb.pipelines.TpdbApiScenePipeline': 400,
-        },
-        'DOWNLOADER_MIDDLEWARES': {
-            'tpdb.middlewares.TpdbSceneDownloaderMiddleware': 543,
-        }
-    }
-
+    custom_tpdb_settings = {}
     custom_scraper_settings = {}
     selector_map = {}
     regex = {}
@@ -178,16 +170,17 @@ class BaseScraper(scrapy.Spider):
 
     @staticmethod
     def cleanup_text(text, trash_words):
+        text = html.unescape(text)
         for trash in trash_words:
             text = text.replace(trash, '')
 
         return text.strip()
 
     def cleanup_title(self, title):
-        return self.cleanup_text(html.unescape(title.strip()), self.title_trash).title()
+        return self.cleanup_text(title, self.title_trash).title()
 
     def cleanup_description(self, description):
-        return self.cleanup_text(html.unescape(description), self.description_trash)
+        return self.cleanup_text(description, self.description_trash)
 
     def cleanup_date(self, date):
         return self.cleanup_text(date, self.date_trash)
