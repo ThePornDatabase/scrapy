@@ -21,6 +21,7 @@ class SceneItem(scrapy.Item):
     parent = scrapy.Field()
     network = scrapy.Field()
 
+
 class PerformerItem(scrapy.Item):
     name = scrapy.Field()
     network = scrapy.Field()

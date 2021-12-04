@@ -172,6 +172,7 @@ class BasePerformerScraper(BaseScraper):
     def get_bio(self, response):
         if 'bio' not in self.get_selector_map():
             return ''
+
         bio = self.process_xpath(response, self.get_selector_map('bio'))
         if bio:
             bio = self.get_from_regex(bio.get(), 're_bio')

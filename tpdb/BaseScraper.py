@@ -84,6 +84,7 @@ class BaseScraper(scrapy.Spider):
     def get_image(self, response):
         if 'image' not in self.get_selector_map():
             return ''
+
         if self.get_selector_map('image'):
             image = self.process_xpath(response, self.get_selector_map('image'))
             if image:
@@ -127,6 +128,7 @@ class BaseScraper(scrapy.Spider):
     def process_xpath(response, selector):
         if selector.startswith('/') or selector.startswith('./'):
             return response.xpath(selector)
+
         return response.css(selector)
 
     def format_link(self, response, link):
