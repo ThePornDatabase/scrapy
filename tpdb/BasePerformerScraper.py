@@ -148,13 +148,6 @@ class BasePerformerScraper(BaseScraper):
         else:
             item['network'] = self.get_network(response)
 
-        if hasattr(self, 'parent'):
-            item['parent'] = self.parent
-        elif 'parent' in response.meta:
-            item['parent'] = response.meta['parent']
-        else:
-            item['parent'] = self.get_parent(response)
-
         if self.debug:
             print(item)
         else:
