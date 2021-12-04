@@ -37,20 +37,20 @@ class TpdbApiScenePipeline:
 
         if crawler.settings.get('file'):
             filename = crawler.settings.get('file')
-            if "\\" not in filename and "/" not in filename:
+            if '\\' not in filename and '/' not in filename:
                 filename = Path(path, filename)
         else:
-            filename = Path(path, crawler.spidercls.name + "_" + time.strftime("%Y%m%d-%H%M") + ".json")
+            filename = Path(path, '%s_%s.json' % (crawler.spidercls.name, time.strftime('%Y%m%d-%H%M')))
 
-        if crawler.settings.get('export'):
-            if crawler.settings.get('export') == 'true':
-                print(f"*** Exporting to file: {filename}")
-                self.fp = open(filename, 'wb')
-                self.fp.write('{"scenes":['.encode())
-                if crawler.settings.get('oneline') == 'true':
-                    self.exporter = JsonLinesItemExporter(self.fp, ensure_ascii=False, encoding='utf-8')
-                else:
-                    self.exporter = JsonItemExporter(self.fp, ensure_ascii=False, encoding='utf-8', sort_keys=True, indent=2)
+        if crawler.settings.getbool('export'):
+            print(f'*** Exporting to file: {filename}')
+            self.fp = open(filename, 'wb')
+            self.fp.write('{"scenes":['.encode())
+
+            if crawler.settings.getbool('oneline'):
+                self.exporter = JsonLinesItemExporter(self.fp, ensure_ascii=False, encoding='utf-8')
+            else:
+                self.exporter = JsonItemExporter(self.fp, ensure_ascii=False, encoding='utf-8', sort_keys=True, indent=2)
 
     @classmethod
     def from_crawler(cls, crawler):
@@ -88,7 +88,7 @@ class TpdbApiScenePipeline:
         if self.crawler.settings['TPDB_API_KEY'] and not spider.settings.get('local'):
 
             headers = {
-                "Authorization": "Bearer " + self.crawler.settings['TPDB_API_KEY'],
+                'Authorization': 'Bearer %s' % self.crawler.settings['TPDB_API_KEY'],
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'User-Agent': 'tpdb-scraper/1.0.0'
@@ -97,11 +97,11 @@ class TpdbApiScenePipeline:
             response = Http.post('https://api.metadataapi.net/scenes', json=payload, headers=headers)
             if response:
                 if response.ok:
-                    dispresult = "Submitted OK"
+                    dispresult = 'Submitted OK'
                 else:
-                    dispresult = "Submission Error: Code #" + str(response.status_code)
+                    dispresult = 'Submission Error: Code #%d' % response.status_code
             else:
-                dispresult = "Submission Error: No Response Code"
+                dispresult = 'Submission Error: No Response Code'
 
             url_hash = hashlib.sha1(str(item['url']).encode('utf-8')).hexdigest()
 
@@ -115,43 +115,41 @@ class TpdbApiScenePipeline:
                     }, upsert=True)
                 else:
                     self.db.scenes.replace_one(
-                        {"_id": url_hash}, dict(item), upsert=True)
+                        {'_id': url_hash}, dict(item), upsert=True)
         else:
-            dispresult = "Local Run, Not Submitted"
+            dispresult = 'Local Run, Not Submitted'
 
-        if spider.settings.get('display') and spider.settings.get('LOG_LEVEL') == "INFO":
-            if spider.settings.get('display') == "true":
-                if len(item['title']) >= 50:
-                    titlelength = 5
-                else:
-                    titlelength = 55 - len(item['title'])
+        if spider.settings.getbool('display') and spider.settings.get('LOG_LEVEL') == 'INFO':
+            if len(item['title']) >= 50:
+                titlelength = 5
+            else:
+                titlelength = 55 - len(item['title'])
 
-                if len(item['site']) >= 15:
-                    sitelength = 5
-                else:
-                    sitelength = 20 - len(item['site'])
+            if len(item['site']) >= 15:
+                sitelength = 5
+            else:
+                sitelength = 20 - len(item['site'])
 
-                if "T" in item['date']:
-                    dispdate = re.search(r'(.*)T\d', item['date']).group(1)
-                else:
-                    dispdate = item['date']
+            if "T" in item['date']:
+                dispdate = re.search(r'(.*)T\d', item['date']).group(1)
+            else:
+                dispdate = item['date']
 
-                print(f"Item: {item['title'][0:50]}" + " " * titlelength + f"{item['site'][0:15]}" + " " * sitelength + f"\t{str(item['id'])[0:15]}\t{dispdate}\t{item['url']}\t{dispresult}")
+            print(f"Item: {item['title'][0:50]}" + " " * titlelength + f"{item['site'][0:15]}" + " " * sitelength + f"\t{str(item['id'])[0:15]}\t{dispdate}\t{item['url']}\t{dispresult}")
 
-        if spider.settings.get('export'):
-            if spider.settings.get('export') == "true":
-                item2 = item.copy()
-                if not spider.settings.get('showblob'):
-                    if "image_blob" in item2:
-                        item2.pop('image_blob', None)
-                self.exporter.export_item(item2)
+        if spider.settings.getbool('export'):
+            item2 = item.copy()
+            if not spider.settings.get('showblob'):
+                if 'image_blob' in item2:
+                    item2.pop('image_blob', None)
+            self.exporter.export_item(item2)
+
         return item
 
     def close_spider(self, spider):
-        if spider.settings.get('export'):
-            if spider.settings.get('export') == "true":
-                self.fp.write(']}'.encode())
-                self.fp.close()
+        if spider.settings.getbool('export'):
+            self.fp.write(']}'.encode())
+            self.fp.close()
 
 
 class TpdbApiPerformerPipeline:
@@ -173,17 +171,17 @@ class TpdbApiPerformerPipeline:
             if "\\" not in filename and "/" not in filename:
                 filename = Path(path, filename)
         else:
-            filename = Path(path, crawler.spidercls.name + "_" + time.strftime("%Y%m%d-%H%M") + "-performers.json")
+            filename = Path(path, '%s_%s-performers.json' % (crawler.spidercls.name, time.strftime('%Y%m%d-%H%M')))
 
-        if crawler.settings.get('export'):
-            if crawler.settings.get('export') == 'true':
-                print(f"*** Exporting to file: {filename}")
-                self.fp = open(filename, 'wb')
-                self.fp.write('{"scenes":['.encode())
-                if crawler.settings.get('oneline') == 'true':
-                    self.exporter = JsonLinesItemExporter(self.fp, ensure_ascii=False, encoding='utf-8')
-                else:
-                    self.exporter = JsonItemExporter(self.fp, ensure_ascii=False, encoding='utf-8', sort_keys=True, indent=2)
+        if crawler.settings.getbool('export'):
+            print(f"*** Exporting to file: {filename}")
+            self.fp = open(filename, 'wb')
+            self.fp.write('{"scenes":['.encode())
+
+            if crawler.settings.getbool('oneline'):
+                self.exporter = JsonLinesItemExporter(self.fp, ensure_ascii=False, encoding='utf-8')
+            else:
+                self.exporter = JsonItemExporter(self.fp, ensure_ascii=False, encoding='utf-8', sort_keys=True, indent=2)
 
     @classmethod
     def from_crawler(cls, crawler):
@@ -224,7 +222,7 @@ class TpdbApiPerformerPipeline:
         if self.crawler.settings['TPDB_API_KEY'] and not spider.settings.get('local'):
 
             headers = {
-                "Authorization": "Bearer " + self.crawler.settings['TPDB_API_KEY'],
+                'Authorization': 'Bearer %s' % self.crawler.settings['TPDB_API_KEY'],
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'User-Agent': 'tpdb-scraper/1.0.0'
@@ -233,16 +231,16 @@ class TpdbApiPerformerPipeline:
             response = Http.post('https://api.metadataapi.net/performer_sites', json=payload, headers=headers, verify=False)
             if response:
                 if response.ok:
-                    dispresult = "Submitted OK"
+                    dispresult = 'Submitted OK'
                 else:
-                    dispresult = "Submission Error: Code #" + str(response.status_code)
+                    dispresult = 'Submission Error: Code #' + str(response.status_code)
             else:
-                dispresult = "Submission Error: No Response Code"
+                dispresult = 'Submission Error: No Response Code'
 
             if self.crawler.settings['MONGODB_ENABLE']:
                 url_hash = hashlib.sha1(str(item['url']).encode('utf-8')).hexdigest()
                 if not response.ok:
-                    self.db.errors.replace_one({"_id": url_hash}, {
+                    self.db.errors.replace_one({'_id': url_hash}, {
                         'url': item['url'],
                         'error': 1,
                         'when': datetime.now().isoformat(),
@@ -253,25 +251,23 @@ class TpdbApiPerformerPipeline:
         else:
             dispresult = "Local Run, Not Submitted"
 
-        if spider.settings.get('display') and spider.settings.get('LOG_LEVEL') == "INFO":
-            if spider.settings.get('display') == "true":
-                namelength = 50 - len(item['name'])
-                if namelength < 1:
-                    namelength = 1
+        if spider.settings.getbool('display') and spider.settings.get('LOG_LEVEL') == 'INFO':
+            namelength = 50 - len(item['name'])
+            if namelength < 1:
+                namelength = 1
 
-                print(f"Performer: {item['name']}" + " " * namelength + f"{item['network']}\t{item['url']}\t{dispresult}")
+            print(f"Performer: {item['name']}" + " " * namelength + f"{item['network']}\t{item['url']}\t{dispresult}")
 
-        if spider.settings.get('export'):
-            if spider.settings.get('export') == "true":
-                item2 = item.copy()
-                if not spider.settings.get('showblob'):
-                    if "image_blob" in item2:
-                        item2.pop('image_blob', None)
-                self.exporter.export_item(item2)
+        if spider.settings.getbool('export'):
+            item2 = item.copy()
+            if not spider.settings.get('showblob'):
+                if "image_blob" in item2:
+                    item2.pop('image_blob', None)
+            self.exporter.export_item(item2)
+
         return item
 
     def close_spider(self, spider):
-        if spider.settings.get('export'):
-            if spider.settings.get('export') == "true":
-                self.fp.write(']}'.encode())
-                self.fp.close()
+        if spider.settings.getbool('export'):
+            self.fp.write(']}'.encode())
+            self.fp.close()
