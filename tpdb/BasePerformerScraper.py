@@ -5,7 +5,7 @@ from tpdb.items import PerformerItem
 
 
 class BasePerformerScraper(BaseScraper):
-    custom_settings = {
+    custom_tpdb_settings = {
         'ITEM_PIPELINES': {
             'tpdb.pipelines.TpdbApiPerformerPipeline': 400,
         },
