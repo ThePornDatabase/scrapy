@@ -3,6 +3,7 @@ import re
 import base64
 import html
 
+from abc import ABC
 from urllib.parse import urlparse
 
 import dateparser
@@ -12,7 +13,7 @@ import tldextract
 from tpdb.helpers.http import Http
 
 
-class BaseScraper(scrapy.Spider):
+class BaseScraper(scrapy.Spider, ABC):
     limit_pages = 1
     force = False
     debug = False
@@ -134,7 +135,8 @@ class BaseScraper(scrapy.Spider):
     def format_link(self, response, link):
         return self.format_url(response.url, link)
 
-    def format_url(self, base, path):
+    @staticmethod
+    def format_url(base, path):
         if path.startswith('http'):
             return path
 
@@ -171,7 +173,10 @@ class BaseScraper(scrapy.Spider):
         return regexp, group, mod
 
     @staticmethod
-    def cleanup_text(text, trash_words=[]):
+    def cleanup_text(text, trash_words=None):
+        if trash_words is None:
+            trash_words = []
+
         text = html.unescape(text)
         for trash in trash_words:
             text = text.replace(trash, '')
