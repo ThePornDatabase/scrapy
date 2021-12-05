@@ -2,18 +2,17 @@ import sys
 
 from pathlib import Path
 
-import requests
-
 from scrapy.http import HtmlResponse
 from scrapy.utils import project
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtWidgets import QApplication, QStyleFactory, QTreeWidgetItem
 from PySide6.QtCore import QFile, QIODevice, QCoreApplication, Qt
 
-from tpdb.BaseSceneScraper import BaseSceneScraper
+from tpdb.helpers.http import Http
+from tpdb.BaseScraper import BaseScraper
 
 
-class GUI():
+class GUI:
     request = None
     response = None
     headers = {}
@@ -55,10 +54,7 @@ class GUI():
         self.response = None
 
         url = self.window.lineEdit.text()
-        try:
-            self.request = requests.get(url)
-        except:
-            pass
+        self.request = Http.get(url, headers=self.headers)
 
         if self.request and self.request.ok:
             self.response = HtmlResponse(url=url, headers=self.headers, body=self.request.content)
@@ -72,10 +68,7 @@ class GUI():
 
         selector = self.window.lineEdit_2.text().strip()
         if self.response:
-            try:
-                result = BaseSceneScraper.process_xpath(self, self.response, selector)
-            except:
-                pass
+            result = BaseScraper.process_xpath(self.response, selector)
 
         if result:
             self.window.lineEdit_3.setText(result.get().strip())
