@@ -1,4 +1,4 @@
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 
 import scrapy
 
@@ -166,14 +166,14 @@ class BaseSceneScraper(BaseScraper):
     def get_date(self, response):
         if 'date' in self.get_selector_map():
             if self.get_selector_map('date'):
-                date = self.process_xpath(response, self.get_selector_map('date'))
-                if date:
-                    date = self.get_from_regex(date.get().strip(), 're_date')
-                    if date:
+                date_xpath = self.process_xpath(response, self.get_selector_map('date'))
+                if date_xpath:
+                    date_xpath = self.get_from_regex(date_xpath.get().strip(), 're_date')
+                    if date_xpath:
                         date_formats = self.get_selector_map('date_formats') if 'date_formats' in self.get_selector_map() else None
-                        return self.parse_date(date, date_formats=date_formats).isoformat()
+                        return self.parse_date(date_xpath, date_formats=date_formats).isoformat()
 
-        return self.parse_date('today').isoformat()
+        return datetime.now().isoformat()
 
     def get_performers(self, response):
         if 'performers' in self.get_selector_map():
