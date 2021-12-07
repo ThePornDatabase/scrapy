@@ -2,6 +2,9 @@ import requests
 
 from requests.models import Response
 from requests.cookies import cookiejar_from_dict
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 
 class Http:

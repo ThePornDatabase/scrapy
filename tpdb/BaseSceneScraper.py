@@ -1,84 +1,21 @@
-import sys
-import re
-from urllib.parse import urlparse
-import string
-import html
-import base64
-import dateparser
-from datetime import date, timedelta
-import tldextract
+from datetime import date, datetime, timedelta
+
 import scrapy
 
+from tpdb.BaseScraper import BaseScraper
 from tpdb.items import SceneItem
-from tpdb.helpers.http import Http
 
 
-class BaseSceneScraper(scrapy.Spider):
-    limit_pages = 1
-    force = False
-    debug = False
-    days = 99999
-    max_pages = 100
-    cookies = {}
-    headers = {}
-    page = 1
-
+class BaseSceneScraper(BaseScraper):
     custom_tpdb_settings = {
         'ITEM_PIPELINES': {
             'tpdb.pipelines.TpdbApiScenePipeline': 400,
         },
         'DOWNLOADER_MIDDLEWARES': {
+            'tpdb.helpers.scrapy_dpath.DPathMiddleware': 542,
             'tpdb.middlewares.TpdbSceneDownloaderMiddleware': 543,
         }
     }
-
-    custom_scraper_settings = {}
-    regex = {}
-
-    title_trash = []
-    description_trash = ['Description:']
-    date_trash = ['Released:', 'Added:', 'Published:']
-
-    def __init__(self, *args, **kwargs):
-        super(BaseSceneScraper, self).__init__(*args, **kwargs)
-
-        for name in self.get_selector_map():
-            if (name == 'external_id' or name.startswith('re_')) and name in self.get_selector_map() and self.get_selector_map()[name]:
-                regexp, group, mod = self.get_regex(self.get_selector_map(name))
-                self.regex[name] = (re.compile(regexp, mod), group)
-
-        self.days = int(self.days)
-        self.force = bool(self.force)
-        self.debug = bool(self.debug)
-        self.page = int(self.page)
-
-        if self.limit_pages is None:
-            self.limit_pages = 1
-        else:
-            if self.limit_pages == 'all':
-                self.limit_pages = sys.maxsize
-            self.limit_pages = int(self.limit_pages)
-
-    @classmethod
-    def update_settings(cls, settings):
-        cls.custom_tpdb_settings.update(cls.custom_scraper_settings)
-        settings.update(cls.custom_tpdb_settings)
-        cls.headers['User-Agent'] = settings['USER_AGENT']
-        super(BaseSceneScraper, cls).update_settings(settings)
-
-    def start_requests(self):
-        if not hasattr(self, 'start_urls'):
-            raise AttributeError('start_urls missing')
-
-        if not self.start_urls:
-            raise AttributeError('start_urls selector missing')
-
-        for link in self.start_urls:
-            yield scrapy.Request(url=self.get_next_page_url(link, self.page),
-                                 callback=self.parse,
-                                 meta={'page': self.page},
-                                 headers=self.headers,
-                                 cookies=self.cookies)
 
     def parse(self, response, **kwargs):
         scenes = self.get_scenes(response)
@@ -100,15 +37,6 @@ class BaseSceneScraper(scrapy.Spider):
 
     def get_scenes(self, response):
         return []
-
-    def get_selector_map(self, attr=None):
-        if hasattr(self, 'selector_map'):
-            if attr is None:
-                return self.selector_map
-            if attr not in self.selector_map:
-                raise AttributeError(attr + ' missing from selector map')
-            return self.selector_map[attr]
-        raise NotImplementedError('selector map missing')
 
     def parse_scene(self, response):
         item = SceneItem()
@@ -188,19 +116,19 @@ class BaseSceneScraper(scrapy.Spider):
             item['parent'] = self.get_parent(response)
 
         if self.days > 27375:
-            filterdate = "0000-00-00"
+            filter_date = '0000-00-00'
         else:
             days = self.days
-            filterdate = date.today() - timedelta(days)
-            filterdate = filterdate.strftime('%Y-%m-%d')
+            filter_date = date.today() - timedelta(days)
+            filter_date = filter_date.strftime('%Y-%m-%d')
 
         if self.debug:
-            if not item['date'] > filterdate:
-                item['filtered'] = "Scene filtered due to date restraint"
+            if not item['date'] > filter_date:
+                item['filtered'] = 'Scene filtered due to date restraint'
             print(item)
         else:
-            if filterdate:
-                if item['date'] > filterdate:
+            if filter_date:
+                if item['date'] > filter_date:
                     yield item
             else:
                 yield item
@@ -212,70 +140,40 @@ class BaseSceneScraper(scrapy.Spider):
 
             if title:
                 title = self.cleanup_title(title)
-                return string.capwords(title)
+                return title.title()
 
         return None
 
     def get_description(self, response):
         if 'description' not in self.get_selector_map():
             return ''
+
         if self.get_selector_map('description'):
-            descriptionxpath = self.process_xpath(response, self.get_selector_map('description'))
-            if descriptionxpath:
-                if len(descriptionxpath) == 1:
-                    description = self.get_from_regex(descriptionxpath.get(), 're_description')
-                if len(descriptionxpath) > 1:
-                    description = list(map(lambda x: x.strip(), descriptionxpath.getall()))
-                    description = " ".join(description)
+            description_xpath = self.process_xpath(response, self.get_selector_map('description'))
+            if description_xpath:
+                if len(description_xpath) > 1:
+                    description = list(map(lambda x: x.strip(), description_xpath.getall()))
+                    description = ' '.join(description)
+                else:
+                    description = description_xpath.get()
+
+                description = self.get_from_regex(description, 're_description')
                 if description:
                     return self.cleanup_description(description)
+
         return ''
-
-    def get_site(self, response):
-        return tldextract.extract(response.url).domain
-
-    def get_network(self, response):
-        return tldextract.extract(response.url).domain
-
-    def get_parent(self, response):
-        return tldextract.extract(response.url).domain
 
     def get_date(self, response):
         if 'date' in self.get_selector_map():
             if self.get_selector_map('date'):
-                date = self.process_xpath(response, self.get_selector_map('date'))
-                if date:
-                    date = self.get_from_regex(date.get().strip(), 're_date')
-                    if date:
+                date_xpath = self.process_xpath(response, self.get_selector_map('date'))
+                if date_xpath:
+                    date_xpath = self.get_from_regex(date_xpath.get().strip(), 're_date')
+                    if date_xpath:
                         date_formats = self.get_selector_map('date_formats') if 'date_formats' in self.get_selector_map() else None
-                        return self.parse_date(date, date_formats=date_formats).isoformat()
+                        return self.parse_date(date_xpath, date_formats=date_formats).isoformat()
 
-        return self.parse_date('today').isoformat()
-
-    def get_image(self, response):
-        if 'image' not in self.get_selector_map():
-            return ''
-        if self.get_selector_map('image'):
-            image = self.process_xpath(response, self.get_selector_map('image'))
-            if image:
-                image = self.get_from_regex(image.get(), 're_image')
-                if image:
-                    image = self.format_link(response, image)
-                    return image.replace(" ", "%20")
-        return None
-
-    def get_image_blob(self, response):
-        if 'image_blob' not in self.get_selector_map():
-            return None
-
-        if self.get_selector_map('image_blob'):
-            image = self.get_image(response)
-            if image:
-                image = self.format_link(response, image)
-                req = Http.get(image, headers=self.headers, cookies=self.cookies)
-                if req and req.ok:
-                    return base64.b64encode(req.content).decode('utf-8')
-        return None
+        return datetime.now().isoformat()
 
     def get_performers(self, response):
         if 'performers' in self.get_selector_map():
@@ -287,7 +185,6 @@ class BaseSceneScraper(scrapy.Spider):
         return []
 
     def get_tags(self, response):
-
         if 'tags' not in self.get_selector_map():
             return []
 
@@ -298,17 +195,12 @@ class BaseSceneScraper(scrapy.Spider):
                 for tag in tags.getall():
                     if ',' in tag:
                         new_tags.extend(tag.split(','))
-                    else:
+                    elif tag:
                         new_tags.append(tag)
 
                 return list(map(lambda x: x.strip().title(), set(new_tags)))
+
         return []
-
-    def get_url(self, response):
-        return response.url
-
-    def get_id(self, response):
-        return self.get_from_regex(response.url, 'external_id')
 
     def get_trailer(self, response):
         if 'trailer' in self.get_selector_map():
@@ -318,73 +210,6 @@ class BaseSceneScraper(scrapy.Spider):
                     trailer = self.get_from_regex(trailer.get(), 're_trailer')
                     if trailer:
                         trailer = self.format_link(response, trailer)
-                        return trailer.replace(" ", "%20")
+                        return trailer.strip().replace(' ', '%20')
 
         return ''
-
-    @staticmethod
-    def process_xpath(response, selector):
-        if selector.startswith('/') or selector.startswith('./'):
-            return response.xpath(selector)
-        return response.css(selector)
-
-    def format_link(self, response, link):
-        return self.format_url(response.url, link)
-
-    def format_url(self, base, path):
-        if path.startswith('http'):
-            return path
-
-        if path.startswith('//'):
-            return 'https:' + path
-
-        new_url = urlparse(path)
-        url = urlparse(base)
-        url = url._replace(path=new_url.path, query=new_url.query)
-
-        return url.geturl()
-
-    def get_next_page_url(self, base, page):
-        return self.format_url(base, self.get_selector_map('pagination') % page)
-
-    def get_from_regex(self, text, re_name):
-        if re_name in self.regex and self.regex[re_name]:
-            regexp, group, mod = self.get_regex(self.regex[re_name])
-
-            r = regexp.search(text)
-            if r:
-                return r.group(group)
-            return None
-
-        return text
-
-    @staticmethod
-    def get_regex(regexp, group=1, mod=re.IGNORECASE):
-        if isinstance(regexp, tuple):
-            mod = regexp[2] if len(regexp) > 2 else mod
-            group = regexp[1] if len(regexp) > 1 else group
-            regexp = regexp[0]
-
-        return regexp, group, mod
-
-    @staticmethod
-    def cleanup_text(text, trash_words):
-        for trash in trash_words:
-            text = text.replace(trash, '')
-
-        return text.strip()
-
-    def cleanup_title(self, title):
-        return string.capwords(self.cleanup_text(html.unescape(title.strip()), self.title_trash))
-
-    def cleanup_description(self, description):
-        return self.cleanup_text(html.unescape(description), self.description_trash)
-
-    def cleanup_date(self, date):
-        return self.cleanup_text(date, self.date_trash)
-
-    def parse_date(self, date, date_formats=None):
-        date = self.cleanup_date(date)
-        settings = {'TIMEZONE': 'UTC'}
-
-        return dateparser.parse(date, date_formats=date_formats, settings=settings)
