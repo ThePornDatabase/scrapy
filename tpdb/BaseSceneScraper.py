@@ -151,14 +151,13 @@ class BaseSceneScraper(BaseScraper):
         if self.get_selector_map('description'):
             description_xpath = self.process_xpath(response, self.get_selector_map('description'))
             if description_xpath:
-                description = ''
-                if len(description_xpath) == 1:
-                    description = self.get_from_regex(description_xpath.get(), 're_description')
-
                 if len(description_xpath) > 1:
                     description = list(map(lambda x: x.strip(), description_xpath.getall()))
-                    description = " ".join(description)
+                    description = ' '.join(description)
+                else:
+                    description = description_xpath.get()
 
+                description = self.get_from_regex(description, 're_description')
                 if description:
                     return self.cleanup_description(description)
 
