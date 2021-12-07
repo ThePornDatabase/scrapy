@@ -12,3 +12,4 @@ chompjs
 mdutils
 PySide6
 Unidecode
+dpath

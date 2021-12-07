@@ -10,6 +10,7 @@ class BasePerformerScraper(BaseScraper):
             'tpdb.pipelines.TpdbApiPerformerPipeline': 400,
         },
         'DOWNLOADER_MIDDLEWARES': {
+            'tpdb.helpers.scrapy_dpath.DPathMiddleware': 542,
             'tpdb.middlewares.TpdbPerformerDownloaderMiddleware': 543,
         }
     }

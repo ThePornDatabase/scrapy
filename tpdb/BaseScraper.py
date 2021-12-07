@@ -127,8 +127,11 @@ class BaseScraper(scrapy.Spider, ABC):
 
     @staticmethod
     def process_xpath(response, selector):
-        if selector.startswith('/') or selector.startswith('./'):
+        if selector.startswith('//') or selector.startswith('./'):
             return response.xpath(selector)
+
+        if selector.startswith('/'):
+            return response.dpath(selector)
 
         return response.css(selector)
 

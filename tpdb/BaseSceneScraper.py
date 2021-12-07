@@ -12,6 +12,7 @@ class BaseSceneScraper(BaseScraper):
             'tpdb.pipelines.TpdbApiScenePipeline': 400,
         },
         'DOWNLOADER_MIDDLEWARES': {
+            'tpdb.helpers.scrapy_dpath.DPathMiddleware': 542,
             'tpdb.middlewares.TpdbSceneDownloaderMiddleware': 543,
         }
     }
@@ -195,7 +196,7 @@ class BaseSceneScraper(BaseScraper):
                 for tag in tags.getall():
                     if ',' in tag:
                         new_tags.extend(tag.split(','))
-                    else:
+                    elif tag:
                         new_tags.append(tag)
 
                 return list(map(lambda x: x.strip().title(), set(new_tags)))
