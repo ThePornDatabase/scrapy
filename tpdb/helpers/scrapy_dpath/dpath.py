@@ -33,7 +33,6 @@ class ScrapyDPath:
         return None
 
     def getall(self):
-        print(self.__result)
         if self.__result:
             return self.__result
 
