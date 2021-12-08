@@ -2,13 +2,14 @@ import sys
 
 from pathlib import Path
 
-from scrapy.http import HtmlResponse
+from scrapy.http import TextResponse
 from scrapy.utils import project
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtWidgets import QApplication, QStyleFactory, QTreeWidgetItem
 from PySide6.QtCore import QFile, QIODevice, QCoreApplication, Qt
 
 from tpdb.helpers.http import Http
+from tpdb.helpers.scrapy_dpath import DPathResponse
 from tpdb.BaseScraper import BaseScraper
 
 
@@ -56,8 +57,9 @@ class GUI:
         url = self.window.lineEdit.text()
         self.request = Http.get(url, headers=self.headers)
 
-        if self.request and self.request.ok:
-            self.response = HtmlResponse(url=url, headers=self.headers, body=self.request.content)
+        if self.request is not None:
+            response = TextResponse(url=url, headers=self.headers, body=self.request.content)
+            self.response = DPathResponse(self.request, response)
 
             self.window.label.setText('<a href="{0}">{0}</a>'.format(url))
             self.window.plainTextEdit.setPlainText(self.request.text)
