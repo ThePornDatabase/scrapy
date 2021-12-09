@@ -51,6 +51,13 @@ class GUI:
         settings = project.get_project_settings()
         self.headers['User-Agent'] = settings.get('USER_AGENT', default='Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36')
 
+    def get_response(self, content, request=None):
+        url = request.url if request else ''
+        response = TextResponse(url=url, headers=self.headers, body=content)
+        response = DPathResponse(request, response)
+
+        return response
+
     def load(self):
         self.response = None
 
@@ -58,11 +65,16 @@ class GUI:
         self.request = Http.get(url, headers=self.headers)
 
         if self.request is not None:
-            response = TextResponse(url=url, headers=self.headers, body=self.request.content)
-            self.response = DPathResponse(self.request, response)
+            self.response = self.get_response(self.request.content, self.request)
 
             self.window.label.setText('<a href="{0}">{0}</a>'.format(url))
             self.window.plainTextEdit.setPlainText(self.request.text)
+        else:
+            text = self.window.plainTextEdit.toPlainText().encode('UTF-8')
+            if text:
+                self.response = self.get_response(text)
+
+                self.window.label.setText('From TextBox')
 
     def get(self):
         result = None
