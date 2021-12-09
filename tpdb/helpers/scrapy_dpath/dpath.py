@@ -28,12 +28,12 @@ class ScrapyDPath:
 
     def get(self):
         if self.__result:
-            return self.__result[0]
+            return str(self.__result[0])
 
         return None
 
     def getall(self):
         if self.__result:
-            return self.__result
+            return [str(res) for res in self.__result]
 
         return None
