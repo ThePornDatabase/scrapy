@@ -18,10 +18,7 @@ class ScrapyDPath:
         return repr(self.__result)
 
     def __len__(self):
-        if self.__result:
-            return len(self.__result)
-
-        return 0
+        return len(self.__result) if self.__result else 0
 
     def __iter__(self):
         yield self.__result
