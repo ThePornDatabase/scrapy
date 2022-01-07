@@ -34,4 +34,5 @@ class FlareRequest(Request):
                                            callback=callback,
                                            meta=meta,
                                            body=json.dumps(params),
+                                           headers={'Content-Type': 'application/json'},
                                            **kwargs)
