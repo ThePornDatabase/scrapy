@@ -1,5 +1,5 @@
 from datetime import date, datetime, timedelta
-
+import string
 import scrapy
 
 from tpdb.BaseScraper import BaseScraper
@@ -140,7 +140,7 @@ class BaseSceneScraper(BaseScraper):
 
             if title:
                 title = self.cleanup_title(title)
-                return title.title()
+                return string.capwords(title)
 
         return None
 
@@ -180,7 +180,7 @@ class BaseSceneScraper(BaseScraper):
             if self.get_selector_map('performers'):
                 performers = self.process_xpath(response, self.get_selector_map('performers'))
                 if performers:
-                    return list(map(lambda x: x.strip(), performers.getall()))
+                    return list(map(lambda x: string.capwords(x.strip()), performers.getall()))
 
         return []
 
@@ -198,7 +198,7 @@ class BaseSceneScraper(BaseScraper):
                     elif tag:
                         new_tags.append(tag)
 
-                return list(map(lambda x: x.strip().title(), set(new_tags)))
+                return list(map(lambda x: string.capwords(x.strip()), set(new_tags)))
 
         return []
 
