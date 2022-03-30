@@ -110,6 +110,13 @@ class BaseScraper(scrapy.Spider, ABC):
 
         return None
 
+    def get_image_blob_from_link(self, image):
+        if image:
+            req = Http.get(image, headers=self.headers, cookies=self.cookies)
+            if req and req.ok:
+                return base64.b64encode(req.content).decode('utf-8')
+        return None
+
     def get_url(self, response):
         return response.url
 
