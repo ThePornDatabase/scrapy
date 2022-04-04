@@ -1,5 +1,6 @@
 import json
 from urllib.parse import urlparse
+
 from scrapy import Request
 
 

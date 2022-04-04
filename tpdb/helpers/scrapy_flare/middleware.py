@@ -1,5 +1,6 @@
 from tpdb.helpers.flare_solverr import FlareSolverr
-from tpdb.helpers.scrapy_flare import FlareRequest, FlareResponse
+from tpdb.helpers.scrapy_flare.request import FlareRequest
+from tpdb.helpers.scrapy_flare.response import FlareResponse
 
 
 class FlareMiddleware(object):

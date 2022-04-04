@@ -6,9 +6,8 @@
 import hashlib
 import re
 import time
-
-from pathlib import Path
 from datetime import datetime
+from pathlib import Path
 
 from pymongo import MongoClient
 from scrapy.exporters import JsonItemExporter, JsonLinesItemExporter
