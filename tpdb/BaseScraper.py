@@ -1,6 +1,7 @@
 import base64
 import html
 import re
+import string
 import sys
 from abc import ABC
 from urllib.parse import urlparse
@@ -186,7 +187,7 @@ class BaseScraper(scrapy.Spider, ABC):
         return text.strip()
 
     def cleanup_title(self, title):
-        return self.cleanup_text(title, self.title_trash).title()
+        return string.capwords(self.cleanup_text(title, self.title_trash))
 
     def cleanup_description(self, description):
         return self.cleanup_text(description, self.description_trash)
