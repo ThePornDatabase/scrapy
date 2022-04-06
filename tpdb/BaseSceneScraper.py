@@ -76,7 +76,10 @@ class BaseSceneScraper(BaseScraper):
         else:
             item['image_blob'] = self.get_image_blob(response)
 
-        if 'image_blob' not in item or not item['image_blob']:
+        if ('image_blob' not in item or not item['image_blob']) and item['image']:
+            item['image_blob'] = self.get_image_blob_from_link(item['image'])
+
+        if 'image_blob' not in item:
             item['image_blob'] = None
 
         if 'performers' in response.meta:
