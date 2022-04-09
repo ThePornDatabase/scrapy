@@ -62,7 +62,8 @@ class GUI:
         self.response = None
 
         url = self.window.lineEdit.text()
-        self.request = Http.get(url, headers=self.headers)
+        if url:
+            self.request = Http.get(url, headers=self.headers, verify=False)
 
         if self.request is not None:
             self.response = self.get_response(self.request.content, self.request)

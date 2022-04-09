@@ -1,8 +1,8 @@
-import sys
-import re
 import base64
 import html
+import re
 import string
+import sys
 from abc import ABC
 from urllib.parse import urlparse
 

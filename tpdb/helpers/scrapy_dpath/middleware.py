@@ -1,6 +1,6 @@
 from scrapy.http import TextResponse
 
-from tpdb.helpers.scrapy_dpath import DPathResponse
+from tpdb.helpers.scrapy_dpath.response import DPathResponse
 
 
 class DPathMiddleware(object):
