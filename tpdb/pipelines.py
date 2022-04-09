@@ -4,8 +4,10 @@
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 
 import hashlib
+import json
 import re
 import time
+import zlib
 from datetime import datetime
 from pathlib import Path
 
@@ -88,10 +90,13 @@ class TpdbApiScenePipeline:
                 'Authorization': 'Bearer %s' % self.crawler.settings['TPDB_API_KEY'],
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
+                'Content-Encoding': 'gzip',
                 'User-Agent': 'tpdb-scraper/1.0.0'
             }
 
-            response = Http.post('https://api.metadataapi.net/scenes', json=payload, headers=headers)
+            payload = zlib.compress(json.dumps(payload).encode('UTF-8'))
+
+            response = Http.post('https://api.metadataapi.net/scenes', data=payload, headers=headers, verify=False)
             if response:
                 if response.ok:
                     disp_result = 'Submitted OK'
@@ -220,10 +225,13 @@ class TpdbApiPerformerPipeline:
                 'Authorization': 'Bearer %s' % self.crawler.settings['TPDB_API_KEY'],
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
+                'Content-Encoding': 'gzip',
                 'User-Agent': 'tpdb-scraper/1.0.0'
             }
 
-            response = Http.post('https://api.metadataapi.net/performer_sites', json=payload, headers=headers, verify=False)
+            payload = zlib.compress(json.dumps(payload).encode('UTF-8'))
+
+            response = Http.post('https://api.metadataapi.net/performer_sites', data=payload, headers=headers, verify=False)
             if response:
                 if response.ok:
                     disp_result = 'Submitted OK'
