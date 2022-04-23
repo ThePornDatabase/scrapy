@@ -1,4 +1,4 @@
-from datetime import date, datetime, timedelta
+from datetime import date, timedelta
 import string
 import scrapy
 
@@ -12,6 +12,8 @@ class BaseSceneScraper(BaseScraper):
             'tpdb.pipelines.TpdbApiScenePipeline': 400,
         },
         'DOWNLOADER_MIDDLEWARES': {
+            'tpdb.custommiddlewares.CustomProxyMiddleware': 350,
+            'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 400,
             'tpdb.helpers.scrapy_dpath.DPathMiddleware': 542,
             'tpdb.middlewares.TpdbSceneDownloaderMiddleware': 543,
         }
@@ -136,83 +138,48 @@ class BaseSceneScraper(BaseScraper):
             else:
                 yield item
 
-    def get_title(self, response):
-        title = self.process_xpath(response, self.get_selector_map('title'))
-        if title:
-            title = self.get_from_regex(title.get(), 're_title')
-
-            if title:
-                title = self.cleanup_title(title)
-                return string.capwords(title)
-
-        return None
-
-    def get_description(self, response):
-        if 'description' not in self.get_selector_map():
-            return ''
-
-        if self.get_selector_map('description'):
-            description_xpath = self.process_xpath(response, self.get_selector_map('description'))
-            if description_xpath:
-                if len(description_xpath) > 1:
-                    description = list(map(lambda x: x.strip(), description_xpath.getall()))
-                    description = ' '.join(description)
-                else:
-                    description = description_xpath.get()
-
-                description = self.get_from_regex(description, 're_description')
-                if description:
-                    return self.cleanup_description(description)
-
-        return ''
-
     def get_date(self, response):
         if 'date' in self.get_selector_map():
-            if self.get_selector_map('date'):
-                date_xpath = self.process_xpath(response, self.get_selector_map('date'))
-                if date_xpath:
-                    date_xpath = self.get_from_regex(date_xpath.get().strip(), 're_date')
-                    if date_xpath:
-                        date_formats = self.get_selector_map('date_formats') if 'date_formats' in self.get_selector_map() else None
-                        return self.parse_date(date_xpath, date_formats=date_formats).isoformat()
-
-        return datetime.now().isoformat()
-
-    def get_performers(self, response):
-        if 'performers' in self.get_selector_map():
-            if self.get_selector_map('performers'):
-                performers = self.process_xpath(response, self.get_selector_map('performers'))
-                if performers:
-                    return list(map(lambda x: string.capwords(x.strip()), performers.getall()))
-
-        return []
+            scenedate = self.cleanup_text(self.get_element(response, 'date', 're_date'))
+            if scenedate:
+                date_formats = self.get_selector_map('date_formats') if 'date_formats' in self.get_selector_map() else None
+                return self.parse_date(scenedate, date_formats=date_formats).isoformat()
+        return self.parse_date('today').isoformat()
 
     def get_tags(self, response):
-        if 'tags' not in self.get_selector_map():
-            return []
-
-        if self.get_selector_map('tags'):
-            tags = self.process_xpath(response, self.get_selector_map('tags'))
-            if tags:
+        if 'tags' in self.get_selector_map():
+            tags = self.get_element(response, 'tags', "list")
+            if tags and isinstance(tags, list):
                 new_tags = []
-                for tag in tags.getall():
+                for tag in tags:
                     if ',' in tag:
                         new_tags.extend(tag.split(','))
                     elif tag:
                         new_tags.append(tag)
-
-                return list(map(lambda x: string.capwords(x.strip()), set(new_tags)))
-
+                return list(map(lambda x: string.capwords(x.strip()), new_tags))
         return []
+
+    def get_performers(self, response):
+        if 'performers' in self.get_selector_map():
+            performers = self.get_element(response, 'performers', "list")
+            if performers and isinstance(performers, list):
+                return list(map(lambda x: string.capwords(x.strip()), performers))
+        return []
+
+    def get_description(self, response):
+        if 'description' in self.get_selector_map():
+            description = self.get_element(response, 'description', 're_description')
+            if isinstance(description, list):
+                description = ' '.join(description)
+            return self.cleanup_description(description)
+        return ''
 
     def get_trailer(self, response):
         if 'trailer' in self.get_selector_map():
-            if self.get_selector_map('trailer'):
-                trailer = self.process_xpath(response, self.get_selector_map('trailer'))
-                if trailer:
-                    trailer = self.get_from_regex(trailer.get(), 're_trailer')
-                    if trailer:
-                        trailer = self.format_link(response, trailer)
-                        return trailer.strip().replace(' ', '%20')
+            return self.format_link(response, self.get_element(response, 'trailer', 're_trailer')).replace(' ', '%20')
+        return ''
 
+    def get_title(self, response):
+        if 'title' in self.get_selector_map():
+            return string.capwords(self.cleanup_text(self.get_element(response, 'title', 're_title')))
         return ''

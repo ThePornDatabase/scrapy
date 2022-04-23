@@ -1,3 +1,4 @@
+import string
 import scrapy
 
 from tpdb.BaseScraper import BaseScraper
@@ -10,6 +11,8 @@ class BasePerformerScraper(BaseScraper):
             'tpdb.pipelines.TpdbApiPerformerPipeline': 400,
         },
         'DOWNLOADER_MIDDLEWARES': {
+            'tpdb.custommiddlewares.CustomProxyMiddleware': 350,
+            'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 400,
             'tpdb.helpers.scrapy_dpath.DPathMiddleware': 542,
             'tpdb.middlewares.TpdbPerformerDownloaderMiddleware': 543,
         }
@@ -57,7 +60,10 @@ class BasePerformerScraper(BaseScraper):
         else:
             item['image_blob'] = self.get_image_blob(response)
 
-        if 'image_blob' not in item or not item['image_blob']:
+        if ('image_blob' not in item or not item['image_blob']) and item['image']:
+            item['image_blob'] = self.get_image_blob_from_link(item['image'])
+
+        if 'image_blob' not in item:
             item['image_blob'] = None
 
         if 'bio' in response.meta and response.meta['bio']:
@@ -155,142 +161,96 @@ class BasePerformerScraper(BaseScraper):
             yield item
 
     def get_name(self, response):
-        name = self.process_xpath(response, self.get_selector_map('name'))
-        if name:
-            name = self.get_from_regex(name.get(), 're_name')
-            if name:
-                return self.cleanup_text(name).title()
-
-        return None
+        if 'name' in self.selector_map:
+            return string.capwords(self.cleanup_text(self.get_element(response, 'name', 're_name')))
+        return ''
 
     def get_bio(self, response):
-        if 'bio' not in self.get_selector_map():
-            return ''
-
-        bio = self.process_xpath(response, self.get_selector_map('bio'))
-        if bio:
-            bio = self.get_from_regex(bio.get(), 're_bio')
-            if bio:
-                return self.cleanup_text(bio)
-
+        if 'bio' in self.get_selector_map():
+            bio = self.get_element(response, 'bio', 're_bio')
+            if isinstance(bio, list):
+                bio = ' '.join(bio)
+            return self.cleanup_description(bio)
         return ''
 
     def get_gender(self, response):
         if 'gender' in self.selector_map:
-            gender = self.process_xpath(response, self.get_selector_map('gender')).get()
+            gender = self.process_xpath(response, self.get_selector_map('gender'))
             if gender:
-                return gender.strip()
+                gender = self.get_from_regex(gender.get(), 're_gender')
+                if gender:
+                    return self.cleanup_text(gender).title()
 
         return ''
 
     def get_birthday(self, response):
         if 'birthday' in self.selector_map:
-            birthday = self.process_xpath(response, self.get_selector_map('birthday')).get()
+            birthday = self.cleanup_text(self.get_element(response, 'birthday', 're_birthday'))
             if birthday:
-                return birthday.strip()
-
+                return self.parse_date(birthday).isoformat()
         return ''
 
     def get_astrology(self, response):
         if 'astrology' in self.selector_map:
-            astrology = self.process_xpath(response, self.get_selector_map('astrology')).get()
-            if astrology:
-                return astrology.strip()
-
+            return string.capwords(self.cleanup_text(self.get_element(response, 'astrology', 're_astrology')))
         return ''
 
     def get_birthplace(self, response):
         if 'birthplace' in self.selector_map:
-            birthplace = self.process_xpath(response, self.get_selector_map('birthplace')).get()
-            if birthplace:
-                return birthplace.strip()
-
+            return string.capwords(self.cleanup_text(self.get_element(response, 'birthplace', 're_birthplace')))
         return ''
 
     def get_ethnicity(self, response):
         if 'ethnicity' in self.selector_map:
-            ethnicity = self.process_xpath(response, self.get_selector_map('ethnicity')).get()
-            if ethnicity:
-                return ethnicity.strip()
-
+            return string.capwords(self.cleanup_text(self.get_element(response, 'ethnicity', 're_ethnicity')))
         return ''
 
     def get_nationality(self, response):
         if 'nationality' in self.selector_map:
-            nationality = self.process_xpath(response, self.get_selector_map('nationality')).get()
-            if nationality:
-                return nationality.strip()
-
+            return string.capwords(self.cleanup_text(self.get_element(response, 'nationality', 're_nationality')))
         return ''
 
     def get_eyecolor(self, response):
         if 'eyecolor' in self.selector_map:
-            eyecolor = self.process_xpath(response, self.get_selector_map('eyecolor')).get()
-            if eyecolor:
-                return eyecolor.strip()
-
+            return string.capwords(self.cleanup_text(self.get_element(response, 'eyecolor', 're_eyecolor')))
         return ''
 
     def get_haircolor(self, response):
         if 'haircolor' in self.selector_map:
-            haircolor = self.process_xpath(response, self.get_selector_map('haircolor')).get()
-            if haircolor:
-                return haircolor.strip()
-
+            return string.capwords(self.cleanup_text(self.get_element(response, 'haircolor', 're_haircolor')))
         return ''
 
     def get_height(self, response):
         if 'height' in self.selector_map:
-            height = self.process_xpath(response, self.get_selector_map('height')).get()
-            if height:
-                return height.strip()
-
+            return self.cleanup_text(self.get_element(response, 'height', 're_height'))
         return ''
 
     def get_weight(self, response):
         if 'weight' in self.selector_map:
-            weight = self.process_xpath(response, self.get_selector_map('weight')).get()
-            if weight:
-                return weight.strip()
-
+            return self.cleanup_text(self.get_element(response, 'weight', 're_weight'))
         return ''
 
     def get_measurements(self, response):
         if 'measurements' in self.selector_map:
-            measurements = self.process_xpath(response, self.get_selector_map('measurements')).get()
-            if measurements:
-                return measurements.strip()
-
+            return self.cleanup_text(self.get_element(response, 'measurements', 're_measurements')).upper()
         return ''
 
     def get_tattoos(self, response):
         if 'tattoos' in self.selector_map:
-            tattoos = self.process_xpath(response, self.get_selector_map('tattoos')).get()
-            if tattoos:
-                return tattoos.strip()
-
+            return string.capwords(self.cleanup_text(self.get_element(response, 'tattoos', 're_tattoos')))
         return ''
 
     def get_piercings(self, response):
         if 'piercings' in self.selector_map:
-            piercings = self.process_xpath(response, self.get_selector_map('piercings')).get()
-            if piercings:
-                return piercings.strip()
-
+            return string.capwords(self.cleanup_text(self.get_element(response, 'piercings', 're_piercings')))
         return ''
 
     def get_cupsize(self, response):
         if 'cupsize' in self.selector_map:
-            cupsize = self.process_xpath(response, self.get_selector_map('cupsize')).get()
-            if cupsize:
-                return cupsize.strip()
-
+            return self.cleanup_text(self.get_element(response, 'cupsize', 're_cupsize')).upper()
         return ''
 
     def get_fakeboobs(self, response):
         if 'fakeboobs' in self.selector_map:
-            fakeboobs = self.process_xpath(response, self.get_selector_map('fakeboobs')).get()
-            if fakeboobs:
-                return fakeboobs.strip()
-
+            return string.capwords(self.cleanup_text(self.get_element(response, 'fakeboobs', 're_fakeboobs')))
         return ''

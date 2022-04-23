@@ -2,6 +2,7 @@ import sys
 import re
 import base64
 import html
+import logging
 import string
 from abc import ABC
 from urllib.parse import urlparse
@@ -17,7 +18,7 @@ class BaseScraper(scrapy.Spider, ABC):
     limit_pages = 1
     force = False
     debug = False
-    days = 99999
+    days = 9999
     max_pages = 100
     cookies = {}
     headers = {}
@@ -41,6 +42,8 @@ class BaseScraper(scrapy.Spider, ABC):
                 self.regex[name] = (re.compile(regexp, mod), group)
 
         self.days = int(self.days)
+        if self.days < 9999:
+            logging.info(f"Days to retrieve: {self.days}")
         self.force = bool(self.force)
         self.debug = bool(self.debug)
         self.page = int(self.page)
@@ -57,6 +60,8 @@ class BaseScraper(scrapy.Spider, ABC):
         cls.custom_tpdb_settings.update(cls.custom_scraper_settings)
         settings.update(cls.custom_tpdb_settings)
         cls.headers['User-Agent'] = settings['USER_AGENT']
+        if settings['DAYS']:
+            cls.days = settings['DAYS']
         super(BaseScraper, cls).update_settings(settings)
 
     def start_requests(self):
@@ -83,24 +88,12 @@ class BaseScraper(scrapy.Spider, ABC):
         raise NotImplementedError('selector map missing')
 
     def get_image(self, response):
-        if 'image' not in self.get_selector_map():
-            return ''
-
-        if self.get_selector_map('image'):
-            image = self.process_xpath(response, self.get_selector_map('image'))
-            if image:
-                image = self.get_from_regex(image.get(), 're_image')
-                if image:
-                    image = self.format_link(response, image)
-                    return image.strip().replace(' ', '%20')
-
-        return None
+        if 'image' in self.get_selector_map():
+            return self.format_link(response, self.get_element(response, 'image', 're_image')).replace(' ', '%20')
+        return ''
 
     def get_image_blob(self, response):
         if 'image_blob' not in self.get_selector_map():
-            return None
-
-        if self.get_selector_map('image_blob'):
             image = self.get_image(response)
             return self.get_image_blob_from_link(image)
         return None
@@ -202,3 +195,13 @@ class BaseScraper(scrapy.Spider, ABC):
         settings = {'TIMEZONE': 'UTC'}
 
         return dateparser.parse(date, date_formats=date_formats, settings=settings)
+
+    def get_element(self, response, selector, regex=None):
+        element = self.process_xpath(response, self.get_selector_map(selector))
+        if element:
+            if len(element) > 1 or regex == "list":
+                return list(map(lambda x: x.strip(), element.getall()))
+            element = element.get()
+            element = self.get_from_regex(element, regex)
+            return element.strip()
+        return ''
