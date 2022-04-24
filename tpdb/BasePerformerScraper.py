@@ -155,14 +155,14 @@ class BasePerformerScraper(BaseScraper):
         else:
             item['network'] = self.get_network(response)
 
-        if self.debug:
-            print(item)
-        else:
-            yield item
+        yield self.check_item(item)
 
     def get_name(self, response):
         if 'name' in self.selector_map:
-            return string.capwords(self.cleanup_text(self.get_element(response, 'name', 're_name')))
+            name = self.get_element(response, 'name', 're_name')
+            if isinstance(name, list):
+                name = ''.join(name).strip()
+            return string.capwords(self.cleanup_text(name))
         return ''
 
     def get_bio(self, response):

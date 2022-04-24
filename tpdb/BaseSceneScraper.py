@@ -1,5 +1,5 @@
-from datetime import date, timedelta
 import string
+from datetime import date, timedelta
 import scrapy
 
 from tpdb.BaseScraper import BaseScraper
@@ -120,23 +120,7 @@ class BaseSceneScraper(BaseScraper):
         else:
             item['parent'] = self.get_parent(response)
 
-        if self.days > 27375:
-            filter_date = '0000-00-00'
-        else:
-            days = self.days
-            filter_date = date.today() - timedelta(days)
-            filter_date = filter_date.strftime('%Y-%m-%d')
-
-        if self.debug:
-            if not item['date'] > filter_date:
-                item['filtered'] = 'Scene filtered due to date restraint'
-            print(item)
-        else:
-            if filter_date:
-                if item['date'] > filter_date:
-                    yield item
-            else:
-                yield item
+        yield self.check_item(item, self.days)
 
     def get_date(self, response):
         if 'date' in self.get_selector_map():
@@ -171,15 +155,20 @@ class BaseSceneScraper(BaseScraper):
             description = self.get_element(response, 'description', 're_description')
             if isinstance(description, list):
                 description = ' '.join(description)
-            return self.cleanup_description(description)
+            if description:
+                return self.cleanup_description(description)
         return ''
 
     def get_trailer(self, response):
         if 'trailer' in self.get_selector_map():
-            return self.format_link(response, self.get_element(response, 'trailer', 're_trailer')).replace(' ', '%20')
+            trailer = self.get_element(response, 'trailer', 're_trailer')
+            if trailer:
+                return self.format_link(response, trailer).replace(' ', '%20')
         return ''
 
     def get_title(self, response):
         if 'title' in self.get_selector_map():
-            return string.capwords(self.cleanup_text(self.get_element(response, 'title', 're_title')))
+            title = self.get_element(response, 'title', 're_title')
+            if title:
+                return string.capwords(self.cleanup_text(title))
         return ''

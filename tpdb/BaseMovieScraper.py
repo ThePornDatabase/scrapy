@@ -162,23 +162,7 @@ class BaseMovieScraper(BaseScraper):
 
         item['url'] = self.get_url(response)
 
-        if self.days > 27375:
-            filter_date = '0000-00-00'
-        else:
-            days = self.days
-            filter_date = date.today() - timedelta(days)
-            filter_date = filter_date.strftime('%Y-%m-%d')
-
-        if self.debug:
-            if not item['date'] > filter_date:
-                item['filtered'] = 'movie filtered due to date restraint'
-            print(item)
-        else:
-            if filter_date:
-                if item['date'] > filter_date:
-                    yield item
-            else:
-                yield item
+        yield self.check_item(item, self.days)
 
     def get_description(self, response):
         if 'description' in self.get_selector_map():

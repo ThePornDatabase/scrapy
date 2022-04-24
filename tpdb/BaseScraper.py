@@ -1,4 +1,5 @@
 import sys
+from datetime import date, timedelta
 import re
 import base64
 import html
@@ -190,18 +191,42 @@ class BaseScraper(scrapy.Spider, ABC):
     def cleanup_date(self, date):
         return self.cleanup_text(date, self.date_trash)
 
-    def parse_date(self, date, date_formats=None):
-        date = self.cleanup_date(date)
+    def parse_date(self, itemdate, date_formats=None):
+        itemdate = self.cleanup_date(itemdate)
         settings = {'TIMEZONE': 'UTC'}
 
-        return dateparser.parse(date, date_formats=date_formats, settings=settings)
+        return dateparser.parse(itemdate, date_formats=date_formats, settings=settings)
+
+    def check_item(self, item, days=None):
+        if days:
+            if days > 27375:
+                filter_date = '0000-00-00'
+            else:
+                days = self.days
+                filter_date = date.today() - timedelta(days)
+                filter_date = filter_date.strftime('%Y-%m-%d')
+
+            if self.debug:
+                if not item['date'] > filter_date:
+                    item['filtered'] = 'Scene filtered due to date restraint'
+                print(item)
+            else:
+                if filter_date:
+                    if item['date'] > filter_date:
+                        return item
+                    return None
+        else:
+            return item
 
     def get_element(self, response, selector, regex=None):
-        element = self.process_xpath(response, self.get_selector_map(selector))
-        if element:
-            if len(element) > 1 or regex == "list":
-                return list(map(lambda x: x.strip(), element.getall()))
-            element = element.get()
-            element = self.get_from_regex(element, regex)
-            return element.strip()
+        selector = self.get_selector_map(selector)
+        if selector:
+            element = self.process_xpath(response, selector)
+            if element:
+                if len(element) > 1 or regex == "list":
+                    return list(map(lambda x: x.strip(), element.getall()))
+                element = element.get()
+                element = self.get_from_regex(element, regex)
+                if element:
+                    return element.strip()
         return ''

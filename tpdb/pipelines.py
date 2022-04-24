@@ -370,6 +370,14 @@ class TpdbApiPerformerPipeline:
                 if result is not None:
                     return
 
+        if 'fakeboobs' in item:
+            if item['fakeboobs'].lower() == 'yes':
+                item['fakeboobs'] = True
+            elif item['fakeboobs'].lower() == 'no':
+                item['fakeboobs'] = False
+            else:
+                item['fakeboobs'] = None
+
         payload = {
             'name': item['name'],
             'site': item['network'],
@@ -414,6 +422,7 @@ class TpdbApiPerformerPipeline:
                     disp_result = 'Submission Error: Code #' + str(response.status_code)
             else:
                 disp_result = 'Submission Error: No Response Code'
+                print(response.content)
 
             if self.crawler.settings['MONGODB_ENABLE']:
                 url_hash = hashlib.sha1(str(item['url']).encode('utf-8')).hexdigest()
