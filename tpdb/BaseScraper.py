@@ -90,7 +90,10 @@ class BaseScraper(scrapy.Spider, ABC):
 
     def get_image(self, response):
         if 'image' in self.get_selector_map():
-            return self.format_link(response, self.get_element(response, 'image', 're_image')).replace(' ', '%20')
+            image = self.get_element(response, 'image', 're_image')
+            if isinstance(image, list):
+                image = image[0]
+            return self.format_link(response, image).replace(' ', '%20')
         return ''
 
     def get_image_blob(self, response):

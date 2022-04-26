@@ -370,7 +370,7 @@ class TpdbApiPerformerPipeline:
                 if result is not None:
                     return
 
-        if 'fakeboobs' in item:
+        if 'fakeboobs' in item and item['fakeboobs']:
             if item['fakeboobs'].lower() == 'yes':
                 item['fakeboobs'] = True
             elif item['fakeboobs'].lower() == 'no':
@@ -393,7 +393,7 @@ class TpdbApiPerformerPipeline:
                 'ethnicity': item['ethnicity'],
                 'nationality': item['nationality'],
                 'haircolor': item['haircolor'],
-                'eyecolor': item['eyecolor'],
+                # ~ 'eyecolor': item['eyecolor'],
                 'weight': item['weight'],
                 'height': item['height'],
                 'measurements': item['measurements'],
