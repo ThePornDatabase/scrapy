@@ -201,7 +201,7 @@ class BaseMovieScraper(BaseScraper):
         return []
 
     def get_image(self, response, side):
-        if side not in self.get_selector_map():
+        if side in self.get_selector_map():
             image = self.process_xpath(response, self.get_selector_map(side))
             if image:
                 image_re = 're_' + side
@@ -222,41 +222,44 @@ class BaseMovieScraper(BaseScraper):
         return ''
 
     def get_studio(self, response):
-        if 'trailer' in self.get_selector_map():
+        if 'studio' in self.get_selector_map():
             return string.capwords(self.cleanup_text(self.get_element(response, 'studio', 're_studio')))
         return ''
 
     def get_director(self, response):
-        if 'trailer' in self.get_selector_map():
-            return string.capwords(self.cleanup_text(self.get_element(response, 'director', 're_director')))
+        if 'director' in self.get_selector_map():
+            director = self.get_element(response, 'director', 're_director')
+            if director and isinstance(director, list):
+                director = ", ".join(director)
+            return string.capwords(self.cleanup_text(director))
         return ''
 
     def get_format(self, response):
-        if 'trailer' in self.get_selector_map():
+        if 'format' in self.get_selector_map():
             return string.capwords(self.cleanup_text(self.get_element(response, 'format', 're_format')))
         return ''
 
     def get_length(self, response):
-        if 'trailer' in self.get_selector_map():
+        if 'length' in self.get_selector_map():
             return string.capwords(self.cleanup_text(self.get_element(response, 'length', 're_length')))
         return ''
 
     def get_year(self, response):
-        if 'trailer' in self.get_selector_map():
+        if 'year' in self.get_selector_map():
             return string.capwords(self.cleanup_text(self.get_element(response, 'year', 're_year')))
         return ''
 
     def get_rating(self, response):
-        if 'trailer' in self.get_selector_map():
+        if 'rating' in self.get_selector_map():
             return string.capwords(self.cleanup_text(self.get_element(response, 'rating', 're_rating')))
         return ''
 
     def get_sku(self, response):
-        if 'trailer' in self.get_selector_map():
+        if 'sku' in self.get_selector_map():
             return string.capwords(self.cleanup_text(self.get_element(response, 'sku', 're_sku')))
         return ''
 
     def get_upc(self, response):
-        if 'trailer' in self.get_selector_map():
+        if 'upc' in self.get_selector_map():
             return string.capwords(self.cleanup_text(self.get_element(response, 'upc', 're_upc')))
         return ''
