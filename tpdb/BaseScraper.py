@@ -13,6 +13,7 @@ import scrapy
 import tldextract
 
 from tpdb.helpers.http import Http
+from scrapy.utils.project import get_project_settings
 
 
 class BaseScraper(scrapy.Spider, ABC):
@@ -66,16 +67,35 @@ class BaseScraper(scrapy.Spider, ABC):
         super(BaseScraper, cls).update_settings(settings)
 
     def start_requests(self):
+        settings = get_project_settings()
+
         if not hasattr(self, 'start_urls'):
             raise AttributeError('start_urls missing')
 
         if not self.start_urls:
             raise AttributeError('start_urls selector missing')
 
+        meta = {}
+        meta['page'] = self.page
+        if 'USE_PROXY' in settings.attributes.keys():
+            use_proxy = settings.get('USE_PROXY')
+        else:
+            use_proxy = None
+
+        if use_proxy:
+            print(f"Using Settings Defined Proxy: True ({settings.get('PROXY_ADDRESS')})")
+        else:
+            try:
+                if self.proxy_address:
+                    meta['proxy'] = self.proxy_address
+                    print(f"Using Scraper Defined Proxy: True ({meta['proxy']})")
+            except Exception:
+                print("Using Proxy: False")
+
         for link in self.start_urls:
             yield scrapy.Request(url=self.get_next_page_url(link, self.page),
                                  callback=self.parse,
-                                 meta={'page': self.page},
+                                 meta=meta,
                                  headers=self.headers,
                                  cookies=self.cookies)
 
@@ -226,10 +246,19 @@ class BaseScraper(scrapy.Spider, ABC):
         if selector:
             element = self.process_xpath(response, selector)
             if element:
-                if len(element) > 1 or regex == "list":
-                    return list(map(lambda x: x.strip(), element.getall()))
-                element = element.get()
-                element = self.get_from_regex(element, regex)
+                if (len(element) > 1 or regex == "list") and "script" not in selector:
+                    element = list(map(lambda x: x.strip(), element.getall()))
+                else:
+                    if isinstance(element, list):
+                        element = element.getall()
+                        element = " ".join(element)
+                    else:
+                        element = element.get()
+                    element = self.get_from_regex(element, regex)
+                    if element:
+                        element = element.strip()
                 if element:
-                    return element.strip()
+                    if isinstance(element, list):
+                        element = [i for i in element if i]
+                    return element
         return ''

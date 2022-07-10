@@ -124,10 +124,12 @@ class BaseSceneScraper(BaseScraper):
 
     def get_date(self, response):
         if 'date' in self.get_selector_map():
-            scenedate = self.cleanup_text(self.get_element(response, 'date', 're_date'))
+            scenedate = self.get_element(response, 'date', 're_date')
             if scenedate:
+                if isinstance(scenedate, list):
+                    scenedate = scenedate[0]
                 date_formats = self.get_selector_map('date_formats') if 'date_formats' in self.get_selector_map() else None
-                return self.parse_date(scenedate, date_formats=date_formats).isoformat()
+                return self.parse_date(self.cleanup_text(scenedate), date_formats=date_formats).isoformat()
         return self.parse_date('today').isoformat()
 
     def get_tags(self, response):
@@ -170,5 +172,7 @@ class BaseSceneScraper(BaseScraper):
         if 'title' in self.get_selector_map():
             title = self.get_element(response, 'title', 're_title')
             if title:
+                if isinstance(title, list):
+                    title = title[0]
                 return string.capwords(self.cleanup_text(title))
         return ''
