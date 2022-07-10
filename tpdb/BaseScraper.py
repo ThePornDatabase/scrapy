@@ -246,7 +246,7 @@ class BaseScraper(scrapy.Spider, ABC):
         if selector:
             element = self.process_xpath(response, selector)
             if element:
-                if (len(element) > 1 or regex == "list") and "script" not in selector:
+                if (len(element) > 1 or regex == "list") and "/script" not in selector:
                     element = list(map(lambda x: x.strip(), element.getall()))
                 else:
                     if isinstance(element, list):
