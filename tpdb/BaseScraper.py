@@ -1,7 +1,9 @@
 import sys
+from datetime import date, timedelta
 import re
 import base64
 import html
+import logging
 import string
 from abc import ABC
 from urllib.parse import urlparse
@@ -11,13 +13,14 @@ import scrapy
 import tldextract
 
 from tpdb.helpers.http import Http
+from scrapy.utils.project import get_project_settings
 
 
 class BaseScraper(scrapy.Spider, ABC):
     limit_pages = 1
     force = False
     debug = False
-    days = 99999
+    days = 9999
     max_pages = 100
     cookies = {}
     headers = {}
@@ -41,6 +44,8 @@ class BaseScraper(scrapy.Spider, ABC):
                 self.regex[name] = (re.compile(regexp, mod), group)
 
         self.days = int(self.days)
+        if self.days < 9999:
+            logging.info(f"Days to retrieve: {self.days}")
         self.force = bool(self.force)
         self.debug = bool(self.debug)
         self.page = int(self.page)
@@ -57,19 +62,40 @@ class BaseScraper(scrapy.Spider, ABC):
         cls.custom_tpdb_settings.update(cls.custom_scraper_settings)
         settings.update(cls.custom_tpdb_settings)
         cls.headers['User-Agent'] = settings['USER_AGENT']
+        if settings['DAYS']:
+            cls.days = settings['DAYS']
         super(BaseScraper, cls).update_settings(settings)
 
     def start_requests(self):
+        settings = get_project_settings()
+
         if not hasattr(self, 'start_urls'):
             raise AttributeError('start_urls missing')
 
         if not self.start_urls:
             raise AttributeError('start_urls selector missing')
 
+        meta = {}
+        meta['page'] = self.page
+        if 'USE_PROXY' in settings.attributes.keys():
+            use_proxy = settings.get('USE_PROXY')
+        else:
+            use_proxy = None
+
+        if use_proxy:
+            print(f"Using Settings Defined Proxy: True ({settings.get('PROXY_ADDRESS')})")
+        else:
+            try:
+                if self.proxy_address:
+                    meta['proxy'] = self.proxy_address
+                    print(f"Using Scraper Defined Proxy: True ({meta['proxy']})")
+            except Exception:
+                print("Using Proxy: False")
+
         for link in self.start_urls:
             yield scrapy.Request(url=self.get_next_page_url(link, self.page),
                                  callback=self.parse,
-                                 meta={'page': self.page},
+                                 meta=meta,
                                  headers=self.headers,
                                  cookies=self.cookies)
 
@@ -83,31 +109,24 @@ class BaseScraper(scrapy.Spider, ABC):
         raise NotImplementedError('selector map missing')
 
     def get_image(self, response):
-        if 'image' not in self.get_selector_map():
-            return ''
-
-        if self.get_selector_map('image'):
-            image = self.process_xpath(response, self.get_selector_map('image'))
-            if image:
-                image = self.get_from_regex(image.get(), 're_image')
-                if image:
-                    image = self.format_link(response, image)
-                    return image.strip().replace(' ', '%20')
-
-        return None
+        if 'image' in self.get_selector_map():
+            image = self.get_element(response, 'image', 're_image')
+            if isinstance(image, list):
+                image = image[0]
+            return self.format_link(response, image).replace(' ', '%20')
+        return ''
 
     def get_image_blob(self, response):
         if 'image_blob' not in self.get_selector_map():
-            return None
-
-        if self.get_selector_map('image_blob'):
             image = self.get_image(response)
-            if image:
-                image = self.format_link(response, image)
-                req = Http.get(image, headers=self.headers, cookies=self.cookies)
-                if req and req.ok:
-                    return base64.b64encode(req.content).decode('utf-8')
+            return self.get_image_blob_from_link(image)
+        return None
 
+    def get_image_blob_from_link(self, image):
+        if image:
+            req = Http.get(image, headers=self.headers, cookies=self.cookies)
+            if req and req.ok:
+                return base64.b64encode(req.content).decode('utf-8')
         return None
 
     def get_url(self, response):
@@ -195,8 +214,51 @@ class BaseScraper(scrapy.Spider, ABC):
     def cleanup_date(self, date):
         return self.cleanup_text(date, self.date_trash)
 
-    def parse_date(self, date, date_formats=None):
-        date = self.cleanup_date(date)
+    def parse_date(self, itemdate, date_formats=None):
+        itemdate = self.cleanup_date(itemdate)
         settings = {'TIMEZONE': 'UTC'}
 
-        return dateparser.parse(date, date_formats=date_formats, settings=settings)
+        return dateparser.parse(itemdate, date_formats=date_formats, settings=settings)
+
+    def check_item(self, item, days=None):
+        if days:
+            if days > 27375:
+                filter_date = '0000-00-00'
+            else:
+                days = self.days
+                filter_date = date.today() - timedelta(days)
+                filter_date = filter_date.strftime('%Y-%m-%d')
+
+            if self.debug:
+                if not item['date'] > filter_date:
+                    item['filtered'] = 'Scene filtered due to date restraint'
+                print(item)
+            else:
+                if filter_date:
+                    if item['date'] > filter_date:
+                        return item
+                    return None
+        else:
+            return item
+
+    def get_element(self, response, selector, regex=None):
+        selector = self.get_selector_map(selector)
+        if selector:
+            element = self.process_xpath(response, selector)
+            if element:
+                if (len(element) > 1 or regex == "list") and "/script" not in selector:
+                    element = list(map(lambda x: x.strip(), element.getall()))
+                else:
+                    if isinstance(element, list):
+                        element = element.getall()
+                        element = " ".join(element)
+                    else:
+                        element = element.get()
+                    element = self.get_from_regex(element, regex)
+                    if element:
+                        element = element.strip()
+                if element:
+                    if isinstance(element, list):
+                        element = [i for i in element if i]
+                    return element
+        return ''
