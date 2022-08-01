@@ -5,6 +5,8 @@
 
 import hashlib
 import re
+import json
+import logging
 import time
 
 from pathlib import Path
@@ -34,14 +36,19 @@ class TpdbApiScenePipeline:
         else:
             path = crawler.settings.get('DEFAULT_EXPORT_PATH')
 
+        if crawler.settings.get('FILTER_TAGS'):
+            logging.info(f"Loading Scene Tag Alias File: {crawler.settings.get('FILTER_TAG_FILENAME')}")
+            with open(crawler.settings.get('FILTER_TAG_FILENAME'), encoding='utf-8') as f:
+                self.tagaliases = json.load(f, encoding='utf-8')
+
         if crawler.settings.get('file'):
             filename = crawler.settings.get('file')
             if '\\' not in filename and '/' not in filename:
                 filename = Path(path, filename)
         else:
-            filename = Path(path, '%s_%s.json' % (crawler.spidercls.name, time.strftime('%Y%m%d-%H%M')))
+            filename = Path(path, f'{crawler.spidercls.name}_{time.strftime("%Y%m%d-%H%M")}.json')
 
-        if crawler.settings.getbool('export'):
+        if crawler.settings.getbool('export') or self.crawler.settings['EXPORT_ITEMS']:
             print(f'*** Exporting to file: {filename}')
             self.fp = open(filename, 'wb')
             self.fp.write('{"scenes":['.encode())
@@ -66,6 +73,9 @@ class TpdbApiScenePipeline:
                 if result is not None:
                     return
 
+        if self.crawler.settings['FILTER_TAGS']:
+            item['tags'] = self.clean_tags(item['tags'], self.tagaliases)
+
         payload = {
             'title': item['title'],
             'description': item['description'],
@@ -87,7 +97,7 @@ class TpdbApiScenePipeline:
         disp_result = ""
         if self.crawler.settings['TPDB_API_KEY'] and not spider.settings.get('local'):
             headers = {
-                'Authorization': 'Bearer %s' % self.crawler.settings['TPDB_API_KEY'],
+                'Authorization': f'Bearer {self.crawler.settings["TPDB_API_KEY"]}',
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'User-Agent': 'tpdb-scraper/1.0.0'
@@ -96,12 +106,12 @@ class TpdbApiScenePipeline:
             response = Http.post('https://api.metadataapi.net/scenes', json=payload, headers=headers)
             if response:
                 if response.ok:
-                    disp_result = disp_result + 'Submitted OK'
+                    disp_result = f'{disp_result} Submitted OK'
                 else:
-                    disp_result = disp_result + 'Submission Error: Code #%d' % response.status_code
+                    disp_result = f'{disp_result} Submission Error: Code #{response.status_code}'
             else:
-                disp_result = disp_result + 'Submission Error: No Response Code'
-                print(response.content)
+                disp_result = f'{disp_result} Submission Error: No Response Code'
+                logging.info(response.content)
             url_hash = hashlib.sha1(str(item['url']).encode('utf-8')).hexdigest()
 
             if self.crawler.settings['MONGODB_ENABLE']:
@@ -121,7 +131,7 @@ class TpdbApiScenePipeline:
         if spider.settings.get('localdump'):
             # Toss to local TPDB Instance
             headers = {
-                'Authorization': 'Bearer %s' % self.crawler.settings['TPDB_TEST_API_KEY'],
+                'Authorization': f'Bearer {self.crawler.settings["TPDB_TEST_API_KEY"]}',
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'User-Agent': 'tpdb-scraper/1.0.0'
@@ -131,13 +141,13 @@ class TpdbApiScenePipeline:
                 if response.ok:
                     disp_result = disp_result + '\tSubmitted to Local OK'
                 else:
-                    disp_result = disp_result + '\tSubmission to Local Error: Code #%d' % response.status_code
+                    disp_result = f'{disp_result} \tSubmission to Local Error: Code #%d{response.status_code}'
             else:
                 disp_result = disp_result + '\tSubmission to Local Error: No Response Code'
-                print(response.content)
+                logging.info(response.content)
             # #############################
 
-        if spider.settings.getbool('display') and spider.settings.get('LOG_LEVEL') == 'INFO':
+        if (spider.settings.getbool('display') or self.crawler.settings['DISPLAY_ITEMS']) and spider.settings.get('LOG_LEVEL') == 'INFO':
             if len(item['title']) >= 50:
                 title_length = 5
             else:
@@ -153,9 +163,9 @@ class TpdbApiScenePipeline:
             else:
                 disp_date = item['date']
 
-            print(f"Item: {item['title'][0:50]}" + " " * title_length + f"{item['site'][0:15]}" + " " * site_length + f"\t{str(item['id'])[0:15]}\t{disp_date}\t{item['url']}\t{disp_result}")
+            logging.info(f"Item: {item['title'][0:50]}" + " " * title_length + f"{item['site'][0:15]}" + " " * site_length + f"\t{str(item['id'])[0:15]}\t{disp_date}\t{item['url']}\t{disp_result}")
 
-        if spider.settings.getbool('export'):
+        if spider.settings.getbool('export') or self.crawler.settings['EXPORT_ITEMS']:
             item2 = item.copy()
             if not spider.settings.get('showblob'):
                 if 'image_blob' in item2:
@@ -164,10 +174,26 @@ class TpdbApiScenePipeline:
 
         return item
 
+    def clean_tags(self, tags, aliaslist):
+        tags2 = []
+        for tag in tags:
+            pointer = 0
+            for alias in aliaslist:
+                if not pointer and tag.lower().strip() == alias['alias'].lower().strip():
+                    tags2.append(alias['tag'])
+                    pointer = 1
+                    break
+            if not pointer:
+                tags2.append(tag.rstrip(".").rstrip(",").strip())
+
+        tags2 = [i for n, i in enumerate(tags2) if i not in tags2[:n]]
+        return tags2
+
     def close_spider(self, spider):
-        if spider.settings.getbool('export'):
+        if spider.settings.getbool('export') or self.crawler.settings['EXPORT_ITEMS']:
             self.fp.write(']}'.encode())
             self.fp.close()
+
 
 class TpdbApiMoviePipeline:
     def __init__(self, crawler):
@@ -182,14 +208,19 @@ class TpdbApiMoviePipeline:
         else:
             path = crawler.settings.get('DEFAULT_EXPORT_PATH')
 
+        if crawler.settings.get('FILTER_TAGS'):
+            logging.info(f"Loading Movie Tag Alias File: {crawler.settings.get('FILTER_TAG_FILENAME')}")
+            with open(crawler.settings.get('FILTER_TAG_FILENAME'), encoding='utf-8') as f:
+                self.tagaliases = json.load(f, encoding='utf-8')
+
         if crawler.settings.get('file'):
             filename = crawler.settings.get('file')
             if '\\' not in filename and '/' not in filename:
                 filename = Path(path, filename)
         else:
-            filename = Path(path, '%s_%s.json' % (crawler.spidercls.name, time.strftime('%Y%m%d-%H%M')))
+            filename = Path(path, f'{crawler.spidercls.name}_{time.strftime("%Y%m%d-%H%M")}.json')
 
-        if crawler.settings.getbool('export'):
+        if crawler.settings.getbool('export') or self.crawler.settings['EXPORT_ITEMS']:
             print(f'*** Exporting to file: {filename}')
             self.fp = open(filename, 'wb')
             self.fp.write('{"movies":['.encode())
@@ -213,6 +244,9 @@ class TpdbApiMoviePipeline:
                 result = self.db.scenes.find_one({'url': item['url']})
                 if result is not None:
                     return
+
+        if self.crawler.settings['FILTER_TAGS']:
+            item['tags'] = self.clean_tags(item['tags'], self.tagaliases)
 
         payload = {
             'title': item['title'],
@@ -244,7 +278,7 @@ class TpdbApiMoviePipeline:
         disp_result = ""
         if self.crawler.settings['TPDB_API_KEY'] and not spider.settings.get('local'):
             headers = {
-                'Authorization': 'Bearer %s' % self.crawler.settings['TPDB_API_KEY'],
+                'Authorization': f'Bearer {self.crawler.settings["TPDB_API_KEY"]}',
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'User-Agent': 'tpdb-scraper/1.0.0'
@@ -253,12 +287,12 @@ class TpdbApiMoviePipeline:
             response = Http.post('https://api.metadataapi.net/movies', json=payload, headers=headers)
             if response:
                 if response.ok:
-                    disp_result = disp_result + 'Submitted OK'
+                    disp_result = f'{disp_result} Submitted OK'
                 else:
-                    disp_result = disp_result + 'Submission Error: Code #%d' % response.status_code
+                    disp_result = f'{disp_result} Submission Error: Code #{response.status_code}'
             else:
                 disp_result = disp_result + 'Submission Error: No Response Code'
-                print(response.content)
+                logging.info(response.content)
             url_hash = hashlib.sha1(str(item['url']).encode('utf-8')).hexdigest()
 
             if self.crawler.settings['MONGODB_ENABLE']:
@@ -278,7 +312,7 @@ class TpdbApiMoviePipeline:
         if spider.settings.get('localdump'):
             # Toss to local TPDB Instance
             headers = {
-                'Authorization': 'Bearer %s' % self.crawler.settings['TPDB_TEST_API_KEY'],
+                'Authorization': f'Bearer {self.crawler.settings["TPDB_TEST_API_KEY"]}',
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'User-Agent': 'tpdb-scraper/1.0.0'
@@ -288,13 +322,13 @@ class TpdbApiMoviePipeline:
                 if response.ok:
                     disp_result = disp_result + '\tSubmitted to Local OK'
                 else:
-                    disp_result = disp_result + '\tSubmission to Local Error: Code #%d' % response.status_code
+                    disp_result = disp_result + f'\tSubmission to Local Error: Code #{response.status_code}'
             else:
                 disp_result = disp_result + '\tSubmission to Local Error: No Response Code'
-                print(response.content)
+                logging.info(response.content)
             # #############################
 
-        if spider.settings.getbool('display') and spider.settings.get('LOG_LEVEL') == 'INFO':
+        if (spider.settings.getbool('display') or self.crawler.settings['DISPLAY_ITEMS']) and spider.settings.get('LOG_LEVEL') == 'INFO':
             if len(item['title']) >= 50:
                 title_length = 5
             else:
@@ -310,9 +344,9 @@ class TpdbApiMoviePipeline:
             else:
                 disp_date = item['date']
 
-            print(f"Item: {item['title'][0:50]}" + " " * title_length + f"{item['site'][0:15]}" + " " * site_length + f"\t{str(item['id'])[0:15]}\t{disp_date}\t{item['url']}\t{disp_result}")
+            logging.info(f"Item: {item['title'][0:50]}" + " " * title_length + f"{item['site'][0:15]}" + " " * site_length + f"\t{str(item['id'])[0:15]}\t{disp_date}\t{item['url']}\t{disp_result}")
 
-        if spider.settings.getbool('export'):
+        if spider.settings.getbool('export') or self.crawler.settings['EXPORT_ITEMS']:
             item2 = item.copy()
             if not spider.settings.get('showblob'):
                 if 'front_blob' in item2:
@@ -323,8 +357,23 @@ class TpdbApiMoviePipeline:
 
         return item
 
+    def clean_tags(self, tags, aliaslist):
+        tags2 = []
+        for tag in tags:
+            pointer = 0
+            for alias in aliaslist:
+                if not pointer and tag.lower().strip() == alias['alias'].lower().strip():
+                    tags2.append(alias['tag'])
+                    pointer = 1
+                    break
+            if not pointer:
+                tags2.append(tag.rstrip(".").rstrip(",").strip())
+
+        tags2 = [i for n, i in enumerate(tags2) if i not in tags2[:n]]
+        return tags2
+
     def close_spider(self, spider):
-        if spider.settings.getbool('export'):
+        if spider.settings.getbool('export') or self.crawler.settings['EXPORT_ITEMS']:
             self.fp.write(']}'.encode())
             self.fp.close()
 
@@ -347,9 +396,9 @@ class TpdbApiPerformerPipeline:
             if '\\' not in filename and '/' not in filename:
                 filename = Path(path, filename)
         else:
-            filename = Path(path, '%s_%s-performers.json' % (crawler.spidercls.name, time.strftime('%Y%m%d-%H%M')))
+            filename = Path(path, f'{crawler.spidercls.name}_{time.strftime("%Y%m%d-%H%M")}-performers.json')
 
-        if crawler.settings.getbool('export'):
+        if crawler.settings.getbool('export') or self.crawler.settings['EXPORT_ITEMS']:
             print(f"*** Exporting to file: {filename}")
             self.fp = open(filename, 'wb')
             self.fp.write('{"scenes":['.encode())
@@ -408,7 +457,7 @@ class TpdbApiPerformerPipeline:
         disp_result = ""
         if self.crawler.settings['TPDB_API_KEY'] and not spider.settings.get('local'):
             headers = {
-                'Authorization': 'Bearer %s' % self.crawler.settings['TPDB_API_KEY'],
+                'Authorization': f'Bearer {self.crawler.settings["TPDB_API_KEY"]}',
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'User-Agent': 'tpdb-scraper/1.0.0'
@@ -422,7 +471,7 @@ class TpdbApiPerformerPipeline:
                     disp_result = 'Submission Error: Code #' + str(response.status_code)
             else:
                 disp_result = 'Submission Error: No Response Code'
-                print(response.content)
+                logging.info(response.content)
 
             if self.crawler.settings['MONGODB_ENABLE']:
                 url_hash = hashlib.sha1(str(item['url']).encode('utf-8')).hexdigest()
@@ -441,7 +490,7 @@ class TpdbApiPerformerPipeline:
         if spider.settings.get('localdump'):
             # Toss to local TPDB Instance
             headers = {
-                'Authorization': 'Bearer %s' % self.crawler.settings['TPDB_TEST_API_KEY'],
+                'Authorization': f'Bearer {self.crawler.settings["TPDB_TEST_API_KEY"]}',
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'User-Agent': 'tpdb-scraper/1.0.0'
@@ -452,20 +501,20 @@ class TpdbApiPerformerPipeline:
                 if response.ok:
                     disp_result = disp_result + '\tSubmitted to Local OK'
                 else:
-                    disp_result = disp_result + '\tSubmission to Local Error: Code #%d' % response.status_code
+                    disp_result = disp_result + f'\tSubmission to Local Error: Code #{response.status_code}'
             else:
                 disp_result = disp_result + '\tSubmission to Local Error: No Response Code'
-                print(response.content)
+                logging.info(response.content)
             # ##############################
 
-        if spider.settings.getbool('display') and spider.settings.get('LOG_LEVEL') == 'INFO':
+        if (spider.settings.getbool('display') or self.crawler.settings['DISPLAY_ITEMS']) and spider.settings.get('LOG_LEVEL') == 'INFO':
             name_length = 50 - len(payload['name'])
             if name_length < 1:
                 name_length = 1
 
-            print(f"Performer: {payload['name']}" + " " * name_length + f"{payload['site']}\t{payload['url']}\t{disp_result}")
+            logging.info(f"Performer: {payload['name']}" + " " * name_length + f"{payload['site']}\t{payload['url']}\t{disp_result}")
 
-        if spider.settings.getbool('export'):
+        if spider.settings.getbool('export') or self.crawler.settings['EXPORT_ITEMS']:
             item2 = payload.copy()
             if not spider.settings.get('showblob'):
                 if "image_blob" in item2:
@@ -475,6 +524,6 @@ class TpdbApiPerformerPipeline:
         return item
 
     def close_spider(self, spider):
-        if spider.settings.getbool('export'):
+        if spider.settings.getbool('export') or self.crawler.settings['EXPORT_ITEMS']:
             self.fp.write(']}'.encode())
             self.fp.close()
