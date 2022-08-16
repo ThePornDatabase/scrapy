@@ -37,6 +37,8 @@ jobs:
           git config --global user.name 'Git bot'
           git config --global user.email 'bot@noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          cp tpdb/settings.py.example tpdb/settings.py
           pip3 install -r requirements.txt
           python3 generate.py
+          rm tpdb/settings.py
           git commit -am "Auto updated submodule references" && git push || echo "No changes to commit"
