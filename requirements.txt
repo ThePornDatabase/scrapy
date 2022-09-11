@@ -13,3 +13,4 @@ mdutils
 PySide6
 Unidecode
 dpath
+googletrans
