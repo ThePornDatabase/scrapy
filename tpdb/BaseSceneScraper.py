@@ -94,6 +94,11 @@ class BaseSceneScraper(BaseScraper):
         else:
             item['tags'] = self.get_tags(response)
 
+        if 'markers' in response.meta:
+            item['markers'] = response.meta['markers']
+        else:
+            item['markers'] = self.get_markers(response)
+
         if 'id' in response.meta:
             item['id'] = response.meta['id']
         else:
@@ -104,7 +109,15 @@ class BaseSceneScraper(BaseScraper):
         else:
             item['trailer'] = self.get_trailer(response)
 
-        item['url'] = self.get_url(response)
+        if 'duration' in response.meta:
+            item['duration'] = response.meta['duration']
+        else:
+            item['duration'] = self.get_duration(response)
+
+        if 'url' in response.meta:
+            item['url'] = response.meta['url']
+        else:
+            item['url'] = self.get_url(response)
 
         if hasattr(self, 'network'):
             item['network'] = self.network
@@ -167,6 +180,17 @@ class BaseSceneScraper(BaseScraper):
             if trailer:
                 return self.format_link(response, trailer).replace(' ', '%20')
         return ''
+
+    def get_duration(self, response):
+        if 'duration' in self.get_selector_map():
+            duration = self.get_element(response, 'duration', 're_duration')
+            if duration:
+                return duration
+        return ''
+
+    def get_markers(self, response):
+        # Until there's a better feel for Markers, will need to be done in the scraper
+        return []
 
     def get_title(self, response):
         if 'title' in self.get_selector_map():

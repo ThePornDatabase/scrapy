@@ -76,6 +76,13 @@ class TpdbApiScenePipeline:
         if self.crawler.settings['FILTER_TAGS']:
             item['tags'] = self.clean_tags(item['tags'], self.tagaliases)
 
+        item['date'] = re.search(r'(\d{4}-\d{2}-\d{2})', item['date']).group(1)
+        if "markers" not in item:
+            item['markers'] = []
+
+        if "duration" not in item:
+            item['duration'] = ''
+
         payload = {
             'title': item['title'],
             'description': item['description'],
@@ -84,12 +91,14 @@ class TpdbApiScenePipeline:
             'image_blob': item['image_blob'],
             'url': item['url'],
             'performers': item['performers'],
-            'tags': item['tags'],
             'external_id': str(item['id']),
             'site': item['site'],
             'trailer': item['trailer'],
+            'duration': item['duration'],
             'parent': item['parent'],
             'network': item['network'],
+            'tags': item['tags'],
+            'markers': item['markers'],
             'force_update': self.crawler.settings.getbool('FORCE_UPDATE'),
         }
 
@@ -176,15 +185,16 @@ class TpdbApiScenePipeline:
 
     def clean_tags(self, tags, aliaslist):
         tags2 = []
-        for tag in tags:
-            pointer = 0
-            for alias in aliaslist:
-                if not pointer and tag.lower().strip() == alias['alias'].lower().strip():
-                    tags2.append(alias['tag'])
-                    pointer = 1
-                    break
-            if not pointer:
-                tags2.append(tag.rstrip(".").rstrip(",").strip())
+        if tags:
+            for tag in tags:
+                pointer = 0
+                for alias in aliaslist:
+                    if not pointer and tag.lower().strip() == alias['alias'].lower().strip():
+                        tags2.append(alias['tag'])
+                        pointer = 1
+                        break
+                if not pointer:
+                    tags2.append(tag.rstrip(".").rstrip(",").strip())
 
         tags2 = [i for n, i in enumerate(tags2) if i not in tags2[:n]]
         return tags2
@@ -252,7 +262,6 @@ class TpdbApiMoviePipeline:
             'title': item['title'],
             'description': item['description'],
             'site': item['site'],
-            'network': item['network'],
             'date': item['date'],
             'front': item['front'],
             'front_blob': item['front_blob'],
@@ -271,6 +280,7 @@ class TpdbApiMoviePipeline:
             'rating': item['rating'],
             'sku': item['sku'],
             'upc': item['upc'],
+            'store': item['store'],
             'force_update': self.crawler.settings.getbool('FORCE_UPDATE'),
         }
 
@@ -359,15 +369,16 @@ class TpdbApiMoviePipeline:
 
     def clean_tags(self, tags, aliaslist):
         tags2 = []
-        for tag in tags:
-            pointer = 0
-            for alias in aliaslist:
-                if not pointer and tag.lower().strip() == alias['alias'].lower().strip():
-                    tags2.append(alias['tag'])
-                    pointer = 1
-                    break
-            if not pointer:
-                tags2.append(tag.rstrip(".").rstrip(",").strip())
+        if tags:
+            for tag in tags:
+                pointer = 0
+                for alias in aliaslist:
+                    if not pointer and tag.lower().strip() == alias['alias'].lower().strip():
+                        tags2.append(alias['tag'])
+                        pointer = 1
+                        break
+                if not pointer:
+                    tags2.append(tag.rstrip(".").rstrip(",").strip())
 
         tags2 = [i for n, i in enumerate(tags2) if i not in tags2[:n]]
         return tags2
@@ -430,6 +441,7 @@ class TpdbApiPerformerPipeline:
         payload = {
             'name': item['name'],
             'site': item['network'],
+            'network': item['network'],
             'url': item['url'],
             'bio': item['bio'],
             'image': item['image'],
@@ -442,7 +454,7 @@ class TpdbApiPerformerPipeline:
                 'ethnicity': item['ethnicity'],
                 'nationality': item['nationality'],
                 'haircolor': item['haircolor'],
-                # ~ 'eyecolor': item['eyecolor'],
+                'eyecolor': item['eyecolor'],
                 'weight': item['weight'],
                 'height': item['height'],
                 'measurements': item['measurements'],
