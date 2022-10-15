@@ -3,6 +3,7 @@ from scrapy.utils.project import get_project_settings
 
 class CustomProxyMiddleware(object):
     settings = get_project_settings()
+
     if 'PROXY_ADDRESS' in settings.attributes.keys():
         proxy_address = settings.get('PROXY_ADDRESS')
     else:
@@ -14,9 +15,8 @@ class CustomProxyMiddleware(object):
         use_proxy = None
 
     def process_request(self, request, spider):
-
         if 'proxy' not in request.meta:
-            if self.use_proxy:
+            if self.use_proxy or spider.settings.get('USE_PROXY'):
                 request.meta['proxy'] = self.proxy_address
             else:
                 request.meta['proxy'] = ''

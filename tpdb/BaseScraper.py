@@ -77,7 +77,9 @@ class BaseScraper(scrapy.Spider, ABC):
 
         meta = {}
         meta['page'] = self.page
-        if 'USE_PROXY' in settings.attributes.keys():
+        if 'USE_PROXY' in self.settings.attributes.keys():
+            use_proxy = self.settings.get('USE_PROXY')
+        elif 'USE_PROXY' in settings.attributes.keys():
             use_proxy = settings.get('USE_PROXY')
         else:
             use_proxy = None
@@ -116,9 +118,23 @@ class BaseScraper(scrapy.Spider, ABC):
             return self.format_link(response, image).replace(' ', '%20')
         return ''
 
+    def get_back_image(self, response):
+        if 'back' in self.get_selector_map():
+            image = self.get_element(response, 'back', 're_back')
+            if isinstance(image, list):
+                image = image[0]
+            return self.format_link(response, image).replace(' ', '%20')
+        return ''
+
     def get_image_blob(self, response):
         if 'image_blob' not in self.get_selector_map():
             image = self.get_image(response)
+            return self.get_image_blob_from_link(image)
+        return None
+
+    def get_image_back_blob(self, response):
+        if 'image_blob' not in self.get_selector_map():
+            image = self.get_back_image(response)
             return self.get_image_blob_from_link(image)
         return None
 
@@ -128,6 +144,28 @@ class BaseScraper(scrapy.Spider, ABC):
             if req and req.ok:
                 return base64.b64encode(req.content).decode('utf-8')
         return None
+
+    def duration_to_seconds(self, timetext):
+        duration = ''
+        if ":" in timetext:
+            timetext = timetext.split(":")
+            if len(timetext) == 3:
+                duration = str(int(timetext[0]) * 3600 + int(timetext[1]) * 60 + int(timetext[2]))
+            elif len(timetext) == 2:
+                duration = str(int(timetext[0]) * 60 + int(timetext[1]))
+        elif re.search(r'(\d{1,2})M(\d{1,2})S', timetext):
+            if "H" in timetext:
+                duration = re.search(r'(\d{1,2})H(\d{1,2})M(\d{1,2})S', timetext)
+                hours = int(duration.group(1)) * 3660
+                minutes = int(duration.group(2)) * 60
+                seconds = int(duration.group(3))
+                duration = str(hours + minutes + seconds)
+            else:
+                duration = re.search(r'(\d{1,2})M(\d{1,2})S', timetext)
+                minutes = int(duration.group(1)) * 60
+                seconds = int(duration.group(2))
+                duration = str(minutes + seconds)
+        return duration
 
     def get_url(self, response):
         return response.url
@@ -143,6 +181,11 @@ class BaseScraper(scrapy.Spider, ABC):
 
     def get_parent(self, response):
         return tldextract.extract(response.url).domain
+
+    def get_studio(self, response):
+        if 'studio' in self.get_selector_map():
+            return string.capwords(self.cleanup_text(self.get_element(response, 'studio', 're_studio')))
+        return ''
 
     @staticmethod
     def process_xpath(response, selector):

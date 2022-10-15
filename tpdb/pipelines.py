@@ -77,29 +77,53 @@ class TpdbApiScenePipeline:
             item['tags'] = self.clean_tags(item['tags'], self.tagaliases)
 
         item['date'] = re.search(r'(\d{4}-\d{2}-\d{2})', item['date']).group(1)
-        if "markers" not in item:
-            item['markers'] = []
 
+        if "back" not in item:
+            item['back'] = ''
+        if "back_blob" not in item:
+            item['back_blob'] = ''
+        if "director" not in item:
+            item['director'] = ''
         if "duration" not in item:
             item['duration'] = ''
+        if "format" not in item:
+            item['format'] = ''
+        if "markers" not in item:
+            item['markers'] = []
+        if "scenes" not in item:
+            item['scenes'] = []
+        if "sku" not in item:
+            item['sku'] = ''
+        if "store" not in item:
+            item['store'] = ''
+        if "type" not in item:
+            item['type'] = 'Scene'
 
         payload = {
-            'title': item['title'],
-            'description': item['description'],
+            'back': item['back'],
+            'back_blob': item['back_blob'],
             'date': item['date'],
+            'description': item['description'],
+            'director': item['director'],
+            'duration': item['duration'],
+            'external_id': str(item['id']),
+            'force_update': self.crawler.settings.getbool('FORCE_UPDATE'),
+            'format': item['format'],
             'image': item['image'],
             'image_blob': item['image_blob'],
-            'url': item['url'],
-            'performers': item['performers'],
-            'external_id': str(item['id']),
-            'site': item['site'],
-            'trailer': item['trailer'],
-            'duration': item['duration'],
-            'parent': item['parent'],
-            'network': item['network'],
-            'tags': item['tags'],
             'markers': item['markers'],
-            'force_update': self.crawler.settings.getbool('FORCE_UPDATE'),
+            'network': item['network'],
+            'parent': item['parent'],
+            'performers': item['performers'],
+            'scenes': item['scenes'],
+            'site': item['site'],
+            'sku': item['sku'],
+            'store': item['store'],
+            'tags': item['tags'],
+            'title': item['title'],
+            'trailer': item['trailer'],
+            'type': item['type'],
+            'url': item['url'],
         }
 
         # Post the scene to the API - requires auth with permissions
@@ -179,6 +203,7 @@ class TpdbApiScenePipeline:
             if not spider.settings.get('showblob'):
                 if 'image_blob' in item2:
                     item2.pop('image_blob', None)
+                    item2.pop('back_blob', None)
             self.exporter.export_item(item2)
 
         return item
@@ -258,6 +283,18 @@ class TpdbApiMoviePipeline:
         if self.crawler.settings['FILTER_TAGS']:
             item['tags'] = self.clean_tags(item['tags'], self.tagaliases)
 
+        if 'length' in item and 'duration' not in item:
+            item['duration'] = None
+            if item['length']:
+                length = int(item['length'])
+                if length < 450:
+                    length = length * 60
+                item['length'] = str(length)
+                item['duration'] = str(length)
+
+        if "markers" not in item:
+            item['markers'] = []
+
         payload = {
             'title': item['title'],
             'description': item['description'],
@@ -272,10 +309,12 @@ class TpdbApiMoviePipeline:
             'url': item['url'],
             'external_id': str(item['id']),
             'trailer': item['trailer'],
+            'markers': item['markers'],
             'studio': item['studio'],
             'director': item['director'],
             'format': item['format'],
             'length': item['length'],
+            'duration': item['duration'],
             'year': item['year'],
             'rating': item['rating'],
             'sku': item['sku'],

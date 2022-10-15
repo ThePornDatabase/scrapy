@@ -1,5 +1,5 @@
+import re
 import string
-from datetime import date, timedelta
 import scrapy
 
 from tpdb.BaseScraper import BaseScraper
@@ -133,6 +133,57 @@ class BaseSceneScraper(BaseScraper):
         else:
             item['parent'] = self.get_parent(response)
 
+        # Movie Items
+
+        if 'store' in response.meta:
+            item['store'] = response.meta['store']
+        else:
+            item['store'] = self.get_store(response)
+
+        if 'director' in response.meta:
+            item['director'] = response.meta['director']
+        else:
+            item['director'] = self.get_director(response)
+
+        if 'format' in response.meta:
+            item['format'] = response.meta['format']
+        else:
+            item['format'] = self.get_format(response)
+
+        if 'back' in response.meta:
+            item['back'] = response.meta['back']
+        else:
+            item['back'] = self.get_back_image(response)
+
+        if 'back' not in item or not item['back']:
+            item['back'] = None
+            item['back_blob'] = None
+        else:
+            if 'back_blob' in response.meta:
+                item['back_blob'] = response.meta['back_blob']
+            else:
+                item['back_blob'] = self.get_image_back_blob(response)
+
+            if ('back_blob' not in item or not item['back_blob']) and item['back']:
+                item['back_blob'] = self.get_image_from_link(item['back'])
+
+        if 'back_blob' not in item:
+            item['back_blob'] = None
+
+        if 'sku' in response.meta:
+            item['sku'] = response.meta['sku']
+        else:
+            item['sku'] = self.get_sku(response)
+
+        if hasattr(self, 'type'):
+            item['type'] = self.type
+        elif 'type' in response.meta:
+            item['type'] = response.meta['type']
+        elif 'type' in self.get_selector_map():
+            item['type'] = self.get_selector_map('type')
+        else:
+            item['type'] = 'Scene'
+
         yield self.check_item(item, self.days)
 
     def get_date(self, response):
@@ -185,8 +236,33 @@ class BaseSceneScraper(BaseScraper):
         if 'duration' in self.get_selector_map():
             duration = self.get_element(response, 'duration', 're_duration')
             if duration:
+                if ":" in duration or re.search(r'(\d{1,2})M(\d{1,2})S', duration):
+                    duration = self.duration_to_seconds(duration)
                 return duration
         return ''
+
+    def get_store(self, response):
+        if 'store' in self.get_selector_map():
+            return string.capwords(self.cleanup_text(self.get_element(response, 'store', 're_store')))
+        return None
+
+    def get_director(self, response):
+        if 'director' in self.get_selector_map():
+            director = self.get_element(response, 'director', 're_director')
+            if director and isinstance(director, list):
+                director = ", ".join(director)
+            return string.capwords(self.cleanup_text(director))
+        return None
+
+    def get_format(self, response):
+        if 'format' in self.get_selector_map():
+            return string.capwords(self.cleanup_text(self.get_element(response, 'format', 're_format')))
+        return None
+
+    def get_sku(self, response):
+        if 'sku' in self.get_selector_map():
+            return string.capwords(self.cleanup_text(self.get_element(response, 'sku', 're_sku')))
+        return None
 
     def get_markers(self, response):
         # Until there's a better feel for Markers, will need to be done in the scraper
@@ -199,4 +275,4 @@ class BaseSceneScraper(BaseScraper):
                 if isinstance(title, list):
                     title = title[0]
                 return string.capwords(self.cleanup_text(title))
-        return ''
+        return None
