@@ -200,7 +200,9 @@ class BaseMovieScraper(BaseScraper):
                 return list(map(lambda x: string.capwords(x.strip()), new_tags))
         return []
 
-    def get_image(self, response, side):
+    def get_image(self, response, side=None):
+        if not side:
+            side = 'image'
         if side in self.get_selector_map():
             image = self.process_xpath(response, self.get_selector_map(side))
             if image:
