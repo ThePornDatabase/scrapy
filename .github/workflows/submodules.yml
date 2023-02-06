@@ -17,14 +17,17 @@ jobs:
     steps:
       # Checkout the repository to the GitHub Actions runner
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: 'recursive'
 
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v3
         with:
           python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
           architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
+
+      - name: Install poetry
+        uses: abatilo/actions-poetry@v2
 
       # Update references
       - name: Git Sumbodule Update
@@ -38,7 +41,7 @@ jobs:
           git config --global user.email 'bot@noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           cp tpdb/settings.py.example tpdb/settings.py
-          pip3 install -r requirements.txt
-          python3 generate.py
+          poetry install
+          poetry run python3 generate.py
           rm tpdb/settings.py
           git commit -am "Auto updated submodule references" && git push || echo "No changes to commit"

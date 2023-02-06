@@ -8,13 +8,13 @@ Clone this repo
 
 ``git clone --recurse-submodules https://github.com/ThePornDatabase/scrapy.git``
 
-Install the packages using pip
+Install the packages using poetry
 
-``pip install -r requirements.txt``
+``poetry install``
 
 You can then run a scraper using `scrapy crawl `**ScraperName**
 
-``scrapy crawl Vixen``
+``poetry run scrapy crawl Vixen``
 
 ### How it works
 
