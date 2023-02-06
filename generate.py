@@ -10,10 +10,11 @@ from scrapy.utils import project
 from mdutils.mdutils import MdUtils
 
 
-class Generator():
+class Generator:
     mdFile = ''
 
-    def loop_spiders(self):
+    @staticmethod
+    def loop_spiders():
         data = [
             'Network',
             'Parent',
@@ -43,12 +44,13 @@ class Generator():
         return data
 
     def main(self):
-        mdFile = MdUtils(file_name='sitelist', title='Scraper Site List')
-        mdFile.new_header(level=1, title='Sites')
+        md_file = MdUtils(file_name='sitelist', title='Scraper Site List')
+        md_file.new_header(level=1, title='Sites')
         data = self.loop_spiders()
-        mdFile.new_line()
-        mdFile.new_table(columns=4, rows=int(len(data) / 4), text=data, text_align='center')
-        mdFile.create_md_file()
+        md_file.new_line()
+        md_file.new_table(columns=4, rows=int(len(data) / 4), text=data, text_align='center')
+        md_file.create_md_file()
+
 
 if __name__ == '__main__':
     g = Generator()

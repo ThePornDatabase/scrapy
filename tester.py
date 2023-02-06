@@ -62,7 +62,8 @@ class GUI:
         self.response = None
 
         url = self.window.lineEdit.text()
-        self.request = Http.get(url, headers=self.headers)
+        if url:
+            self.request = Http.get(url, headers=self.headers)
 
         if self.request is not None:
             self.response = self.get_response(self.request.content, self.request)
@@ -94,9 +95,9 @@ class GUI:
             self.window.treeWidget.expandAll()
 
     def fill_item(self, item, value):
-        def new_item(parent, text, val=None):
-            child = QTreeWidgetItem([text])
-            self.fill_item(child, val)
+        def new_item(parent, item_text, item_val=None):
+            child = QTreeWidgetItem([item_text])
+            self.fill_item(child, item_val)
             parent.addChild(child)
 
         if value is None:
