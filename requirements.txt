@@ -14,3 +14,4 @@ PySide6
 Unidecode
 dpath
 googletrans
+deep_translator
