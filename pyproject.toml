@@ -1,0 +1,43 @@
+[tool.poetry]
+name = "tpdb-scrapy"
+version = "1.0"
+description = ""
+authors = ["DirtyRacer1337 <DirtyRacer@ya.ru>"]
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.12"
+scrapy = "*"
+tldextract = "*"
+pymongo = "*"
+python-slugify = "*"
+dateparser = "*"
+requests = "*"
+yapf = "*"
+extruct = "*"
+chompjs = "*"
+mdutils = "*"
+PySide6 = "*"
+Unidecode = "*"
+dpath = "*"
+scrapy_splash = "*"
+googletrans = "*"
+deep_translator = "*"
+
+[tool.poetry.group.dev.dependencies]
+flakeheaven = "*"
+
+[tool.flakeheaven]
+exclude = [".git", "__pycache__"]
+format = "colored"
+show_source = false
+max_line_length = 150
+
+[tool.flakeheaven.plugins]
+mccabe = ["+*"]
+pycodestyle = ["+*", "-E501", "-E722"]
+pyflakes = ["+*"]
+pylint = ["+*"]
+
+[build-system]
+requires = ["poetry-core>=1.2.0"]
+build-backend = "poetry.core.masonry.api"
