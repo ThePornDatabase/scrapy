@@ -12,7 +12,14 @@ Install the packages using poetry
 
 ``poetry install``
 
-You can then run a scraper using `scrapy crawl `**ScraperName**
+Next change directory to `tpdb` and create a copy of example settings and edit if necessary:
+
+```
+cd tpdb
+cp settings.py.example settings.py
+```
+
+You can then run a scraper using `scrapy crawl` **ScraperName**
 
 ``poetry run scrapy crawl Vixen``
 
