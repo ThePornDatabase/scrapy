@@ -155,7 +155,7 @@ class BasePerformerScraper(BaseScraper):
         else:
             item['network'] = self.get_network(response)
 
-        yield self.check_item(item)
+        yield item
 
     def get_name(self, response):
         if 'name' in self.selector_map:

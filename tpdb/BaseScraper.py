@@ -95,11 +95,7 @@ class BaseScraper(scrapy.Spider, ABC):
                 print("Using Proxy: False")
 
         for link in self.start_urls:
-            yield scrapy.Request(url=self.get_next_page_url(link, self.page),
-                                 callback=self.parse,
-                                 meta=meta,
-                                 headers=self.headers,
-                                 cookies=self.cookies)
+            yield scrapy.Request(url=self.get_next_page_url(link, self.page), callback=self.parse, meta=meta, headers=self.headers, cookies=self.cookies)
 
     def get_selector_map(self, attr=None):
         if hasattr(self, 'selector_map'):
@@ -110,12 +106,15 @@ class BaseScraper(scrapy.Spider, ABC):
             return self.selector_map[attr]
         raise NotImplementedError('selector map missing')
 
-    def get_image(self, response):
+    def get_image(self, response, path=None):
         if 'image' in self.get_selector_map():
             image = self.get_element(response, 'image', 're_image')
             if isinstance(image, list):
                 image = image[0]
-            return self.format_link(response, image).replace(' ', '%20')
+            if path:
+                return self.format_url(path, image).replace(' ', '%20')
+            else:
+                return self.format_link(response, image).replace(' ', '%20')
         return ''
 
     def get_back_image(self, response):
@@ -140,7 +139,7 @@ class BaseScraper(scrapy.Spider, ABC):
 
     def get_image_blob_from_link(self, image):
         if image:
-            req = Http.get(image, headers=self.headers, cookies=self.cookies)
+            req = Http.get(image, headers=self.headers, cookies=self.cookies, verify=False)
             if req and req.ok:
                 return base64.b64encode(req.content).decode('utf-8')
         return None
@@ -171,7 +170,10 @@ class BaseScraper(scrapy.Spider, ABC):
         return response.url
 
     def get_id(self, response):
-        return self.get_from_regex(response.url, 'external_id')
+        sceneid = self.get_from_regex(response.url, 'external_id')
+        if "?nats" in sceneid:
+            sceneid = re.search(r'(.*)\?nats', sceneid).group(1)
+        return sceneid
 
     def get_site(self, response):
         return tldextract.extract(response.url).domain
@@ -264,25 +266,25 @@ class BaseScraper(scrapy.Spider, ABC):
         return dateparser.parse(itemdate, date_formats=date_formats, settings=settings)
 
     def check_item(self, item, days=None):
-        if days:
-            if days > 27375:
-                filter_date = '0000-00-00'
-            else:
-                days = self.days
-                filter_date = date.today() - timedelta(days)
-                filter_date = filter_date.strftime('%Y-%m-%d')
+        if item['date']:
+            if days:
+                if days > 27375:
+                    filter_date = '0000-00-00'
+                else:
+                    days = self.days
+                    filter_date = date.today() - timedelta(days)
+                    filter_date = filter_date.strftime('%Y-%m-%d')
 
-            if self.debug:
-                if not item['date'] > filter_date:
-                    item['filtered'] = 'Scene filtered due to date restraint'
-                print(item)
-            else:
-                if filter_date:
-                    if item['date'] > filter_date:
-                        return item
-                    return None
-        else:
-            return item
+                if self.debug:
+                    if not item['date'] > filter_date:
+                        item['filtered'] = 'Scene filtered due to date restraint'
+                    print(item)
+                else:
+                    if filter_date:
+                        if item['date'] > filter_date:
+                            return item
+                        return None
+        return item
 
     def get_element(self, response, selector, regex=None):
         selector = self.get_selector_map(selector)
