@@ -39,7 +39,7 @@ class TpdbApiScenePipeline:
         if crawler.settings.get('FILTER_TAGS'):
             logging.info(f"Loading Scene Tag Alias File: {crawler.settings.get('FILTER_TAG_FILENAME')}")
             with open(crawler.settings.get('FILTER_TAG_FILENAME'), encoding='utf-8') as f:
-                self.tagaliases = json.load(f, encoding='utf-8')
+                self.tagaliases = json.load(f)
 
         if crawler.settings.get('file'):
             filename = crawler.settings.get('file')
@@ -76,7 +76,8 @@ class TpdbApiScenePipeline:
         if self.crawler.settings['FILTER_TAGS']:
             item['tags'] = self.clean_tags(item['tags'], self.tagaliases)
 
-        item['date'] = re.search(r'(\d{4}-\d{2}-\d{2})', item['date']).group(1)
+        if item['date']:
+            item['date'] = re.search(r'(\d{4}-\d{2}-\d{2})', item['date']).group(1)
 
         if "back" not in item:
             item['back'] = ''
@@ -94,10 +95,15 @@ class TpdbApiScenePipeline:
             item['scenes'] = []
         if "sku" not in item:
             item['sku'] = ''
+        if "merge_id" not in item:
+            item['merge_id'] = ''
         if "store" not in item:
             item['store'] = ''
         if "type" not in item:
             item['type'] = 'Scene'
+
+        item['title'] = item['title'].replace("&amp;", "&")
+        item['description'] = item['description'].replace("&amp;", "&")
 
         payload = {
             'back': item['back'],
@@ -107,6 +113,7 @@ class TpdbApiScenePipeline:
             'director': item['director'],
             'duration': item['duration'],
             'external_id': str(item['id']),
+            'merge_id': str(item['merge_id']),
             'force_update': self.crawler.settings.getbool('FORCE_UPDATE'),
             'format': item['format'],
             'image': item['image'],
@@ -136,7 +143,7 @@ class TpdbApiScenePipeline:
                 'User-Agent': 'tpdb-scraper/1.0.0'
             }
 
-            response = Http.post('https://api.metadataapi.net/scenes', json=payload, headers=headers)
+            response = Http.post('https://api.metadataapi.net/scenes', json=payload, headers=headers, verify=False, timeout=2)
             if response:
                 if response.ok:
                     disp_result = f'{disp_result} Submitted OK'
@@ -144,7 +151,9 @@ class TpdbApiScenePipeline:
                     disp_result = f'{disp_result} Submission Error: Code #{response.status_code}'
             else:
                 disp_result = f'{disp_result} Submission Error: No Response Code'
-                logging.info(response.content)
+                print(response)
+                if response:
+                    logging.info(response.content)
             url_hash = hashlib.sha1(str(item['url']).encode('utf-8')).hexdigest()
 
             if self.crawler.settings['MONGODB_ENABLE']:
@@ -177,7 +186,8 @@ class TpdbApiScenePipeline:
                     disp_result = f'{disp_result} \tSubmission to Local Error: Code #%d{response.status_code}'
             else:
                 disp_result = disp_result + '\tSubmission to Local Error: No Response Code'
-                logging.info(response.content)
+                if response:
+                    logging.info(response.content)
             # #############################
 
         if (spider.settings.getbool('display') or self.crawler.settings['DISPLAY_ITEMS']) and spider.settings.get('LOG_LEVEL') == 'INFO':
@@ -191,10 +201,13 @@ class TpdbApiScenePipeline:
             else:
                 site_length = 20 - len(item['site'])
 
-            if "T" in item['date']:
-                disp_date = re.search(r'(.*)T\d', item['date']).group(1)
+            if item['date']:
+                if "T" in item['date']:
+                    disp_date = re.search(r'(.*)T\d', item['date']).group(1)
+                else:
+                    disp_date = item['date']
             else:
-                disp_date = item['date']
+                disp_date = "Calculated"
 
             logging.info(f"Item: {item['title'][0:50]}" + " " * title_length + f"{item['site'][0:15]}" + " " * site_length + f"\t{str(item['id'])[0:15]}\t{disp_date}\t{item['url']}\t{disp_result}")
 
@@ -246,7 +259,7 @@ class TpdbApiMoviePipeline:
         if crawler.settings.get('FILTER_TAGS'):
             logging.info(f"Loading Movie Tag Alias File: {crawler.settings.get('FILTER_TAG_FILENAME')}")
             with open(crawler.settings.get('FILTER_TAG_FILENAME'), encoding='utf-8') as f:
-                self.tagaliases = json.load(f, encoding='utf-8')
+                self.tagaliases = json.load(f)
 
         if crawler.settings.get('file'):
             filename = crawler.settings.get('file')
@@ -333,7 +346,7 @@ class TpdbApiMoviePipeline:
                 'User-Agent': 'tpdb-scraper/1.0.0'
             }
 
-            response = Http.post('https://api.metadataapi.net/movies', json=payload, headers=headers)
+            response = Http.post('https://api.metadataapi.net/movies', json=payload, headers=headers, verify=False, timeout=2)
             if response:
                 if response.ok:
                     disp_result = f'{disp_result} Submitted OK'
@@ -341,7 +354,8 @@ class TpdbApiMoviePipeline:
                     disp_result = f'{disp_result} Submission Error: Code #{response.status_code}'
             else:
                 disp_result = disp_result + 'Submission Error: No Response Code'
-                logging.info(response.content)
+                if response:
+                    logging.info(response.content)
             url_hash = hashlib.sha1(str(item['url']).encode('utf-8')).hexdigest()
 
             if self.crawler.settings['MONGODB_ENABLE']:
@@ -374,7 +388,8 @@ class TpdbApiMoviePipeline:
                     disp_result = disp_result + f'\tSubmission to Local Error: Code #{response.status_code}'
             else:
                 disp_result = disp_result + '\tSubmission to Local Error: No Response Code'
-                logging.info(response.content)
+                if response:
+                    logging.info(response.content)
             # #############################
 
         if (spider.settings.getbool('display') or self.crawler.settings['DISPLAY_ITEMS']) and spider.settings.get('LOG_LEVEL') == 'INFO':
@@ -514,7 +529,7 @@ class TpdbApiPerformerPipeline:
                 'User-Agent': 'tpdb-scraper/1.0.0'
             }
 
-            response = Http.post('https://api.metadataapi.net/performer_sites', json=payload, headers=headers, verify=False)
+            response = Http.post('https://api.metadataapi.net/performer_sites', json=payload, headers=headers, verify=False, timeout=2)
             if response:
                 if response.ok:
                     disp_result = 'Submitted OK'
@@ -522,7 +537,8 @@ class TpdbApiPerformerPipeline:
                     disp_result = 'Submission Error: Code #' + str(response.status_code)
             else:
                 disp_result = 'Submission Error: No Response Code'
-                logging.info(response.content)
+                if response:
+                    logging.info(response.content)
 
             if self.crawler.settings['MONGODB_ENABLE']:
                 url_hash = hashlib.sha1(str(item['url']).encode('utf-8')).hexdigest()
@@ -555,7 +571,8 @@ class TpdbApiPerformerPipeline:
                     disp_result = disp_result + f'\tSubmission to Local Error: Code #{response.status_code}'
             else:
                 disp_result = disp_result + '\tSubmission to Local Error: No Response Code'
-                logging.info(response.content)
+                if response:
+                    logging.info(response.content)
             # ##############################
 
         if (spider.settings.getbool('display') or self.crawler.settings['DISPLAY_ITEMS']) and spider.settings.get('LOG_LEVEL') == 'INFO':

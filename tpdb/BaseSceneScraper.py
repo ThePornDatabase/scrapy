@@ -31,11 +31,7 @@ class BaseSceneScraper(BaseScraper):
                 meta = response.meta
                 meta['page'] = meta['page'] + 1
                 print('NEXT PAGE: ' + str(meta['page']))
-                yield scrapy.Request(url=self.get_next_page_url(response.url, meta['page']),
-                                     callback=self.parse,
-                                     meta=meta,
-                                     headers=self.headers,
-                                     cookies=self.cookies)
+                yield scrapy.Request(url=self.get_next_page_url(response.url, meta['page']), callback=self.parse, meta=meta, headers=self.headers, cookies=self.cookies)
 
     def get_scenes(self, response):
         return []
@@ -103,6 +99,11 @@ class BaseSceneScraper(BaseScraper):
             item['id'] = response.meta['id']
         else:
             item['id'] = self.get_id(response)
+
+        if 'merge_id' in response.meta:
+            item['merge_id'] = response.meta['merge_id']
+        else:
+            item['merge_id'] = self.get_merge_id(response)
 
         if 'trailer' in response.meta:
             item['trailer'] = response.meta['trailer']
@@ -194,7 +195,7 @@ class BaseSceneScraper(BaseScraper):
                     scenedate = scenedate[0]
                 date_formats = self.get_selector_map('date_formats') if 'date_formats' in self.get_selector_map() else None
                 return self.parse_date(self.cleanup_text(scenedate), date_formats=date_formats).isoformat()
-        return self.parse_date('today').isoformat()
+        return None
 
     def get_tags(self, response):
         if 'tags' in self.get_selector_map():
@@ -225,11 +226,15 @@ class BaseSceneScraper(BaseScraper):
                 return self.cleanup_description(description)
         return ''
 
-    def get_trailer(self, response):
+    def get_trailer(self, response, path=None):
         if 'trailer' in self.get_selector_map():
             trailer = self.get_element(response, 'trailer', 're_trailer')
             if trailer:
-                return self.format_link(response, trailer).replace(' ', '%20')
+                if path:
+                    return self.format_url(path, trailer).replace(' ', '%20')
+                else:
+                    return self.format_link(response, trailer).replace(' ', '%20')
+
         return ''
 
     def get_duration(self, response):
@@ -267,6 +272,10 @@ class BaseSceneScraper(BaseScraper):
     def get_markers(self, response):
         # Until there's a better feel for Markers, will need to be done in the scraper
         return []
+
+    def get_merge_id(self, response):
+        # Just a stub
+        return None
 
     def get_title(self, response):
         if 'title' in self.get_selector_map():
