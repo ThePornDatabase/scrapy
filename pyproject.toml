@@ -22,6 +22,8 @@ dpath = "*"
 scrapy_splash = "*"
 googletrans = "*"
 deep_translator = "*"
+pytesseract = "*"
+pillow = "*"
 
 [tool.poetry.group.dev.dependencies]
 flakeheaven = "*"
