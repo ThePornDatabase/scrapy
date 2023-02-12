@@ -30,6 +30,7 @@ class BaseScraper(scrapy.Spider, ABC):
     custom_scraper_settings = {}
     selector_map = {}
     regex = {}
+    proxy_address = None
 
     title_trash = []
     description_trash = ['Description:']
@@ -87,11 +88,10 @@ class BaseScraper(scrapy.Spider, ABC):
         if use_proxy:
             print(f"Using Settings Defined Proxy: True ({settings.get('PROXY_ADDRESS')})")
         else:
-            try:
-                if self.proxy_address:
-                    meta['proxy'] = self.proxy_address
-                    print(f"Using Scraper Defined Proxy: True ({meta['proxy']})")
-            except Exception:
+            if self.proxy_address:
+                meta['proxy'] = self.proxy_address
+                print(f"Using Scraper Defined Proxy: True ({meta['proxy']})")
+            else:
                 print("Using Proxy: False")
 
         for link in self.start_urls:
@@ -137,30 +137,38 @@ class BaseScraper(scrapy.Spider, ABC):
             return self.get_image_blob_from_link(image)
         return None
 
-    def get_image_blob_from_link(self, image):
+    def get_image_from_link(self, image):
         if image:
             req = Http.get(image, headers=self.headers, cookies=self.cookies, verify=False)
             if req and req.ok:
-                return base64.b64encode(req.content).decode('utf-8')
+                return req.content
         return None
 
-    def duration_to_seconds(self, timetext):
+    def get_image_blob_from_link(self, image):
+        if image:
+            data = self.get_image_from_link(image)
+            if data:
+                return base64.b64encode(data).decode('utf-8')
+        return None
+
+    @staticmethod
+    def duration_to_seconds(time_text):
         duration = ''
-        if ":" in timetext:
-            timetext = timetext.split(":")
-            if len(timetext) == 3:
-                duration = str(int(timetext[0]) * 3600 + int(timetext[1]) * 60 + int(timetext[2]))
-            elif len(timetext) == 2:
-                duration = str(int(timetext[0]) * 60 + int(timetext[1]))
-        elif re.search(r'(\d{1,2})M(\d{1,2})S', timetext):
-            if "H" in timetext:
-                duration = re.search(r'(\d{1,2})H(\d{1,2})M(\d{1,2})S', timetext)
+        if ":" in time_text:
+            time_text = time_text.split(":")
+            if len(time_text) == 3:
+                duration = str(int(time_text[0]) * 3600 + int(time_text[1]) * 60 + int(time_text[2]))
+            elif len(time_text) == 2:
+                duration = str(int(time_text[0]) * 60 + int(time_text[1]))
+        elif re.search(r'(\d{1,2})M(\d{1,2})S', time_text):
+            if "H" in time_text:
+                duration = re.search(r'(\d{1,2})H(\d{1,2})M(\d{1,2})S', time_text)
                 hours = int(duration.group(1)) * 3660
                 minutes = int(duration.group(2)) * 60
                 seconds = int(duration.group(3))
                 duration = str(hours + minutes + seconds)
             else:
-                duration = re.search(r'(\d{1,2})M(\d{1,2})S', timetext)
+                duration = re.search(r'(\d{1,2})M(\d{1,2})S', time_text)
                 minutes = int(duration.group(1)) * 60
                 seconds = int(duration.group(2))
                 duration = str(minutes + seconds)
@@ -190,7 +198,7 @@ class BaseScraper(scrapy.Spider, ABC):
         return ''
 
     @staticmethod
-    def process_xpath(response, selector):
+    def process_xpath(response, selector: str):
         if selector.startswith('//') or selector.startswith('./'):
             return response.xpath(selector)
 
@@ -256,14 +264,14 @@ class BaseScraper(scrapy.Spider, ABC):
     def cleanup_description(self, description):
         return self.cleanup_text(description, self.description_trash)
 
-    def cleanup_date(self, date):
-        return self.cleanup_text(date, self.date_trash)
+    def cleanup_date(self, item_date):
+        return self.cleanup_text(item_date, self.date_trash)
 
-    def parse_date(self, itemdate, date_formats=None):
-        itemdate = self.cleanup_date(itemdate)
+    def parse_date(self, item_date, date_formats=None):
+        item_date = self.cleanup_date(item_date)
         settings = {'TIMEZONE': 'UTC'}
 
-        return dateparser.parse(itemdate, date_formats=date_formats, settings=settings)
+        return dateparser.parse(item_date, date_formats=date_formats, settings=settings)
 
     def check_item(self, item, days=None):
         if item['date']:
