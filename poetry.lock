@@ -918,13 +918,13 @@ files = [
 
 [[package]]
 name = "mdutils"
-version = "1.5.0"
+version = "1.5.1"
 description = "Useful package for creating Markdown files while executing python code."
 category = "main"
 optional = false
 python-versions = "*"
 files = [
-    {file = "mdutils-1.5.0.tar.gz", hash = "sha256:fa17c8aa3391a484fab4046ea55dd99bd516d276d73214c7e411042f648e8a90"},
+    {file = "mdutils-1.5.1.tar.gz", hash = "sha256:618edbf23b252d09717860c53972d69fdae67b61c78595004a18eac2ad0fd285"},
 ]
 
 [[package]]
