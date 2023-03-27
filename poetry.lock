@@ -444,14 +444,14 @@ wmi = ["wmi (>=1.5.1,<2.0.0)"]
 
 [[package]]
 name = "dpath"
-version = "2.1.4"
+version = "2.1.5"
 description = "Filesystem-like pathing and searching for dictionaries"
 category = "main"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "dpath-2.1.4-py3-none-any.whl", hash = "sha256:3a4f6cc07e3a1b34bc73baa3a6854ee0a48fb2cf18a8c9b1911b66fd72afaa85"},
-    {file = "dpath-2.1.4.tar.gz", hash = "sha256:3380a77d0db4abf104125860ff6eb4bd07c97c65b81aad42a609717089a1bed0"},
+    {file = "dpath-2.1.5-py3-none-any.whl", hash = "sha256:559edcbfc806ca2f9ad9e63566f22e5d41c000e4215bbce9dbf1ca4c859f5e0b"},
+    {file = "dpath-2.1.5.tar.gz", hash = "sha256:ccd964db839baad4aa820612b4b8731b09f40a245d401b723156ce4ef45b22b7"},
 ]
 
 [[package]]
