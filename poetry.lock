@@ -287,13 +287,13 @@ files = [
 
 [[package]]
 name = "chompjs"
-version = "1.2.0"
+version = "1.2.1"
 description = "Parsing JavaScript objects into Python dictionaries"
 category = "main"
 optional = false
 python-versions = ">=3"
 files = [
-    {file = "chompjs-1.2.0.tar.gz", hash = "sha256:e131826b5cfb0973f7c35d167db8ca81c688817517014b3109aaf6787ad76cad"},
+    {file = "chompjs-1.2.1.tar.gz", hash = "sha256:19433d5bc7f350a2fb1302c1425c50e30db06a019225f2accd4c86bf3fb6fa5b"},
 ]
 
 [[package]]
