@@ -403,14 +403,14 @@ langdetect = ["langdetect"]
 
 [[package]]
 name = "deep-translator"
-version = "1.10.1"
+version = "1.11.0"
 description = "A flexible free and unlimited python tool to translate between different languages in a simple way using multiple translators"
 category = "main"
 optional = false
 python-versions = ">=3.7,<4.0"
 files = [
-    {file = "deep_translator-1.10.1-py3-none-any.whl", hash = "sha256:8581e93c4d33746cd6e662607fefb26c457eae9b197de0648e3f25f324ef6534"},
-    {file = "deep_translator-1.10.1.tar.gz", hash = "sha256:e99438dab70e3bebcda932e3f5e86fd3d32b43f87d66ed9f8b6816db146f1d9f"},
+    {file = "deep_translator-1.11.0-py3-none-any.whl", hash = "sha256:2aa6ba5d1597feef9ab7733b14bf98286465d92e8727e2fe53d70821f17ef66a"},
+    {file = "deep_translator-1.11.0.tar.gz", hash = "sha256:9c162001d2302568a57eb7ed30374ca5aa3f908e8ea422bdf9bbd46ab79741b9"},
 ]
 
 [package.dependencies]
@@ -418,6 +418,7 @@ beautifulsoup4 = ">=4.9.1,<5.0.0"
 requests = ">=2.23.0,<3.0.0"
 
 [package.extras]
+ai = ["openai (>=0.27.6,<0.28.0)"]
 docx = ["docx2txt (>=0.8,<0.9)"]
 pdf = ["pypdf (>=3.3.0,<4.0.0)"]
 
