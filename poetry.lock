@@ -403,14 +403,14 @@ langdetect = ["langdetect"]
 
 [[package]]
 name = "deep-translator"
-version = "1.11.0"
+version = "1.11.1"
 description = "A flexible free and unlimited python tool to translate between different languages in a simple way using multiple translators"
 category = "main"
 optional = false
 python-versions = ">=3.7,<4.0"
 files = [
-    {file = "deep_translator-1.11.0-py3-none-any.whl", hash = "sha256:2aa6ba5d1597feef9ab7733b14bf98286465d92e8727e2fe53d70821f17ef66a"},
-    {file = "deep_translator-1.11.0.tar.gz", hash = "sha256:9c162001d2302568a57eb7ed30374ca5aa3f908e8ea422bdf9bbd46ab79741b9"},
+    {file = "deep_translator-1.11.1-py3-none-any.whl", hash = "sha256:25cc787c2c54b20260a302dcc42b3879f341500c22bf95f2aadd16a2b0a10417"},
+    {file = "deep_translator-1.11.1.tar.gz", hash = "sha256:43bdec2aa8a7f11f1d52c312f448d85e5c560c24906fd47cc2fbe1e0e5e5e866"},
 ]
 
 [package.dependencies]
