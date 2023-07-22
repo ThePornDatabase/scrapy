@@ -1,7 +1,9 @@
 import sys
 from datetime import date, timedelta
 import re
+from PIL import Image
 import base64
+from io import BytesIO
 import html
 import logging
 import string
@@ -148,6 +150,14 @@ class BaseScraper(scrapy.Spider, ABC):
         if image:
             data = self.get_image_from_link(image)
             if data:
+                img = BytesIO(data)
+                img = Image.open(img)
+                width, height = img.size
+                if height > 1080 or width > 1920:
+                    img.thumbnail((1920, 1080))
+                    buffer = BytesIO()
+                    img.save(buffer, format="JPEG")
+                    data = buffer.getvalue()
                 return base64.b64encode(data).decode('utf-8')
         return None
 
@@ -156,10 +166,13 @@ class BaseScraper(scrapy.Spider, ABC):
         duration = ''
         if ":" in time_text:
             time_text = time_text.split(":")
+            time_text = [i for i in time_text if i]
             if len(time_text) == 3:
                 duration = str(int(time_text[0]) * 3600 + int(time_text[1]) * 60 + int(time_text[2]))
             elif len(time_text) == 2:
                 duration = str(int(time_text[0]) * 60 + int(time_text[1]))
+            elif len(time_text) == 1:
+                duration = time_text[0]
         elif re.search(r'(\d{1,2})M(\d{1,2})S', time_text):
             if "H" in time_text:
                 duration = re.search(r'(\d{1,2})H(\d{1,2})M(\d{1,2})S', time_text)
@@ -274,6 +287,8 @@ class BaseScraper(scrapy.Spider, ABC):
         return dateparser.parse(item_date, date_formats=date_formats, settings=settings)
 
     def check_item(self, item, days=None):
+        if 'date' not in item:
+            return item
         if item['date']:
             if days:
                 if days > 27375:
