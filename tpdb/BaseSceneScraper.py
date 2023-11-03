@@ -231,9 +231,9 @@ class BaseSceneScraper(BaseScraper):
             trailer = self.get_element(response, 'trailer', 're_trailer')
             if trailer:
                 if path:
-                    return self.format_url(path, trailer).replace(' ', '%20')
+                    return self.format_url(path, trailer)
                 else:
-                    return self.format_link(response, trailer).replace(' ', '%20')
+                    return self.format_link(response, trailer)
 
         return ''
 

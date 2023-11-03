@@ -8,12 +8,13 @@ import html
 import logging
 import string
 from abc import ABC
-from urllib.parse import urlparse
+from urllib.parse import urlparse, unquote
 
 import dateparser
 import scrapy
 import tldextract
 
+from furl import furl
 from tpdb.helpers.http import Http
 from scrapy.utils.project import get_project_settings
 
@@ -114,9 +115,9 @@ class BaseScraper(scrapy.Spider, ABC):
             if isinstance(image, list):
                 image = image[0]
             if path:
-                return self.format_url(path, image).replace(' ', '%20')
+                return self.format_url(path, image)
             else:
-                return self.format_link(response, image).replace(' ', '%20')
+                return self.format_link(response, image)
         return ''
 
     def get_back_image(self, response):
@@ -124,7 +125,7 @@ class BaseScraper(scrapy.Spider, ABC):
             image = self.get_element(response, 'back', 're_back')
             if isinstance(image, list):
                 image = image[0]
-            return self.format_link(response, image).replace(' ', '%20')
+            return self.format_link(response, image)
         return ''
 
     def get_image_blob(self, response):
@@ -235,7 +236,7 @@ class BaseScraper(scrapy.Spider, ABC):
         url = urlparse(base)
         url = url._replace(path=new_url.path, query=new_url.query)
 
-        return url.geturl()
+        return furl(unquote(url.geturl())).url
 
     def get_next_page_url(self, base, page):
         return self.format_url(base, self.get_selector_map('pagination') % page)

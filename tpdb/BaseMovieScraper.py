@@ -209,8 +209,7 @@ class BaseMovieScraper(BaseScraper):
                 image_re = 're_' + side
                 image = self.get_from_regex(image.get(), image_re)
                 if image:
-                    image = self.format_link(response, image)
-                    return image.strip().replace(' ', '%20')
+                    return self.format_link(response, image)
         return None
 
     def get_title(self, response):
@@ -220,7 +219,7 @@ class BaseMovieScraper(BaseScraper):
 
     def get_trailer(self, response):
         if 'trailer' in self.get_selector_map():
-            return self.format_link(response, self.get_element(response, 'trailer', 're_trailer')).replace(' ', '%20')
+            return self.format_link(response, self.get_element(response, 'trailer', 're_trailer'))
         return ''
 
     def get_studio(self, response):
