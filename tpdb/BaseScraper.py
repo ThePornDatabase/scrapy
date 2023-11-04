@@ -110,15 +110,23 @@ class BaseScraper(scrapy.Spider, ABC):
         raise NotImplementedError('selector map missing')
 
     def get_image(self, response, path=None):
-        if 'image' in self.get_selector_map():
-            image = self.get_element(response, 'image', 're_image')
-            if isinstance(image, list):
-                image = image[0]
-            if path:
-                return self.format_url(path, image)
-            else:
-                return self.format_link(response, image)
-        return ''
+        force_update = self.settings.get('force_update')
+        if force_update:
+            force_update = True
+        force_fields = self.settings.get('force_fields')
+        if force_fields:
+            force_fields = force_fields.split(",")
+
+        if not force_update or (force_update and "image" in force_fields):
+            if 'image' in self.get_selector_map():
+                image = self.get_element(response, 'image', 're_image')
+                if isinstance(image, list):
+                    image = image[0]
+                if path:
+                    return self.format_url(path, image)
+                else:
+                    return self.format_link(response, image)
+            return ''
 
     def get_back_image(self, response):
         if 'back' in self.get_selector_map():
@@ -148,17 +156,28 @@ class BaseScraper(scrapy.Spider, ABC):
         return None
 
     def get_image_blob_from_link(self, image):
-        if image:
+        force_update = self.settings.get('force_update')
+        if force_update:
+            force_update = True
+        force_fields = self.settings.get('force_fields')
+        if force_fields:
+            force_fields = force_fields.split(",")
+
+        if (not force_update or (force_update and "image" in force_fields)) and image:
             data = self.get_image_from_link(image)
             if data:
-                img = BytesIO(data)
-                img = Image.open(img)
-                width, height = img.size
-                if height > 1080 or width > 1920:
-                    img.thumbnail((1920, 1080))
+                try:
+                    img = BytesIO(data)
+                    img = Image.open(img)
+                    img = img.convert('RGB')
+                    width, height = img.size
+                    if height > 1080 or width > 1920:
+                        img.thumbnail((1920, 1080))
                     buffer = BytesIO()
                     img.save(buffer, format="JPEG")
                     data = buffer.getvalue()
+                except Exception as ex:
+                    print(f"Could not decode image for evaluation: '{image}'.  Error: ", ex)
                 return base64.b64encode(data).decode('utf-8')
         return None
 
