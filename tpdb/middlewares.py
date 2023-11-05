@@ -4,8 +4,6 @@
 # https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 import re
 
-import scrapy
-
 from pymongo import MongoClient
 from scrapy import signals
 from scrapy.exceptions import IgnoreRequest
@@ -41,7 +39,7 @@ class TpdbSceneDownloaderMiddleware:
         if self.crawler.settings['ENABLE_MONGODB']:
             result = self.db.scenes.find_one({'url': request.url})
             if result is not None and ('api_response' not in result or not result['api_response']):
-                raise scrapy.exceptions.IgnoreRequest
+                raise IgnoreRequest
 
         return None
 
@@ -66,6 +64,7 @@ class TpdbSceneDownloaderMiddleware:
 
     def spider_opened(self, spider):
         spider.logger.info('Spider opened: %s' % spider.name)
+
 
 class TpdbMovieDownloaderMiddleware:
     # Not all methods need to be defined. If a method is not defined,
@@ -95,7 +94,7 @@ class TpdbMovieDownloaderMiddleware:
         if self.crawler.settings['ENABLE_MONGODB']:
             result = self.db.scenes.find_one({'url': request.url})
             if result is not None and ('api_response' not in result or not result['api_response']):
-                raise scrapy.exceptions.IgnoreRequest
+                raise IgnoreRequest
 
         return None
 
@@ -151,7 +150,7 @@ class TpdbPerformerDownloaderMiddleware:
         if self.crawler.settings['ENABLE_MONGODB']:
             result = self.db.performers.find_one({'url': request.url})
             if result is not None and ('api_response' not in result or not result['api_response']):
-                raise scrapy.exceptions.IgnoreRequest
+                raise IgnoreRequest
 
         return None
 

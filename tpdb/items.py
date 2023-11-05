@@ -32,6 +32,7 @@ class SceneItem(scrapy.Item):
     type = scrapy.Field()
     url = scrapy.Field()
 
+
 class MovieItem(scrapy.Item):
     title = scrapy.Field()
     description = scrapy.Field()
@@ -57,6 +58,7 @@ class MovieItem(scrapy.Item):
     sku = scrapy.Field()
     upc = scrapy.Field()
     duration = scrapy.Field()
+
 
 class PerformerItem(scrapy.Item):
     name = scrapy.Field()

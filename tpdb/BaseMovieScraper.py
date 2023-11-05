@@ -1,4 +1,3 @@
-from datetime import date, timedelta
 import string
 import scrapy
 

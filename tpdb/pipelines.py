@@ -4,6 +4,7 @@
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 
 import hashlib
+import html
 import re
 import json
 import logging
@@ -15,6 +16,7 @@ from datetime import datetime
 from pymongo import MongoClient
 from scrapy.exporters import JsonItemExporter, JsonLinesItemExporter
 
+from tpdb.BaseScraper import BaseScraper
 from tpdb.helpers.http import Http
 
 
@@ -102,11 +104,11 @@ class TpdbApiScenePipeline:
         if "type" not in item:
             item['type'] = 'Scene'
 
-        item['title'] = item['title'].replace("&amp;", "&")
-        item['description'] = item['description'].replace("&amp;", "&")
+        item['title'] = html.unescape(item['title'])
+        item['description'] = html.unescape(item['description'])
 
         payload = {
-            'back': item['back'],
+            'back': BaseScraper.prepare_url(item['back']),
             'back_blob': item['back_blob'],
             'date': item['date'],
             'description': item['description'],
@@ -116,7 +118,7 @@ class TpdbApiScenePipeline:
             'merge_id': str(item['merge_id']),
             'force_update': self.crawler.settings.getbool('FORCE_UPDATE'),
             'format': item['format'],
-            'image': item['image'],
+            'image': BaseScraper.prepare_url(item['image']),
             'image_blob': item['image_blob'],
             'markers': item['markers'],
             'network': item['network'],
@@ -128,9 +130,9 @@ class TpdbApiScenePipeline:
             'store': item['store'],
             'tags': item['tags'],
             'title': item['title'],
-            'trailer': item['trailer'],
+            'trailer': BaseScraper.prepare_url(item['trailer']),
             'type': item['type'],
-            'url': item['url'],
+            'url': BaseScraper.prepare_url(item['url']),
         }
 
         # Post the scene to the API - requires auth with permissions

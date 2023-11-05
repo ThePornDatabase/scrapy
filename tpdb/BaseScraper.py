@@ -208,7 +208,7 @@ class BaseScraper(scrapy.Spider, ABC):
         return duration
 
     def get_url(self, response):
-        return response.url
+        return self.prepare_url(response.url)
 
     def get_id(self, response):
         sceneid = self.get_from_regex(response.url, 'external_id')
@@ -255,7 +255,11 @@ class BaseScraper(scrapy.Spider, ABC):
         url = urlparse(base)
         url = url._replace(path=new_url.path, query=new_url.query)
 
-        return furl(unquote(url.geturl())).url
+        return BaseScraper.prepare_url(url.geturl())
+
+    @staticmethod
+    def prepare_url(url: str) -> str:
+        return furl(unquote(url)).url
 
     def get_next_page_url(self, base, page):
         return self.format_url(base, self.get_selector_map('pagination') % page)
