@@ -59,6 +59,7 @@ class GUI:
         return response
 
     def load(self):
+        self.request = None
         self.response = None
 
         url = self.window.lineEdit.text()
