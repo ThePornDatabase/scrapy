@@ -9,7 +9,7 @@ class Http:
     def request(method: str, url: str, **kwargs):
         req = None
         try:
-            req = requests.request(method, url, **kwargs)
+            req = requests.request(method, url, verify=False, **kwargs)
         except:
             pass
 
