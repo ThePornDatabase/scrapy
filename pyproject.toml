@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "tpdb-scrapy"
+name = "tpdb"
 version = "1.0"
 description = ""
 authors = ["DirtyRacer1337 <DirtyRacer@ya.ru>"]
@@ -27,20 +27,23 @@ pillow = "*"
 furl = "*"
 
 [tool.poetry.group.dev.dependencies]
-flakeheaven = "*"
+ruff = "*"
 
-[tool.flakeheaven]
+[tool.ruff]
 exclude = [".git", "__pycache__"]
-format = "colored"
-show_source = false
-max_line_length = 150
+line-length = 320
+indent-width = 4
+target-version = "py39"
 
-[tool.flakeheaven.plugins]
-mccabe = ["+*"]
-pycodestyle = ["+*", "-E501", "-E722"]
-pyflakes = ["+*"]
-pylint = ["+*"]
+[tool.ruff.format]
+quote-style = "single"
+indent-style = "space"
+line-ending = "auto"
+
+[tool.ruff.lint]
+select = ["E", "F"]
+ignore = ["E501", "E722"]
 
 [build-system]
-requires = ["poetry-core>=1.2.0"]
+requires = ["poetry-core>=1.8.1"]
 build-backend = "poetry.core.masonry.api"
