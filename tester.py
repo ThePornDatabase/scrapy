@@ -21,7 +21,8 @@ class GUI:
     def __init__(self):
         QCoreApplication.setAttribute(Qt.AA_ShareOpenGLContexts)
         app = QApplication(sys.argv)
-        app.setStyle(QStyleFactory.create('Fusion'))
+        style = QStyleFactory.create('Fusion')
+        app.setStyle(style)
 
         ui_file_name = '%s.ui' % Path(__file__).stem
         ui_file = QFile(ui_file_name)
