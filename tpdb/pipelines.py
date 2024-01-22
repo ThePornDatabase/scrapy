@@ -145,7 +145,7 @@ class TpdbApiScenePipeline:
                 'User-Agent': 'tpdb-scraper/1.0.0'
             }
 
-            response = Http.post('https://api.metadataapi.net/scenes', json=payload, headers=headers, verify=False, timeout=2)
+            response = Http.post('https://api.metadataapi.net/scenes', json=payload, headers=headers, timeout=2)
             if response:
                 if response.ok:
                     disp_result = f'{disp_result} Submitted OK'
@@ -348,7 +348,7 @@ class TpdbApiMoviePipeline:
                 'User-Agent': 'tpdb-scraper/1.0.0'
             }
 
-            response = Http.post('https://api.metadataapi.net/movies', json=payload, headers=headers, verify=False, timeout=2)
+            response = Http.post('https://api.metadataapi.net/movies', json=payload, headers=headers, timeout=2)
             if response:
                 if response.ok:
                     disp_result = f'{disp_result} Submitted OK'
@@ -531,7 +531,7 @@ class TpdbApiPerformerPipeline:
                 'User-Agent': 'tpdb-scraper/1.0.0'
             }
 
-            response = Http.post('https://api.metadataapi.net/performer_sites', json=payload, headers=headers, verify=False, timeout=2)
+            response = Http.post('https://api.metadataapi.net/performer_sites', json=payload, headers=headers, timeout=2)
             if response:
                 if response.ok:
                     disp_result = 'Submitted OK'
@@ -565,7 +565,7 @@ class TpdbApiPerformerPipeline:
                 'User-Agent': 'tpdb-scraper/1.0.0'
             }
 
-            response = Http.post('http://api.tpdb.test/performer_sites', json=payload, headers=headers, verify=False)
+            response = Http.post('http://api.tpdb.test/performer_sites', json=payload, headers=headers)
             if response:
                 if response.ok:
                     disp_result = disp_result + '\tSubmitted to Local OK'

@@ -150,7 +150,7 @@ class BaseScraper(scrapy.Spider, ABC):
 
     def get_image_from_link(self, image):
         if image:
-            req = Http.get(image, headers=self.headers, cookies=self.cookies, verify=False)
+            req = Http.get(image, headers=self.headers, cookies=self.cookies)
             if req and req.ok:
                 return req.content
         return None

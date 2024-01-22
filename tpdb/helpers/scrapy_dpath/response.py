@@ -4,9 +4,11 @@ from tpdb.helpers.scrapy_dpath.dpath import ScrapyDPath
 
 
 class DPathResponse(TextResponse):
+    request = None
     response = None
 
     def __init__(self, request, response):
+        self.request = request
         self.response = response
 
         super(DPathResponse, self).__init__(response.url,

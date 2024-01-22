@@ -1,3 +1,5 @@
+import logging
+
 import requests
 import urllib3
 from requests.cookies import cookiejar_from_dict
@@ -12,7 +14,8 @@ class Http:
         req = None
         try:
             req = requests.request(method, url, verify=False, **kwargs)
-        except:
+        except Exception as e:
+            logging.error(e)
             pass
 
         return req
