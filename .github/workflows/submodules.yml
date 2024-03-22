@@ -30,7 +30,7 @@ jobs:
         uses: abatilo/actions-poetry@v2
 
       # Update references
-      - name: Git Sumbodule Update
+      - name: Git Submodule Update
         run: |
           git pull --recurse-submodules
           git submodule foreach git pull origin main
