@@ -108,7 +108,7 @@ class TpdbApiScenePipeline:
         item['description'] = html.unescape(item['description'])
 
         payload = {
-            'back': BaseScraper.prepare_url(item['back']),
+            'back': BaseScraper.prepare_url(item['back'] or ''),
             'back_blob': item['back_blob'],
             'date': item['date'],
             'description': item['description'],
