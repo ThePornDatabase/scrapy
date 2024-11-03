@@ -259,6 +259,9 @@ class BaseScraper(scrapy.Spider, ABC):
 
     @staticmethod
     def prepare_url(url: str) -> str:
+        if not url:
+            return ''
+
         return furl(unquote(url)).url
 
     def get_next_page_url(self, base, page):
