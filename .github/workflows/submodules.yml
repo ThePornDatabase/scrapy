@@ -33,7 +33,7 @@ jobs:
       - name: Git Submodule Update
         run: |
           git pull --recurse-submodules
-          git submodule foreach git pull origin main
+          git submodule foreach git pull origin main --ff-only
 
       - name: Commit update
         run: |
