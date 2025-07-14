@@ -5,7 +5,7 @@ description = ""
 authors = ["DirtyRacer1337 <DirtyRacer@ya.ru>"]
 
 [tool.poetry.dependencies]
-python = ">=3.8,<3.13"
+python = ">=3.9,<3.14"
 scrapy = "*"
 tldextract = "*"
 pymongo = "*"
@@ -26,6 +26,7 @@ pytesseract = "*"
 pillow = "*"
 furl = "*"
 pycountry = "*"
+httpx = {extras = ["http2", "socks"], version = "*"}
 
 [tool.poetry.group.dev.dependencies]
 ruff = "*"

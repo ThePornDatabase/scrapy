@@ -1,11 +1,8 @@
 import logging
 
-import requests
-import urllib3
+import httpx
+from httpx import Response, Cookies
 from requests.cookies import cookiejar_from_dict
-from requests.models import Response
-
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
 class Http:
@@ -13,7 +10,7 @@ class Http:
     def request(method: str, url: str, **kwargs):
         req = None
         try:
-            req = requests.request(method, url, verify=False, **kwargs)
+            req = httpx.request(method, url, verify=False, **kwargs)
         except Exception as e:
             logging.error(e)
             pass
@@ -43,6 +40,6 @@ class Http:
         response.status_code = status_code
         response._content = content
         response.headers = headers
-        response.cookies = cookiejar_from_dict(cookies)
+        response.cookies = Cookies(cookiejar_from_dict(cookies))
 
         return response
