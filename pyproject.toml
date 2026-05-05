@@ -5,7 +5,7 @@ description = ""
 authors = ["DirtyRacer1337 <DirtyRacer@ya.ru>"]
 
 [tool.poetry.dependencies]
-python = ">=3.9,<3.14"
+python = ">=3.11,<3.15"
 scrapy = "*"
 tldextract = "*"
 pymongo = "*"
@@ -14,7 +14,6 @@ dateparser = "*"
 requests = "*"
 yapf = "*"
 extruct = "*"
-chompjs = "*"
 mdutils = "*"
 PySide6 = "*"
 Unidecode = "*"
@@ -35,7 +34,7 @@ ruff = "*"
 exclude = [".git", "__pycache__"]
 line-length = 320
 indent-width = 4
-target-version = "py39"
+target-version = "py311"
 
 [tool.ruff.format]
 quote-style = "single"
