@@ -26,6 +26,8 @@ pillow = "*"
 furl = "*"
 pycountry = "*"
 httpx = {extras = ["http2", "socks"], version = "*"}
+chompjs = "*"
+cleantext = "*"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "*"
