@@ -27,6 +27,7 @@ furl = "*"
 pycountry = "*"
 httpx = {extras = ["http2", "socks"], version = "*"}
 cleantext = "*"
+scrapy-playwright = "*"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "*"
