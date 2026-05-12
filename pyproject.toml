@@ -28,6 +28,7 @@ pycountry = "*"
 httpx = {extras = ["http2", "socks"], version = "*"}
 cleantext = "*"
 scrapy-playwright = "*"
+psycopg2 = "*"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "*"
