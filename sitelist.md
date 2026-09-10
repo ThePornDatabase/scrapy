@@ -1948,6 +1948,7 @@ Scraper Site List
 |Eric Johns Sex Adventures|Eric Johns Sex Adventures|https://ericjohnssexadventures.com|siteEricJohnsSexAdventures.py|
 |Eric Videos|Eric Videos|https://www.ericvideos.com|siteEricVideos.py|
 |Erickplay|Erickplay|https://erickplay.com|siteErickPlay.py|
+|Erikalust|Erikalust|https://erikalust.com|siteErikaLust.py|
 |Eroteric|Eroteric|https://www.eroteric.com|siteEroteric.py|
 |Erotic Desire|Erotic Desire|https://eroticdesire.com|siteEroticDesire.py|
 |Erotiquetvlive|Erotiquetvlive|https://erotiquetvlive.com|siteErotiqueTVLive.py|
