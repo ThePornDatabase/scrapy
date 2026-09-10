@@ -672,7 +672,6 @@ Scraper Site List
 |Slp Adult Media||http://womenwithnuttinbuttass.com|siteWaxinPhatAssesPerformer.py|
 |We Are Hairy||https://www.wearehairy.com|siteWeAreHairyPerformer.py|
 |Whoa Boyz|||siteWhoaBoyzPerformer.py|
-|Xconfessions|Xconfessions|https://xconfessions.com|siteXConfessionsPerformer.py|
 ||||siteXFULPerformer.py|
 |Xtime|||siteXTimePerformer.py|
 |Xx-Cel||https://xx-cel.com|siteXX-CelPerformer.py|
@@ -2249,6 +2248,7 @@ Scraper Site List
 |Panty Amateur|Panty Amateur|https://www.pantyamateur.com|sitePantyAmateur.py|
 |Panty Jobs|Panty Jobs|https://www.pantyjobs.com|sitePantyJobs.py|
 |Hentaied|Parasited|https://parasited.com|siteParasited.py|
+|Pascalssubsluts|Pascalssubsluts||sitePascalsSubsluts.py|
 |Passionpov|Passionpov|https://passionpov.com|sitePassionPOV.py|
 |Pawged|Pawged|https://pawged.com|sitePawged.py|
 |Peachy Keen Films|Peachy Keen Films|https://www.pkfstudios.com|sitePeachyKeenFilms.py|
@@ -2503,7 +2503,6 @@ Scraper Site List
 |Karak Ltd|Woodman Casting X|https://www.woodmancastingx.com|siteWoodmanCastingX.py|
 |Bc Media|X-Art|https://www.x-art.com|siteXArt.py|
 |Xbrats|Xbrats|https://xbrats.com|siteXBrats.py|
-|Xconfessions|Xconfessions|https://xconfessions.com|siteXConfessions.py|
 ||||siteXFUL.py|
 |Xx-Cel|Xx-Cel|https://xx-cel.com|siteXX-Cel.py|
 |Xxx Horror|Xxx Horror|https://xxxhorror.com|siteXXXHorror.py|
